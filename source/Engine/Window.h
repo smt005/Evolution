@@ -8,5 +8,6 @@ public:
 	~Window();
 
 private:
+	bool create();
 	void update();
 };

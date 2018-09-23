@@ -2,4 +2,6 @@
 projects/windows/.vs
 projects/windows/Libs
 projects/windows/Temp
+projects/ThirdParty
 source/App
+source/ThirdParty
