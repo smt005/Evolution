@@ -32,5 +32,7 @@ void Engine::update()
 
 void Engine::log(const std::string& text)
 {
+#ifdef DEBUG
 	_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, "LOG: %s\n", text.c_str());
+#endif // DEBUG
 }

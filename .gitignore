@@ -1,0 +1,5 @@
+#common temporary files
+projects/windows/.vs
+projects/windows/Libs
+projects/windows/Temp
+source/App
