@@ -163,12 +163,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\source\Engine\Common\Draw\Draw.h" />
     <ClInclude Include="..\..\Source\Engine\Engine.h" />
     <ClInclude Include="..\..\Source\Engine\FileSystem.h" />
     <ClInclude Include="..\..\Source\Engine\Game.h" />
     <ClInclude Include="..\..\Source\Engine\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\source\Engine\Common\Draw\Draw.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Engine.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\FileSystem.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Window.cpp" />

@@ -2,11 +2,12 @@
 #pragma once
 
 #include <Windows.h>
-//#include "../../../ThirdParty/glew/include/GL/glew.h"
+#include "../../../ThirdParty/glew/include/GL/glew.h"
 #include "../../../ThirdParty/glfw/include/GLFW/glfw3.h"
 
 #include "../../Window.h"
 #include "../../Engine.h"
+#include "../../Common/Draw/Draw.h"
 
 const int windowWidth = 600;
 const int windowHeight = 300;
@@ -42,11 +43,12 @@ bool Window::create()
 
 	glfwMakeContextCurrent(window);
 
-	//if (glewInit() != GLEW_OK)
-	//	return false;
+	//if (glewInit() != GLEW_OK) return false;
 
 	while (!glfwWindowShouldClose(window))
 	{
+		Draw::clearColor();
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
