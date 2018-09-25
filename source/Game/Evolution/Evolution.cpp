@@ -2,6 +2,7 @@
 #include "Evolution.h"
 #include "../../Engine/Engine.h"
 #include "../../Engine/Common/Draw/Draw.h"
+#include "../../Engine/Common/Draw/Shader.h"
 #include "../../Engine/FileSystem.h"
 
 Evolution::Evolution()
@@ -32,8 +33,11 @@ void Evolution::init()
 		}
 	}
 
-	Draw::setClearColor(0.3f, 0.6f, 0.9f, 1.0f);
-	Draw::prepare();
+	{
+		unsigned int program = Shader::getShaderProgram("base.ver", "base.frag");
+		Draw::setClearColor(0.3f, 0.6f, 0.9f, 1.0f);
+		Draw::prepare();
+	}
 }
 
 void Evolution::update()

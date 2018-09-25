@@ -31,6 +31,9 @@
     <ClInclude Include="..\..\source\Engine\Common\Draw\Draw.h">
       <Filter>Common\Draw</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Common\Draw\Shader.h">
+      <Filter>Common\Draw</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Window.cpp">
@@ -43,6 +46,9 @@
       <Filter>Platform</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Engine\Common\Draw\Draw.cpp">
+      <Filter>Common\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Common\Draw\Shader.cpp">
       <Filter>Common\Draw</Filter>
     </ClCompile>
   </ItemGroup>

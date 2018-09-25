@@ -168,6 +168,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Engine\Common\Draw\Draw.h" />
+    <ClInclude Include="..\..\source\Engine\Common\Draw\Shader.h" />
     <ClInclude Include="..\..\Source\Engine\Engine.h" />
     <ClInclude Include="..\..\Source\Engine\FileSystem.h" />
     <ClInclude Include="..\..\Source\Engine\Game.h" />
@@ -175,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Engine\Common\Draw\Draw.cpp" />
+    <ClCompile Include="..\..\source\Engine\Common\Draw\Shader.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Engine.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\FileSystem.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Window.cpp" />

@@ -28,6 +28,18 @@ bool FileSystem::readTextFile(const std::string& fileName, char*& data, int leng
 	return false;
 }
 
+std::string FileSystem::readTextFile(const std::string& fileName)
+{
+	char* data = nullptr;
+	int lenght = 0;
+
+	if (readTextFile(fileName, data, lenght) && data && lenght > 0) {
+		return std::string(data);
+	}
+
+	return std::string();
+}
+
 bool FileSystem::writeTextFile(const std::string& fileName, char* data)
 {
 	FILE* file;
@@ -39,4 +51,9 @@ bool FileSystem::writeTextFile(const std::string& fileName, char* data)
 	fputs(data, file);
 	fclose(file);
 	return true;
+}
+
+bool FileSystem::writeTextFile(const std::string& fileName, const std::string& text)
+{
+	return writeTextFile(fileName, text.c_str());
 }
