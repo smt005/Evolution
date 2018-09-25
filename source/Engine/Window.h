@@ -4,10 +4,7 @@
 class Window
 {
 public:
-	Window();
-	~Window();
-
-private:
-	bool create();
-	void update();
+	static bool create();
+	static int width();
+	static int height();
 };

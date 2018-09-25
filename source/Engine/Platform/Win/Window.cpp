@@ -2,26 +2,15 @@
 #pragma once
 
 #include <Windows.h>
-#include "../../../ThirdParty/glew/include/GL/glew.h"
 #include "../../../ThirdParty/glfw/include/GLFW/glfw3.h"
 
 #include "../../Window.h"
 #include "../../Engine.h"
 #include "../../Common/Draw/Draw.h"
 
-const int windowWidth = 600;
-const int windowHeight = 300;
+int windowWidth = 600;
+int windowHeight = 300;
 const char* windowTitle = "Window";
-
-Window::Window()
-{
-	create();
-}
-
-Window::~Window()
-{
-
-}
 
 bool Window::create()
 {
@@ -43,11 +32,12 @@ bool Window::create()
 
 	glfwMakeContextCurrent(window);
 
-	//if (glewInit() != GLEW_OK) return false;
+	Core::Engine::init();
 
 	while (!glfwWindowShouldClose(window))
 	{
-		Draw::clearColor();
+		Core::Engine::update();
+		Core::Engine::draw();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
@@ -58,10 +48,10 @@ bool Window::create()
 	return true;
 }
 
-void Window::update()
-{
-	for (int i = 0; i < 1000; ++i)
-	{
-		Core::Engine::update();
-	}
+int Window::width() {
+	return windowWidth;
+}
+
+int Window::height() {
+	return windowHeight;
 }

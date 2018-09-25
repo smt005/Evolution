@@ -6,14 +6,13 @@
 using namespace Core;
 
 Game* Engine::_game = nullptr;
-Window* Engine::_window = nullptr;
 
 int Engine::execution(Game* game)
 {
 	if (!game) return -1;
 
 	_game = game;
-	Window window;
+	Window::create();
 
 	return 0;
 }
@@ -23,11 +22,25 @@ void Engine::exit()
 
 }
 
+void Engine::init()
+{
+	if (!_game) return;
+
+	_game->init();
+}
+
 void Engine::update()
 {
 	if (!_game) return;
 
 	_game->update();
+}
+
+void Engine::draw()
+{
+	if (!_game) return;
+
+	_game->draw();
 }
 
 void Engine::log(const std::string& text)

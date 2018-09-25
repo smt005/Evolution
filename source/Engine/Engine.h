@@ -15,12 +15,13 @@ public:
 	static int execution(Game* game);
 	static void exit();
 
+	static void init();
 	static void update();
+	static void draw();
 	static void log(const std::string& text);
 
 private:
 	static Game* _game;
-	static Window* _window;
 };
 
 };	// Core

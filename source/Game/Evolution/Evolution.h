@@ -9,7 +9,9 @@ public:
 	Evolution();
 	~Evolution();
 
+	void init();
 	void update();
+	void draw();
 
 private:
 	void updateGame();

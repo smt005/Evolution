@@ -1,10 +1,12 @@
 
-//#include <Windows.h>
-//#include "../../../ThirdParty/glew/include/GL/glew.h"
-//#include "../../../ThirdParty/glfw/include/GLFW/glfw3.h"
-#include "Draw.h"
+#include "windows.h"
+#include <GL/gl.h> 
+#include <GL/glu.h> 
 
-float _clearColor[4] = {0.3f, 0.6f , 0.9f , 1.0f };
+#include "Draw.h"
+#include "../../Window.h"
+
+float _clearColor[4] = { 0.3f, 0.6f , 0.9f , 1.0f };
 
 void Draw::setClearColor(const float r, const float g, const float b, const float a)
 {
@@ -13,7 +15,7 @@ void Draw::setClearColor(const float r, const float g, const float b, const floa
 	_clearColor[2] = b;
 	_clearColor[3] = a;
 
-	//glClearColor(r, g, b, a);
+	glClearColor(r, g, b, a);
 }
 
 const float * const Draw::getClearColor()
@@ -23,5 +25,71 @@ const float * const Draw::getClearColor()
 
 void Draw::clearColor()
 {
-	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void Draw::prepare()
+{
+	int widthScreen = Window::width();
+	int heightScreen = Window::height();
+	glViewport(0.0, 0.0, widthScreen, heightScreen);
+
+	glDepthFunc(GL_LEQUAL);
+	glEnable(GL_DEPTH_TEST);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+}
+
+float kRed = 0.001;
+float red = 0.3f;
+float kGreen = 0.002;
+float green = 0.6f;
+float kBlue = 0.001;
+float blue = 0.9f;
+
+void Draw::drawBackround()
+{
+	setClearColor(red, green, blue, 1.0f);
+
+	{
+		red += kRed;
+
+		if (red > 1.0f) {
+			kRed = -0.001;
+		}
+
+		if (red < 0.0f) {
+			kRed = 0.001;
+		}
+	}
+
+	{
+		green += kGreen;
+
+		if (green > 1.0f) {
+			kGreen = -0.001;
+		}
+
+		if (green < 0.0f) {
+			kGreen = 0.001;
+		}
+	}
+
+	{
+		blue += kBlue;
+
+		if (blue > 1.0f) {
+			kBlue = -0.001;
+		}
+
+		if (blue < 0.0f) {
+			kBlue = 0.001;
+		}
+	}
+}
+
+void Draw::drawTriangle()
+{
+
 }
