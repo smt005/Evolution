@@ -40,7 +40,7 @@ void Evolution::init()
 	}
 
 	{
-		unsigned int program = Shader::getShaderProgram("base.ver", "base.frag");
+		unsigned int program = Shader::getProgram("Shaders/Base.vert", "Shaders/Base.frag");
 		Draw::setClearColor(0.3f, 0.6f, 0.9f, 1.0f);
 		Draw::prepare();
 	}

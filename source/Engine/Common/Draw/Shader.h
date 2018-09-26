@@ -1,8 +1,10 @@
 #pragma once
 
+#include <string>
+
 class Shader
 {
 public:
-	static unsigned int getShaderProgram(const char *vertexLink, const char *fragmentLink);
+	static unsigned int getProgram(const std::string& vertexFileName, const std::string& fragmentFileName);
 
 };

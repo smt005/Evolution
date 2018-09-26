@@ -101,8 +101,8 @@
       <PreprocessorDefinitions>APP_DIR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Engine.lib;Game.lib;glfw3.lib;OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\ThirdParty\glfw\src\$(Configuration);$(SolutionDir)\Libs\$(Configuration)\$(Platform)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Engine.lib;Game.lib;glfw3.lib;OpenGL32.Lib;libglew32d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Evolution\projects\ThirdParty\glew\lib\Debug;$(SolutionDir)\..\ThirdParty\glfw\src\$(Configuration);$(SolutionDir)\Libs\$(Configuration)\$(Platform)\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

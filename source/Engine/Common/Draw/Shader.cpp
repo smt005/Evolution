@@ -1,34 +1,25 @@
 
-#include <Windows.h>
-#include <gl/GL.h>
+#include "../../../ThirdParty/glew/include/GL/glew.h"
 
 #include "Shader.h"
 #include "../../FileManager.h"
 
-/*
-#include<fstream>
-#include<iostream>
-#include<string.h>
-*/
-
-unsigned int Shader::getShaderProgram(const char* vertexLink, const char* fragmentLink)
+unsigned int Shader::getProgram(const std::string& vertexFileName, const std::string& fragmentFileName)
 {
-	unsigned int program = 0;
-
-	if (!vertexLink || !fragmentLink) {
-		return program;
+	if (glewInit() != GLEW_OK) {
+		return 0;
 	}
 
-    std::string fragmentShaderSource = FileManager::readTextFile(fragmentLink);
-	if (fragmentShaderSource.empty())
-	{
-		return program;
+    std::string fragmentShaderSource = FileManager::readTextFile(fragmentFileName);
+	if (fragmentShaderSource.empty()) {
+		return 0;
 	}
-	/*
-    #if defined BUILD_WIN_GLES || defined BUILD_WIN_GLFW
-        fragmentShaderSource = "#define BUILD_WIN_GLES\n#define BUILD_WIN_GLES\n" + fragmentShaderSource;
-    #endif
-    
+
+	std::string vertexShaderSource = FileManager::readTextFile(vertexFileName);
+	if (vertexShaderSource.empty()) {
+		return 0;
+	}
+
 	GLuint _fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
     const char* shaderSource = fragmentShaderSource.c_str();
@@ -37,6 +28,7 @@ unsigned int Shader::getShaderProgram(const char* vertexLink, const char* fragme
 
 	GLint isShaderCompiled;
 	glGetShaderiv(_fragmentShader, GL_COMPILE_STATUS, &isShaderCompiled);
+
 	if (!isShaderCompiled)
 	{
 		// If an error happened, first retrieve the length of the log message
@@ -46,19 +38,11 @@ unsigned int Shader::getShaderProgram(const char* vertexLink, const char* fragme
 		char* infoLog = new char[infoLogLength];
 		glGetShaderInfoLog(_fragmentShader, infoLogLength, &charactersWritten, infoLog);
         
-        #ifdef BUILD_OSX
-                printf("Shader compiled fragment ERROR: %s", infoLog);
-		#elif BUILD_WIN_GLES
+        #ifdef _DEBUG
 			_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, "Shader compiled fragment ERROR: %s\n", infoLog);
         #endif
         
 		delete[] infoLog;
-		return false;
-	}
-
-	std::string vertexShaderSource = FileSystem::readTextFile(vertexLink);
-	if (vertexShaderSource.empty())
-	{
 		return false;
 	}
 
@@ -78,9 +62,7 @@ unsigned int Shader::getShaderProgram(const char* vertexLink, const char* fragme
 		char* infoLog = new char[infoLogLength];
 		glGetShaderInfoLog(_vertexShader, infoLogLength, &charactersWritten, infoLog);
 
-        #ifdef BUILD_OSX
-               printf("Shader compiled vertex ERROR: %s", infoLog);
-		#elif BUILD_WIN_GLES
+        #ifdef _DEBUG
 			_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, "Shader compiled vertex ERROR: %s\n", infoLog);
         #endif
 
@@ -88,26 +70,24 @@ unsigned int Shader::getShaderProgram(const char* vertexLink, const char* fragme
 		return false;
 	}
 
-	GLuint _shaderProgram = glCreateProgram();
-	glAttachShader(_shaderProgram, _fragmentShader);
-	glAttachShader(_shaderProgram, _vertexShader);
+	GLuint program = glCreateProgram();
+	glAttachShader(program, _fragmentShader);
+	glAttachShader(program, _vertexShader);
 
-	glLinkProgram(_shaderProgram);
+	glLinkProgram(program);
 
 	GLint isLinked;
-	glGetProgramiv(_shaderProgram, GL_LINK_STATUS, &isLinked);
+	glGetProgramiv(program, GL_LINK_STATUS, &isLinked);
 	if (!isLinked)
 	{
 		// If an error happened, first retrieve the length of the log message
 		int infoLogLength, charactersWritten;
-		glGetProgramiv(_shaderProgram, GL_INFO_LOG_LENGTH, &infoLogLength);
+		glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLogLength);
 
 		char* infoLog = new char[infoLogLength];
-		glGetProgramInfoLog(_shaderProgram, infoLogLength, &charactersWritten, infoLog);
+		glGetProgramInfoLog(program, infoLogLength, &charactersWritten, infoLog);
 
-        #ifdef BUILD_OSX
-                printf("Shader linked ERROR: %s", infoLog);
-		#elif BUILD_WIN_GLES
+        #ifdef _DEBUG
 			_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, "Shader linked ERROR: %s \n", infoLog);
         #endif
 
@@ -115,20 +95,5 @@ unsigned int Shader::getShaderProgram(const char* vertexLink, const char* fragme
 		return false;
 	}
 
-	program = _shaderProgram;
-	return true;
-	*/
-}
-
-void deInitializeGLState(GLuint fragmentShader, GLuint vertexShader, GLuint shaderProgram, GLuint vertexBuffer)
-{
-	// Frees the OpenGL handles for the program and the 2 shaders
-	/*
-	glDeleteShader(fragmentShader);
-	glDeleteShader(vertexShader);
-	glDeleteProgram(shaderProgram);
-
-	// Delete the VBO as it is no longer needed
-	glDeleteBuffers(1, &vertexBuffer);
-	*/
+	return program;
 }

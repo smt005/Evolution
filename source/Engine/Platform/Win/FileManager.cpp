@@ -16,7 +16,7 @@ const std::filesystem::path& FileManager::getResourcesDir()
 	return _resourcesDir;
 }
 
-bool FileManager::readTextFile(const std::filesystem::path& fileName, char*& data, int lenght)
+bool FileManager::readTextFile(const std::filesystem::path& fileName, char*& data, int& lenght)
 {
 	FILE* file;
 	std::filesystem::path fullFilePath = _resourcesDir / fileName;
