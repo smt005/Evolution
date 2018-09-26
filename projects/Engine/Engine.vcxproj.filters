@@ -19,9 +19,6 @@
     <ClInclude Include="..\..\Source\Engine\Window.h">
       <Filter>Platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Engine\FileSystem.h">
-      <Filter>Platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Engine\Engine.h">
       <Filter>Platform</Filter>
     </ClInclude>
@@ -34,12 +31,12 @@
     <ClInclude Include="..\..\source\Engine\Common\Draw\Shader.h">
       <Filter>Common\Draw</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Engine\FileManager.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Window.cpp">
-      <Filter>Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Engine\Platform\Win\FileSystem.cpp">
       <Filter>Platform</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Engine.cpp">
@@ -50,6 +47,9 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Engine\Common\Draw\Shader.cpp">
       <Filter>Common\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Engine\Platform\Win\FileManager.cpp">
+      <Filter>Platform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

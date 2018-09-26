@@ -3,7 +3,7 @@
 #include "../../Engine/Engine.h"
 #include "../../Engine/Common/Draw/Draw.h"
 #include "../../Engine/Common/Draw/Shader.h"
-#include "../../Engine/FileSystem.h"
+#include "../../Engine/FileManager.h"
 
 Evolution::Evolution()
 {
@@ -17,10 +17,16 @@ Evolution::~Evolution()
 
 void Evolution::init()
 {
+	FileManager::setResourcesDir("..\\Res");
+
 	{
-		char data[] = "qweasdzxc";
-		if (FileSystem::writeTextFile("test.txt", data)) {
-			Core::Engine::log("WRITE: " + std::string(data));
+		std::string text;
+
+		text = "current_path = " + std::filesystem::current_path().string() + "\n";
+		text += "resourcesDir = " + FileManager::getResourcesDir().string() + "\n";
+
+		if (FileManager::writeTextFile("test.txt", text)) {
+			Core::Engine::log("WRITE: " + text);
 		}
 	}
 
@@ -28,7 +34,7 @@ void Evolution::init()
 		int lenght = 0;
 		char* data = nullptr;
 
-		if (FileSystem::readTextFile("test.txt", data, lenght) && data) {
+		if (FileManager::readTextFile("test.txt", data, lenght) && data) {
 			Core::Engine::log("READ: " + std::string(data));
 		}
 	}

@@ -3,7 +3,7 @@
 #include <gl/GL.h>
 
 #include "Shader.h"
-#include "../../FileSystem.h"
+#include "../../FileManager.h"
 
 /*
 #include<fstream>
@@ -19,7 +19,7 @@ unsigned int Shader::getShaderProgram(const char* vertexLink, const char* fragme
 		return program;
 	}
 
-    std::string fragmentShaderSource = FileSystem::readTextFile(fragmentLink);
+    std::string fragmentShaderSource = FileManager::readTextFile(fragmentLink);
 	if (fragmentShaderSource.empty())
 	{
 		return program;
