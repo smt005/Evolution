@@ -1,6 +1,8 @@
 
 #pragma once
 
+class Mesh;
+
 class Draw
 {
 public:
@@ -12,4 +14,5 @@ public:
 
 	static void drawBackround();
 	static void drawTriangle();
+	static void draw(Mesh& mesh);
 };

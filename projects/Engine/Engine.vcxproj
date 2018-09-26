@@ -170,6 +170,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\source\Engine\Common\Draw\Draw.h" />
     <ClInclude Include="..\..\source\Engine\Common\Draw\Shader.h" />
+    <ClInclude Include="..\..\source\Engine\Common\Object\Mesh.h" />
     <ClInclude Include="..\..\Source\Engine\Engine.h" />
     <ClInclude Include="..\..\Source\Engine\FileManager.h" />
     <ClInclude Include="..\..\Source\Engine\Game.h" />
@@ -178,6 +179,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\source\Engine\Common\Draw\Draw.cpp" />
     <ClCompile Include="..\..\source\Engine\Common\Draw\Shader.cpp" />
+    <ClCompile Include="..\..\source\Engine\Common\Object\Mesh.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Engine.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\FileManager.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Window.cpp" />

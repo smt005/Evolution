@@ -3,6 +3,8 @@
 
 #include "../../Engine/Game.h"
 
+class Mesh;
+
 class Evolution : public Game
 {
 public:
@@ -15,4 +17,7 @@ public:
 
 private:
 	void updateGame();
+
+private:
+	Mesh* _mesh;
 };
