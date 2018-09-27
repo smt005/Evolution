@@ -17,6 +17,9 @@
     <Filter Include="Common\Object">
       <UniqueIdentifier>{acb77631-9f37-4157-9b1c-a5a85b8c5752}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\Common">
+      <UniqueIdentifier>{8cd7174f-6b2f-4e5f-8d28-411b1acb4f77}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Engine\Window.h">
@@ -40,6 +43,9 @@
     <ClInclude Include="..\..\source\Engine\Common\Object\Mesh.h">
       <Filter>Common\Object</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Common\Common\Help.h">
+      <Filter>Common\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Window.cpp">
@@ -59,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Engine\Common\Object\Mesh.cpp">
       <Filter>Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Common\Common\Help.cpp">
+      <Filter>Common\Common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

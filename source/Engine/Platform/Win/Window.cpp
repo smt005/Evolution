@@ -7,6 +7,7 @@
 #include "../../Window.h"
 #include "../../Engine.h"
 #include "../../Common/Draw/Draw.h"
+#include "../../../ThirdParty/jsoncpp/include/json/json.h"
 
 int windowWidth = 600;
 int windowHeight = 300;
@@ -19,6 +20,19 @@ bool Window::create()
 	if (!glfwInit())
 		return false;
 	
+	const Json::Value& setting = Core::Engine::settingJson("window");
+	if (!setting.empty()) {
+		int windowWidthTemp = setting["width"].asInt();
+		if (windowWidthTemp != 0) {
+			windowWidth = windowWidthTemp;
+		}
+
+		int windowHeightTemp = setting["height"].asInt();
+		if (windowHeightTemp != 0) {
+			windowHeight = windowHeightTemp;
+		}
+	}
+
 	window = glfwCreateWindow(windowWidth, windowHeight, windowTitle, NULL, NULL);
 	if (!window)
 	{

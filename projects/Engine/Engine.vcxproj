@@ -98,8 +98,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -168,6 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\source\Engine\Common\Common\Help.h" />
     <ClInclude Include="..\..\source\Engine\Common\Draw\Draw.h" />
     <ClInclude Include="..\..\source\Engine\Common\Draw\Shader.h" />
     <ClInclude Include="..\..\source\Engine\Common\Object\Mesh.h" />
@@ -177,6 +177,7 @@
     <ClInclude Include="..\..\Source\Engine\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\source\Engine\Common\Common\Help.cpp" />
     <ClCompile Include="..\..\source\Engine\Common\Draw\Draw.cpp" />
     <ClCompile Include="..\..\source\Engine\Common\Draw\Shader.cpp" />
     <ClCompile Include="..\..\source\Engine\Common\Object\Mesh.cpp" />
