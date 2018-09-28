@@ -69,3 +69,12 @@ int Window::width() {
 int Window::height() {
 	return windowHeight;
 }
+
+float Window::aspect()
+{
+	if (windowHeight == 0 || windowWidth == 0) {
+		return 1.0f;
+	}
+
+	return (static_cast<float>(windowWidth) / static_cast<float>(windowHeight));
+}

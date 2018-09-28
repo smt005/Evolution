@@ -5,10 +5,24 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Res">
+      <UniqueIdentifier>{d89bbf17-8862-42d6-b7e2-572f87b2a04c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res\Shaders">
+      <UniqueIdentifier>{36b5d65d-6978-4247-8e33-62317d4c1004}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Projects\Win\main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Res\Shaders\Base.frag">
+      <Filter>Res\Shaders</Filter>
+    </None>
+    <None Include="..\Res\Shaders\Base.vert">
+      <Filter>Res\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

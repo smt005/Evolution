@@ -45,6 +45,8 @@
     </ClInclude>
     <ClInclude Include="..\..\source\Engine\Common\Common\Help.h">
       <Filter>Common\Common</Filter>
+    <ClInclude Include="..\..\source\Engine\Common\Draw\Camera.h">
+      <Filter>Common\Draw</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +70,8 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Engine\Common\Common\Help.cpp">
       <Filter>Common\Common</Filter>
+    <ClCompile Include="..\..\source\Engine\Common\Draw\Camera.cpp">
+      <Filter>Common\Draw</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

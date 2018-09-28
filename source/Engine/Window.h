@@ -7,4 +7,5 @@ public:
 	static bool create();
 	static int width();
 	static int height();
+	static float aspect();
 };

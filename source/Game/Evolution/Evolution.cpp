@@ -3,8 +3,12 @@
 #include <fstream>
 #include "../../ThirdParty/jsoncpp/include/json/json.h"
 
+#include <glm/glm.hpp>
+#include "glm/mat4x4.hpp"
+
 #include "../../Engine/Engine.h"
 #include "Evolution.h"
+
 #include "../../Engine/Engine.h"
 #include "../../Engine/FileManager.h"
 #include "../../Engine/Common/Draw/Draw.h"
@@ -86,6 +90,12 @@ void Evolution::updateGame()
 
 void Evolution::draw()
 {
-	Draw::clearColor();
 	Draw::drawBackround();
+	Draw::clearColor();
+	Draw::prepare();
+
+	if (_mesh) {
+		glm::mat4x4 matrix(1.0f);
+		Draw::draw(*_mesh, matrix);
+	}
 }
