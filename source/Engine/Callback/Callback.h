@@ -44,6 +44,11 @@ public:
 		add(type, function);
 	}
 
+	Callback(const Type type, const std::function<void(void)>& function, int& id) {
+		CallbackHandler::add(*this);
+		add(type, function, id);
+	}
+
 	~Callback() {
 		CallbackHandler::remove(*this);
 	}
@@ -53,13 +58,11 @@ public:
 		return id;
 	}
 
-	void add(const Type type, const std::function<void(void)>& function) {
-		std::vector<std::function<void(void)>>& functions = _map[type];
-		functions.push_back(function);
-	}
-
+	int add(const Type type, const std::function<void(void)>& function);
+	int add(const Type type, const std::function<void(void)>& function, int& id);
+	void remove(const int id);
 	void action(Type type);
 
 private:
-	std::map<Type, std::vector<std::function<void(void)>>> _map;
+	std::map<Type, std::map<int, std::function<void(void)>>> _map;
 };

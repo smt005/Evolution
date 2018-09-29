@@ -37,9 +37,11 @@ float texCoorde[8] = { -2.0f, 3.0f,
 unsigned short int countIndex = 2;
 unsigned short indexes[6] = { 1, 2, 3, 4, 3, 2 };
 
-int count = 0;
+int lastCount = -1;
+int count = 6;
 bool visible = true;
 Callback* callback;
+int idCallbacks[4];
 
 Evolution::Evolution()
 {
@@ -89,25 +91,22 @@ void Evolution::init()
 
 	if (!callback)
 	{
-		callback = new Callback(Callback::Type::ON_RELEASE_TAP, []() {
-
+		callback = new Callback(Callback::Type::ON_PRESS_TAP, []() {
 			Core::Engine::log("ON_RELEASE_KEY");
-
-			visible = true;
-			++count;
-		});
-
-		callback->add(Callback::Type::ON_PRESS_TAP, []() {
 			visible = false;
+		}, idCallbacks[0]);
 
+		callback->add(Callback::Type::ON_RELEASE_TAP, []() {
+			visible = true;
+			--count;
 			Core::Engine::log("ON_PRESS_TAP 1");
-		});
+		}, idCallbacks[1]);
 
-		callback->add(Callback::Type::ON_PRESS_TAP, []() {
+		idCallbacks[2] = callback->add(Callback::Type::ON_RELEASE_TAP, []() {
 			Core::Engine::log("ON_PRESS_TAP 2");
 		});
 
-		callback->add(Callback::Type::ON_PRESS_TAP, []() {
+		idCallbacks[3] = callback->add(Callback::Type::ON_RELEASE_TAP, []() {
 			Core::Engine::log("ON_PRESS_TAP 3");
 		});
 	}
@@ -120,7 +119,17 @@ void Evolution::update()
 
 void Evolution::updateGame()
 {
-	if (count > 3) {
+	if (lastCount != count) {
+		lastCount = count;
+
+		if (lastCount >= 0 && lastCount < 4 && callback) {
+			Core::Engine::log("---------------------------------------");
+			callback->remove(idCallbacks[lastCount]);
+			Core::Engine::log("---------------------------------------");
+		}
+	}
+
+	if (count < 0) {
 		delete callback;
 		callback = nullptr;
 	}
