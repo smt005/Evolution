@@ -18,6 +18,7 @@ protected:
 	string _name;
 	mat4x4 _matrix = mat4x4(1.0f);
 	ModelPtr _model;
+	bool _visible = true;
 
 public:
 	Object();
@@ -26,12 +27,12 @@ public:
 
 	void setName(const string& name) { _name = name; };
 
-	const string& name() { return _name; };
-	const mat4x4& getMatrix() { return _matrix; };
-	const float* matrixFloat() { return value_ptr(_matrix); };
+	inline const string& name() { return _name; };
+	inline const mat4x4& getMatrix() { return _matrix; };
+	inline const float* matrixFloat() { return value_ptr(_matrix); };
 	void getDataJson(Json::Value& dataJson);
 
-	void setMatrix(const mat4x4 &matrix) { _matrix = matrix; };
+	inline void setMatrix(const mat4x4 &matrix) { _matrix = matrix; };
 	void setMatrix(const float *matrix);
 
 	Model& getModel();
@@ -40,6 +41,9 @@ public:
 	void set(const string &name, const string &modelName, const vec3 &pos = vec3(0.0f), const Json::Value& data = Json::Value());
 	void setHeight(const float &height);
 	void setVector(const glm::vec3 &vector);
+
+	inline bool visible() { return _visible; }
+	inline void setVisible(const bool visible) { _visible = visible; }
 
 public:
 	virtual void setData(const Json::Value &data);

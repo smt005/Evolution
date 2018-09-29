@@ -72,23 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\Libs\$(Configuration)\$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)\Temp\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
+    <OutDir>$(SolutionDir)Libs\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\Libs\$(Configuration)\$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)\Temp\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
+    <OutDir>$(SolutionDir)Libs\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\Libs\$(Configuration)\$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)\Temp\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
+    <OutDir>$(SolutionDir)Libs\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\Libs\$(Configuration)\$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)\Temp\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
+    <OutDir>$(SolutionDir)Libs\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -170,6 +170,8 @@
     <ClInclude Include="..\..\source\Engine\Draw\Camera.h" />
     <ClInclude Include="..\..\source\Engine\Draw\Draw.h" />
     <ClInclude Include="..\..\source\Engine\Draw\Shader.h" />
+    <ClInclude Include="..\..\source\Engine\Object\Glider.h" />
+    <ClInclude Include="..\..\source\Engine\Object\Map.h" />
     <ClInclude Include="..\..\source\Engine\Object\Mesh.h" />
     <ClInclude Include="..\..\Source\Engine\Engine.h" />
     <ClInclude Include="..\..\Source\Engine\FileManager.h" />
@@ -185,6 +187,8 @@
     <ClCompile Include="..\..\source\Engine\Draw\Camera.cpp" />
     <ClCompile Include="..\..\source\Engine\Draw\Draw.cpp" />
     <ClCompile Include="..\..\source\Engine\Draw\Shader.cpp" />
+    <ClCompile Include="..\..\source\Engine\Object\Glider.cpp" />
+    <ClCompile Include="..\..\source\Engine\Object\Map.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Mesh.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Model.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Object.cpp" />

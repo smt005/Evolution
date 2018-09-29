@@ -18,9 +18,11 @@
 #include "Common/Help.h"
 #include "Callback/Callback.h"
 #include "Object/Object.h"
+#include "Object/Map.h"
 
 Callback* callback = nullptr;
 Object* object = nullptr;
+Map* mapGame = nullptr;
 
 Evolution::Evolution()
 {
@@ -37,6 +39,11 @@ Evolution::~Evolution()
 	if (object) {
 		delete object;
 		object = nullptr;
+	}
+
+	if (mapGame) {
+		delete mapGame;
+		mapGame = nullptr;
 	}
 }
 
@@ -59,9 +66,12 @@ void Evolution::init()
 		});
 	}
 
-	if (!object)
-	{
+	if (!object) {
 		object = new Object("Object", "Box1");
+	}
+
+	if (!mapGame) {
+		mapGame = new Map("Evolution");
 	}
 }
 
@@ -75,7 +85,12 @@ void Evolution::draw()
 	Draw::clearColor();
 
 	Draw::prepare();
+	
 	Draw::draw(*object);
+
+	if (mapGame) {
+		Draw::draw(*mapGame);
+	}
 
 	//Draw::drawTriangleExample();
 }

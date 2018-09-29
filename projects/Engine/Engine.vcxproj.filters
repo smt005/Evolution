@@ -37,6 +37,12 @@
     <ClCompile Include="..\..\source\Engine\Object\Shape.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Object\Glider.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Object\Map.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Engine\Window.h">
@@ -79,6 +85,12 @@
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Engine\Object\Shape.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Object\Glider.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Object\Map.h">
       <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>

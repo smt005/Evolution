@@ -14,6 +14,9 @@
     <Filter Include="Res\Models">
       <UniqueIdentifier>{0119f17a-90d6-4583-bff4-b2c14bbc290a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Res\Map">
+      <UniqueIdentifier>{6cb4f6e7-4ac4-4243-b20a-32691d677a1e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Projects\Win\main.cpp">
@@ -35,6 +38,9 @@
     </None>
     <None Include="..\Res\Models\Models.json">
       <Filter>Res\Models</Filter>
+    </None>
+    <None Include="..\Res\Map\Map.json">
+      <Filter>Res\Map</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,8 @@
 #include "../Object/Shape.h"
 #include "../Object/Model.h"
 #include "../Object/Object.h"
+#include "../Object/Glider.h"
+#include "../Object/Map.h"
 #include "Shader.h"
 
 float _clearColor[4] = { 0.3f, 0.6f , 0.9f , 1.0f };
@@ -233,4 +235,19 @@ void Draw::draw(Object& object)
 
 	Model& model = object.getModel();
 	draw(model);
+}
+
+void Draw::draw(Map& map)
+{
+	for (auto& object : map._objects) {
+		if (object->visible()) {
+			draw(*object);
+		}
+	}
+
+	for (auto& glider : map._gliders) {
+		if (glider->visible()) {
+			draw(*glider);
+		}
+	}
 }

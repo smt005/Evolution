@@ -71,22 +71,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)..\..\Source\App\</OutDir>
-    <IntDir>$(SolutionDir)\Temp\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Temp\$(Configuration)\$(Platform)\</IntDir>
     <TargetName>$(ProjectName)_$(Configuration)_$(Platform)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)\..\..\Source\App\</OutDir>
-    <IntDir>$(SolutionDir)\Temp\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Temp\$(Configuration)\$(Platform)\</IntDir>
     <TargetName>$(ProjectName)_$(Configuration)_$(Platform)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\..\..\Source\App\</OutDir>
-    <IntDir>$(SolutionDir)\Temp\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Temp\$(Configuration)\$(Platform)\</IntDir>
     <TargetName>$(ProjectName)_$(Configuration)_$(Platform)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)\..\..\Source\App\</OutDir>
-    <IntDir>$(SolutionDir)\Temp\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Temp\$(Configuration)\$(Platform)\</IntDir>
     <TargetName>$(ProjectName)_$(Configuration)_$(Platform)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -162,6 +162,7 @@
     <ClCompile Include="..\..\Source\Projects\Win\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Res\Map\Map.json" />
     <None Include="..\Res\Models\Models.json" />
     <None Include="..\Res\Shaders\Base.frag" />
     <None Include="..\Res\Shaders\Base.vert" />
