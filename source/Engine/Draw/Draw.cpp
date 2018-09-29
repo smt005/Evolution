@@ -145,9 +145,9 @@ void Draw::draw(Mesh& mesh, glm::mat4x4& matrix)
 
 void Draw::drawTriangleExample()
 {
-	GLfloat vVertices[] = {	0.0f, 0.5f, 0.0f,
-							-0.5f, -0.5f, 0.0f,
-							0.5f, -0.5f, 0.0f };
+	GLfloat vVertices[] = {	0.0f, 5.0f, 0.0f,
+							-50.0f, -50.0f, 0.0f,
+							50.0f, -50.0f, 0.0f };
 
 	glViewport(0, 0, Window::width(), Window::height());
 
@@ -155,8 +155,26 @@ void Draw::drawTriangleExample()
 		program = Shader::getProgram("Shaders/TriangleExample.vert", "Shaders/TriangleExample.frag");
 	}
 
+	GLint u_matProjectionView = glGetUniformLocation(program, "u_matProjectionView");
+	GLuint u_matViewModel = glGetUniformLocation(program, "u_matViewModel");
+	GLuint a_position = glGetAttribLocation(program, "a_position");
+	
+	{
+
+		//glm::mat4x4 matrix(1.0f);
+		//glUniformMatrix4fv(u_matProjectionView, 1, GL_FALSE, glm::value_ptr(matrix));
+		glUniformMatrix4fv(u_matProjectionView, 1, GL_FALSE, Camera::current.matPV());
+	}
+
+	{
+		
+		glm::mat4x4 matrix(1.0f);
+		matrix = glm::translate(matrix, glm::vec3(0.5f, 0.5f, 0.0f));
+		glUniformMatrix4fv(u_matViewModel, 1, GL_FALSE, glm::value_ptr(matrix));
+	}
+
 	glUseProgram(program);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(a_position);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }

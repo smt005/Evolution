@@ -24,5 +24,11 @@
     <None Include="..\Res\Shaders\Base.vert">
       <Filter>Res\Shaders</Filter>
     </None>
+    <None Include="..\Res\Shaders\TriangleExample.frag">
+      <Filter>Res\Shaders</Filter>
+    </None>
+    <None Include="..\Res\Shaders\TriangleExample.vert">
+      <Filter>Res\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

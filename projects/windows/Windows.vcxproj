@@ -164,6 +164,8 @@
   <ItemGroup>
     <None Include="..\Res\Shaders\Base.frag" />
     <None Include="..\Res\Shaders\Base.vert" />
+    <None Include="..\Res\Shaders\TriangleExample.frag" />
+    <None Include="..\Res\Shaders\TriangleExample.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
