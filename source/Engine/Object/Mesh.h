@@ -1,7 +1,12 @@
 #pragma once
 
+class Shape;
+
 class Mesh
 {
+public:
+	friend Shape;
+
 private:
 	unsigned short int _countVertex = 0;
 	float* _aVertex = nullptr;
@@ -24,21 +29,21 @@ public:
 	inline const unsigned short* const indexes()	{ return _aIndex; }
 
 	inline bool hasVBO()						{ return _hasVBO; }
-	inline const unsigned int const* buffers()	{ return _buffer; }
+	inline const unsigned int* const buffers()	{ return _buffer; }
 
 	inline unsigned int bufferVertexes()	{ return _buffer[0]; }
 	inline unsigned int bufferNormals()		{ return _buffer[1]; }
 	inline unsigned int bufferTexCoords()	{ return _buffer[2]; }
 	inline unsigned int bufferIndexes()		{ return _buffer[3]; }
 
-	void setData(	float* aVertex,
-					float* aNormal,
-					float* aTexCoord,
+	void setData(	float* const aVertex,
+					float* const aNormal,
+					float* const aTexCoord,
 					const unsigned short int countVertex,
-					unsigned short* aIndex,
-					unsigned short int countIndex);
+					unsigned short* const aIndex,
+					const unsigned short int countIndex);
 
 public:
 	virtual ~Mesh();
-	void initVBO();
+	bool initVBO();
 };

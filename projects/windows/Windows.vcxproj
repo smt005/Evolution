@@ -162,10 +162,28 @@
     <ClCompile Include="..\..\Source\Projects\Win\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Res\Models\Models.json" />
     <None Include="..\Res\Shaders\Base.frag" />
     <None Include="..\Res\Shaders\Base.vert" />
     <None Include="..\Res\Shaders\TriangleExample.frag" />
     <None Include="..\Res\Shaders\TriangleExample.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="..\Res\Models\Box1.obj">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Object>
+    <Object Include="..\Res\Models\Plane100.obj">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Object>
+    <Object Include="..\Res\Models\Plane5.obj">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Object>
+    <Object Include="..\Res\Models\Sphere_01.obj">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Object>
+    <Object Include="..\Res\Models\Triangle.obj">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Object>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

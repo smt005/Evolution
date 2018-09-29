@@ -1,9 +1,7 @@
 
 #pragma once
 
-#include "../../Engine/Game.h"
-
-class Mesh;
+#include "Game.h"
 
 class Evolution : public Game
 {
@@ -14,10 +12,4 @@ public:
 	void init();
 	void update();
 	void draw();
-
-private:
-	void updateGame();
-
-private:
-	Mesh* _mesh;
 };

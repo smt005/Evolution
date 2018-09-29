@@ -1,0 +1,20 @@
+{
+  "Plane100": {
+    "shape": "Models/Plane100.obj"
+  },
+  "Plane5": {
+    "shape": "Models/Plane5.obj"
+  },
+  "Box1": {
+    "shape": "Models/Box1.obj"
+  },
+  "Sphere_01": {
+    "shape": "Models/Sphere_01.obj"
+  }
+  "Sphere_005": {
+    "shape": "Models/Sphere_01.obj"
+	"scale": 0.5
+  }
+}
+
+

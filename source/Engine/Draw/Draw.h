@@ -5,6 +5,8 @@
 #include <glm/mat4x4.hpp>
 
 class Mesh;
+class Model;
+class Object;
 
 class Draw
 {
@@ -20,4 +22,8 @@ public:
 	static void draw(Mesh& mesh, glm::mat4x4& matrix);
 
 	static void drawTriangleExample();
+
+	static void draw(Mesh& mesh);
+	static void draw(Model& model);
+	static void draw(Object& object);
 };

@@ -49,14 +49,14 @@ Mesh::~Mesh()
     }
 }
 
-void Mesh::initVBO()
+bool Mesh::initVBO()
 {
 	glDeleteBuffers(4, _buffer);
 
 	glGenBuffers(4, _buffer);
 
 	if (_countVertex == 0 || !_aVertex || _countIndex == 0 && !_aIndex) {
-		return;
+		return false;
 	}
 
 	glBindBuffer(GL_ARRAY_BUFFER, _buffer[0]);
@@ -82,14 +82,15 @@ void Mesh::initVBO()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, _countIndex * sizeof(GLushort), _aIndex, GL_STATIC_DRAW);
 
 	_hasVBO = true;
+	return _hasVBO;
 }
 
-void Mesh::setData(	float* aVertex,
-					float* aNormal,
-					float* aTexCoord,
+void Mesh::setData(	float* const aVertex,
+					float* const aNormal,
+					float* const aTexCoord,
 					const unsigned short int countVertex,
-					unsigned short* aIndex,
-					unsigned short int countIndex)
+					unsigned short* const aIndex,
+					const unsigned short int countIndex)
 {
 	_aVertex = aVertex;
 	_aNormal = aNormal;
