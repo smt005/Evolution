@@ -15,7 +15,7 @@ class Engine
 {
 public:
 	static int execution(Game* game);
-	static void exit();
+	static void close();
 
 	static void init();
 	static void update();

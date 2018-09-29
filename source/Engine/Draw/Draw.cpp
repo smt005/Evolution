@@ -54,11 +54,11 @@ void Draw::prepare()
 	glUniformMatrix4fv(u_matProjectionView, 1, GL_FALSE, glm::value_ptr(mat));
 }
 
-float kRed = 0.001;
+float kRed = 0.0001;
 float red = 0.3f;
-float kGreen = 0.002;
+float kGreen = 0.0002;
 float green = 0.6f;
-float kBlue = 0.001;
+float kBlue = 0.0001;
 float blue = 0.9f;
 
 void Draw::drawBackround()
@@ -68,36 +68,36 @@ void Draw::drawBackround()
 	{
 		red += kRed;
 
-		if (red > 1.0f) {
-			kRed = -0.001;
+		if (red > 0.75f) {
+			kRed = -0.0001;
 		}
 
-		if (red < 0.0f) {
-			kRed = 0.001;
+		if (red < 0.25f) {
+			kRed = 0.0001;
 		}
 	}
 
 	{
 		green += kGreen;
 
-		if (green > 1.0f) {
-			kGreen = -0.001;
+		if (green > 0.75f) {
+			kGreen = -0.0001;
 		}
 
-		if (green < 0.0f) {
-			kGreen = 0.001;
+		if (green < 0.25f) {
+			kGreen = 0.0001;
 		}
 	}
 
 	{
 		blue += kBlue;
 
-		if (blue > 1.0f) {
-			kBlue = -0.001;
+		if (blue > 0.75f) {
+			kBlue = -0.0001;
 		}
 
-		if (blue < 0.0f) {
-			kBlue = 0.001;
+		if (blue < 0.25f) {
+			kBlue = 0.0001;
 		}
 	}
 }

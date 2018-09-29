@@ -9,9 +9,13 @@
 #include "Engine.h"
 #include "Draw/Draw.h"
 
-int windowWidth = 600;
-int windowHeight = 300;
+int windowWidth = 640;
+int windowHeight = 480;
 const char* windowTitle = "Window";
+
+void cursorPositionCallback(GLFWwindow* Window, double x, double y);
+void mouseButtonCallback(GLFWwindow* Window, int Button, int Action, int mods);
+void keyCallback(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods);
 
 bool Window::create()
 {
@@ -40,9 +44,9 @@ bool Window::create()
 		return false;
 	}
 
-	//glfwSetMouseButtonCallback(window, ApplicationPlatform::mouseButtonCallback);
-	//glfwSetCursorPosCallback(window, ApplicationPlatform::cursorPositionCallback);
-	//glfwSetKeyCallback(window, ApplicationPlatform::keyCallback);
+	glfwSetCursorPosCallback(window,	cursorPositionCallback);
+	glfwSetMouseButtonCallback(window,	mouseButtonCallback);
+	glfwSetKeyCallback(window,			keyCallback);
 
 	glfwMakeContextCurrent(window);
 
@@ -77,4 +81,81 @@ float Window::aspect()
 	}
 
 	return (static_cast<float>(windowWidth) / static_cast<float>(windowHeight));
+}
+
+//---
+
+void cursorPositionCallback(GLFWwindow* Window, double x, double y)
+{
+
+}
+
+void mouseButtonCallback(GLFWwindow* Window, int Button, int Action, int mods)
+{
+	switch (Action)
+	{
+	case GLFW_PRESS:
+	{
+		switch (Button)
+		{
+		case GLFW_MOUSE_BUTTON_LEFT:
+		{
+			//Callback::tap_down();
+		}
+		break;
+		case GLFW_MOUSE_BUTTON_MIDDLE:
+		{
+
+		}
+		break;
+		case GLFW_MOUSE_BUTTON_RIGHT:
+		{
+
+		}
+		break;
+		}
+	}
+	break;
+
+	case GLFW_RELEASE:
+	{
+		switch (Button)
+		{
+		case GLFW_MOUSE_BUTTON_LEFT:
+		{
+			//Callback::tap_up();
+		}
+		break;
+		case GLFW_MOUSE_BUTTON_MIDDLE:
+		{
+
+		}
+		break;
+		case GLFW_MOUSE_BUTTON_RIGHT:
+		{
+
+		}
+		break;
+		}
+	}
+	break;
+	}
+}
+
+void keyCallback(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods)
+{
+	switch (Action)
+	{
+	case GLFW_PRESS:
+	{
+		//Callback::buttonDown(Key);
+	}
+	break;
+
+	case GLFW_RELEASE:
+	{
+		//Callback::buttonUp(Key);
+	}
+	break;
+	}
 }

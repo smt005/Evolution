@@ -14,6 +14,11 @@ int Engine::execution(Game* game)
 {
 	if (!game) return -1;
 
+	if (_game) {
+		delete _game;
+		_game = nullptr;
+	}
+
 	help::loadJson("Setting.json", _settingJson);
 	
 	_game = game;
@@ -22,9 +27,9 @@ int Engine::execution(Game* game)
 	return 0;
 }
 
-void Engine::exit()
+void Engine::close()
 {
-
+	exit(1);
 }
 
 void Engine::init()
