@@ -16,6 +16,7 @@
 #include "Draw/Shader.h"
 #include "Object/Mesh.h"
 #include "Common/Help.h"
+#include "Callback/Callback.h"
 
 const unsigned short int countVertex = 4;
 float vertexes[12] = { 2.5f, 2.5f, 0.0f,
@@ -36,6 +37,9 @@ float texCoorde[8] = { -2.0f, 3.0f,
 unsigned short int countIndex = 2;
 unsigned short indexes[6] = { 1, 2, 3, 4, 3, 2 };
 
+bool visible = true;
+Callback* callback;
+
 Evolution::Evolution()
 {
 
@@ -43,7 +47,8 @@ Evolution::Evolution()
 
 Evolution::~Evolution()
 {
-
+	delete callback;
+	callback = nullptr;
 }
 
 void Evolution::init()
@@ -80,6 +85,17 @@ void Evolution::init()
 
 	Camera::current.setFromEye(true);
 	Camera::current.setPos(glm::vec3(0.0f));
+
+	if (!callback)
+	{
+		callback = new Callback(CallbackFunctions::Type::ON_RELEASE_KEY, []() {
+			visible = true;
+		});
+
+		callback->add(CallbackFunctions::Type::ON_PRESS_KEY, []() {
+			visible = false;
+		});
+	}
 }
 
 void Evolution::update()
@@ -104,5 +120,7 @@ void Evolution::draw()
 		Draw::draw(*_mesh, matrix);
 	}*/
 
-	Draw::drawTriangleExample();
+	if (visible) {
+		Draw::drawTriangleExample();
+	}
 }

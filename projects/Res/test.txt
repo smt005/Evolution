@@ -1,0 +1,2 @@
+current_path = C:\Projects\Evolution\projects\windows
+resourcesDir = C:\Projects\Evolution\projects\Res

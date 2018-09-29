@@ -25,6 +25,9 @@
     <ClCompile Include="..\..\source\Engine\Object\Mesh.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Callback\Callback.cpp">
+      <Filter>Callback</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Engine\Window.h">
@@ -54,6 +57,12 @@
     <ClInclude Include="..\..\source\Engine\Object\Mesh.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Common\DataClass.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Callback\Callback.h">
+      <Filter>Callback</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Platform">
@@ -70,6 +79,9 @@
     </Filter>
     <Filter Include="Classes">
       <UniqueIdentifier>{5dbe4528-80c0-454c-9688-9536495de099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Callback">
+      <UniqueIdentifier>{10bce38e-1c7c-456f-9d53-07f7492ab1b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

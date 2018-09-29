@@ -8,6 +8,7 @@
 #include "Window.h"
 #include "Engine.h"
 #include "Draw/Draw.h"
+#include "Callback/Callback.h"
 
 int windowWidth = 640;
 int windowHeight = 480;
@@ -100,7 +101,7 @@ void mouseButtonCallback(GLFWwindow* Window, int Button, int Action, int mods)
 		{
 		case GLFW_MOUSE_BUTTON_LEFT:
 		{
-			//Callback::tap_down();
+			CallbackHandler::onPressTap(0);
 		}
 		break;
 		case GLFW_MOUSE_BUTTON_MIDDLE:
@@ -123,7 +124,7 @@ void mouseButtonCallback(GLFWwindow* Window, int Button, int Action, int mods)
 		{
 		case GLFW_MOUSE_BUTTON_LEFT:
 		{
-			//Callback::tap_up();
+			CallbackHandler::onReleaseTap(0);
 		}
 		break;
 		case GLFW_MOUSE_BUTTON_MIDDLE:
@@ -148,13 +149,13 @@ void keyCallback(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods
 	{
 	case GLFW_PRESS:
 	{
-		//Callback::buttonDown(Key);
+		CallbackHandler::onPressKey(0);
 	}
 	break;
 
 	case GLFW_RELEASE:
 	{
-		//Callback::buttonUp(Key);
+		CallbackHandler::onReleaseKey(0);
 	}
 	break;
 	}
