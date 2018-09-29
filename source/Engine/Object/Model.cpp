@@ -20,6 +20,20 @@ Mesh& Model::getMesh()
 	return *_shape;
 }
 
+Texture& Model::texture()
+{
+	if (_texture) return *_texture;
+	_texture = Texture::getByName(_name);
+	return *_texture;
+}
+
+const unsigned int& Model::textureId()
+{
+	if (_texture) return _texture->id();
+	_texture = Texture::getByName(_name);
+	return _texture->id();
+}
+
 bool Model::create(const string &newName)
 {
 	setName(newName);
@@ -102,6 +116,8 @@ bool Model::create(const string &newName)
 		}
 	}
 	
+	_texture = Texture::getByName(nameTexture);
+
 	return true;
 }
 

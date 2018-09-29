@@ -15,6 +15,7 @@ private:
 	unsigned int _id = 0;
 
 public:
+	Texture() {}
 	Texture(const string &name, bool needLoad = true);
 	~Texture();
 

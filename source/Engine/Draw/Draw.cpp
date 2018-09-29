@@ -15,7 +15,6 @@
 
 float _clearColor[4] = { 0.3f, 0.6f , 0.9f , 1.0f };
 unsigned int program = 0;
-unsigned int texture = 0;
 
 struct {
 	unsigned int program = 0;
@@ -50,7 +49,7 @@ void Draw::prepare()
 {
 	int widthScreen = Window::width();
 	int heightScreen = Window::height();
-	glViewport(0.0, 0.0, widthScreen, heightScreen);
+	glViewport(0, 0, widthScreen, heightScreen);
 
 	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_DEPTH_TEST);
@@ -73,11 +72,6 @@ void Draw::prepare()
 	}
 
 	glUniformMatrix4fv(baseShader.u_matProjectionView, 1, GL_FALSE, Camera::current.matPV());
-
-	if (!texture) {
-		texture = Texture::loadTexture("Textures/Box.jpg");
-	}
-
 }
 
 void Draw::drawTriangleExample()
@@ -147,9 +141,10 @@ void Draw::draw(Model& model)
 {
 	static unsigned int currentTexture;
 
-	if (currentTexture != texture)
+	unsigned int textureId = model.textureId();
+	if (currentTexture != textureId)
 	{
-		currentTexture = texture;
+		currentTexture = textureId;
 		
 		glUniform1i(baseShader.s_baseMap, 0);
 		glBindTexture(GL_TEXTURE_2D, currentTexture);
