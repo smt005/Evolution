@@ -5,7 +5,6 @@
 #include "glm/mat4x4.hpp"
 
 class Mesh;
-class Cameara;
 
 class Draw
 {
@@ -19,4 +18,6 @@ public:
 	static void drawBackround();
 	static void drawTriangle();
 	static void draw(Mesh& mesh, glm::mat4x4& matrix);
+
+	static void drawTriangleExample();
 };

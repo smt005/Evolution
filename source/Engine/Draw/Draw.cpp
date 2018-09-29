@@ -1,9 +1,9 @@
 
-#include "../../../ThirdParty/glew/include/GL/glew.h"
+#include "glew/include/GL/glew.h"
 
 #include "Draw.h"
 #include "Camera.h"
-#include "../../Window.h"
+#include "Window.h"
 #include "../Object/Mesh.h"
 #include "Shader.h"
 
@@ -48,7 +48,10 @@ void Draw::prepare()
 	}
 
 	GLuint u_matProjectionView = glGetUniformLocation(program, "u_matProjectionView");
-	glUniformMatrix4fv(u_matProjectionView, 1, GL_FALSE, Camera::current.matPV());
+	//glUniformMatrix4fv(u_matProjectionView, 1, GL_FALSE, Camera::current.matPV());
+
+	mat4x4 mat(1.0f);
+	glUniformMatrix4fv(u_matProjectionView, 1, GL_FALSE, glm::value_ptr(mat));
 }
 
 float kRed = 0.001;
@@ -138,4 +141,22 @@ void Draw::draw(Mesh& mesh, glm::mat4x4& matrix)
 	}
 
 	glDrawElements(GL_TRIANGLES, mesh.countIndex(), GL_UNSIGNED_SHORT, 0);
+}
+
+void Draw::drawTriangleExample()
+{
+	GLfloat vVertices[] = {	0.0f, 0.5f, 0.0f,
+							-0.5f, -0.5f, 0.0f,
+							0.5f, -0.5f, 0.0f };
+
+	glViewport(0, 0, Window::width(), Window::height());
+
+	if (program == 0) {
+		program = Shader::getProgram("Shaders/TriangleExample.vert", "Shaders/TriangleExample.frag");
+	}
+
+	glUseProgram(program);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
+	glEnableVertexAttribArray(0);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
 }

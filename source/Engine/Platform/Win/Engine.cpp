@@ -1,9 +1,9 @@
 
-#include "../../Engine.h"
-#include "../../Game.h"
-#include "../../Window.h"
-#include "../../../ThirdParty/jsoncpp/include/json/json.h"
-#include "../../Common/Common/Help.h"
+#include "Engine.h"
+#include "Game.h"
+#include "Window.h"
+#include "Common/Help.h"
+#include "jsoncpp/include/json/json.h"
 
 using namespace Core;
 

@@ -2,12 +2,12 @@
 #pragma once
 
 #include <Windows.h>
-#include "../../../ThirdParty/glfw/include/GLFW/glfw3.h"
+#include "glfw/include/GLFW/glfw3.h"
+#include "jsoncpp/include/json/json.h"
 
-#include "../../Window.h"
-#include "../../Engine.h"
-#include "../../Common/Draw/Draw.h"
-#include "../../../ThirdParty/jsoncpp/include/json/json.h"
+#include "Window.h"
+#include "Engine.h"
+#include "Draw/Draw.h"
 
 int windowWidth = 600;
 int windowHeight = 300;

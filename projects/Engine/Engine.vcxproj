@@ -98,7 +98,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Evolution\source\ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\Source\Game;$(SolutionDir)..\..\Source\$(ProjectName);$(SolutionDir)..\..\Source\ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -115,7 +115,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Evolution\source\ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\Source\Game;$(SolutionDir)..\..\Source\$(ProjectName);$(SolutionDir)..\..\Source\ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Evolution\source\ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\Source\Game;$(SolutionDir)..\..\Source\$(ProjectName);$(SolutionDir)..\..\Source\ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -153,7 +153,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Evolution\source\ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\Source\Game;$(SolutionDir)..\..\Source\$(ProjectName);$(SolutionDir)..\..\Source\ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -164,22 +164,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\source\Engine\Common\Common\Help.h" />
-    <ClInclude Include="..\..\source\Engine\Common\Draw\Camera.h" />
-    <ClInclude Include="..\..\source\Engine\Common\Draw\Draw.h" />
-    <ClInclude Include="..\..\source\Engine\Common\Draw\Shader.h" />
-    <ClInclude Include="..\..\source\Engine\Common\Object\Mesh.h" />
+    <ClInclude Include="..\..\source\Engine\Common\Help.h" />
+    <ClInclude Include="..\..\source\Engine\Draw\Camera.h" />
+    <ClInclude Include="..\..\source\Engine\Draw\Draw.h" />
+    <ClInclude Include="..\..\source\Engine\Draw\Shader.h" />
+    <ClInclude Include="..\..\source\Engine\Object\Mesh.h" />
     <ClInclude Include="..\..\Source\Engine\Engine.h" />
     <ClInclude Include="..\..\Source\Engine\FileManager.h" />
     <ClInclude Include="..\..\Source\Engine\Game.h" />
     <ClInclude Include="..\..\Source\Engine\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\source\Engine\Common\Common\Help.cpp" />
-    <ClCompile Include="..\..\source\Engine\Common\Draw\Camera.cpp" />
-    <ClCompile Include="..\..\source\Engine\Common\Draw\Draw.cpp" />
-    <ClCompile Include="..\..\source\Engine\Common\Draw\Shader.cpp" />
-    <ClCompile Include="..\..\source\Engine\Common\Object\Mesh.cpp" />
+    <ClCompile Include="..\..\source\Engine\Common\Help.cpp" />
+    <ClCompile Include="..\..\source\Engine\Draw\Camera.cpp" />
+    <ClCompile Include="..\..\source\Engine\Draw\Draw.cpp" />
+    <ClCompile Include="..\..\source\Engine\Draw\Shader.cpp" />
+    <ClCompile Include="..\..\source\Engine\Object\Mesh.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Engine.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\FileManager.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Window.cpp" />

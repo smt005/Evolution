@@ -1,77 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Protocol">
-      <UniqueIdentifier>{4ef176bc-258d-4c21-b9fe-e170611cfb83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common">
-      <UniqueIdentifier>{887bfc28-50e7-4f71-b238-c67ab2ebc590}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Platform">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Common\Draw">
-      <UniqueIdentifier>{48ae6c26-db64-4587-a321-1e7fd545585e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\Object">
-      <UniqueIdentifier>{acb77631-9f37-4157-9b1c-a5a85b8c5752}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Common\Common">
-      <UniqueIdentifier>{8cd7174f-6b2f-4e5f-8d28-411b1acb4f77}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\Engine\Window.h">
-      <Filter>Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Engine\Engine.h">
-      <Filter>Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Engine\Game.h">
-      <Filter>Protocol</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Engine\Common\Draw\Draw.h">
-      <Filter>Common\Draw</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Engine\Common\Draw\Shader.h">
-      <Filter>Common\Draw</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Engine\FileManager.h">
-      <Filter>Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Engine\Common\Object\Mesh.h">
-      <Filter>Common\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Engine\Common\Common\Help.h">
-      <Filter>Common\Common</Filter>
-    <ClInclude Include="..\..\source\Engine\Common\Draw\Camera.h">
-      <Filter>Common\Draw</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Window.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Engine\Platform\Win\FileManager.cpp">
       <Filter>Platform</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Engine.cpp">
       <Filter>Platform</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\Engine\Common\Draw\Draw.cpp">
-      <Filter>Common\Draw</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\Engine\Common\Draw\Shader.cpp">
-      <Filter>Common\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Engine\Platform\Win\FileManager.cpp">
-      <Filter>Platform</Filter>
+      <Filter>Draw</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Engine\Common\Object\Mesh.cpp">
-      <Filter>Common\Object</Filter>
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Common\Draw\Draw.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Common\Draw\Camera.cpp">
+      <Filter>Draw</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Engine\Common\Common\Help.cpp">
-      <Filter>Common\Common</Filter>
-    <ClCompile Include="..\..\source\Engine\Common\Draw\Camera.cpp">
-      <Filter>Common\Draw</Filter>
+      <Filter>Common</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Engine\Game.h" />
+    <ClInclude Include="..\..\Source\Engine\Window.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Engine\FileManager.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Engine\Engine.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Common\Draw\Shader.h">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Common\Object\Mesh.h">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Common\Draw\Draw.h">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Common\Draw\Camera.h">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Common\Common\Help.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{7ed0939c-45df-44d5-a90a-dcf7c1daacc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol">
+      <UniqueIdentifier>{5dbe4528-80c0-454c-9688-9536495de099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Draw">
+      <UniqueIdentifier>{029c4d46-0222-46b8-bdd6-0513490c2303}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{72287704-6803-4b48-b14a-d8c5ae27f9ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

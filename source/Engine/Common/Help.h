@@ -2,7 +2,7 @@
 #pragma once
 
 #include <string>
-#include "../../../ThirdParty/jsoncpp/include/json/json.h"
+#include "jsoncpp/include/json/json.h"
 
 namespace help
 {

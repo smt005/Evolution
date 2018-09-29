@@ -1,7 +1,7 @@
 
 #include "Help.h"
-#include "../../Engine.h"
-#include "../../FileManager.h"
+#include "Engine.h"
+#include "FileManager.h"
 
 bool help::loadJson(const std::string& fileName, Json::Value& value)
 {

@@ -1,8 +1,8 @@
 
-#include "../../../ThirdParty/glew/include/GL/glew.h"
+#include "glew/include/GL/glew.h"
 
 #include "Shader.h"
-#include "../../FileManager.h"
+#include "FileManager.h"
 
 unsigned int Shader::getProgram(const std::string& vertexFileName, const std::string& fragmentFileName)
 {

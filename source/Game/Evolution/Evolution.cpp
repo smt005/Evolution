@@ -1,20 +1,21 @@
 
 #include <iostream>
 #include <fstream>
-#include "../../ThirdParty/jsoncpp/include/json/json.h"
 
+#include "jsoncpp/include/json/json.h"
 #include <glm/glm.hpp>
 #include "glm/mat4x4.hpp"
 
 #include "../../Engine/Engine.h"
 #include "Evolution.h"
 
-#include "../../Engine/Engine.h"
-#include "../../Engine/FileManager.h"
-#include "../../Engine/Common/Draw/Draw.h"
-#include "../../Engine/Common/Draw/Shader.h"
-#include "../../Engine/Common/Object/Mesh.h"
-#include "../../Engine/Common/Common/Help.h"
+#include "Engine.h"
+#include "FileManager.h"
+#include "Draw/Draw.h"
+#include "Draw/Camera.h"
+#include "Draw/Shader.h"
+#include "Object/Mesh.h"
+#include "Common/Help.h"
 
 const unsigned short int countVertex = 4;
 float vertexes[12] = { 2.5f, 2.5f, 0.0f,
@@ -71,11 +72,14 @@ void Evolution::init()
 
 	{
 		Draw::setClearColor(0.3f, 0.6f, 0.9f, 1.0f);
-		Draw::prepare();
+		//Draw::prepare();
 	}
 
 	_mesh = new Mesh();
 	_mesh->setData(vertexes, vormals, texCoorde, countVertex, indexes, countIndex);
+
+	Camera::current.setFromEye(true);
+	Camera::current.setPos(glm::vec3(0.0f));
 }
 
 void Evolution::update()
@@ -92,10 +96,13 @@ void Evolution::draw()
 {
 	Draw::drawBackround();
 	Draw::clearColor();
-	Draw::prepare();
 
-	if (_mesh) {
+	//Draw::prepare();
+
+	/*if (_mesh) {
 		glm::mat4x4 matrix(1.0f);
 		Draw::draw(*_mesh, matrix);
-	}
+	}*/
+
+	Draw::drawTriangleExample();
 }

@@ -1,6 +1,6 @@
 
 #include "Camera.h"
-#include "../../Window.h"
+#include "Window.h"
 
 #include <corecrt_math_defines.h>
 
