@@ -23,7 +23,7 @@ private:
 
 };
 
-class CallbackFunctions
+class Callback
 {
 public:
 	enum class Type
@@ -35,34 +35,11 @@ public:
 		ON_RELEASE_KEY
 	};
 
-	CallbackFunctions() {}
-	CallbackFunctions(const Type type, const std::function<void(void)>& function)
-	{
-		_type = type;
-		_function = function;
-	}
-
-	inline Type type() { return _type; }
-	inline std::function<void(void)> function() { return _function; }
-
-private:
-	Type _type = Type::NONE;
-	std::function<void(void)> _function;
-};
-
-class Callback
-{
-public:
 	Callback() {
 		CallbackHandler::add(*this);
 	}
 
-	Callback(const CallbackFunctions& callbackFunction) {
-		CallbackHandler::add(*this);
-		add(callbackFunction);
-	}
-
-	Callback(const CallbackFunctions::Type type, const std::function<void(void)>& function) {
+	Callback(const Type type, const std::function<void(void)>& function) {
 		CallbackHandler::add(*this);
 		add(type, function);
 	}
@@ -76,19 +53,13 @@ public:
 		return id;
 	}
 
-	void add(const CallbackFunctions::Type type, const std::function<void(void)>& function)
-	{
-		CallbackFunctions callbackFunction(type, function);
-		add(callbackFunction);
+	void add(const Type type, const std::function<void(void)>& function) {
+		std::vector<std::function<void(void)>>& functions = _map[type];
+		functions.push_back(function);
 	}
 
-	void add(const CallbackFunctions& callbackFunction)
-	{
-		_callbackFunctions.push_back(callbackFunction);
-	}
-
-	inline std::vector<CallbackFunctions>& callbackFunctions() { return _callbackFunctions; }
+	void action(Type type);
 
 private:
-	std::vector<CallbackFunctions> _callbackFunctions;
+	std::map<Type, std::vector<std::function<void(void)>>> _map;
 };

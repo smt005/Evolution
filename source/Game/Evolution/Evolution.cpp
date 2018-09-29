@@ -37,6 +37,7 @@ float texCoorde[8] = { -2.0f, 3.0f,
 unsigned short int countIndex = 2;
 unsigned short indexes[6] = { 1, 2, 3, 4, 3, 2 };
 
+int count = 0;
 bool visible = true;
 Callback* callback;
 
@@ -88,12 +89,26 @@ void Evolution::init()
 
 	if (!callback)
 	{
-		callback = new Callback(CallbackFunctions::Type::ON_RELEASE_KEY, []() {
+		callback = new Callback(Callback::Type::ON_RELEASE_TAP, []() {
+
+			Core::Engine::log("ON_RELEASE_KEY");
+
 			visible = true;
+			++count;
 		});
 
-		callback->add(CallbackFunctions::Type::ON_PRESS_KEY, []() {
+		callback->add(Callback::Type::ON_PRESS_TAP, []() {
 			visible = false;
+
+			Core::Engine::log("ON_PRESS_TAP 1");
+		});
+
+		callback->add(Callback::Type::ON_PRESS_TAP, []() {
+			Core::Engine::log("ON_PRESS_TAP 2");
+		});
+
+		callback->add(Callback::Type::ON_PRESS_TAP, []() {
+			Core::Engine::log("ON_PRESS_TAP 3");
 		});
 	}
 }
@@ -105,7 +120,10 @@ void Evolution::update()
 
 void Evolution::updateGame()
 {
-	
+	if (count > 3) {
+		delete callback;
+		callback = nullptr;
+	}
 }
 
 void Evolution::draw()
