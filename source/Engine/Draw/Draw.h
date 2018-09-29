@@ -18,10 +18,6 @@ public:
 	static void clearColor();
 	static void prepare();
 
-	static void drawBackround();
-	static void drawTriangle();
-	static void draw(Mesh& mesh, glm::mat4x4& matrix);
-
 	static void drawTriangleExample();
 
 	static void draw(Mesh& mesh);

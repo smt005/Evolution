@@ -43,6 +43,9 @@
     <ClCompile Include="..\..\source\Engine\Object\Map.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Object\Texture.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Engine\Window.h">
@@ -91,6 +94,9 @@
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Engine\Object\Map.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Object\Texture.h">
       <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>

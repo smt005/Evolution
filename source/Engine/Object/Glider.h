@@ -2,14 +2,17 @@
 
 #include "Object/Object.h"
 
-class AIInterface {};
+class AIInterface
+{
+public:
+	virtual void action() {};
+};
 
 struct GliderTemplate
 {
-	// Â
 	static GliderTemplate _template;
 
-	float _minHeight = 0.9f;
+	float _minHeight = 0.1f;
 	float _maxHeight = 1.0f;
 	float _speedHeight = 0.01f;
 	float _speed = 0.05f;

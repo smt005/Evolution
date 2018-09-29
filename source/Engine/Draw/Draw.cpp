@@ -4,16 +4,18 @@
 #include "Draw.h"
 #include "Camera.h"
 #include "Window.h"
+#include "Shader.h"
 #include "../Object/Mesh.h"
 #include "../Object/Shape.h"
 #include "../Object/Model.h"
 #include "../Object/Object.h"
 #include "../Object/Glider.h"
 #include "../Object/Map.h"
-#include "Shader.h"
+#include "Object/Texture.h"
 
 float _clearColor[4] = { 0.3f, 0.6f , 0.9f , 1.0f };
 unsigned int program = 0;
+unsigned int texture = 0;
 
 struct {
 	unsigned int program = 0;
@@ -21,6 +23,7 @@ struct {
 	GLuint u_matViewModel = 0;
 	GLuint a_position = 0;
 	GLuint a_texCoord = 0;
+	GLuint s_baseMap = 0;
 } baseShader;
 
 void Draw::setClearColor(const float r, const float g, const float b, const float a)
@@ -64,99 +67,17 @@ void Draw::prepare()
 		baseShader.a_position = glGetAttribLocation(baseShader.program, "a_position");
 		baseShader.a_texCoord = glGetAttribLocation(baseShader.program, "a_texCoord");
 
+		baseShader.s_baseMap = glGetUniformLocation(baseShader.program, "s_baseMap");
+
 		glUseProgram(baseShader.program);
 	}
 
 	glUniformMatrix4fv(baseShader.u_matProjectionView, 1, GL_FALSE, Camera::current.matPV());
-}
 
-float kRed = 0.0001;
-float red = 0.3f;
-float kGreen = 0.0002;
-float green = 0.6f;
-float kBlue = 0.0001;
-float blue = 0.9f;
-
-void Draw::drawBackround()
-{
-	setClearColor(red, green, blue, 1.0f);
-
-	{
-		red += kRed;
-
-		if (red > 0.75f) {
-			kRed = -0.0001;
-		}
-
-		if (red < 0.25f) {
-			kRed = 0.0001;
-		}
+	if (!texture) {
+		texture = Texture::loadTexture("Textures/Box.jpg");
 	}
 
-	{
-		green += kGreen;
-
-		if (green > 0.75f) {
-			kGreen = -0.0001;
-		}
-
-		if (green < 0.25f) {
-			kGreen = 0.0001;
-		}
-	}
-
-	{
-		blue += kBlue;
-
-		if (blue > 0.75f) {
-			kBlue = -0.0001;
-		}
-
-		if (blue < 0.25f) {
-			kBlue = 0.0001;
-		}
-	}
-}
-
-void Draw::drawTriangle()
-{
-
-}
-
-void Draw::draw(Mesh& mesh, glm::mat4x4& matrix)
-{
-	if (program == 0) {
-		return;
-	}
-
-	GLuint u_matViewModel = glGetUniformLocation(program, "u_matViewModel");
-	glUniformMatrix4fv(u_matViewModel, 1, GL_FALSE, glm::value_ptr(matrix));
-
-	static unsigned int cuttrentBufferIndexes;
-
-	if (!mesh.hasVBO()) {
-		mesh.initVBO();
-	}
-
-	if (cuttrentBufferIndexes != mesh.bufferIndexes())
-	{
-		GLuint a_position = glGetAttribLocation(program, "a_position");
-		GLuint a_texCoord = glGetAttribLocation(program, "a_texCoord");
-
-		glBindBuffer(GL_ARRAY_BUFFER, mesh.bufferVertexes());
-		glEnableVertexAttribArray(a_position);
-		glVertexAttribPointer(a_position, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
-
-		glBindBuffer(GL_ARRAY_BUFFER, mesh.bufferTexCoords());
-		glEnableVertexAttribArray(a_texCoord);
-		glVertexAttribPointer(a_texCoord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
-
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.bufferIndexes());
-
-		cuttrentBufferIndexes = mesh.bufferIndexes();
-	}
-
-	glDrawElements(GL_TRIANGLES, mesh.countIndex(), GL_UNSIGNED_SHORT, 0);
 }
 
 void Draw::drawTriangleExample()
@@ -202,19 +123,19 @@ void Draw::draw(Mesh& mesh)
 		mesh.initVBO();
 	}
 
-	static unsigned int cuttrentBufer;
+	static unsigned int curentBufer;
 
-	if (cuttrentBufer != mesh.bufferIndexes())
+	if (curentBufer != mesh.bufferIndexes())
 	{
-		cuttrentBufer = mesh.bufferIndexes();
+		curentBufer = mesh.bufferIndexes();
 
 		glBindBuffer(GL_ARRAY_BUFFER, mesh.bufferVertexes());
 		glEnableVertexAttribArray(baseShader.a_position);
 		glVertexAttribPointer(baseShader.a_position, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
 
-		//glBindBuffer(GL_ARRAY_BUFFER, mesh.bufferTexCoords());
-		//glEnableVertexAttribArray(a_texCoord);
-		//glVertexAttribPointer(a_texCoord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
+		glBindBuffer(GL_ARRAY_BUFFER, mesh.bufferTexCoords());
+		glEnableVertexAttribArray(baseShader.a_texCoord);
+		glVertexAttribPointer(baseShader.a_texCoord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.bufferIndexes());
 	}
@@ -224,6 +145,16 @@ void Draw::draw(Mesh& mesh)
 
 void Draw::draw(Model& model)
 {
+	static unsigned int currentTexture;
+
+	if (currentTexture != texture)
+	{
+		currentTexture = texture;
+		
+		glUniform1i(baseShader.s_baseMap, 0);
+		glBindTexture(GL_TEXTURE_2D, currentTexture);
+	}
+
 	Mesh& mesh = model.getMesh();
 	draw(mesh);
 }

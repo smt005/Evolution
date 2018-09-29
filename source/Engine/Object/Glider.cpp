@@ -6,7 +6,7 @@ GliderTemplate GliderTemplate::_template;
 Glider::Glider()
 {
 	_template = &GliderTemplate::_template;
-	_ai = nullptr;
+	_ai = new AIInterface();
 
 	_speedHeight = _template->_speedHeight;
 	setHeight(_template->_minHeight);
@@ -19,9 +19,8 @@ Glider::~Glider()
 
 void Glider::action()
 {
-	if (_ai)
-	{
-		//_ai->action();
+	if (_ai) {
+		_ai->action();
 	}
 
 	if (getHeight() > _template->_maxHeight)

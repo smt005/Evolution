@@ -9,6 +9,7 @@ class FileManager
 public:
 	static void setResourcesDir(const std::filesystem::path& resourcesDir);
 	static const std::filesystem::path& getResourcesDir();
+	static std::filesystem::path fullPath(const std::filesystem::path& fileName);
 
 	static bool readTextFile(const std::filesystem::path& fileName, char*& data, int& lenght);
 	static std::string readTextFile(const std::filesystem::path& fileName);

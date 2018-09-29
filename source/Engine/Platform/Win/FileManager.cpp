@@ -16,6 +16,10 @@ const std::filesystem::path& FileManager::getResourcesDir()
 	return _resourcesDir;
 }
 
+std::filesystem::path FileManager::fullPath(const std::filesystem::path& fileName) {
+	return _resourcesDir / fileName;
+}
+
 bool FileManager::readTextFile(const std::filesystem::path& fileName, char*& data, int& lenght)
 {
 	FILE* file;

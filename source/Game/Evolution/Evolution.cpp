@@ -55,6 +55,7 @@ void Evolution::init()
 
 	Camera::current.setFromEye(false);
 	Camera::current.setPos(glm::vec3(0.0f, 0.0f, 0.0f));
+	Camera::current.setDist(1.0f);
 
 	if (!callback)
 	{
@@ -77,20 +78,17 @@ void Evolution::init()
 
 void Evolution::update()
 {
+	if (mapGame) {
+		mapGame->action();
+	}
 }
 
 void Evolution::draw()
 {
-	Draw::drawBackround();
 	Draw::clearColor();
-
 	Draw::prepare();
-	
-	Draw::draw(*object);
 
 	if (mapGame) {
 		Draw::draw(*mapGame);
 	}
-
-	//Draw::drawTriangleExample();
 }

@@ -39,7 +39,7 @@
     <None Include="..\Res\Models\Models.json">
       <Filter>Res\Models</Filter>
     </None>
-    <None Include="..\Res\Map\Map.json">
+    <None Include="..\Res\Map\Evolution.json">
       <Filter>Res\Map</Filter>
     </None>
   </ItemGroup>
