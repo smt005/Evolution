@@ -44,11 +44,8 @@ void MapExample::init()
 	Camera::current.setDist(1.0f);
 
 	if (!_callback) {
-		_callback = new Callback(Callback::Type::ON_RELEASE_TAP, []() {
-			float distCamera = Camera::current.dist();
-			distCamera += 1.0f;
-			Camera::current.setDist(distCamera);
-
+		_callback = new Callback(CallbackType::PINCH_TAP, [](const CallbackEventPtr& callbackEventPtr) {
+			Camera::current.rotate(CallbackHandler::deltaMousePos());
 		});
 	}
 

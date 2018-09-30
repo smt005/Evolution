@@ -21,7 +21,7 @@ bool Map::create(const string &name)
 {
 	setName(name);
 
-	string fileName = "Map/" + name + ".json";
+	string fileName = "Maps/" + name + ".json";
 	Json::Value data;
 	help::loadJson(fileName, data);
 

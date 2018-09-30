@@ -99,6 +99,9 @@
     <ClInclude Include="..\..\source\Engine\Object\Texture.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Callback\CallbackEvent.h">
+      <Filter>Callback</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Platform">

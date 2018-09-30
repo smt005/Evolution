@@ -55,6 +55,7 @@ bool Window::create()
 
 	while (!glfwWindowShouldClose(window))
 	{
+		CallbackHandler::update();
 		Core::Engine::update();
 		Core::Engine::draw();
 
@@ -88,7 +89,7 @@ float Window::aspect()
 
 void cursorPositionCallback(GLFWwindow* Window, double x, double y)
 {
-
+	CallbackHandler::onMove(static_cast<float>(x), static_cast<float>(y));
 }
 
 void mouseButtonCallback(GLFWwindow* Window, int Button, int Action, int mods)
@@ -99,19 +100,16 @@ void mouseButtonCallback(GLFWwindow* Window, int Button, int Action, int mods)
 	{
 		switch (Button)
 		{
-		case GLFW_MOUSE_BUTTON_LEFT:
-		{
+		case GLFW_MOUSE_BUTTON_LEFT: {
 			CallbackHandler::onPressTap(0);
 		}
 		break;
-		case GLFW_MOUSE_BUTTON_MIDDLE:
-		{
-
+		case GLFW_MOUSE_BUTTON_MIDDLE: {
+			CallbackHandler::onPressTap(1);
 		}
 		break;
-		case GLFW_MOUSE_BUTTON_RIGHT:
-		{
-
+		case GLFW_MOUSE_BUTTON_RIGHT: {
+			CallbackHandler::onPressTap(2);
 		}
 		break;
 		}
@@ -122,19 +120,16 @@ void mouseButtonCallback(GLFWwindow* Window, int Button, int Action, int mods)
 	{
 		switch (Button)
 		{
-		case GLFW_MOUSE_BUTTON_LEFT:
-		{
+		case GLFW_MOUSE_BUTTON_LEFT: {
 			CallbackHandler::onReleaseTap(0);
 		}
 		break;
-		case GLFW_MOUSE_BUTTON_MIDDLE:
-		{
-
+		case GLFW_MOUSE_BUTTON_MIDDLE: {
+			CallbackHandler::onReleaseTap(1);
 		}
 		break;
-		case GLFW_MOUSE_BUTTON_RIGHT:
-		{
-
+		case GLFW_MOUSE_BUTTON_RIGHT: {
+			CallbackHandler::onReleaseTap(2);
 		}
 		break;
 		}
@@ -147,15 +142,13 @@ void keyCallback(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods
 {
 	switch (Action)
 	{
-	case GLFW_PRESS:
-	{
-		CallbackHandler::onPressKey(0);
+	case GLFW_PRESS: {
+		CallbackHandler::onPressKey(Key);
 	}
 	break;
 
-	case GLFW_RELEASE:
-	{
-		CallbackHandler::onReleaseKey(0);
+	case GLFW_RELEASE: {
+		CallbackHandler::onReleaseKey(Key);
 	}
 	break;
 	}

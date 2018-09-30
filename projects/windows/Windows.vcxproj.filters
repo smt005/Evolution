@@ -14,10 +14,13 @@
     <Filter Include="Res\Models">
       <UniqueIdentifier>{0119f17a-90d6-4583-bff4-b2c14bbc290a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Res\Map">
+    <Filter Include="Res\Textures">
+      <UniqueIdentifier>{0a2be6e6-e3d9-4d0c-98f6-7935fe56bc8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res\Maps">
       <UniqueIdentifier>{6cb4f6e7-4ac4-4243-b20a-32691d677a1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Res\Map\Examples">
+    <Filter Include="Res\Maps\Examples">
       <UniqueIdentifier>{23a91cd0-f1df-4498-baa3-a800ba67d85c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -27,9 +30,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\source\Res\Map\Examples\MapExample.json">
-      <Filter>Res\Map\Examples</Filter>
-    </None>
     <None Include="..\..\source\Res\Shaders\Base.frag">
       <Filter>Res\Shaders</Filter>
     </None>
@@ -42,14 +42,17 @@
     <None Include="..\..\source\Res\Shaders\TriangleExample.vert">
       <Filter>Res\Shaders</Filter>
     </None>
-    <None Include="..\..\source\Res\Map\Evolution.json">
-      <Filter>Res\Map</Filter>
-    </None>
     <None Include="..\..\source\App\Setting.json">
       <Filter>Source</Filter>
     </None>
     <None Include="..\..\source\Res\Models\Models.json">
       <Filter>Res\Models</Filter>
+    </None>
+    <None Include="..\..\source\Res\Maps\Examples\MapExample.json">
+      <Filter>Res\Maps\Examples</Filter>
+    </None>
+    <None Include="..\..\source\Res\Maps\Evolution.json">
+      <Filter>Res\Maps</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -68,5 +71,13 @@
     <Object Include="..\..\source\Res\Models\Triangle.obj">
       <Filter>Res\Models</Filter>
     </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\source\Res\Textures\Ambient.png">
+      <Filter>Res\Textures</Filter>
+    </Image>
+    <Image Include="..\..\source\Res\Textures\Box.jpg">
+      <Filter>Res\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

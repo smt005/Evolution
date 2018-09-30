@@ -163,8 +163,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\source\App\Setting.json" />
-    <None Include="..\..\source\Res\Map\Evolution.json" />
-    <None Include="..\..\source\Res\Map\Examples\MapExample.json" />
+    <None Include="..\..\source\Res\Maps\Evolution.json" />
+    <None Include="..\..\source\Res\Maps\Examples\MapExample.json" />
     <None Include="..\..\source\Res\Models\Models.json" />
     <None Include="..\..\source\Res\Shaders\Base.frag" />
     <None Include="..\..\source\Res\Shaders\Base.vert" />
@@ -202,6 +202,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\source\Res\Textures\Ambient.png" />
+    <Image Include="..\..\source\Res\Textures\Box.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
