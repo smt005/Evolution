@@ -1,6 +1,6 @@
 #pragma once
 
-enum VirtualKey
+enum class VirtualKey
 {
 	A = 65,
 	B =	66,
@@ -40,4 +40,12 @@ enum VirtualKey
 
 	SHIFT	= 340,
 	CONTROL	= 341
+};
+
+
+enum class VirtualTap
+{
+	LEFT = 0,
+	RIGHT = 1,
+	MIDDLE = 2
 };

@@ -54,12 +54,18 @@ void Evolution::initCallback()
 {
 	if (!_callback) {
 		_callback = new Callback(CallbackType::PINCH_TAP, [](const CallbackEventPtr& callbackEventPtr) {
-			Camera::current.rotate(CallbackHandler::deltaMousePos());
+			if (CallbackHandler::pressTap(VirtualTap::LEFT)) {
+				Camera::current.rotate(CallbackHandler::deltaMousePos());
+			}
+
+			if (CallbackHandler::pressTap(VirtualTap::RIGHT)) {
+				Camera::current.move(CallbackHandler::deltaMousePos() * 10000.0f);
+			}
 		});
 
 		_callback->add(CallbackType::RELEASE_KEY, [](const CallbackEventPtr& callbackEventPtr) {
-			ReleaseKeyEvent* releaseKeyEvent = (ReleaseKeyEvent*)callbackEventPtr->get();
-			int key = releaseKeyEvent->getKey();
+			KeyCallbackEvent* releaseKeyEvent = (KeyCallbackEvent*)callbackEventPtr->get();
+			VirtualKey key = releaseKeyEvent->getId();
 
 			if (key == VirtualKey::ESCAPE) {
 				Core::Engine::close();

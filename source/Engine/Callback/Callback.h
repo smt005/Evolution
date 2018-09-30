@@ -10,6 +10,7 @@
 #include "VirtualKey.h"
 
 constexpr int CALLBACK_COUNT_KEY = 1024;
+constexpr int CALLBACK_COUNT_TAP = 10;
 
 class Callback;
 
@@ -31,11 +32,11 @@ public:
 	static void add(Callback& object);
 	static void remove(Callback& object);
 
-	static void onPressKey(const int key);
-	static void onReleaseKey(const int key);
+	static void onPressKey(const int id);
+	static void onReleaseKey(const int id);
 
-	static void onPressTap(const int key);
-	static void onReleaseTap(const int key);
+	static void onPressTap(const int id);
+	static void onReleaseTap(const int id);
 
 	static void onMove(float x, float y);
 
@@ -44,7 +45,8 @@ public:
 	inline static const glm::vec2& mousePos() { return _mousePos; }
 	inline static const glm::vec2& deltaMousePos() { return _deltaMousePos; }
 
-	inline static bool pressKey(const int key) { return _key[key]; }
+	inline static bool pressKey(const VirtualKey id) { return _key[static_cast<int>(id)]; }
+	inline static bool pressTap(const VirtualTap id) { return _tap[static_cast<int>(id)]; }
 
 private:
 	static void iteration(const CallbackType& type, const CallbackEventPtr& callbackEventPtr);
@@ -54,6 +56,7 @@ private:
 	static glm::vec2 _mousePos;
 	static glm::vec2 _deltaMousePos;
 	static bool _key[CALLBACK_COUNT_KEY];
+	static bool _tap[CALLBACK_COUNT_TAP];
 };
 
 class Callback

@@ -6,9 +6,10 @@ std::map<int, Callback*> CallbackHandler::_objects;
 glm::vec2 CallbackHandler::_mousePos;
 glm::vec2 CallbackHandler::_deltaMousePos;
 bool CallbackHandler::_key[CALLBACK_COUNT_KEY];
+bool CallbackHandler::_tap[CALLBACK_COUNT_TAP];
 CallbackEventPtr emptyCallbackEventPtr;
 
-bool mousePinch = false;
+int tapPinch = 0;
 int keyPinch = 0;
 
 void CallbackHandler::add(Callback& object)
@@ -27,35 +28,49 @@ void CallbackHandler::remove(Callback& object)
 	}
 }
 
-void CallbackHandler::onPressKey(const int key) {
-	iteration(CallbackType::PRESS_KEY, emptyCallbackEventPtr);
+void CallbackHandler::onPressKey(const int id) {
+	KeyCallbackEvent* callbackEvent = new KeyCallbackEvent(static_cast<VirtualKey>(id));
+	CallbackEventPtr callbackEventPtr(callbackEvent);
+	iteration(CallbackType::PRESS_KEY, callbackEventPtr);
 
-	if (key >= 0) {
-		_key[key] = true;
+	if (id >= 0) {
+		_key[id] = true;
 		++keyPinch;
 	}
 }
 
-void CallbackHandler::onReleaseKey(const int key) {
-	if (key >= 0) {
+void CallbackHandler::onReleaseKey(const int id) {
+	if (id >= 0) {
 		--keyPinch;
-		_key[key] = false;
+		_key[id] = false;
 	}
 
-	ReleaseKeyEvent* releaseKeyEvent = new ReleaseKeyEvent(key);
-	CallbackEventPtr callbackEventPtr(releaseKeyEvent);
+	KeyCallbackEvent* callbackEvent = new KeyCallbackEvent(static_cast<VirtualKey>(id));
+	CallbackEventPtr callbackEventPtr(callbackEvent);
 	iteration(CallbackType::RELEASE_KEY, callbackEventPtr);
 }
 
-void CallbackHandler::onPressTap(const int key)
+void CallbackHandler::onPressTap(const int id)
 {
-	iteration(CallbackType::PRESS_TAP, emptyCallbackEventPtr);
-	mousePinch = true;
+	TapCallbackEvent* callbackEvent = new TapCallbackEvent(static_cast<VirtualTap>(id));
+	CallbackEventPtr callbackEventPtr(callbackEvent);
+	iteration(CallbackType::PRESS_TAP, callbackEventPtr);
+
+	if (id >= 0) {
+		_tap[id] = true;
+		++tapPinch;
+	}
 }
 
-void CallbackHandler::onReleaseTap(const int key) {
-	mousePinch = false;
-	iteration(CallbackType::RELEASE_TAP, emptyCallbackEventPtr);
+void CallbackHandler::onReleaseTap(const int id) {
+	if (id >= 0) {
+		--tapPinch;
+		_tap[id] = false;
+	}
+
+	KeyCallbackEvent* callbackEvent = new KeyCallbackEvent(static_cast<VirtualKey>(id));
+	CallbackEventPtr callbackEventPtr(callbackEvent);
+	iteration(CallbackType::RELEASE_TAP, callbackEventPtr);
 }
 
 void CallbackHandler::onMove(float x, float y)
@@ -78,7 +93,7 @@ void CallbackHandler::update()
 		iteration(CallbackType::PINCH_KEY, emptyCallbackEventPtr);
 	}
 
-	if (mousePinch) {
+	if (tapPinch) {
 		iteration(CallbackType::PINCH_TAP, emptyCallbackEventPtr);
 	}
 

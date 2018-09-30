@@ -101,15 +101,15 @@ void mouseButtonCallback(GLFWwindow* Window, int Button, int Action, int mods)
 		switch (Button)
 		{
 		case GLFW_MOUSE_BUTTON_LEFT: {
-			CallbackHandler::onPressTap(0);
+			CallbackHandler::onPressTap(GLFW_MOUSE_BUTTON_LEFT);
 		}
 		break;
 		case GLFW_MOUSE_BUTTON_MIDDLE: {
-			CallbackHandler::onPressTap(1);
+			CallbackHandler::onPressTap(GLFW_MOUSE_BUTTON_MIDDLE);
 		}
 		break;
 		case GLFW_MOUSE_BUTTON_RIGHT: {
-			CallbackHandler::onPressTap(2);
+			CallbackHandler::onPressTap(GLFW_MOUSE_BUTTON_RIGHT);
 		}
 		break;
 		}
@@ -121,15 +121,15 @@ void mouseButtonCallback(GLFWwindow* Window, int Button, int Action, int mods)
 		switch (Button)
 		{
 		case GLFW_MOUSE_BUTTON_LEFT: {
-			CallbackHandler::onReleaseTap(0);
+			CallbackHandler::onReleaseTap(GLFW_MOUSE_BUTTON_LEFT);
 		}
 		break;
 		case GLFW_MOUSE_BUTTON_MIDDLE: {
-			CallbackHandler::onReleaseTap(1);
+			CallbackHandler::onReleaseTap(GLFW_MOUSE_BUTTON_MIDDLE);
 		}
 		break;
 		case GLFW_MOUSE_BUTTON_RIGHT: {
-			CallbackHandler::onReleaseTap(2);
+			CallbackHandler::onReleaseTap(GLFW_MOUSE_BUTTON_RIGHT);
 		}
 		break;
 		}
