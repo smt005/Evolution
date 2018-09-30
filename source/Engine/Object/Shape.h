@@ -17,6 +17,9 @@ public:
     
 	bool create(const string &name) override;
 	bool load(const string& name);
-
+	
 	void setScale(float* scale);
+	void copy(const Shape& shape) {
+		Mesh::copy(shape);
+	}
 };

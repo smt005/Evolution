@@ -14,6 +14,11 @@
   "Sphere": {
     "shape": "Models/Sphere_01.obj",
     "texture": "Textures/Ambient.png",
+    "scale": [2, 2, 2]
+  },
+  "SphereBox": {
+    "shape": "Models/Sphere_01.obj",
+    "texture": "Textures/Box.jpg",
     "scale": 2
   },
   "Sphere_01": {

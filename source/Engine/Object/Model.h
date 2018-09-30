@@ -15,7 +15,6 @@ class Model : public DataClass <Model>
 private:
 	ShapePtr _shape;
 	TexturePtr _texture;
-	float _scale[3];
 
 public:
 	Shape& getShape();

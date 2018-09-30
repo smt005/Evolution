@@ -2,6 +2,8 @@
 
 #include "glew/include/GL/glew.h"
 
+#include <memory>
+
 Mesh::~Mesh()
 {
 	_countVertex = 0;
@@ -83,6 +85,29 @@ bool Mesh::initVBO()
 
 	_hasVBO = true;
 	return _hasVBO;
+}
+
+void Mesh::copy(const Mesh& mesh)
+{
+	_countVertex = mesh._countVertex;
+
+	_aVertex = new float[_countVertex * 3];
+	_aNormal = new float[_countVertex * 3];
+
+	size_t sizeVertex = sizeof(float) * _countVertex * 3;
+
+	memcpy(_aVertex, mesh._aVertex, sizeVertex);
+	memcpy(_aNormal, mesh._aNormal, sizeVertex);
+
+	_aTexCoord = new float[_countVertex * 2];
+	size_t sizeTexCoord = sizeof(float) * _countVertex * 2;
+	memcpy(_aTexCoord, mesh._aTexCoord, sizeTexCoord);
+
+	_countIndex = mesh._countIndex;
+
+	_aIndex = new unsigned short[_countIndex * 3];
+	size_t sizeIndex = sizeof(unsigned short) * _countIndex * 3;
+	memcpy(_aIndex, mesh._aIndex, sizeIndex);
 }
 
 void Mesh::setData(	float* const aVertex,

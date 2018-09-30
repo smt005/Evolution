@@ -20,7 +20,7 @@
     },
     {
       "name": "First_01",
-      "model": "Sphere",
+      "model": "SphereBox",
       "pos": [
         0,
         5,

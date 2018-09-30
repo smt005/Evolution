@@ -36,6 +36,8 @@ public:
 	inline unsigned int bufferTexCoords()	{ return _buffer[2]; }
 	inline unsigned int bufferIndexes()		{ return _buffer[3]; }
 
+	void copy(const Mesh& mesh);
+
 	void setData(	float* const aVertex,
 					float* const aNormal,
 					float* const aTexCoord,

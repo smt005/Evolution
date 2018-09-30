@@ -47,33 +47,22 @@ bool Model::create(const string &newName)
 
 	bool hasScalling = false;
 	string suffixScale;
+	float scale[3];
 
 	if (!dataModel["scale"].empty())
 	{
 		if (dataModel["scale"].isArray())
 		{
 			int index = 0;
-
 			auto& arrayScale = dataModel["scale"];
-
 
 			for (auto it = arrayScale.begin(); it != arrayScale.end(); ++it)
 			{
 				float value = it->asFloat();
-				_scale[index] = value;
+				scale[index] = value;
 
 				if (index >= 2) break;
 				++index;
-
-				string scaleString = std::to_string(value);
-				if (suffixScale.empty())
-				{
-					suffixScale += scaleString;
-				}
-				else
-				{
-					suffixScale = suffixScale + "," + scaleString;
-				}
 			}
 
 			hasScalling = true;
@@ -86,11 +75,10 @@ bool Model::create(const string &newName)
 				value = 1.0f;
 			}
 
-			_scale[0] = value;
-			_scale[1] = value;
-			_scale[2] = value;
+			scale[0] = value;
+			scale[1] = value;
+			scale[2] = value;
 
-			suffixScale = std::to_string(value);
 			hasScalling = true;
 		}
 	}
@@ -101,18 +89,17 @@ bool Model::create(const string &newName)
 	}
 	else
 	{
-		string nameWithSuffixScale = nameShape + "_[" + suffixScale + "]";
+		string nameWithSuffixScale = nameShape + "_[" + std::to_string(scale[0]) + '_' + std::to_string(scale[1]) + '_' + std::to_string(scale[2]) + '_' + "]";
 
-		if (Shape::hasByName(nameWithSuffixScale))
-		{
-			_shape = Shape::getByName(nameShape);
+		if (Shape::hasByName(nameWithSuffixScale)) {
+			_shape = Shape::getByName(nameWithSuffixScale);
 		}
-		else
-		{
-			_shape = Shape::getByName(nameShape);
+		else {
+			_shape = Shape::getByName(nameWithSuffixScale);
 
-			_shape->setScale(_scale);
-			_shape->setName(nameWithSuffixScale);
+			ShapePtr& shape = Shape::getByName(nameShape);
+			_shape->copy(*shape);
+			_shape->setScale(scale);
 		}
 	}
 	

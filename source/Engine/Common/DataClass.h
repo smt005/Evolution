@@ -19,7 +19,7 @@ public:
 	virtual ~DataClass() {};
 
 	virtual bool create(const string &name);
-	virtual void setDefault();
+	virtual void setDefault(const string &name);
 
 	void setName(const string& name) { _name = name; };
 	const string name() { return _name; };
@@ -43,16 +43,14 @@ template <class ObjectT>
 ObjectT DataClass<ObjectT>::_default;
 
 template <class ObjectT>
-bool DataClass<ObjectT>::create(const string &name)
-{
+bool DataClass<ObjectT>::create(const string &name) {
 	_name = name;
 	return true;
 };
 
 template <class ObjectT>
-void DataClass<ObjectT>::setDefault()
-{
-	setName("DEFAULT_DATA_CLASS");
+void DataClass<ObjectT>::setDefault(const string &name) {
+	setName(name);
 }
 
 template <class ObjectT>
@@ -60,16 +58,14 @@ ObjectPtrT& DataClass<ObjectT>::getByName(const string& name)
 {
 	auto it = _map.find(name);
 
-	if (it != _map.end())
-	{
+	if (it != _map.end()) {
 		return it->second;
 	}
 
 	ObjectT* newItem = new ObjectT();
 
-	if (!newItem->create(name))
-	{
-		newItem->setDefault();
+	if (!newItem->create(name)) {
+		newItem->setDefault(name);
 	}
 	
 	ObjectPtrT newItemPtr(newItem);
@@ -77,8 +73,7 @@ ObjectPtrT& DataClass<ObjectT>::getByName(const string& name)
 }
 
 template <class ObjectT>
-bool DataClass<ObjectT>::hasByName(const string& name)
-{
+bool DataClass<ObjectT>::hasByName(const string& name) {
 	auto it = _map.find(name);
 	return it != _map.end() ? true : false;
 }
@@ -88,8 +83,7 @@ void DataClass<ObjectT>::erase(const string& name)
 {
 	auto it = _map.find(name);
 
-	if (it != _map.end())
-	{
+	if (it != _map.end()) {
 		_map.erase(it);
 	}
 }
@@ -97,12 +91,9 @@ void DataClass<ObjectT>::erase(const string& name)
 template <class ObjectT>
 void DataClass<ObjectT>::clear(bool onlyUnused)
 {
-	if (onlyUnused = false)
-	{
+	if (onlyUnused = false)	{
 		_map.clear();
-	}
-	else
-	{
+	} else {
 		remove(_map.begin(), _map.end(), [](ObjectPtrT& itemPtr) { return itemPtr.use_count <= 0 ? true : false; });
 	}
 }

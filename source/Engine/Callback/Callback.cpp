@@ -29,13 +29,18 @@ void CallbackHandler::remove(Callback& object)
 
 void CallbackHandler::onPressKey(const int key) {
 	iteration(CallbackType::PRESS_KEY, emptyCallbackEventPtr);
-	_key[key] = true;
-	++keyPinch;
+
+	if (key >= 0) {
+		_key[key] = true;
+		++keyPinch;
+	}
 }
 
 void CallbackHandler::onReleaseKey(const int key) {
-	--keyPinch;
-	_key[key] = false;
+	if (key >= 0) {
+		--keyPinch;
+		_key[key] = false;
+	}
 
 	CallbackEventPtr callbackEventPtr;// = std::make_shared<CallbackEvent>(new ReleaseKeyEvent(key));
 	iteration(CallbackType::RELEASE_KEY, callbackEventPtr);
