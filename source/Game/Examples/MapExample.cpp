@@ -45,7 +45,7 @@ void MapExample::init()
 
 	if (!_callback) {
 		_callback = new Callback(CallbackType::PINCH_TAP, [](const CallbackEventPtr& callbackEventPtr) {
-			Camera::current.rotate(CallbackHandler::deltaMousePos());
+			Camera::current.rotate(Callback::deltaMousePos());
 		});
 	}
 

@@ -54,12 +54,12 @@ void Evolution::initCallback()
 {
 	if (!_callback) {
 		_callback = new Callback(CallbackType::PINCH_TAP, [](const CallbackEventPtr& callbackEventPtr) {
-			if (CallbackHandler::pressTap(VirtualTap::LEFT)) {
-				Camera::current.rotate(CallbackHandler::deltaMousePos());
+			if (Callback::pressTap(VirtualTap::MIDDLE)) {
+				Camera::current.rotate(Callback::deltaMousePos());
 			}
 
-			if (CallbackHandler::pressTap(VirtualTap::RIGHT)) {
-				Camera::current.move(CallbackHandler::deltaMousePos() * 10000.0f);
+			if (Callback::pressTap(VirtualTap::RIGHT)) {
+				Camera::current.move(Callback::deltaMousePos() * 10000.0f);
 			}
 		});
 
@@ -74,31 +74,31 @@ void Evolution::initCallback()
 
 		_callback = new Callback(CallbackType::PINCH_KEY, [](const CallbackEventPtr& callbackEventPtr) {
 			float speedCamera = 0.1f;
-			if (CallbackHandler::pressKey(VirtualKey::SHIFT)) {
+			if (Callback::pressKey(VirtualKey::SHIFT)) {
 				speedCamera = 0.125f;
 			}
 
-			if (CallbackHandler::pressKey(VirtualKey::S)) {
+			if (Callback::pressKey(VirtualKey::S)) {
 				Camera::current.move(CAMERA_FORVARD, speedCamera);
 			}
 
-			if (CallbackHandler::pressKey(VirtualKey::W)) {
+			if (Callback::pressKey(VirtualKey::W)) {
 				Camera::current.move(CAMERA_BACK, speedCamera);
 			}
 
-			if (CallbackHandler::pressKey(VirtualKey::D)) {
+			if (Callback::pressKey(VirtualKey::D)) {
 				Camera::current.move(CAMERA_RIGHT, speedCamera);
 			}
 
-			if (CallbackHandler::pressKey(VirtualKey::A)) {
+			if (Callback::pressKey(VirtualKey::A)) {
 				Camera::current.move(CAMERA_LEFT, speedCamera);
 			}
 
-			if (CallbackHandler::pressKey(VirtualKey::R)) {
+			if (Callback::pressKey(VirtualKey::R)) {
 				Camera::current.move(CAMERA_TOP, speedCamera);
 			}
 
-			if (CallbackHandler::pressKey(VirtualKey::F)) {
+			if (Callback::pressKey(VirtualKey::F)) {
 				Camera::current.move(CAMERA_DOWN, speedCamera);
 			}
 		});

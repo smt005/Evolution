@@ -2,23 +2,23 @@
 #include "Callback.h"
 #include "Engine.h"
 
-std::map<int, Callback*> CallbackHandler::_objects;
-glm::vec2 CallbackHandler::_mousePos;
-glm::vec2 CallbackHandler::_deltaMousePos;
-bool CallbackHandler::_key[CALLBACK_COUNT_KEY];
-bool CallbackHandler::_tap[CALLBACK_COUNT_TAP];
+std::map<int, Callback*> Callback::_objects;
+glm::vec2 Callback::_mousePos;
+glm::vec2 Callback::_deltaMousePos;
+bool Callback::_key[CALLBACK_COUNT_KEY];
+bool Callback::_tap[CALLBACK_COUNT_TAP];
 CallbackEventPtr emptyCallbackEventPtr;
 
 int tapPinch = 0;
 int keyPinch = 0;
 
-void CallbackHandler::add(Callback& object)
+void Callback::addObject(Callback& object)
 {
 	int id = object.getId();
 	_objects[id] = &object;
 }
 
-void CallbackHandler::remove(Callback& object)
+void Callback::removeObject(Callback& object)
 {
 	int id = object.getId();
 	auto it = _objects.find(id);
@@ -28,7 +28,7 @@ void CallbackHandler::remove(Callback& object)
 	}
 }
 
-void CallbackHandler::onPressKey(const int id) {
+void Callback::onPressKey(const int id) {
 	KeyCallbackEvent* callbackEvent = new KeyCallbackEvent(static_cast<VirtualKey>(id));
 	CallbackEventPtr callbackEventPtr(callbackEvent);
 	iteration(CallbackType::PRESS_KEY, callbackEventPtr);
@@ -39,7 +39,7 @@ void CallbackHandler::onPressKey(const int id) {
 	}
 }
 
-void CallbackHandler::onReleaseKey(const int id) {
+void Callback::onReleaseKey(const int id) {
 	if (id >= 0) {
 		--keyPinch;
 		_key[id] = false;
@@ -50,7 +50,7 @@ void CallbackHandler::onReleaseKey(const int id) {
 	iteration(CallbackType::RELEASE_KEY, callbackEventPtr);
 }
 
-void CallbackHandler::onPressTap(const int id)
+void Callback::onPressTap(const int id)
 {
 	TapCallbackEvent* callbackEvent = new TapCallbackEvent(static_cast<VirtualTap>(id));
 	CallbackEventPtr callbackEventPtr(callbackEvent);
@@ -62,7 +62,7 @@ void CallbackHandler::onPressTap(const int id)
 	}
 }
 
-void CallbackHandler::onReleaseTap(const int id) {
+void Callback::onReleaseTap(const int id) {
 	if (id >= 0) {
 		--tapPinch;
 		_tap[id] = false;
@@ -73,7 +73,7 @@ void CallbackHandler::onReleaseTap(const int id) {
 	iteration(CallbackType::RELEASE_TAP, callbackEventPtr);
 }
 
-void CallbackHandler::onMove(float x, float y)
+void Callback::onMove(float x, float y)
 {
 	if (!(_mousePos.x == x && _mousePos.y == y))
 	{
@@ -87,7 +87,7 @@ void CallbackHandler::onMove(float x, float y)
 	}
 }
 
-void CallbackHandler::update()
+void Callback::update()
 {
 	if (keyPinch) {
 		iteration(CallbackType::PINCH_KEY, emptyCallbackEventPtr);
@@ -101,7 +101,7 @@ void CallbackHandler::update()
 	_deltaMousePos.y = 0.0f;
 }
 
-inline void CallbackHandler::iteration(const CallbackType& type, const CallbackEventPtr& callbackEventPtr)
+inline void Callback::iteration(const CallbackType& type, const CallbackEventPtr& callbackEventPtr)
 {
 	for (auto& pair : _objects) {
 		auto& object = pair.second;

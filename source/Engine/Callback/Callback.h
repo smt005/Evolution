@@ -26,11 +26,11 @@ enum class CallbackType
 	MOVE
 };
 
-class CallbackHandler
+class Callback
 {
 public:
-	static void add(Callback& object);
-	static void remove(Callback& object);
+	static void addObject(Callback& object);
+	static void removeObject(Callback& object);
 
 	static void onPressKey(const int id);
 	static void onReleaseKey(const int id);
@@ -49,6 +49,7 @@ public:
 	inline static bool pressTap(const VirtualTap id) { return _tap[static_cast<int>(id)]; }
 
 private:
+
 	static void iteration(const CallbackType& type, const CallbackEventPtr& callbackEventPtr);
 
 private:
@@ -57,27 +58,24 @@ private:
 	static glm::vec2 _deltaMousePos;
 	static bool _key[CALLBACK_COUNT_KEY];
 	static bool _tap[CALLBACK_COUNT_TAP];
-};
 
-class Callback
-{
 public:
 	Callback() {
-		CallbackHandler::add(*this);
+		Callback::addObject(*this);
 	}
 
 	Callback(const CallbackType type, const std::function<void(const CallbackEventPtr& callbackEventPtr)>& function) {
-		CallbackHandler::add(*this);
+		Callback::addObject(*this);
 		add(type, function);
 	}
 
 	Callback(const CallbackType type, const std::function<void(const CallbackEventPtr& callbackEventPtr)>& function, int& id) {
-		CallbackHandler::add(*this);
+		Callback::addObject(*this);
 		add(type, function, id);
 	}
 
 	~Callback() {
-		CallbackHandler::remove(*this);
+		Callback::removeObject(*this);
 	}
 
 	int getId() {
