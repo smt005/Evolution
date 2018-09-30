@@ -1,19 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Evolution">
+    <Filter Include="Source">
+      <UniqueIdentifier>{1ccafab3-0e8c-481a-a5ba-15d15d70470f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Evolution">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\Examples">
+      <UniqueIdentifier>{e93b06e1-2ef1-4d5c-92af-2545ecf23dd6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h">
-      <Filter>Evolution</Filter>
+      <Filter>Source\Evolution</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Examples\MapExample.h">
+      <Filter>Source\Examples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\GamesManager.h">
+      <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">
-      <Filter>Evolution</Filter>
+      <Filter>Source\Evolution</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp">
+      <Filter>Source\Examples</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

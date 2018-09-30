@@ -3,10 +3,14 @@
 
 
 #include <string>
+#include <memory>
 #include "jsoncpp/include/json/json.h"
 
-class Game;
+#include "Game.h"
+
 class Window;
+//class Game;
+//typedef std::shared_ptr<Game> GamePtr;
 
 namespace Core
 {
@@ -14,7 +18,7 @@ namespace Core
 class Engine
 {
 public:
-	static int execution(Game* game);
+	static int execution(const GamePtr& game);
 	static void close();
 
 	static void init();
@@ -22,9 +26,6 @@ public:
 	static void draw();
 	static void log(const std::string& text);
 	static const Json::Value& settingJson(const std::string& key);
-
-private:
-	static Game* _game;
 };
 
 };	// Core

@@ -7,17 +7,12 @@
 
 using namespace Core;
 
-Game* Engine::_game = nullptr;
+GamePtr _game = nullptr;
 Json::Value _settingJson;
 
-int Engine::execution(Game* game)
+int Engine::execution(const GamePtr& game)
 {
 	if (!game) return -1;
-
-	if (_game) {
-		delete _game;
-		_game = nullptr;
-	}
 
 	help::loadJson("Setting.json", _settingJson);
 	

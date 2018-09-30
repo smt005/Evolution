@@ -1,6 +1,8 @@
 
 #pragma once
 
+#include <memory>
+
 class Game
 {
 public:
@@ -9,3 +11,5 @@ public:
 	virtual void update() {};
 	virtual void draw() {};
 };
+
+typedef std::shared_ptr<Game> GamePtr;

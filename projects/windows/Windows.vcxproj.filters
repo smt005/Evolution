@@ -17,6 +17,9 @@
     <Filter Include="Res\Map">
       <UniqueIdentifier>{6cb4f6e7-4ac4-4243-b20a-32691d677a1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Res\Map\Examples">
+      <UniqueIdentifier>{23a91cd0-f1df-4498-baa3-a800ba67d85c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Projects\Win\main.cpp">
@@ -24,39 +27,45 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Res\Shaders\Base.frag">
+    <None Include="..\..\source\Res\Map\Examples\MapExample.json">
+      <Filter>Res\Map\Examples</Filter>
+    </None>
+    <None Include="..\..\source\Res\Shaders\Base.frag">
       <Filter>Res\Shaders</Filter>
     </None>
-    <None Include="..\Res\Shaders\Base.vert">
+    <None Include="..\..\source\Res\Shaders\Base.vert">
       <Filter>Res\Shaders</Filter>
     </None>
-    <None Include="..\Res\Shaders\TriangleExample.frag">
+    <None Include="..\..\source\Res\Shaders\TriangleExample.frag">
       <Filter>Res\Shaders</Filter>
     </None>
-    <None Include="..\Res\Shaders\TriangleExample.vert">
+    <None Include="..\..\source\Res\Shaders\TriangleExample.vert">
       <Filter>Res\Shaders</Filter>
     </None>
-    <None Include="..\Res\Models\Models.json">
-      <Filter>Res\Models</Filter>
-    </None>
-    <None Include="..\Res\Map\Evolution.json">
+    <None Include="..\..\source\Res\Map\Evolution.json">
       <Filter>Res\Map</Filter>
+    </None>
+    <None Include="..\..\source\App\Setting.json">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\source\Res\Models\Models.json">
+      <Filter>Res\Models</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Object Include="..\Res\Models\Box1.obj">
+    <Object Include="..\..\source\Res\Models\Box1.obj">
       <Filter>Res\Models</Filter>
     </Object>
-    <Object Include="..\Res\Models\Plane5.obj">
+    <Object Include="..\..\source\Res\Models\Plane5.obj">
       <Filter>Res\Models</Filter>
     </Object>
-    <Object Include="..\Res\Models\Plane100.obj">
+    <Object Include="..\..\source\Res\Models\Plane100.obj">
       <Filter>Res\Models</Filter>
     </Object>
-    <Object Include="..\Res\Models\Sphere_01.obj">
+    <Object Include="..\..\source\Res\Models\Sphere_01.obj">
       <Filter>Res\Models</Filter>
     </Object>
-    <Object Include="..\Res\Models\Triangle.obj">
+    <Object Include="..\..\source\Res\Models\Triangle.obj">
       <Filter>Res\Models</Filter>
     </Object>
   </ItemGroup>

@@ -162,28 +162,45 @@
     <ClCompile Include="..\..\Source\Projects\Win\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Res\Map\Evolution.json" />
-    <None Include="..\Res\Models\Models.json" />
-    <None Include="..\Res\Shaders\Base.frag" />
-    <None Include="..\Res\Shaders\Base.vert" />
-    <None Include="..\Res\Shaders\TriangleExample.frag" />
-    <None Include="..\Res\Shaders\TriangleExample.vert" />
+    <None Include="..\..\source\App\Setting.json" />
+    <None Include="..\..\source\Res\Map\Evolution.json" />
+    <None Include="..\..\source\Res\Map\Examples\MapExample.json" />
+    <None Include="..\..\source\Res\Models\Models.json" />
+    <None Include="..\..\source\Res\Shaders\Base.frag" />
+    <None Include="..\..\source\Res\Shaders\Base.vert" />
+    <None Include="..\..\source\Res\Shaders\TriangleExample.frag" />
+    <None Include="..\..\source\Res\Shaders\TriangleExample.vert" />
   </ItemGroup>
   <ItemGroup>
-    <Object Include="..\Res\Models\Box1.obj">
+    <Object Include="..\..\source\Res\Models\Box1.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </Object>
-    <Object Include="..\Res\Models\Plane100.obj">
+    <Object Include="..\..\source\Res\Models\Plane100.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </Object>
-    <Object Include="..\Res\Models\Plane5.obj">
+    <Object Include="..\..\source\Res\Models\Plane5.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </Object>
-    <Object Include="..\Res\Models\Sphere_01.obj">
+    <Object Include="..\..\source\Res\Models\Sphere_01.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </Object>
-    <Object Include="..\Res\Models\Triangle.obj">
+    <Object Include="..\..\source\Res\Models\Triangle.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </Object>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -6,10 +6,10 @@
 class Callback;
 class Map;
 
-class Evolution : public Game
+class MapExample : public Game
 {
 public:
-	~Evolution();
+	~MapExample();
 
 	void init();
 	void update();

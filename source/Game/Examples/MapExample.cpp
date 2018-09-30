@@ -7,7 +7,7 @@
 #include "glm/mat4x4.hpp"
 
 #include "../../Engine/Engine.h"
-#include "Evolution.h"
+#include "MapExample.h"
 
 #include "Engine.h"
 #include "FileManager.h"
@@ -20,20 +20,20 @@
 #include "Object/Object.h"
 #include "Object/Map.h"
 
-Evolution::~Evolution()
+MapExample::~MapExample()
 {
 	if (!_callback) {
 		delete _callback;
 		_callback = nullptr;
 	}
 
-	if (!_mapGame) {
+	if (_mapGame) {
 		delete _mapGame;
 		_mapGame = nullptr;
 	}
 }
 
-void Evolution::init()
+void MapExample::init()
 {
 	FileManager::setResourcesDir("..\\Res");
 
@@ -53,18 +53,18 @@ void Evolution::init()
 	}
 
 	if (!_mapGame) {
-		_mapGame = new Map("Evolution");
+		_mapGame = new Map("Examples/MapExample");
 	}
 }
 
-void Evolution::update()
+void MapExample::update()
 {
 	if (_mapGame) {
 		_mapGame->action();
 	}
 }
 
-void Evolution::draw()
+void MapExample::draw()
 {
 	Draw::clearColor();
 	Draw::prepare();
