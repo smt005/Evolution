@@ -102,6 +102,9 @@
     <ClInclude Include="..\..\source\Engine\Callback\CallbackEvent.h">
       <Filter>Callback</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Callback\VirtualKey.h">
+      <Filter>Callback</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Platform">

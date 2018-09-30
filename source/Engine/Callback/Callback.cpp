@@ -42,7 +42,8 @@ void CallbackHandler::onReleaseKey(const int key) {
 		_key[key] = false;
 	}
 
-	CallbackEventPtr callbackEventPtr;// = std::make_shared<CallbackEvent>(new ReleaseKeyEvent(key));
+	ReleaseKeyEvent* releaseKeyEvent = new ReleaseKeyEvent(key);
+	CallbackEventPtr callbackEventPtr(releaseKeyEvent);
 	iteration(CallbackType::RELEASE_KEY, callbackEventPtr);
 }
 

@@ -7,17 +7,7 @@
 #include "glm/vec2.hpp"
 
 #include "CallbackEvent.h"
-
-#define VK_ESCAPE   27
-#define VK_SHIFT    16
-#define VK_CONTROL  17
-#define VK_RETURN   13
-
-#define VK_SPACE    32
-#define VK_LEFT		37
-#define VK_UP		38
-#define VK_RIGHT	39
-#define VK_DOWN		40
+#include "VirtualKey.h"
 
 constexpr int CALLBACK_COUNT_KEY = 1024;
 

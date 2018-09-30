@@ -43,14 +43,59 @@ void Evolution::init()
 	Camera::current.setPos(glm::vec3(0.0f, 0.0f, 0.0f));
 	Camera::current.setDist(1.0f);
 
+	if (!_mapGame) {
+		_mapGame = new Map("Evolution");
+	}
+
+	initCallback();
+}
+
+void Evolution::initCallback()
+{
 	if (!_callback) {
 		_callback = new Callback(CallbackType::PINCH_TAP, [](const CallbackEventPtr& callbackEventPtr) {
 			Camera::current.rotate(CallbackHandler::deltaMousePos());
 		});
-	}
 
-	if (!_mapGame) {
-		_mapGame = new Map("Evolution");
+		_callback->add(CallbackType::RELEASE_KEY, [](const CallbackEventPtr& callbackEventPtr) {
+			ReleaseKeyEvent* releaseKeyEvent = (ReleaseKeyEvent*)callbackEventPtr->get();
+			int key = releaseKeyEvent->getKey();
+
+			if (key == VirtualKey::ESCAPE) {
+				Core::Engine::close();
+			}
+		});
+
+		_callback = new Callback(CallbackType::PINCH_KEY, [](const CallbackEventPtr& callbackEventPtr) {
+			float speedCamera = 0.1f;
+			if (CallbackHandler::pressKey(VirtualKey::SHIFT)) {
+				speedCamera = 0.125f;
+			}
+
+			if (CallbackHandler::pressKey(VirtualKey::S)) {
+				Camera::current.move(CAMERA_FORVARD, speedCamera);
+			}
+
+			if (CallbackHandler::pressKey(VirtualKey::W)) {
+				Camera::current.move(CAMERA_BACK, speedCamera);
+			}
+
+			if (CallbackHandler::pressKey(VirtualKey::D)) {
+				Camera::current.move(CAMERA_RIGHT, speedCamera);
+			}
+
+			if (CallbackHandler::pressKey(VirtualKey::A)) {
+				Camera::current.move(CAMERA_LEFT, speedCamera);
+			}
+
+			if (CallbackHandler::pressKey(VirtualKey::R)) {
+				Camera::current.move(CAMERA_TOP, speedCamera);
+			}
+
+			if (CallbackHandler::pressKey(VirtualKey::F)) {
+				Camera::current.move(CAMERA_DOWN, speedCamera);
+			}
+		});
 	}
 }
 

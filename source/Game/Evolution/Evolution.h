@@ -12,9 +12,10 @@ public:
 	~Evolution();
 
 	void init();
+	void initCallback();
 	void update();
 	void draw();
-
+	
 private:
 	Callback* _callback = nullptr;
 	Map* _mapGame = nullptr;
