@@ -54,11 +54,11 @@ void Evolution::initCallback()
 {
 	if (!_callback) {
 		_callback = new Callback(CallbackType::PINCH_TAP, [](const CallbackEventPtr& callbackEventPtr) {
-			if (Callback::pressTap(VirtualTap::MIDDLE)) {
+			if (Callback::pressTap(VirtualTap::RIGHT)) {
 				Camera::current.rotate(Callback::deltaMousePos());
 			}
 
-			if (Callback::pressTap(VirtualTap::RIGHT)) {
+			if (Callback::pressTap(VirtualTap::MIDDLE)) {
 				Camera::current.move(Callback::deltaMousePos() * 10000.0f);
 			}
 		});

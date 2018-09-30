@@ -42,9 +42,6 @@
     <None Include="..\..\source\Res\Shaders\TriangleExample.vert">
       <Filter>Res\Shaders</Filter>
     </None>
-    <None Include="..\..\source\App\Setting.json">
-      <Filter>Source</Filter>
-    </None>
     <None Include="..\..\source\Res\Models\Models.json">
       <Filter>Res\Models</Filter>
     </None>
@@ -53,6 +50,9 @@
     </None>
     <None Include="..\..\source\Res\Maps\Evolution.json">
       <Filter>Res\Maps</Filter>
+    </None>
+    <None Include="..\..\source\App\Setting.json">
+      <Filter>Source</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

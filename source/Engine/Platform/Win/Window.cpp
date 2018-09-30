@@ -10,9 +10,9 @@
 #include "Draw/Draw.h"
 #include "Callback/Callback.h"
 
-int windowWidth = 640;
-int windowHeight = 480;
-const char* windowTitle = "Window";
+int windowWidth = 960;
+int windowHeight = 540;
+std::string windowTitle;
 
 void cursorPositionCallback(GLFWwindow* Window, double x, double y);
 void mouseButtonCallback(GLFWwindow* Window, int Button, int Action, int mods);
@@ -24,7 +24,7 @@ bool Window::create()
 
 	if (!glfwInit())
 		return false;
-	
+
 	const Json::Value& setting = Core::Engine::settingJson("window");
 	if (!setting.empty()) {
 		int windowWidthTemp = setting["width"].asInt();
@@ -36,9 +36,12 @@ bool Window::create()
 		if (windowHeightTemp != 0) {
 			windowHeight = windowHeightTemp;
 		}
+
+		const std::string& text = setting["title"].asString();
+		windowTitle = text.empty() ? "Game" : text;
 	}
 
-	window = glfwCreateWindow(windowWidth, windowHeight, windowTitle, NULL, NULL);
+	window = glfwCreateWindow(windowWidth, windowHeight, windowTitle.c_str(), NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
