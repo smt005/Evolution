@@ -46,6 +46,9 @@
     <ClCompile Include="..\..\source\Engine\Object\Texture.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Object\ShapeTriangles.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Engine\Window.h">
@@ -104,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="..\..\source\Engine\Callback\VirtualKey.h">
       <Filter>Callback</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Object\ShapeTriangles.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

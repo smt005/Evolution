@@ -4,7 +4,6 @@ class Shape;
 
 class Mesh
 {
-public:
 	friend Shape;
 
 private:

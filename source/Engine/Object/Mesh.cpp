@@ -1,7 +1,6 @@
+
 #include "Mesh.h"
-
 #include "glew/include/GL/glew.h"
-
 #include <memory>
 
 Mesh::~Mesh()

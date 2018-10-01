@@ -5,16 +5,18 @@
 #include "Camera.h"
 #include "Window.h"
 #include "Shader.h"
-#include "../Object/Mesh.h"
-#include "../Object/Shape.h"
-#include "../Object/Model.h"
-#include "../Object/Object.h"
-#include "../Object/Glider.h"
-#include "../Object/Map.h"
+#include "Object/Mesh.h"
+#include "Object/Shape.h"
+#include "Object/Model.h"
+#include "Object/Object.h"
+#include "Object/Glider.h"
+#include "Object/Map.h"
+#include "Object/ShapeTriangles.h"
 #include "Object/Texture.h"
 
 float _clearColor[4] = { 0.3f, 0.6f , 0.9f , 1.0f };
 unsigned int program = 0;
+TexturePtr texture;
 
 struct {
 	unsigned int program = 0;
@@ -176,4 +178,32 @@ void Draw::draw(Map& map)
 			draw(*glider);
 		}
 	}
+}
+
+void Draw::draw(ShapeTriangles& shape)
+{
+	glm::mat4x4 matrix(1.0f);
+	matrix = glm::translate(matrix, glm::vec3(0.5f, 0.5f, 0.0f));
+	glUniformMatrix4fv(baseShader.u_matViewModel, 1, GL_FALSE, glm::value_ptr(matrix));
+
+	if (!texture) {
+		texture = std::make_shared<Texture>("Textures/Box.jpg", true);
+	}
+
+	if (!shape.hasVBO()) {
+		shape.initVBO();
+	}
+
+	glUniform1i(baseShader.s_baseMap, 0);
+	glBindTexture(GL_TEXTURE_2D, texture->id());
+
+	glBindBuffer(GL_ARRAY_BUFFER, shape.bufferVertexes());
+	glEnableVertexAttribArray(baseShader.a_position);
+	glVertexAttribPointer(baseShader.a_position, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, shape.bufferTexCoords());
+	glEnableVertexAttribArray(baseShader.a_texCoord);
+	glVertexAttribPointer(baseShader.a_texCoord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
+
+	glDrawArrays(GL_TRIANGLES, 0, shape.countVertex());
 }

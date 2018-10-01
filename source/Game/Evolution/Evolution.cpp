@@ -15,10 +15,13 @@
 #include "Draw/Camera.h"
 #include "Draw/Shader.h"
 #include "Object/Mesh.h"
+#include "Object/ShapeTriangles.h"
 #include "Common/Help.h"
 #include "Callback/Callback.h"
 #include "Object/Object.h"
 #include "Object/Map.h"
+
+ShapeTriangles shapeTriangles;
 
 Evolution::~Evolution()
 {
@@ -46,6 +49,8 @@ void Evolution::init()
 	if (!_mapGame) {
 		_mapGame = new Map("Evolution");
 	}
+
+	ShapeTriangles::makeTriangle(shapeTriangles, 10.0f);
 
 	initCallback();
 }
@@ -118,6 +123,8 @@ void Evolution::draw()
 	Draw::prepare();
 
 	if (_mapGame) {
-		Draw::draw(*_mapGame);
+		//Draw::draw(*_mapGame);
 	}
+
+	Draw::draw(shapeTriangles);
 }

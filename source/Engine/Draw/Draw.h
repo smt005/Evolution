@@ -8,6 +8,7 @@ class Mesh;
 class Model;
 class Object;
 class Map;
+class ShapeTriangles;
 
 class Draw
 {
@@ -24,4 +25,5 @@ public:
 	static void draw(Model& model);
 	static void draw(Object& object);
 	static void draw(Map& map);
+	static void draw(ShapeTriangles& shape);
 };
