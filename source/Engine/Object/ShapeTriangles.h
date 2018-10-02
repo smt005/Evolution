@@ -1,5 +1,10 @@
 #pragma once
 
+#include <memory>
+
+class ShapeTriangles;
+typedef std::shared_ptr<ShapeTriangles> ShapeTrianglesPtr;
+
 class ShapeTriangles
 {
 public:
@@ -12,6 +17,7 @@ public:
 	inline unsigned int bufferTexCoords() { return _buffer[1]; }
 
 	bool initVBO();
+	ShapeTriangles& getSelf() { return *this; }
 
 private:
 	unsigned short int _countVertex = 0;

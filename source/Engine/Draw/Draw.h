@@ -25,5 +25,5 @@ public:
 	static void draw(Model& model);
 	static void draw(Object& object);
 	static void draw(Map& map);
-	static void draw(ShapeTriangles& shape);
+	static void draw(ShapeTriangles& shape, const glm::mat4x4& matrix = glm::mat4x4(1.0f));
 };

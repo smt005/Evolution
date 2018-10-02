@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 #include "jsoncpp/include/json/json.h"
 #include <glm/glm.hpp>
@@ -20,8 +21,7 @@
 #include "Callback/Callback.h"
 #include "Object/Object.h"
 #include "Object/Map.h"
-
-ShapeTriangles shapeTriangles;
+#include "Microbe/Microbe.h"
 
 Evolution::~Evolution()
 {
@@ -50,7 +50,7 @@ void Evolution::init()
 		_mapGame = new Map("Evolution");
 	}
 
-	ShapeTriangles::makeTriangle(shapeTriangles, 10.0f);
+	Microbe::generateMicrobes(2);
 
 	initCallback();
 }
@@ -74,6 +74,10 @@ void Evolution::initCallback()
 
 			if (key == VirtualKey::ESCAPE) {
 				Core::Engine::close();
+			}
+
+			if (key == VirtualKey::Q) {
+				Microbe::generateMicrobes(100);
 			}
 		});
 
@@ -115,6 +119,8 @@ void Evolution::update()
 	if (_mapGame) {
 		_mapGame->action();
 	}
+
+	Microbe::update();
 }
 
 void Evolution::draw()
@@ -123,8 +129,12 @@ void Evolution::draw()
 	Draw::prepare();
 
 	if (_mapGame) {
-		//Draw::draw(*_mapGame);
+		Draw::draw(*_mapGame);
 	}
 
-	Draw::draw(shapeTriangles);
+	for (auto& microbe : Microbe::microbes()) {
+		if (microbe) {
+			Draw::draw(microbe->shape(), microbe->getMatrix());
+		}
+	}
 }

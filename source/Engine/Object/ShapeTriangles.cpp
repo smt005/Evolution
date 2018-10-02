@@ -6,7 +6,6 @@
 bool ShapeTriangles::initVBO()
 {
 	glDeleteBuffers(2, _buffer);
-
 	glGenBuffers(2, _buffer);
 
 	if (_countVertex == 0 || !_aVertex) {
@@ -27,9 +26,9 @@ bool ShapeTriangles::initVBO()
 
 void ShapeTriangles::makeTriangle(ShapeTriangles& shape, const float& scale)
 {
-	static unsigned short int countVertexStatic = 3;
+	static unsigned short countVertexStatic = 3;
 
-	static float aVertexStatic[] = { 0.3f, 1.0f, 0.0f,
+	static float aVertexStatic[] = { 0.0f, 1.0f, 0.0f,
 									-1.0f, -1.0f, 0.0f,
 									1.0f, -1.0f, 0.0f };
 

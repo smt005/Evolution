@@ -17,6 +17,8 @@
 float _clearColor[4] = { 0.3f, 0.6f , 0.9f , 1.0f };
 unsigned int program = 0;
 TexturePtr texture;
+unsigned int curentBufer = 0;
+unsigned int currentTexture = 0;
 
 struct {
 	unsigned int program = 0;
@@ -74,6 +76,9 @@ void Draw::prepare()
 	}
 
 	glUniformMatrix4fv(baseShader.u_matProjectionView, 1, GL_FALSE, Camera::current.matPV());
+
+	curentBufer = 0;
+	currentTexture = 0;
 }
 
 void Draw::drawTriangleExample()
@@ -116,10 +121,8 @@ void Draw::drawTriangleExample()
 void Draw::draw(Mesh& mesh)
 {
 	if (!mesh.hasVBO()) {
-		mesh.initVBO();
+		if (!mesh.initVBO()) return;
 	}
-
-	static unsigned int curentBufer;
 
 	if (curentBufer != mesh.bufferIndexes())
 	{
@@ -141,8 +144,6 @@ void Draw::draw(Mesh& mesh)
 
 void Draw::draw(Model& model)
 {
-	static unsigned int currentTexture;
-
 	unsigned int textureId = model.textureId();
 	if (currentTexture != textureId)
 	{
@@ -180,10 +181,8 @@ void Draw::draw(Map& map)
 	}
 }
 
-void Draw::draw(ShapeTriangles& shape)
+void Draw::draw(ShapeTriangles& shape, const glm::mat4x4& matrix)
 {
-	glm::mat4x4 matrix(1.0f);
-	matrix = glm::translate(matrix, glm::vec3(0.5f, 0.5f, 0.0f));
 	glUniformMatrix4fv(baseShader.u_matViewModel, 1, GL_FALSE, glm::value_ptr(matrix));
 
 	if (!texture) {
@@ -191,19 +190,24 @@ void Draw::draw(ShapeTriangles& shape)
 	}
 
 	if (!shape.hasVBO()) {
-		shape.initVBO();
+		if (!shape.initVBO()) return;
 	}
 
-	glUniform1i(baseShader.s_baseMap, 0);
-	glBindTexture(GL_TEXTURE_2D, texture->id());
+	if (curentBufer != shape.bufferVertexes())
+	{
+		curentBufer = shape.bufferVertexes();
 
-	glBindBuffer(GL_ARRAY_BUFFER, shape.bufferVertexes());
-	glEnableVertexAttribArray(baseShader.a_position);
-	glVertexAttribPointer(baseShader.a_position, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
+		glUniform1i(baseShader.s_baseMap, 0);
+		glBindTexture(GL_TEXTURE_2D, texture->id());
 
-	glBindBuffer(GL_ARRAY_BUFFER, shape.bufferTexCoords());
-	glEnableVertexAttribArray(baseShader.a_texCoord);
-	glVertexAttribPointer(baseShader.a_texCoord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
+		glBindBuffer(GL_ARRAY_BUFFER, shape.bufferVertexes());
+		glEnableVertexAttribArray(baseShader.a_position);
+		glVertexAttribPointer(baseShader.a_position, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
+
+		glBindBuffer(GL_ARRAY_BUFFER, shape.bufferTexCoords());
+		glEnableVertexAttribArray(baseShader.a_texCoord);
+		glVertexAttribPointer(baseShader.a_texCoord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
+	}
 
 	glDrawArrays(GL_TRIANGLES, 0, shape.countVertex());
 }
