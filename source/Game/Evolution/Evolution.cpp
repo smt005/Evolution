@@ -50,7 +50,7 @@ void Evolution::init()
 		_mapGame = new Map("Evolution");
 	}
 
-	Microbe::generateMicrobes(2);
+	Microbe::generateMicrobes(1000);
 
 	initCallback();
 }
@@ -134,7 +134,8 @@ void Evolution::draw()
 
 	for (auto& microbe : Microbe::microbes()) {
 		if (microbe) {
-			Draw::draw(microbe->shape(), microbe->getMatrix());
+			glm::mat4x4 matrix = glm::scale(microbe->getMatrix(), microbe->getScale());
+			Draw::draw(microbe->shape(), matrix);
 		}
 	}
 }

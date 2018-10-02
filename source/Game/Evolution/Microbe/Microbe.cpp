@@ -25,9 +25,35 @@ void Microbe::create()
 	{
 		ShapeTriangles* shape = new ShapeTriangles();
 		ShapeTriangles::makeTriangle(*shape);
-
 		shapePtrStatic = ShapeTrianglesPtr(shape);
+
+		/*{
+			float volume = 100.0f;
+			float radius = help::radiusSphere(volume);
+			radius += 1;
+		}
+
+		{
+			float volume = 50.0f;
+			float radius = help::radiusSphere(volume);
+			radius += 1;
+		}
+
+		{
+			float volume = 10.0f;
+			float radius = help::radiusSphere(volume);
+			radius += 1;
+		}
+
+		{
+			float volume = 1.0f;
+			float radius = help::radiusSphere(volume);
+			radius += 1;
+		}*/
 	}
+
+	float idFloat = static_cast<float>(getIdAddres());
+	_name = "id_" + std::to_string(idFloat);
 
 	_shapePtr = shapePtrStatic;
 }
@@ -83,17 +109,17 @@ void Microbe::action()
 		if (glm::length(_vector) != 0.0f) {
 			_vector = glm::normalize(_vector);
 		}
-	}
 
-	move();
-	attack();
+		move();
+		attack();
+	}
 }
 
 void Microbe::move()
 {
 	if (glm::length(_vector) == 0.0f) return;
 
-	glm::vec3 moveVector = _vector * 0.001f; //_speed;
+	glm::vec3 moveVector = _vector * _speed;
 
 	_matrix[3][0] += moveVector.x;
 	_matrix[3][1] += moveVector.y;
@@ -101,43 +127,57 @@ void Microbe::move()
 
 void Microbe::attack()
 {
-	if (_target) {
+	if (_live && _target) {
 		glm::vec3 selfPos = getPos();
 		glm::vec3 targetPos = _target->getPos();
 		_vector = targetPos - selfPos;
 
 		float dist = glm::length(_vector);
-		if (dist < 0.1f) {
-			_target->_live = false;
-			_target->_matrix[3][2] = -1.0f;
-			_target = nullptr;
+		if (dist < 1.0f) {
+			float targetMass = _target->_mass;
+			if (_mass > targetMass)
+			{
+				_mass += targetMass;
+				float radius = help::radiusSphere(_mass);
+				_scale.x = radius;
+				_scale.y = radius;
+				_scale.z = radius;
+
+				_target->_live = false;
+				_target->_matrix[3][2] = -5.0f;
+				_target = nullptr;
+			}
+			else
+			{
+				_target->_mass += _mass;
+				float radius = help::radiusSphere(_target->_mass);
+				_target->_scale.x = radius;
+				_target->_scale.y = radius;
+				_target->_scale.z = radius;
+			}
 		}
 	}
 }
 
 void Microbe::foundTarget()
 {
-	if (_target) return;
-
 	if (_target &&  !_target->_live) {
 		_target = nullptr;
 	}
+
+	if (_target) return;
 
 	MicrobePtr nearest;
 
 	int id = getIdAddres();
 	glm::vec3 selfPos = getPos();
-	float nearestDist = 1000000.0f;
+	float nearestDist = FLT_MAX;
 	glm::vec3 vectorDist;
 
 	for (auto& microbe : _microbes) {
 		if (microbe) {
-			if (id == microbe->getIdAddres())
-			{
-				continue;
-			}
-
-			if (microbe->_live = false) continue;
+			if (id == microbe->getIdAddres()) continue;
+			if (microbe->_live == false) continue;
 
 			glm::vec3 pos = microbe->getPos();
 			vectorDist = pos - selfPos;

@@ -1,4 +1,5 @@
 
+#include <corecrt_math_defines.h>
 #include "Help.h"
 #include "Engine.h"
 #include "FileManager.h"
@@ -80,4 +81,29 @@ int help::random_i(const int& min, const int& max)
 	float value = min + range * k;
 
 	return value;
+}
+
+float help::area—ircle(const float radius)
+{
+	float volume = M_PI * powf(radius, 2);
+	return volume;
+}
+
+float help::radius—ircle(const float volume)
+{
+	float radius = sqrtf(volume / M_PI);
+	return radius;
+}
+
+float help::volumeSphere(const float radius)
+{
+	float value = 4.0f / 3.0f * M_PI * powf(radius, 3);
+	return value;
+}
+
+float help::radiusSphere(const float value)
+{
+	float valueTemp = (3.0f * value) / (4.0f * M_PI);
+	float radius = powf(valueTemp, 1.0f / 3.0f);
+	return radius;
 }

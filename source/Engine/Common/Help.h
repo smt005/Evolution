@@ -13,6 +13,12 @@ namespace help
 	float random_f(const float& min = 0.0f, const float& max = 1.0f, const int& accuracy = 1000);
 	int random_i(const int& min = 0, const int& max = 1);
 
+	float area—ircle(const float radius);
+	float radius—ircle(const float volume);
+
+	float volumeSphere(const float radius);
+	float radiusSphere(const float value);
+
 	template <class ObjectT>
 	ObjectT& add(std::vector<ObjectT*>& vector)
 	{

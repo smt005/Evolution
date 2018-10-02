@@ -31,6 +31,7 @@ public:
 	inline glm::vec3 getPos() { return glm::vec3(_matrix[3][0], _matrix[3][1], _matrix[3][2]); }
 	inline void setMatrix(const glm::mat4x4 &matrix) { _matrix = matrix; }
 	void setMatrix(const float *matrix);
+	inline glm::vec3 getScale() { return _scale; }
 
 	void action();
 	void move();
