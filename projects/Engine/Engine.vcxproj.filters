@@ -49,6 +49,12 @@
     <ClCompile Include="..\..\source\Engine\Object\ShapeTriangles.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Draw\DrawLine.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Draw\Color.cpp">
+      <Filter>Draw</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Engine\Window.h">
@@ -110,6 +116,12 @@
     </ClInclude>
     <ClInclude Include="..\..\source\Engine\Object\ShapeTriangles.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Draw\DrawLine.h">
+      <Filter>Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Draw\Color.h">
+      <Filter>Draw</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

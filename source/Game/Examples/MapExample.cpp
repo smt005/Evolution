@@ -37,7 +37,7 @@ void MapExample::init()
 {
 	FileManager::setResourcesDir("..\\Res");
 
-	Draw::setClearColor(0.3f, 0.6f, 0.9f, 1.0f);
+	Draw::setClearColor(0.9f, 0.6f, 0.3f, 1.0f);
 
 	Camera::current.setFromEye(false);
 	Camera::current.setPos(glm::vec3(0.0f, 0.0f, 0.0f));
@@ -63,6 +63,7 @@ void MapExample::update()
 
 void MapExample::draw()
 {
+	Draw::viewport();
 	Draw::clearColor();
 	Draw::prepare();
 

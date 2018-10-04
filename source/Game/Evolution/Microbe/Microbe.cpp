@@ -26,30 +26,6 @@ void Microbe::create()
 		ShapeTriangles* shape = new ShapeTriangles();
 		ShapeTriangles::makeTriangle(*shape);
 		shapePtrStatic = ShapeTrianglesPtr(shape);
-
-		/*{
-			float volume = 100.0f;
-			float radius = help::radiusSphere(volume);
-			radius += 1;
-		}
-
-		{
-			float volume = 50.0f;
-			float radius = help::radiusSphere(volume);
-			radius += 1;
-		}
-
-		{
-			float volume = 10.0f;
-			float radius = help::radiusSphere(volume);
-			radius += 1;
-		}
-
-		{
-			float volume = 1.0f;
-			float radius = help::radiusSphere(volume);
-			radius += 1;
-		}*/
 	}
 
 	float idFloat = static_cast<float>(getIdAddres());

@@ -13,6 +13,7 @@
 #include "Engine.h"
 #include "FileManager.h"
 #include "Draw/Draw.h"
+#include "Draw/DrawLine.h"
 #include "Draw/Camera.h"
 #include "Draw/Shader.h"
 #include "Object/Mesh.h"
@@ -125,6 +126,7 @@ void Evolution::update()
 
 void Evolution::draw()
 {
+	Draw::viewport();
 	Draw::clearColor();
 	Draw::prepare();
 
@@ -137,5 +139,27 @@ void Evolution::draw()
 			glm::mat4x4 matrix = glm::scale(microbe->getMatrix(), microbe->getScale());
 			Draw::draw(microbe->shape(), matrix);
 		}
+	}
+
+	DrawLine::prepare();
+
+	{
+		DrawLine line;
+		line.draw();
+	}
+
+	{
+		DrawLine line(glm::vec3(0.0f, -2.0f, 1.0f), glm::vec3(2.0f, 8.0f, 20.0f));
+		line.setColor({1.0f, 0.0f, 0.0});
+		line.draw();
+	}
+
+	{
+		DrawLine line;
+		line.set({ 1.0f, -0.0f, 1.0f }, { -5.0f, -20.0f, 2.0f });
+		Color color;
+		color.setBlue(1.0f);
+		line.setColor(color);
+		line.draw();
 	}
 }

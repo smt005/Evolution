@@ -17,6 +17,7 @@ public:
 	static const float * const getClearColor();
 
 	static void clearColor();
+	static void viewport();
 	static void prepare();
 
 	static void drawTriangleExample();

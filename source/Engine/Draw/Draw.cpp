@@ -49,21 +49,22 @@ void Draw::clearColor()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Draw::prepare()
+void Draw::viewport()
 {
 	int widthScreen = Window::width();
 	int heightScreen = Window::height();
 	glViewport(0, 0, widthScreen, heightScreen);
+}
 
-	glDepthFunc(GL_LEQUAL);
-	glEnable(GL_DEPTH_TEST);
-
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+void Draw::prepare()
+{
 	if (baseShader.program == 0) {
 		baseShader.program = Shader::getProgram("Shaders/Base.vert", "Shaders/Base.frag");
 	
+		if (!baseShader.program) {
+			return;
+		}
+
 		baseShader.u_matProjectionView = glGetUniformLocation(baseShader.program, "u_matProjectionView");
 		baseShader.u_matViewModel = glGetUniformLocation(baseShader.program, "u_matViewModel");
 
@@ -76,6 +77,12 @@ void Draw::prepare()
 	}
 
 	glUniformMatrix4fv(baseShader.u_matProjectionView, 1, GL_FALSE, Camera::current.matPV());
+
+	glDepthFunc(GL_LEQUAL);
+	glEnable(GL_DEPTH_TEST);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	curentBufer = 0;
 	currentTexture = 0;
@@ -186,7 +193,7 @@ void Draw::draw(ShapeTriangles& shape, const glm::mat4x4& matrix)
 	glUniformMatrix4fv(baseShader.u_matViewModel, 1, GL_FALSE, glm::value_ptr(matrix));
 
 	if (!texture) {
-		texture = std::make_shared<Texture>("Textures/Box.jpg", true);
+		texture = std::make_shared<Texture>("Textures/Cell.png", true);
 	}
 
 	if (!shape.hasVBO()) {

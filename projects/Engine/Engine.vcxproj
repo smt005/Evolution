@@ -171,6 +171,8 @@
     <ClInclude Include="..\..\source\Engine\Common\Help.h" />
     <ClInclude Include="..\..\source\Engine\Draw\Camera.h" />
     <ClInclude Include="..\..\source\Engine\Draw\Draw.h" />
+    <ClInclude Include="..\..\source\Engine\Draw\Color.h" />
+    <ClInclude Include="..\..\source\Engine\Draw\DrawLine.h" />
     <ClInclude Include="..\..\source\Engine\Draw\Shader.h" />
     <ClInclude Include="..\..\source\Engine\Object\Glider.h" />
     <ClInclude Include="..\..\source\Engine\Object\Map.h" />
@@ -190,6 +192,8 @@
     <ClCompile Include="..\..\source\Engine\Common\Help.cpp" />
     <ClCompile Include="..\..\source\Engine\Draw\Camera.cpp" />
     <ClCompile Include="..\..\source\Engine\Draw\Draw.cpp" />
+    <ClCompile Include="..\..\source\Engine\Draw\Color.cpp" />
+    <ClCompile Include="..\..\source\Engine\Draw\DrawLine.cpp" />
     <ClCompile Include="..\..\source\Engine\Draw\Shader.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Glider.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Map.cpp" />
