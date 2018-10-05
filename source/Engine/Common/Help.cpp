@@ -1,5 +1,5 @@
 
-#include <corecrt_math_defines.h>
+#include <glm/glm.hpp>
 #include "Help.h"
 #include "Engine.h"
 #include "FileManager.h"
@@ -20,9 +20,6 @@ bool help::loadJson(const std::string& fileName, Json::Value& value)
 	Core::Engine::log("LOG: help::loadJson FAIL file: " + fileName);
 	return false;
 }
-
-
-
 
 bool help::intersection(vec3 start1, vec3 end1, vec3 start2, vec3 end2, vec3* out_intersection)
 {
@@ -53,57 +50,4 @@ bool help::intersection(vec3 start1, vec3 end1, vec3 start2, vec3 end2, vec3* ou
 	*out_intersection = start1 + u * dir1;
 
 	return true;
-}
-
-/*
-	v1 = rand() % 100;         // v1 in the range 0 to 99
-	v2 = rand() % 100 + 1;     // v2 in the range 1 to 100
-	v3 = rand() % 30 + 1985;   // v3 in the range 1985-2014
-*/
-
-float help::random_f(const float& min, const float& max, const int& accuracy)
-{
-	int var = rand() % accuracy;
-	float k = static_cast<float>(var) / static_cast<float>(accuracy);
-
-	float range = max - min;
-	float value = min + range * k;
-
-	return value;
-}
-
-int help::random_i(const int& min, const int& max)
-{
-	const int range = max - min;
-	int var = rand() % range;
-	float k = static_cast<float>(var) / static_cast<float>(range);
-
-	float value = min + range * k;
-
-	return value;
-}
-
-float help::area—ircle(const float radius)
-{
-	float volume = M_PI * powf(radius, 2);
-	return volume;
-}
-
-float help::radius—ircle(const float volume)
-{
-	float radius = sqrtf(volume / M_PI);
-	return radius;
-}
-
-float help::volumeSphere(const float radius)
-{
-	float value = 4.0f / 3.0f * M_PI * powf(radius, 3);
-	return value;
-}
-
-float help::radiusSphere(const float value)
-{
-	float valueTemp = (3.0f * value) / (4.0f * M_PI);
-	float radius = powf(valueTemp, 1.0f / 3.0f);
-	return radius;
 }

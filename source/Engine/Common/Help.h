@@ -4,20 +4,55 @@
 #include <string>
 #include <vector>
 #include "jsoncpp/include/json/json.h"
+#include "glm/vec2.hpp"
 #include "glm/vec3.hpp"
+#include <corecrt_math_defines.h>
 
 namespace help
 {
 	bool loadJson(const std::string& fileName, Json::Value& value);
 	bool intersection(glm::vec3 start1, glm::vec3 end1, glm::vec3 start2, glm::vec3 end2, glm::vec3 *out_intersection);
-	float random_f(const float& min = 0.0f, const float& max = 1.0f, const int& accuracy = 1000);
-	int random_i(const int& min = 0, const int& max = 1);
 
-	float area—ircle(const float radius);
-	float radius—ircle(const float volume);
+	/*
+	v1 = rand() % 100;         // v1 in the range 0 to 99
+	v2 = rand() % 100 + 1;     // v2 in the range 1 to 100
+	v3 = rand() % 30 + 1985;   // v3 in the range 1985-2014
+	*/
 
-	float volumeSphere(const float radius);
-	float radiusSphere(const float value);
+	inline float random_f(const float& min = 0.0f, const float& max = 1.0f, const int& accuracy = 1000) {
+		int var = rand() % accuracy;
+		float k = static_cast<float>(var) / static_cast<float>(accuracy);
+		float range = max - min;
+		return min + range * k;
+	}
+
+	inline int random_i(const int& min = 0, const int& max = 1) {
+		const int range = max - min;
+		int var = rand() % range;
+		float k = static_cast<float>(var) / static_cast<float>(range);
+		return min + range * k;
+	}
+
+	inline float area—ircle(const float radius) { return M_PI * powf(radius, 2); }
+	inline 	float radius—ircle(const float volume) { return sqrtf(volume / M_PI); }
+
+	inline float volumeSphere(const float radius) { return 4.0f / 3.0f * M_PI * powf(radius, 3); }
+	inline float radiusSphere(const float value) {
+		float valueTemp = (3.0f * value) / (4.0f * M_PI);
+		return powf(valueTemp, 1.0f / 3.0f);
+	}
+
+	template <class VecT>
+	inline float dist(const VecT& pos_0, const VecT& pos_1 = VecT(0.0f)) {
+		VecT vec = pos_0 - pos_1;
+		return glm::length(vec);
+	}
+
+	template <class VecT>
+	inline float distXY(const VecT& pos_0, const VecT& pos_1 = VecT(0.0f)) {
+		VecT vec((pos_0.x - pos_1.x), (pos_0.y - pos_1.y), 0.0f);
+		return glm::length(vec);
+	}
 
 	template <class ObjectT>
 	ObjectT& add(std::vector<ObjectT*>& vector)
