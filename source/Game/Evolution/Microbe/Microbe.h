@@ -35,6 +35,9 @@ public:
 
 	void action();
 	void move();
+	void moveNext();
+	bool moveCheck();
+	bool collisionCheck();
 	void attack();
 	void foundTarget();
 	//inline bool isHimSelf(Microbe* microbe) { return microbe == this ? true : false; }
@@ -59,6 +62,8 @@ private:
 	glm::vec3 _scale = glm::vec3(1.0f, 1.0f, 1.0f);
 	glm::vec3 _vector = glm::vec3(1.0f, 0.0f, 0.0f);
 	bool _live = true;
+
+	glm::vec3 _nextPos;
 
 private:
 	static ShapeTrianglesPtr shapePtrStatic;

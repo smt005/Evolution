@@ -24,6 +24,8 @@
 #include "Object/Map.h"
 #include "Microbe/Microbe.h"
 
+DrawLine lineAdd;
+
 Evolution::~Evolution()
 {
 	if (!_callback) {
@@ -51,9 +53,12 @@ void Evolution::init()
 		_mapGame = new Map("Evolution");
 	}
 
-	Microbe::generateMicrobes(1000);
+	Microbe::generateMicrobes(100);
 
 	initCallback();
+
+
+	lineAdd.set({ 1.0f, -0.0f, 1.0f }, { -5.0f, -20.0f, 2.0f });
 }
 
 void Evolution::initCallback()
@@ -144,22 +149,18 @@ void Evolution::draw()
 	DrawLine::prepare();
 
 	{
-		DrawLine line;
-		line.draw();
-	}
-
-	{
 		DrawLine line(glm::vec3(0.0f, -2.0f, 1.0f), glm::vec3(2.0f, 8.0f, 20.0f));
 		line.setColor({1.0f, 0.0f, 0.0});
+		line.setLineWidth(3.0f);
+
+		Color color(Color::RED);
+		color.setBlue(1.0f);
+
 		line.draw();
 	}
 
 	{
-		DrawLine line;
-		line.set({ 1.0f, -0.0f, 1.0f }, { -5.0f, -20.0f, 2.0f });
-		Color color;
-		color.setBlue(1.0f);
-		line.setColor(color);
-		line.draw();
+		lineAdd.setColor(Color::GREEN);
+		lineAdd.draw();
 	}
 }

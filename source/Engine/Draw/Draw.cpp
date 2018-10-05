@@ -72,10 +72,9 @@ void Draw::prepare()
 		baseShader.a_texCoord = glGetAttribLocation(baseShader.program, "a_texCoord");
 
 		baseShader.s_baseMap = glGetUniformLocation(baseShader.program, "s_baseMap");
-
-		glUseProgram(baseShader.program);
 	}
 
+	glUseProgram(baseShader.program);
 	glUniformMatrix4fv(baseShader.u_matProjectionView, 1, GL_FALSE, Camera::current.matPV());
 
 	glDepthFunc(GL_LEQUAL);
@@ -83,6 +82,9 @@ void Draw::prepare()
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	glEnableVertexAttribArray(baseShader.a_position);
+	glEnableVertexAttribArray(baseShader.a_texCoord);
 
 	curentBufer = 0;
 	currentTexture = 0;
@@ -120,7 +122,7 @@ void Draw::drawTriangleExample()
 
 	glUseProgram(program);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-	glEnableVertexAttribArray(a_position);
+	//glEnableVertexAttribArray(a_position);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
@@ -136,11 +138,11 @@ void Draw::draw(Mesh& mesh)
 		curentBufer = mesh.bufferIndexes();
 
 		glBindBuffer(GL_ARRAY_BUFFER, mesh.bufferVertexes());
-		glEnableVertexAttribArray(baseShader.a_position);
+		//glEnableVertexAttribArray(baseShader.a_position);
 		glVertexAttribPointer(baseShader.a_position, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
 
 		glBindBuffer(GL_ARRAY_BUFFER, mesh.bufferTexCoords());
-		glEnableVertexAttribArray(baseShader.a_texCoord);
+		//glEnableVertexAttribArray(baseShader.a_texCoord);
 		glVertexAttribPointer(baseShader.a_texCoord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.bufferIndexes());

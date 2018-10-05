@@ -72,8 +72,9 @@ void Microbe::setMatrix(const float *matrix)
 
 void Microbe::action()
 {
-	if (!_live) return;
-
+	if (!_live) {
+		return;
+	}
 	foundTarget();
 
 	if (_target) {
@@ -93,44 +94,94 @@ void Microbe::action()
 
 void Microbe::move()
 {
+	if (_nextPos.x && _nextPos.y && !collisionCheck()) {
+		_matrix[3][0] = _nextPos.x;
+		_matrix[3][1] = _nextPos.y;
+	}
+}
+
+void Microbe::moveNext()
+{
+	if (!_live) {
+		return;
+	}
+
 	if (glm::length(_vector) == 0.0f) return;
 
 	glm::vec3 moveVector = _vector * _speed;
 
-	_matrix[3][0] += moveVector.x;
-	_matrix[3][1] += moveVector.y;
+	_nextPos.x = _matrix[3][0] + moveVector.x;
+	_nextPos.y = _matrix[3][1] + moveVector.y;
+}
+
+bool Microbe::collisionCheck()
+{
+	int id = getIdAddres();
+
+	for (auto& microbe : _microbes) {
+		if (microbe && microbe->_live) {
+			if (id == microbe->getIdAddres()) continue;
+
+			float dist = help::distXY(getPos(), microbe->getPos());
+			float area = (_scale[0] + microbe->_scale[0]) * 0.5f;
+			if (dist > area) {
+				continue;
+			}
+
+			_target = microbe;
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool Microbe::moveCheck()
+{
+	return false;
 }
 
 void Microbe::attack()
 {
-	if (_live && _target) {
-		glm::vec3 selfPos = getPos();
-		glm::vec3 targetPos = _target->getPos();
-		_vector = targetPos - selfPos;
+	if (!_live || !_target) {
+		return;
+	}
 
-		float dist = glm::length(_vector);
-		if (dist < 1.0f) {
-			float targetMass = _target->_mass;
-			if (_mass > targetMass)
-			{
-				_mass += targetMass;
-				float radius = help::radiusSphere(_mass);
-				_scale.x = radius;
-				_scale.y = radius;
-				_scale.z = radius;
+	if (!_target->_live) {
+		_target = nullptr;
+		return;
+	}
 
-				_target->_live = false;
-				_target->_matrix[3][2] = -5.0f;
-				_target = nullptr;
-			}
-			else
-			{
-				_target->_mass += _mass;
-				float radius = help::radiusSphere(_target->_mass);
-				_target->_scale.x = radius;
-				_target->_scale.y = radius;
-				_target->_scale.z = radius;
-			}
+	glm::vec3 selfPos = getPos();
+	glm::vec3 targetPos = _target->getPos();
+	_vector = targetPos - selfPos;
+
+	float dist = help::distXY(getPos(), _target->getPos());
+	float area = (_scale[0] + _target->_scale[0]) * 0.5f;
+
+	if (dist < (area  * 1.5f)) {
+		float targetMass = _target->_mass;
+		if (_mass > targetMass)
+		{
+			_mass += targetMass;
+			float radius = help::radiusSphere(_mass);
+			_scale.x = radius;
+			_scale.y = radius;
+			_scale.z = radius;
+
+			_target->_live = false;
+			_target->_matrix[3][2] = -5.0f;
+			_target = nullptr;
+		}
+		else
+		{
+			_target->_mass += _mass;
+			float radius = help::radiusSphere(_target->_mass);
+			_target->_scale.x = radius;
+			_target->_scale.y = radius;
+			_target->_scale.z = radius;
+			_target->_target = nullptr;
+			_live = false;
 		}
 	}
 }
@@ -190,6 +241,12 @@ void Microbe::generateMicrobes(const size_t count)
 
 void Microbe::update()
 {
+	for (auto& microbe : _microbes) {
+		if (microbe) {
+			microbe->moveNext();
+		}
+	}
+
 	for (auto& microbe : _microbes) {
 		if (microbe) {
 			microbe->action();

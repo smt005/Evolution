@@ -3,7 +3,8 @@
 
 #include <glm/glm.hpp>
 #include <glm/vec3.hpp>
-
+#include <glm/gtc/type_ptr.hpp>
+#include <vector>
 #include "Color.h"
 
 using namespace draw;
@@ -11,74 +12,29 @@ using namespace draw;
 class DrawLine
 {
 public:
-	DrawLine() {
-		_data[0] = 0.0f;
-		_data[1] = 0.0f;
-		_data[2] = 0.0f;
-
-		_data[3] = 0.0f;
-		_data[4] = 0.0f;
-		_data[5] = 1.0f;
-	}
+	DrawLine() { }
 
 	DrawLine(const float* const posFirst, const float* const posSecond) { set(posFirst, posSecond); }
 	DrawLine(const glm::vec3& posFirst, const glm::vec3& posSecond) { set(posFirst, posSecond); }
-	void draw();
-
-	inline void set(const float* const posFirst, const float* const posSecond) {
-		_data[0] = posFirst[0];
-		_data[1] = posFirst[1];
-		_data[2] = posFirst[2];
-
-		_data[3] = posSecond[0];
-		_data[4] = posSecond[1];
-		_data[5] = posSecond[2];
-	}
-
-	inline void set(const glm::vec3& posFirst, const glm::vec3& posSecond) {
-		_data[0] = posFirst.x;
-		_data[1] = posFirst.y;
-		_data[2] = posFirst.z;
-
-		_data[3] = posSecond.x;
-		_data[4] = posSecond.y;
-		_data[5] = posSecond.z;
-	}
-
-	inline void setPosFirst(const float* const posFirst) {
-		_data[0] = posFirst[0];
-		_data[1] = posFirst[1];
-		_data[2] = posFirst[2];
-	}
-
-	inline void setPosSecond(const float* const posSecond) {
-		_data[3] = posSecond[0];
-		_data[4] = posSecond[1];
-		_data[5] = posSecond[2];
-	}
-
-	inline void setPosFirst(const glm::vec3& posFirst) {
-		_data[0] = posFirst.x;
-		_data[1] = posFirst.y;
-		_data[2] = posFirst.z;
-	}
-
-	inline void setPosSecond(const glm::vec3& posSecond) {
-		_data[3] = posSecond.x;
-		_data[4] = posSecond.y;
-		_data[5] = posSecond.z;
-	}
-
-	inline glm::vec3 getPosFirst()	{ return glm::vec3(_data[0], _data[1], _data[2]); }
-	inline glm::vec3 getPosSecond()	{ return glm::vec3(_data[3], _data[4], _data[5]); }
-
+	
 	inline void setColor(const Color& color) { _color = color; }
+	inline void set(const glm::vec3& posFirst, const glm::vec3& posSecond) {
+		set(glm::value_ptr(posFirst), glm::value_ptr(posSecond));
+	}
+	
+	inline float getLineWidth() { return _lineWidth; }
+	inline void setLineWidth(const float lineWidth) { _lineWidth = lineWidth; }
+
+	void set(const float* const posFirst, const float* const posSecond);
+	void draw();
 
 public:
 	static void prepare();
 
 private:
-	float _data[6];
+	int _count = 0;	// 4 => 2(линии) * 2(точки в одной линии) * 3 (3 компоненты - xyz)
+	float* _data;
+	float _lineWidth = 1.0f;
 	Color _color = Color(Color::WHITE);
 };
 
