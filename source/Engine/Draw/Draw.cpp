@@ -195,7 +195,8 @@ void Draw::draw(ShapeTriangles& shape, const glm::mat4x4& matrix)
 	glUniformMatrix4fv(baseShader.u_matViewModel, 1, GL_FALSE, glm::value_ptr(matrix));
 
 	if (!texture) {
-		texture = std::make_shared<Texture>("Textures/Cell.png", true);
+		//texture = std::make_shared<Texture>("Textures/Cell.png", true);
+		texture = std::make_shared<Texture>("Textures/CellNoAlpha.png", true);
 	}
 
 	if (!shape.hasVBO()) {

@@ -45,8 +45,8 @@ void Evolution::init()
 
 	Draw::setClearColor(0.3f, 0.6f, 0.9f, 1.0f);
 
-	Camera::current.setFromEye(false);
-	Camera::current.setPos(glm::vec3(0.0f, 0.0f, 0.0f));
+	Camera::current.setFromEye(true);
+	Camera::current.setPos(glm::vec3(0.0f, 0.0f, 10.0f));
 	Camera::current.setDist(1.0f);
 
 	if (!_mapGame) {
@@ -88,24 +88,24 @@ void Evolution::initCallback()
 		});
 
 		_callback = new Callback(CallbackType::PINCH_KEY, [](const CallbackEventPtr& callbackEventPtr) {
-			float speedCamera = 0.1f;
+			float speedCamera = 0.025f;
 			if (Callback::pressKey(VirtualKey::SHIFT)) {
 				speedCamera = 0.125f;
 			}
 
-			if (Callback::pressKey(VirtualKey::S)) {
+			if (Callback::pressKey(VirtualKey::W)) {
 				Camera::current.move(CAMERA_FORVARD, speedCamera);
 			}
 
-			if (Callback::pressKey(VirtualKey::W)) {
+			if (Callback::pressKey(VirtualKey::S)) {
 				Camera::current.move(CAMERA_BACK, speedCamera);
 			}
 
-			if (Callback::pressKey(VirtualKey::D)) {
+			if (Callback::pressKey(VirtualKey::A)) {
 				Camera::current.move(CAMERA_RIGHT, speedCamera);
 			}
 
-			if (Callback::pressKey(VirtualKey::A)) {
+			if (Callback::pressKey(VirtualKey::D)) {
 				Camera::current.move(CAMERA_LEFT, speedCamera);
 			}
 
@@ -133,6 +133,23 @@ void Evolution::draw()
 {
 	Draw::viewport();
 	Draw::clearColor();
+
+	// DrawLine
+
+	DrawLine::prepare();
+
+	for (auto& microbe : Microbe::microbes()) {
+		if (microbe) {
+			glm::mat4x4 matrix = glm::scale(microbe->getMatrix(), microbe->getScale());
+
+			DrawLine line({ matrix[3][0], matrix[3][1], matrix[3][2] }, { matrix[3][0], matrix[3][1], matrix[3][2] + 1.0f } );
+			line.setColor(Color::RED);
+			line.draw();
+		}
+	}
+
+	//	Draw
+
 	Draw::prepare();
 
 	if (_mapGame) {
@@ -145,6 +162,8 @@ void Evolution::draw()
 			Draw::draw(microbe->shape(), matrix);
 		}
 	}
+
+	//	DrawLine
 
 	DrawLine::prepare();
 

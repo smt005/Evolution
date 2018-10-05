@@ -28,13 +28,13 @@ void ShapeTriangles::makeTriangle(ShapeTriangles& shape, const float& scale)
 {
 	static unsigned short countVertexStatic = 3;
 
-	static float aVertexStatic[] = { 0.0f, 1.0f, 0.0f,
-									-1.0f, -1.0f, 0.0f,
-									1.0f, -1.0f, 0.0f };
+	static float aVertexStatic[] = {	-0.425f, -0.9f, 0.0f,							
+										0.575f, 0.0f, 0.0f,
+										-0.425f, 0.9f, 0.0f };
 
-	static float aTexCoordStatic[] = {	0.0f, 1.0f,
-										1.0f, 0.0f,
-										0.0f, 0.0f };
+	static float aTexCoordStatic[] = {	1.715f, 0.0f,
+										0.0f, 0.0f,
+										0.0f, 1.715f };
 	
 
 	shape._countVertex = countVertexStatic;
