@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <filesystem>
 
+using namespace Engine;
+
 std::filesystem::path FileManager::_resourcesDir = std::filesystem::current_path();
 
 void FileManager::setResourcesDir(const std::filesystem::path& resourcesDir)

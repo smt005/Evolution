@@ -3,10 +3,10 @@
 
 #include "Game.h"
 
-class Callback;
+namespace Engine { class Callback; }
 class Map;
 
-class MapExample : public Game
+class MapExample : public Engine::Game
 {
 public:
 	~MapExample();
@@ -16,6 +16,6 @@ public:
 	void draw() override;
 
 private:
-	Callback* _callback = nullptr;
+	Engine::Callback* _callback = nullptr;
 	Map* _mapGame = nullptr;
 };

@@ -1,9 +1,11 @@
-
 #pragma once
 
 #include <string>
 #include <filesystem>
 
+namespace Engine
+{
+	
 class FileManager
 {
 public:
@@ -20,3 +22,5 @@ public:
 private:
 	static std::filesystem::path _resourcesDir;
 };
+
+};	// Engine

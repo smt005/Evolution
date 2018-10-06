@@ -6,10 +6,9 @@
 #include <glm/glm.hpp>
 #include "glm/mat4x4.hpp"
 
-#include "../../Engine/Engine.h"
 #include "MapExample.h"
 
-#include "Engine.h"
+#include "Core.h"
 #include "FileManager.h"
 #include "Draw/Draw.h"
 #include "Draw/Camera.h"
@@ -35,7 +34,7 @@ MapExample::~MapExample()
 
 void MapExample::init()
 {
-	FileManager::setResourcesDir("..\\Res");
+	Engine::FileManager::setResourcesDir("..\\Res");
 
 	Draw::setClearColor(0.9f, 0.6f, 0.3f, 1.0f);
 
@@ -44,8 +43,8 @@ void MapExample::init()
 	Camera::current.setDist(1.0f);
 
 	if (!_callback) {
-		_callback = new Callback(CallbackType::PINCH_TAP, [](const CallbackEventPtr& callbackEventPtr) {
-			Camera::current.rotate(Callback::deltaMousePos());
+		_callback = new Engine::Callback(Engine::CallbackType::PINCH_TAP, [](const Engine::CallbackEventPtr& callbackEventPtr) {
+			Camera::current.rotate(Engine::Callback::deltaMousePos());
 		});
 	}
 

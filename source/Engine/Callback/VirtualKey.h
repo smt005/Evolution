@@ -1,5 +1,8 @@
 #pragma once
 
+namespace Engine
+{
+
 enum class VirtualKey
 {
 	A = 65,
@@ -49,3 +52,5 @@ enum class VirtualTap
 	RIGHT = 1,
 	MIDDLE = 2
 };
+
+};	// Engine

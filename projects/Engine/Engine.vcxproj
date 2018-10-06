@@ -177,7 +177,7 @@
     <ClInclude Include="..\..\source\Engine\Object\Glider.h" />
     <ClInclude Include="..\..\source\Engine\Object\Map.h" />
     <ClInclude Include="..\..\source\Engine\Object\Mesh.h" />
-    <ClInclude Include="..\..\Source\Engine\Engine.h" />
+    <ClInclude Include="..\..\Source\Engine\Core.h" />
     <ClInclude Include="..\..\Source\Engine\FileManager.h" />
     <ClInclude Include="..\..\Source\Engine\Game.h" />
     <ClInclude Include="..\..\source\Engine\Object\Model.h" />
@@ -203,7 +203,7 @@
     <ClCompile Include="..\..\source\Engine\Object\Shape.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\ShapeTriangles.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Texture.cpp" />
-    <ClCompile Include="..\..\Source\Engine\Platform\Win\Engine.cpp" />
+    <ClCompile Include="..\..\Source\Engine\Platform\Win\Core.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\FileManager.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Window.cpp" />
   </ItemGroup>

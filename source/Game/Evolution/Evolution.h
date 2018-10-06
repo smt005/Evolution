@@ -2,11 +2,10 @@
 #pragma once
 
 #include "Game.h"
-
-class Callback;
+namespace Engine { class Callback; }
 class Map;
 
-class Evolution : public Game
+class Evolution : public Engine::Game
 {
 public:
 	~Evolution();
@@ -17,6 +16,6 @@ public:
 	void draw() override;
 	
 private:
-	Callback* _callback = nullptr;
+	Engine::Callback* _callback = nullptr;
 	Map* _mapGame = nullptr;
 };

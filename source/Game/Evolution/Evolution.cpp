@@ -7,10 +7,9 @@
 #include <glm/glm.hpp>
 #include "glm/mat4x4.hpp"
 
-#include "../../Engine/Engine.h"
 #include "Evolution.h"
 
-#include "Engine.h"
+#include "Core.h"
 #include "FileManager.h"
 #include "Draw/Draw.h"
 #include "Draw/DrawLine.h"
@@ -41,7 +40,7 @@ Evolution::~Evolution()
 
 void Evolution::init()
 {
-	FileManager::setResourcesDir("..\\Res");
+	Engine::FileManager::setResourcesDir("..\\Res");
 
 	Draw::setClearColor(0.3f, 0.6f, 0.9f, 1.0f);
 
@@ -63,56 +62,56 @@ void Evolution::init()
 void Evolution::initCallback()
 {
 	if (!_callback) {
-		_callback = new Callback(CallbackType::PINCH_TAP, [](const CallbackEventPtr& callbackEventPtr) {
-			if (Callback::pressTap(VirtualTap::RIGHT)) {
-				Camera::current.rotate(Callback::deltaMousePos());
+		_callback = new Engine::Callback(Engine::CallbackType::PINCH_TAP, [](const Engine::CallbackEventPtr& callbackEventPtr) {
+			if (Engine::Callback::pressTap(Engine::VirtualTap::RIGHT)) {
+				Camera::current.rotate(Engine::Callback::deltaMousePos());
 			}
 
-			if (Callback::pressTap(VirtualTap::MIDDLE)) {
-				Camera::current.move(Callback::deltaMousePos() * 1000.0f * Core::Engine::deltaTime());
+			if (Engine::Callback::pressTap(Engine::VirtualTap::MIDDLE)) {
+				Camera::current.move(Engine::Callback::deltaMousePos() * 1000.0f * Engine::Core::deltaTime());
 			}
 		});
 
-		_callback->add(CallbackType::RELEASE_KEY, [](const CallbackEventPtr& callbackEventPtr) {
-			KeyCallbackEvent* releaseKeyEvent = (KeyCallbackEvent*)callbackEventPtr->get();
-			VirtualKey key = releaseKeyEvent->getId();
+		_callback->add(Engine::CallbackType::RELEASE_KEY, [](const Engine::CallbackEventPtr& callbackEventPtr) {
+			Engine::KeyCallbackEvent* releaseKeyEvent = (Engine::KeyCallbackEvent*)callbackEventPtr->get();
+			Engine::VirtualKey key = releaseKeyEvent->getId();
 
-			if (key == VirtualKey::ESCAPE) {
-				Core::Engine::close();
+			if (key == Engine::VirtualKey::ESCAPE) {
+				Engine::Core::close();
 			}
 
-			if (key == VirtualKey::Q) {
+			if (key == Engine::VirtualKey::Q) {
 				Microbe::generateMicrobes(100);
 			}
 		});
 
-		_callback = new Callback(CallbackType::PINCH_KEY, [](const CallbackEventPtr& callbackEventPtr) {
-			float speedCamera = 10.0f * Core::Engine::deltaTime();
-			if (Callback::pressKey(VirtualKey::SHIFT)) {
-				speedCamera = 0.125f * Core::Engine::deltaTime();
+		_callback = new Engine::Callback(Engine::CallbackType::PINCH_KEY, [](const Engine::CallbackEventPtr& callbackEventPtr) {
+			float speedCamera = 10.0f * Engine::Core::deltaTime();
+			if (Engine::Callback::pressKey(Engine::VirtualKey::SHIFT)) {
+				speedCamera = 0.125f * Engine::Core::deltaTime();
 			}
 
-			if (Callback::pressKey(VirtualKey::W)) {
+			if (Engine::Callback::pressKey(Engine::VirtualKey::W)) {
 				Camera::current.move(CAMERA_FORVARD, speedCamera);
 			}
 
-			if (Callback::pressKey(VirtualKey::S)) {
+			if (Engine::Callback::pressKey(Engine::VirtualKey::S)) {
 				Camera::current.move(CAMERA_BACK, speedCamera);
 			}
 
-			if (Callback::pressKey(VirtualKey::A)) {
+			if (Engine::Callback::pressKey(Engine::VirtualKey::A)) {
 				Camera::current.move(CAMERA_RIGHT, speedCamera);
 			}
 
-			if (Callback::pressKey(VirtualKey::D)) {
+			if (Engine::Callback::pressKey(Engine::VirtualKey::D)) {
 				Camera::current.move(CAMERA_LEFT, speedCamera);
 			}
 
-			if (Callback::pressKey(VirtualKey::R)) {
+			if (Engine::Callback::pressKey(Engine::VirtualKey::R)) {
 				Camera::current.move(CAMERA_TOP, speedCamera);
 			}
 
-			if (Callback::pressKey(VirtualKey::F)) {
+			if (Engine::Callback::pressKey(Engine::VirtualKey::F)) {
 				Camera::current.move(CAMERA_DOWN, speedCamera);
 			}
 		});
@@ -121,8 +120,6 @@ void Evolution::initCallback()
 
 void Evolution::update()
 {
-	_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, "KOP LOG: Evolution::update %f\n", Core::Engine::deltaTime());
-
 	if (_mapGame) {
 		_mapGame->action();
 	}

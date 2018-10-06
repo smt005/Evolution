@@ -1,8 +1,10 @@
-
 #pragma once
 
 #include <memory>
 
+namespace Engine
+{
+	
 class Game
 {
 public:
@@ -13,3 +15,5 @@ public:
 };
 
 typedef std::shared_ptr<Game> GamePtr;
+
+};	// Engine

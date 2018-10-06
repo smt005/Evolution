@@ -210,7 +210,7 @@ bool Shape::load(const string& name)
 {
 	char* data = nullptr;
 	int lenght = 0;
-	FileManager::readTextFile(name, data, lenght);
+	Engine::FileManager::readTextFile(name, data, lenght);
 
 	if (!data) return false;
 

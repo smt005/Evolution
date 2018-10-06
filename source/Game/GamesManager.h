@@ -9,8 +9,8 @@
 namespace game
 {
 
-GamePtr getGame(const std::string& name) {
-	Game* game = nullptr;
+Engine::GamePtr getGame(const std::string& name) {
+	Engine::Game* game = nullptr;
 
 	if (name == "Evolution") {
 		game = new Evolution();
@@ -18,10 +18,10 @@ GamePtr getGame(const std::string& name) {
 		game = new MapExample();
 	}
 	else {
-		game = new Game();
+		game = new Engine::Game();
 	}
 
-	GamePtr gamePtr(game);
+	Engine::GamePtr gamePtr(game);
 	return gamePtr;
 }
 

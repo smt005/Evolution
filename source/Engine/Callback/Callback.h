@@ -9,6 +9,9 @@
 #include "CallbackEvent.h"
 #include "VirtualKey.h"
 
+namespace Engine
+{
+
 constexpr int CALLBACK_COUNT_KEY = 1024;
 constexpr int CALLBACK_COUNT_TAP = 10;
 
@@ -91,3 +94,5 @@ public:
 private:
 	std::map<CallbackType, std::map<int, std::function<void(const CallbackEventPtr& callbackEventPtr)>>> _map;
 };
+
+};	// Engine

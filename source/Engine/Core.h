@@ -1,6 +1,4 @@
-
 #pragma once
-
 
 #include <string>
 #include <memory>
@@ -9,12 +7,12 @@
 
 #include "Game.h"
 
-class Window;
-
-namespace Core
+namespace Engine
 {
 
-class Engine
+class Window;
+
+class Core
 {
 public:
 	static int execution(const GamePtr& game);
@@ -29,4 +27,4 @@ public:
 	static float deltaTime();
 };
 
-};	// Core
+};	// Engine

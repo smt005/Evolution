@@ -7,6 +7,9 @@
 
 #include "VirtualKey.h"
 
+namespace Engine
+{
+
 class CallbackEvent
 {
 public:
@@ -35,3 +38,5 @@ public:
 public:
 	VirtualTap _id;
 };
+
+};	// Engine

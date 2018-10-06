@@ -1,6 +1,8 @@
 
 #include "Callback.h"
-#include "Engine.h"
+#include "Core.h"
+
+using namespace Engine;
 
 std::map<int, Callback*> Callback::_objects;
 glm::vec2 Callback::_mousePos;

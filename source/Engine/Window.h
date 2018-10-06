@@ -1,6 +1,8 @@
-
 #pragma once
 
+namespace Engine
+{
+	
 class Window
 {
 public:
@@ -9,3 +11,5 @@ public:
 	static int height();
 	static float aspect();
 };
+
+};	// Engine

@@ -10,12 +10,12 @@ unsigned int Shader::getProgram(const std::string& vertexFileName, const std::st
 		return 0;
 	}
 
-    std::string fragmentShaderSource = FileManager::readTextFile(fragmentFileName);
+    std::string fragmentShaderSource = Engine::FileManager::readTextFile(fragmentFileName);
 	if (fragmentShaderSource.empty()) {
 		return 0;
 	}
 
-	std::string vertexShaderSource = FileManager::readTextFile(vertexFileName);
+	std::string vertexShaderSource = Engine::FileManager::readTextFile(vertexFileName);
 	if (vertexShaderSource.empty()) {
 		return 0;
 	}

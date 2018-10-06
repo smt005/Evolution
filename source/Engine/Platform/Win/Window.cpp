@@ -6,7 +6,7 @@
 #include "jsoncpp/include/json/json.h"
 
 #include "Window.h"
-#include "Engine.h"
+#include "Core.h"
 #include "Draw/Draw.h"
 #include "Callback/Callback.h"
 
@@ -18,6 +18,8 @@ void cursorPositionCallback(GLFWwindow* Window, double x, double y);
 void mouseButtonCallback(GLFWwindow* Window, int Button, int Action, int mods);
 void keyCallback(GLFWwindow* Window, int Key, int Scancode, int Action, int Mods);
 
+using namespace Engine;
+
 bool Window::create()
 {
 	GLFWwindow* window;
@@ -25,7 +27,7 @@ bool Window::create()
 	if (!glfwInit())
 		return false;
 
-	const Json::Value& setting = Core::Engine::settingJson("window");
+	const Json::Value& setting = Engine::Core::settingJson("window");
 	if (!setting.empty()) {
 		int windowWidthTemp = setting["width"].asInt();
 		if (windowWidthTemp != 0) {
@@ -54,13 +56,13 @@ bool Window::create()
 
 	glfwMakeContextCurrent(window);
 
-	Core::Engine::init();
+	Core::init();
 
 	while (!glfwWindowShouldClose(window))
 	{
 		Callback::update();
-		Core::Engine::update();
-		Core::Engine::draw();
+		Core::update();
+		Core::draw();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

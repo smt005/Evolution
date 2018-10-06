@@ -51,8 +51,8 @@ void Draw::clearColor()
 
 void Draw::viewport()
 {
-	int widthScreen = Window::width();
-	int heightScreen = Window::height();
+	int widthScreen = Engine::Window::width();
+	int heightScreen = Engine::Window::height();
 	glViewport(0, 0, widthScreen, heightScreen);
 }
 
@@ -96,7 +96,7 @@ void Draw::drawTriangleExample()
 							-50.0f, -50.0f, 0.0f,
 							50.0f, -50.0f, 0.0f };
 
-	glViewport(0, 0, Window::width(), Window::height());
+	glViewport(0, 0, Engine::Window::width(), Engine::Window::height());
 
 	if (program == 0) {
 		program = Shader::getProgram("Shaders/TriangleExample.vert", "Shaders/TriangleExample.frag");
