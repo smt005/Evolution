@@ -4,13 +4,12 @@
 
 #include <string>
 #include <memory>
+#include <ctime>
 #include "jsoncpp/include/json/json.h"
 
 #include "Game.h"
 
 class Window;
-//class Game;
-//typedef std::shared_ptr<Game> GamePtr;
 
 namespace Core
 {
@@ -22,10 +21,11 @@ public:
 	static void close();
 
 	static void init();
-	static void update();
-	static void draw();
+	static void update(const float dt);
+	static void draw(const float dt);
 	static void log(const std::string& text);
 	static const Json::Value& settingJson(const std::string& key);
+	static float getCurrentTime();
 };
 
 };	// Core

@@ -13,8 +13,8 @@ public:
 
 	void init();
 	void initCallback();
-	void update();
-	void draw();
+	void update(const float dt) override;
+	void draw(const float dt) override;
 	
 private:
 	Callback* _callback = nullptr;

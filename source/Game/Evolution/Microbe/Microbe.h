@@ -56,7 +56,7 @@ private:
 	glm::mat4x4 _matrix = glm::mat4x4(1.0f);
 	ShapeTrianglesPtr _shapePtr;
 	float _mass = 1.0f;
-	float _speed = 0.01f;
+	float _speed = 0.001f;
 
 	MicrobePtr _target;
 	glm::vec3 _scale = glm::vec3(1.0f, 1.0f, 1.0f);

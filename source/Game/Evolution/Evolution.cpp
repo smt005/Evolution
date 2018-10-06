@@ -53,7 +53,7 @@ void Evolution::init()
 		_mapGame = new Map("Evolution");
 	}
 
-	Microbe::generateMicrobes(100);
+	Microbe::generateMicrobes(1000);
 
 	initCallback();
 
@@ -120,8 +120,10 @@ void Evolution::initCallback()
 	}
 }
 
-void Evolution::update()
+void Evolution::update(const float dt)
 {
+	_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, "KOP LOG: Evolution::update %f\n", dt);
+
 	if (_mapGame) {
 		_mapGame->action();
 	}
@@ -129,7 +131,7 @@ void Evolution::update()
 	Microbe::update();
 }
 
-void Evolution::draw()
+void Evolution::draw(const float dt)
 {
 	Draw::viewport();
 	Draw::clearColor();
