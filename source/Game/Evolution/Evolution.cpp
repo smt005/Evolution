@@ -53,10 +53,9 @@ void Evolution::init()
 		_mapGame = new Map("Evolution");
 	}
 
-	Microbe::generateMicrobes(1000);
+	Microbe::generateMicrobes(100);
 
 	initCallback();
-
 
 	lineAdd.set({ 1.0f, -0.0f, 1.0f }, { -5.0f, -20.0f, 2.0f });
 }
@@ -70,7 +69,7 @@ void Evolution::initCallback()
 			}
 
 			if (Callback::pressTap(VirtualTap::MIDDLE)) {
-				Camera::current.move(Callback::deltaMousePos() * 10000.0f);
+				Camera::current.move(Callback::deltaMousePos() * 1000.0f * Core::Engine::deltaTime());
 			}
 		});
 
@@ -88,9 +87,9 @@ void Evolution::initCallback()
 		});
 
 		_callback = new Callback(CallbackType::PINCH_KEY, [](const CallbackEventPtr& callbackEventPtr) {
-			float speedCamera = 0.025f;
+			float speedCamera = 10.0f * Core::Engine::deltaTime();
 			if (Callback::pressKey(VirtualKey::SHIFT)) {
-				speedCamera = 0.125f;
+				speedCamera = 0.125f * Core::Engine::deltaTime();
 			}
 
 			if (Callback::pressKey(VirtualKey::W)) {
@@ -120,9 +119,9 @@ void Evolution::initCallback()
 	}
 }
 
-void Evolution::update(const float dt)
+void Evolution::update()
 {
-	_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, "KOP LOG: Evolution::update %f\n", dt);
+	_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, "KOP LOG: Evolution::update %f\n", Core::Engine::deltaTime());
 
 	if (_mapGame) {
 		_mapGame->action();
@@ -131,7 +130,7 @@ void Evolution::update(const float dt)
 	Microbe::update();
 }
 
-void Evolution::draw(const float dt)
+void Evolution::draw()
 {
 	Draw::viewport();
 	Draw::clearColor();

@@ -21,11 +21,12 @@ public:
 	static void close();
 
 	static void init();
-	static void update(const float dt);
-	static void draw(const float dt);
+	static void update();
+	static void draw();
 	static void log(const std::string& text);
 	static const Json::Value& settingJson(const std::string& key);
-	static float getCurrentTime();
+	static double currentTime();
+	static float deltaTime();
 };
 
 };	// Core

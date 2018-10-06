@@ -54,14 +54,14 @@ void MapExample::init()
 	}
 }
 
-void MapExample::update(const float dt)
+void MapExample::update()
 {
 	if (_mapGame) {
 		_mapGame->action();
 	}
 }
 
-void MapExample::draw(const float dt)
+void MapExample::draw()
 {
 	Draw::viewport();
 	Draw::clearColor();

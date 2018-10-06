@@ -56,19 +56,11 @@ bool Window::create()
 
 	Core::Engine::init();
 
-	float lastTime = Core::Engine::getCurrentTime();
-
 	while (!glfwWindowShouldClose(window))
 	{
-		float currentTime = Core::Engine::getCurrentTime();
-		float deltaTime = currentTime - lastTime;
-		lastTime = currentTime;
-
-		_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, "KOP LOG: currentTime %f\n", currentTime);
-
 		Callback::update();
-		Core::Engine::update(deltaTime);
-		Core::Engine::draw(deltaTime);
+		Core::Engine::update();
+		Core::Engine::draw();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
