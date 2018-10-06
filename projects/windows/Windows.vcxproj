@@ -162,7 +162,6 @@
     <ClCompile Include="..\..\Source\Projects\Win\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\source\App\Setting.json" />
     <None Include="..\..\source\Res\Maps\Evolution.json" />
     <None Include="..\..\source\Res\Maps\Examples\MapExample.json" />
     <None Include="..\..\source\Res\Models\Models.json" />

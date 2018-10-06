@@ -14,8 +14,16 @@ int Engine::execution(const GamePtr& game)
 {
 	if (!game) return -1;
 
-	help::loadJson("Setting.json", _settingJson);
-	
+	if (!help::loadJson("Setting.json", _settingJson))
+	{
+		_settingJson.clear();
+		_settingJson["window"]["width"] = 960;
+		_settingJson["window"]["height"] = 540;
+		_settingJson["window"]["title"] = "Window_default";
+		_settingJson["window"]["fullscreen"] = false;
+		help::saveJson("Setting.json", _settingJson);
+	}
+
 	_game = game;
 	Window::create();
 

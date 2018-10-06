@@ -11,6 +11,7 @@
 namespace help
 {
 	bool loadJson(const std::string& fileName, Json::Value& value);
+	bool saveJson(const std::string& fileName, const Json::Value& value);
 	bool intersection(glm::vec3 start1, glm::vec3 end1, glm::vec3 start2, glm::vec3 end2, glm::vec3 *out_intersection);
 
 	/*
@@ -30,15 +31,15 @@ namespace help
 		const int range = max - min;
 		int var = rand() % range;
 		float k = static_cast<float>(var) / static_cast<float>(range);
-		return min + range * k;
+		return min + range * static_cast<int>(k);
 	}
 
-	inline float area—ircle(const float radius) { return M_PI * powf(radius, 2); }
-	inline 	float radius—ircle(const float volume) { return sqrtf(volume / M_PI); }
+	inline float areaCircle(const float radius) { return powf(radius, 2) * (float)M_PI; }
+	inline 	float radiusCircle(const float volume) { return sqrtf(volume / (float)M_PI); }
 
-	inline float volumeSphere(const float radius) { return 4.0f / 3.0f * M_PI * powf(radius, 3); }
+	inline float volumeSphere(const float radius) { return 4.0f / 3.0f * (float)M_PI * powf(radius, 3); }
 	inline float radiusSphere(const float value) {
-		float valueTemp = (3.0f * value) / (4.0f * M_PI);
+		float valueTemp = (3.0f * value) / (4.0f * (float)M_PI);
 		return powf(valueTemp, 1.0f / 3.0f);
 	}
 

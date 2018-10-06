@@ -51,9 +51,6 @@
     <None Include="..\..\source\Res\Maps\Evolution.json">
       <Filter>Res\Maps</Filter>
     </None>
-    <None Include="..\..\source\App\Setting.json">
-      <Filter>Source</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\source\Res\Models\Box1.obj">

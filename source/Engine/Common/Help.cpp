@@ -4,21 +4,31 @@
 #include "Engine.h"
 #include "FileManager.h"
 
+#include <iostream>
+
 using namespace glm;
 
 bool help::loadJson(const std::string& fileName, Json::Value& value)
 {
 	std::string mystring = FileManager::readTextFile(fileName);
 
-	Json::CharReaderBuilder builder;
-	Json::CharReader *reader = builder.newCharReader();
+	Json::CharReaderBuilder readerBuilder;
+	Json::CharReader *reader = readerBuilder.newCharReader();
 	std::string err;
 	if (reader->parse(mystring.c_str(), mystring.c_str() + mystring.length(), &value, &err)) {
 		return true;
 	}
 
-	Core::Engine::log("LOG: help::loadJson FAIL file: " + fileName);
 	return false;
+}
+
+bool help::saveJson(const std::string& fileName, const Json::Value& value)
+{
+	Json::StreamWriterBuilder writerBuilder;
+	writerBuilder["indentation"] = "\t"; // If you want whitespace-less output
+	const std::string valueString = Json::writeString(writerBuilder, value);
+
+	return FileManager::writeTextFile(fileName, valueString);
 }
 
 bool help::intersection(vec3 start1, vec3 end1, vec3 start2, vec3 end2, vec3* out_intersection)
