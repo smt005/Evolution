@@ -184,9 +184,11 @@
     <ClInclude Include="..\..\source\Engine\Object\Model.h" />
     <ClInclude Include="..\..\source\Engine\Object\Object.h" />
     <ClInclude Include="..\..\source\Engine\Object\Point.h" />
+    <ClInclude Include="..\..\source\Engine\Object\Position.h" />
     <ClInclude Include="..\..\source\Engine\Object\Shape.h" />
     <ClInclude Include="..\..\source\Engine\Object\ShapeTriangles.h" />
     <ClInclude Include="..\..\source\Engine\Object\Texture.h" />
+    <ClInclude Include="..\..\source\Engine\Object\Triangle.h" />
     <ClInclude Include="..\..\Source\Engine\Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -203,9 +205,11 @@
     <ClCompile Include="..\..\source\Engine\Object\Mesh.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Model.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Object.cpp" />
+    <ClCompile Include="..\..\source\Engine\Object\Position.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Shape.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\ShapeTriangles.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Texture.cpp" />
+    <ClCompile Include="..\..\source\Engine\Object\Triangle.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Core.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\FileManager.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Window.cpp" />

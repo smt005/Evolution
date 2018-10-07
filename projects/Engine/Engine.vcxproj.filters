@@ -56,6 +56,12 @@
     <ClCompile Include="..\..\source\Engine\Object\Line.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Object\Triangle.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Object\Position.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Engine\Window.h">
@@ -126,6 +132,12 @@
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Engine\Object\Color.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Object\Triangle.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Object\Position.h">
       <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,6 +6,7 @@
 
 #include "Color.h"
 #include "Point.h"
+#include "Position.h"
 
 class Greed;
 
@@ -80,36 +81,16 @@ private:
 };
 
 
-class Greed
+class Greed : public Position
 {
 public:
-	Greed()
-		: _matrix(glm::mat4x4(1.0f))
-	{ }
+	Greed()	{ }
 
-	Greed(const float width, const float step = 1.0f)
-		: _matrix(glm::mat4x4(1.0f))
-	{
+	Greed(const float width, const float step = 1.0f) {
 		set(width, step);
 	}
 
 	void set(const float width, const float step = 1.0f);
-
-	inline void setPos(const float* const pos) {
-		_matrix[3][0] = pos[0];
-		_matrix[3][1] = pos[1];
-		_matrix[3][2] = pos[2];
-	}
-
-	inline void setPos(const glm::vec3& pos) {
-		_matrix[3][0] = pos.x;
-		_matrix[3][1] = pos.y;
-		_matrix[3][2] = pos.z;
-	}
-
-	inline void setMatrix(const glm::mat4x4& matrix) { _matrix = matrix; }
-
-	inline const glm::mat4x4& getMatrix() const { return _matrix; }
 
 private:
 	void generateLines(Line& line, const float width, const float step, const bool planeX);
@@ -122,7 +103,4 @@ public:
 	Line heavyLineX;
 	Line heavyLineY;
 	Line heavyLineZ;
-
-private:
-	glm::mat4x4 _matrix;
 };
