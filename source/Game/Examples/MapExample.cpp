@@ -19,9 +19,12 @@
 #include "Callback/Callback.h"
 #include "Object/Object.h"
 #include "Object/Map.h"
+#include "Object/Line.h"
 
 const std::string saveFileName("Data/MapExampleSave.json");
 const std::string mapFileName("Examples/MapExample");
+
+Greed greed(100.0f, 0.1f, 10.0f);
 
 MapExample::~MapExample()
 {
@@ -86,9 +89,9 @@ void MapExample::initCallback()
 		});
 
 		_callback = new Engine::Callback(Engine::CallbackType::PINCH_KEY, [](const Engine::CallbackEventPtr& callbackEventPtr) {
-			float speedCamera = 20.0f * Engine::Core::deltaTime();
+			float speedCamera = 40.0f * Engine::Core::deltaTime();
 			if (Engine::Callback::pressKey(Engine::VirtualKey::SHIFT)) {
-				speedCamera = 5.0f * Engine::Core::deltaTime();
+				speedCamera = 10.0f * Engine::Core::deltaTime();
 			}
 
 			if (Engine::Callback::pressKey(Engine::VirtualKey::S)) {
@@ -172,7 +175,7 @@ void MapExample::draw()
 	draw::DrawLine::prepare();
 
 	{
-		float points[] = {	10.0f, 20.0f, 0.0f, 10.0f, 20.0f, 20.0f,
+		float points[] = {	0.0f, 0.0f, 0.0f, 10.0f, 20.0f, 20.0f,
 							10.0f, 20.0f, 20.0f, 20.0f, 20.0f, 20.0f };
 		Line line(points, 4, Line::LINE);
 		line.setLineWidth(5.0f);
@@ -202,5 +205,14 @@ void MapExample::draw()
 		line.color.setAlpha(0.5);
 
 		draw::DrawLine::draw(line);
+	}
+
+	{
+		draw::DrawLine::draw(greed._lineX);
+		draw::DrawLine::draw(greed._lineY);
+		draw::DrawLine::draw(greed._lineZ);
+		draw::DrawLine::draw(greed._heavyLineX);
+		draw::DrawLine::draw(greed._heavyLineY);
+		draw::DrawLine::draw(greed._heavyLineZ);
 	}
 }

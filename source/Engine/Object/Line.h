@@ -5,8 +5,12 @@
 #include "Color.h"
 #include "Point.h"
 
+class Greed;
+
 class Line
 {
+	friend Greed;
+
 public:
 	struct Point {
 		float data[3];
@@ -30,9 +34,28 @@ public:
 		: color(Color::RED)
 		, _lineWidth(1.0f)
 	{}
-	explicit Line(const float* const points, const unsigned int count = 1, const unsigned short int type = LINE);
+	Line(const float* const points, const unsigned int count, const unsigned short int type = LINE)
+		: color(Color::RED)
+		, _lineWidth(1.0f)
+	{
+		set(points, count, type);
+	}
 
 	~Line();
+
+	template <class PointT>
+	void set(const PointT* const points, const unsigned int count, const unsigned short int type = LINE) {
+		if (points == nullptr || count < 2) {
+			return;
+		}
+
+		_count = count;
+
+		_points = new Point[_count];
+		memcpy(_points, points, sizeof(Point) * _count);
+
+		_type = type;
+	}
 
 	inline void setType(const unsigned short int type) { _type = type; }
 	inline void setLineWidth(const float lineWidth) { _lineWidth = lineWidth; }
@@ -55,4 +78,29 @@ private:
 
 	//unsigned int _countColor;
 	//Color* _colors;
+};
+
+
+class Greed
+{
+public:
+	Greed() {}
+	Greed(const float width, const float height = 0.0f, const float step = 1.0f) {
+		set(width, height, step);
+	}
+
+	void set(const float width, const float height = 0.0f, const float step = 1.0f);
+
+private:
+	void generateLines(Line& line, const float width, const float height, const float step, const bool planeX);
+
+private:
+public:
+	Line _lineX;
+	Line _lineY;
+	Line _lineZ;
+
+	Line _heavyLineX;
+	Line _heavyLineY;
+	Line _heavyLineZ;
 };

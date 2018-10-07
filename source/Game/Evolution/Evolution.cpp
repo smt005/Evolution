@@ -85,22 +85,22 @@ void Evolution::initCallback()
 		_callback = new Engine::Callback(Engine::CallbackType::PINCH_KEY, [](const Engine::CallbackEventPtr& callbackEventPtr) {
 			float speedCamera = 10.0f * Engine::Core::deltaTime();
 			if (Engine::Callback::pressKey(Engine::VirtualKey::SHIFT)) {
-				speedCamera = 0.125f * Engine::Core::deltaTime();
-			}
-
-			if (Engine::Callback::pressKey(Engine::VirtualKey::W)) {
-				Camera::current.move(CAMERA_FORVARD, speedCamera);
+				speedCamera = 2.5f * Engine::Core::deltaTime();
 			}
 
 			if (Engine::Callback::pressKey(Engine::VirtualKey::S)) {
+				Camera::current.move(CAMERA_FORVARD, speedCamera);
+			}
+
+			if (Engine::Callback::pressKey(Engine::VirtualKey::W)) {
 				Camera::current.move(CAMERA_BACK, speedCamera);
 			}
 
-			if (Engine::Callback::pressKey(Engine::VirtualKey::A)) {
+			if (Engine::Callback::pressKey(Engine::VirtualKey::D)) {
 				Camera::current.move(CAMERA_RIGHT, speedCamera);
 			}
 
-			if (Engine::Callback::pressKey(Engine::VirtualKey::D)) {
+			if (Engine::Callback::pressKey(Engine::VirtualKey::A)) {
 				Camera::current.move(CAMERA_LEFT, speedCamera);
 			}
 

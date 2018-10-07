@@ -89,11 +89,10 @@ double Core::currentTime()
 	std::chrono::milliseconds ms;
 	ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch());
 
-	double value = ms.count();
+	double value = static_cast<double>(ms.count());
 	return value;
 }
 
-float Core::deltaTime()
-{
+float Core::deltaTime() {
 	return _deltaTime;
 }
