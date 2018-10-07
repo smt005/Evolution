@@ -2,12 +2,9 @@
 #pragma once
 
 #include <glm/glm.hpp>
-#include <glm/vec3.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <vector>
-#include "Object/Color.h"
 
-#include "Object/Line.h"
+class Line;
+class Greed;
 
 namespace draw
 {
@@ -16,7 +13,9 @@ class DrawLine
 {
 public:
 	static void prepare();
+	static void draw(const Line& line, const glm::mat4x4& matrix);
 	static void draw(const Line& line);
+	static void draw(const Greed& greed);
 };
 
 }

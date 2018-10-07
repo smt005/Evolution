@@ -1,6 +1,8 @@
 #pragma once
 
 #include <memory>
+#include "glm/mat4x4.hpp"
+#include "glm/vec3.hpp"
 
 #include "Color.h"
 #include "Point.h"
@@ -75,32 +77,52 @@ private:
 	float _lineWidth;
 	unsigned int _count;
 	Point* _points;
-
-	//unsigned int _countColor;
-	//Color* _colors;
 };
 
 
 class Greed
 {
 public:
-	Greed() {}
-	Greed(const float width, const float height = 0.0f, const float step = 1.0f) {
-		set(width, height, step);
+	Greed()
+		: _matrix(glm::mat4x4(1.0f))
+	{ }
+
+	Greed(const float width, const float step = 1.0f)
+		: _matrix(glm::mat4x4(1.0f))
+	{
+		set(width, step);
 	}
 
-	void set(const float width, const float height = 0.0f, const float step = 1.0f);
+	void set(const float width, const float step = 1.0f);
+
+	inline void setPos(const float* const pos) {
+		_matrix[3][0] = pos[0];
+		_matrix[3][1] = pos[1];
+		_matrix[3][2] = pos[2];
+	}
+
+	inline void setPos(const glm::vec3& pos) {
+		_matrix[3][0] = pos.x;
+		_matrix[3][1] = pos.y;
+		_matrix[3][2] = pos.z;
+	}
+
+	inline void setMatrix(const glm::mat4x4& matrix) { _matrix = matrix; }
+
+	inline const glm::mat4x4& getMatrix() const { return _matrix; }
 
 private:
-	void generateLines(Line& line, const float width, const float height, const float step, const bool planeX);
+	void generateLines(Line& line, const float width, const float step, const bool planeX);
 
-private:
 public:
-	Line _lineX;
-	Line _lineY;
-	Line _lineZ;
+	Line lineX;
+	Line lineY;
+	Line lineZ;
 
-	Line _heavyLineX;
-	Line _heavyLineY;
-	Line _heavyLineZ;
+	Line heavyLineX;
+	Line heavyLineY;
+	Line heavyLineZ;
+
+private:
+	glm::mat4x4 _matrix;
 };

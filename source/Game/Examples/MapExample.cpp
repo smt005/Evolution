@@ -24,7 +24,7 @@
 const std::string saveFileName("Data/MapExampleSave.json");
 const std::string mapFileName("Examples/MapExample");
 
-Greed greed(100.0f, 0.1f, 10.0f);
+Greed greed(100.0f, 10.0f);
 
 MapExample::~MapExample()
 {
@@ -54,6 +54,8 @@ void MapExample::init()
 	if (!_mapGame) {
 		_mapGame = new Map(mapFileName);
 	}
+
+	greed.setPos({0.0f, 0.0f, 0.1f});
 
 	initCallback();
 }
@@ -163,12 +165,6 @@ void MapExample::draw()
 {
 	Draw::viewport();
 	Draw::clearColor();
-	Draw::prepare();
-
-	if (_mapGame) {
-		Draw::draw(*_mapGame);
-	}
-
 
 	//	DrawLine
 
@@ -207,12 +203,13 @@ void MapExample::draw()
 		draw::DrawLine::draw(line);
 	}
 
-	{
-		draw::DrawLine::draw(greed._lineX);
-		draw::DrawLine::draw(greed._lineY);
-		draw::DrawLine::draw(greed._lineZ);
-		draw::DrawLine::draw(greed._heavyLineX);
-		draw::DrawLine::draw(greed._heavyLineY);
-		draw::DrawLine::draw(greed._heavyLineZ);
+	draw::DrawLine::draw(greed);
+
+	// Draw
+
+	Draw::prepare();
+
+	if (_mapGame) {
+		Draw::draw(*_mapGame);
 	}
 }
