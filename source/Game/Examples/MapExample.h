@@ -11,9 +11,13 @@ class MapExample : public Engine::Game
 public:
 	~MapExample();
 
-	void init();
+	void init() override;
 	void update() override;
 	void draw() override;
+
+	void initCallback();
+	bool load();
+	void save();
 
 private:
 	Engine::Callback* _callback = nullptr;

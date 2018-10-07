@@ -1,8 +1,6 @@
 
 #include "Color.h"
 
-using namespace draw;
-
 Color::Color()
 {
 	_data[RED] = 0.0f;

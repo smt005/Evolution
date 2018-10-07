@@ -6,6 +6,7 @@
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <jsoncpp/include/json/json.h>
 
 using namespace glm;
 
@@ -73,9 +74,12 @@ public:
 	void setSpeed(const float &speed) { _speed = speed; };
 	void setSpeedRotate(const float &speedRotate) { _speedRotate = speedRotate; };
 
-	void move(const int &direct, float speed = 0);
+	void move(const int &direct, const float speed = 0.0f);
 	void move(const vec2 &direct);
 	void rotate(const vec2 &angles);
+	
+	void setJsonData(const Json::Value& data);
+	void getJsonData(Json::Value& data);
 	
 	// STATIC
 	static mat4x4 _matPVM;

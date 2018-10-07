@@ -64,13 +64,17 @@ std::string FileManager::readTextFile(const std::filesystem::path& fileName)
 
 bool FileManager::writeFile(const std::filesystem::path& fileName, const char* data)
 {
-	if (!std::filesystem::exists(_resourcesDir)) {
-		std::filesystem::create_directory(_resourcesDir);
+	std::filesystem::path fullFilePath = _resourcesDir / fileName;
+	std::filesystem::path realFileName;
+	std::filesystem::path fullPath;
+
+	fullPath = fullFilePath.parent_path();
+
+	if (!std::filesystem::exists(fullPath)) {
+		std::filesystem::create_directory(fullPath);
 	}
 
-	std::filesystem::path fullFilePath = _resourcesDir / fileName;
 	FILE* file;
-
 	if (fopen_s(&file, fullFilePath.string().c_str(), "w") != NULL) {
 		return false;
 	}

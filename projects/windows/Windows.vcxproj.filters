@@ -51,6 +51,12 @@
     <None Include="..\..\source\Res\Maps\Evolution.json">
       <Filter>Res\Maps</Filter>
     </None>
+    <None Include="..\..\source\Res\Shaders\LineMatrix.frag">
+      <Filter>Res\Shaders</Filter>
+    </None>
+    <None Include="..\..\source\Res\Shaders\LineMatrix.vert">
+      <Filter>Res\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\source\Res\Models\Box1.obj">

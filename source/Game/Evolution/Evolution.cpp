@@ -17,13 +17,12 @@
 #include "Draw/Shader.h"
 #include "Object/Mesh.h"
 #include "Object/ShapeTriangles.h"
+#include "Object/Line.h"
 #include "Common/Help.h"
 #include "Callback/Callback.h"
 #include "Object/Object.h"
 #include "Object/Map.h"
 #include "Microbe/Microbe.h"
-
-DrawLine lineAdd;
 
 Evolution::~Evolution()
 {
@@ -55,8 +54,6 @@ void Evolution::init()
 	Microbe::generateMicrobes(100);
 
 	initCallback();
-
-	lineAdd.set({ 1.0f, -0.0f, 1.0f }, { -5.0f, -20.0f, 2.0f });
 }
 
 void Evolution::initCallback()
@@ -132,20 +129,6 @@ void Evolution::draw()
 	Draw::viewport();
 	Draw::clearColor();
 
-	// DrawLine
-
-	DrawLine::prepare();
-
-	for (auto& microbe : Microbe::microbes()) {
-		if (microbe) {
-			glm::mat4x4 matrix = glm::scale(microbe->getMatrix(), microbe->getScale());
-
-			DrawLine line({ matrix[3][0], matrix[3][1], matrix[3][2] }, { matrix[3][0], matrix[3][1], matrix[3][2] + 1.0f } );
-			line.setColor(Color::RED);
-			line.draw();
-		}
-	}
-
 	//	Draw
 
 	Draw::prepare();
@@ -159,25 +142,5 @@ void Evolution::draw()
 			glm::mat4x4 matrix = glm::scale(microbe->getMatrix(), microbe->getScale());
 			Draw::draw(microbe->shape(), matrix);
 		}
-	}
-
-	//	DrawLine
-
-	DrawLine::prepare();
-
-	{
-		DrawLine line(glm::vec3(0.0f, -2.0f, 1.0f), glm::vec3(2.0f, 8.0f, 20.0f));
-		line.setColor({1.0f, 0.0f, 0.0});
-		line.setLineWidth(3.0f);
-
-		Color color(Color::RED);
-		color.setBlue(1.0f);
-
-		line.draw();
-	}
-
-	{
-		lineAdd.setColor(Color::GREEN);
-		lineAdd.draw();
 	}
 }

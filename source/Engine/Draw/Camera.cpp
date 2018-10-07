@@ -237,10 +237,10 @@ void Camera::setPos(const vec3 &pos)
 	makeMatProjectView();
 }
 
-void Camera::move(const int &direct, float speed)
+void Camera::move(const int &direct, const float speed)
 {
 	if (speed > 0.0f) _speed = speed;
-	speed = _fromEye ? -_speed : _speed;
+	_speed = _fromEye ? -_speed : _speed;
 	vec3 pos = _pos;
 
 	switch (direct)
@@ -322,6 +322,61 @@ void Camera::rotate(const vec2 &angles)
 	normalize(vector);
 
 	setVector(vector);
+}
+
+void Camera::setJsonData(const Json::Value& data)
+{
+	_calcFrustum = data["calcFrustum"].asBool();
+	_fromEye = data["fromEye"].asBool();
+	_dist = data["dist"].asFloat();
+
+	_pos.x = data["pos"][0].asFloat();
+	_pos.y = data["pos"][1].asFloat();
+	_pos.z = data["pos"][2].asFloat();
+
+	_vector.x = data["vector"][0].asFloat();
+	_vector.y = data["vector"][1].asFloat();
+	_vector.z = data["vector"][2].asFloat();
+
+	_speed = data["speed"].asFloat();
+	_speedRotate = data["speedRotate"].asFloat();
+
+	//---
+
+	vec3 eye;
+	vec3 center;
+
+	if (_fromEye)
+	{
+		eye = _pos;
+		center = _pos + _vector * _dist;
+	}
+	else
+	{
+		center = _pos;
+		eye = _pos + _vector * (-_dist);
+	}
+
+	_matView = lookAt(eye, center, vec3(0.0f, 0.0f, 1.0f));
+	makeMatProjectView();
+}
+
+void Camera::getJsonData(Json::Value& data)
+{
+	data["calcFrustum"] = _calcFrustum;
+	data["fromEye"] = _fromEye;
+	data["dist"] = _dist;
+
+	data["pos"].append(_pos.x);
+	data["pos"].append(_pos.y);
+	data["pos"].append(_pos.z);
+
+	data["vector"].append(_vector.x);
+	data["vector"].append(_vector.y);
+	data["vector"].append(_vector.z);
+
+	data["speed"] = _speed;
+	data["speedRotate"] = _speedRotate;
 }
 
 //---------------------------------------------------------------------------------------------

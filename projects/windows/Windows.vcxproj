@@ -167,6 +167,8 @@
     <None Include="..\..\source\Res\Models\Models.json" />
     <None Include="..\..\source\Res\Shaders\Base.frag" />
     <None Include="..\..\source\Res\Shaders\Base.vert" />
+    <None Include="..\..\source\Res\Shaders\LineMatrix.frag" />
+    <None Include="..\..\source\Res\Shaders\LineMatrix.vert" />
     <None Include="..\..\source\Res\Shaders\TriangleExample.frag" />
     <None Include="..\..\source\Res\Shaders\TriangleExample.vert" />
   </ItemGroup>

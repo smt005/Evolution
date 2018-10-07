@@ -2,9 +2,6 @@
 
 #include <memory>
 
-namespace draw
-{
-
 class Color
 {
 public:
@@ -34,17 +31,19 @@ public:
 
 	inline float& operator[](const size_t index) { return _data[index]; }
 	
+	void set(const float* const data) { memcpy(_data, data, (sizeof(float) * 4)); }
+
 	inline void setRed(float const r)	{ _data[RED] = r;	}
 	inline void setGreen(float const g)	{ _data[GREEN] = g;	}
 	inline void setBlue(float const b)	{ _data[BLUE] = b;	}
 	inline void setAlpha(float const a) { _data[ALPHA] = a;	}
 
-	inline float getRed()	{ return _data[RED];	}
-	inline float getGreen()	{ return _data[GREEN];	}
-	inline float getBlue()	{ return _data[BLUE];	}
-	inline float getAlpha()	{ return _data[ALPHA];	}
+	inline float getRed()	const { return _data[RED];	}
+	inline float getGreen()	const { return _data[GREEN];	}
+	inline float getBlue()	const { return _data[BLUE];	}
+	inline float getAlpha()	const { return _data[ALPHA];	}
 
-	inline const float* const getDataPtr() { return _data; }
+	inline const float* const getDataPtr() const { return _data; }
 
 private:
 	float _data[4];
@@ -52,5 +51,3 @@ private:
 private:
 	static float _dataStatic[4];
 };
-
-};	// draw

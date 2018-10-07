@@ -19,27 +19,6 @@ struct {
 	GLuint u_color = 0;
 } lineShader;
 
-void DrawLine::set(const float* const posFirst, const float* const posSecond)
-{
-	if (_data) {
-		delete[] _data;
-		_data = nullptr;
-	}
-
-	if (!_data) {
-		_count = 2;
-		_data = new float[_count * 3];
-	}
-
-	_data[0] = posFirst[0];
-	_data[1] = posFirst[1];
-	_data[2] = posFirst[2];
-
-	_data[3] = posSecond[0];
-	_data[4] = posSecond[1];
-	_data[5] = posSecond[2];
-}
-
 void DrawLine::prepare()
 {
 	if (lineShader.program == 0) {
@@ -68,26 +47,11 @@ void DrawLine::prepare()
 	glDisableVertexAttribArray(2);
 }
 
-void DrawLine::draw()
+void DrawLine::draw(const Line& line)
 {
-	glUniform4fv(lineShader.u_color, 1, _color.getDataPtr());
-	glLineWidth(_lineWidth);
+	glUniform4fv(lineShader.u_color, 1, line.color.getDataPtr());
+	glLineWidth(line.getLineWidth());
 
-	glVertexAttribPointer(lineShader.a_position, 3, GL_FLOAT, GL_FALSE, 0, _data);
-	glDrawArrays(GL_LINES, 0, _count);
-}
-
-//	DrawGrid
-
-DrawGrid::DrawGrid()
-	: _colorX(Color::RED)
-	, _colorY(Color::GREEN)
-	, _colorZ(Color::BLUE)
-{
-
-}
-
-void DrawGrid::draw()
-{
-
+	glVertexAttribPointer(lineShader.a_position, 3, GL_FLOAT, GL_FALSE, 0, line.getData());
+	glDrawArrays(line.getType(), 0, line.getCount());
 }

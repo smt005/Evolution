@@ -171,10 +171,11 @@
     <ClInclude Include="..\..\source\Engine\Common\Help.h" />
     <ClInclude Include="..\..\source\Engine\Draw\Camera.h" />
     <ClInclude Include="..\..\source\Engine\Draw\Draw.h" />
-    <ClInclude Include="..\..\source\Engine\Draw\Color.h" />
     <ClInclude Include="..\..\source\Engine\Draw\DrawLine.h" />
     <ClInclude Include="..\..\source\Engine\Draw\Shader.h" />
+    <ClInclude Include="..\..\source\Engine\Object\Color.h" />
     <ClInclude Include="..\..\source\Engine\Object\Glider.h" />
+    <ClInclude Include="..\..\source\Engine\Object\Line.h" />
     <ClInclude Include="..\..\source\Engine\Object\Map.h" />
     <ClInclude Include="..\..\source\Engine\Object\Mesh.h" />
     <ClInclude Include="..\..\Source\Engine\Core.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="..\..\Source\Engine\Game.h" />
     <ClInclude Include="..\..\source\Engine\Object\Model.h" />
     <ClInclude Include="..\..\source\Engine\Object\Object.h" />
+    <ClInclude Include="..\..\source\Engine\Object\Point.h" />
     <ClInclude Include="..\..\source\Engine\Object\Shape.h" />
     <ClInclude Include="..\..\source\Engine\Object\ShapeTriangles.h" />
     <ClInclude Include="..\..\source\Engine\Object\Texture.h" />
@@ -192,10 +194,11 @@
     <ClCompile Include="..\..\source\Engine\Common\Help.cpp" />
     <ClCompile Include="..\..\source\Engine\Draw\Camera.cpp" />
     <ClCompile Include="..\..\source\Engine\Draw\Draw.cpp" />
-    <ClCompile Include="..\..\source\Engine\Draw\Color.cpp" />
     <ClCompile Include="..\..\source\Engine\Draw\DrawLine.cpp" />
     <ClCompile Include="..\..\source\Engine\Draw\Shader.cpp" />
+    <ClCompile Include="..\..\source\Engine\Object\Color.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Glider.cpp" />
+    <ClCompile Include="..\..\source\Engine\Object\Line.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Map.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Mesh.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Model.cpp" />
