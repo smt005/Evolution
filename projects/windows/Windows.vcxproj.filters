@@ -36,12 +36,6 @@
     <None Include="..\..\source\Res\Shaders\Base.vert">
       <Filter>Res\Shaders</Filter>
     </None>
-    <None Include="..\..\source\Res\Shaders\TriangleExample.frag">
-      <Filter>Res\Shaders</Filter>
-    </None>
-    <None Include="..\..\source\Res\Shaders\TriangleExample.vert">
-      <Filter>Res\Shaders</Filter>
-    </None>
     <None Include="..\..\source\Res\Models\Models.json">
       <Filter>Res\Models</Filter>
     </None>

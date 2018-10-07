@@ -71,8 +71,7 @@ void DrawLine::draw(const Line& line)
 
 void DrawLine::draw(const Greed& greed)
 {
-	const glm::mat4x4& matrix = greed.getMatrix();
-	glUniformMatrix4fv(lineShader.u_matViewModel, 1, GL_FALSE, glm::value_ptr(matrix));
+	glUniformMatrix4fv(lineShader.u_matViewModel, 1, GL_FALSE, greed.getMatrixFloat());
 
 	draw::DrawLine::draw(greed.lineX);
 	draw::DrawLine::draw(greed.lineY);

@@ -169,8 +169,6 @@
     <None Include="..\..\source\Res\Shaders\Base.vert" />
     <None Include="..\..\source\Res\Shaders\Line.frag" />
     <None Include="..\..\source\Res\Shaders\Line.vert" />
-    <None Include="..\..\source\Res\Shaders\TriangleExample.frag" />
-    <None Include="..\..\source\Res\Shaders\TriangleExample.vert" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\..\source\Res\Models\Box1.obj">

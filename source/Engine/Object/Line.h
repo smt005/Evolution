@@ -16,29 +16,28 @@ class Line
 
 public:
 	struct Point {
-		float data[3];
-		Point() {
-			data[0] = 0.0f;
-			data[1] = 0.0f;
-			data[2] = 0.0f;
-		}
+		float data[3] = { 0.0f, 0.0f, 0.0f };
 	};
 
 	enum
 	{
-		NONE,
-		LINE,
-		LOOP,
-		STRIP
+		NONE = 0x0000,
+		LINE = 0x0001,
+		LOOP = 0x0002,
+		STRIP = 0x0003
 	};
 
 public:
 	Line()
-		: color(Color::RED)
+		: _count(0)
+		, _points(nullptr)
+		, color(Color::RED)
 		, _lineWidth(1.0f)
 	{}
 	Line(const float* const points, const unsigned int count, const unsigned short int type = LINE)
-		: color(Color::RED)
+		: _count(0)
+		, _points(nullptr)
+		, color(Color::RED)
 		, _lineWidth(1.0f)
 	{
 		set(points, count, type);
@@ -74,7 +73,7 @@ public:
 	Color color;	// Временно TODO:
 
 private:
-	unsigned short int _type;	// GL_LINES 0x0001, GL_LINE_LOOP 0x0002, GL_LINE_STRIP 0x0003
+	unsigned short int _type;	//	GL_LINES 0x0001, GL_LINE_LOOP 0x0002, GL_LINE_STRIP 0x0003
 	float _lineWidth;
 	unsigned int _count;
 	Point* _points;

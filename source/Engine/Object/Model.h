@@ -2,8 +2,8 @@
 
 #include "jsoncpp/include/json/json.h"
 #include "Common/DataClass.h"
-#include "Object/Shape.h"
-#include "Object/Texture.h"
+#include "Shape.h"
+#include "Texture.h"
 
 #include <string>
 
