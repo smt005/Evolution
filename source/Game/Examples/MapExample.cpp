@@ -20,11 +20,13 @@
 #include "Object/Object.h"
 #include "Object/Map.h"
 #include "Object/Line.h"
+#include "Object/Triangle.h"
 
 const std::string saveFileName("Data/MapExampleSave.json");
 const std::string mapFileName("Examples/MapExample");
 
 Greed greed(100.0f, 10.0f);
+Triangle triangle;
 
 MapExample::~MapExample()
 {
@@ -57,6 +59,9 @@ void MapExample::init()
 
 	greed.setPos({0.0f, 0.0f, 0.1f});
 
+	Triangle::makeTriangle(triangle);
+	triangle.setPos({0.5f, 0.25f, 0.5f});
+	
 	initCallback();
 }
 
@@ -212,4 +217,6 @@ void MapExample::draw()
 	if (_mapGame) {
 		Draw::draw(*_mapGame);
 	}
+
+	Draw::draw(triangle);
 }

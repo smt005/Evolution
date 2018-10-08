@@ -10,6 +10,7 @@
 #include "Object/Model.h"
 #include "Object/Object.h"
 #include "Object/Glider.h"
+#include "Object/Triangle.h"
 #include "Object/Map.h"
 #include "Object/ShapeTriangles.h"
 #include "Object/Texture.h"
@@ -220,4 +221,47 @@ void Draw::draw(ShapeTriangles& shape, const glm::mat4x4& matrix)
 	}
 
 	glDrawArrays(GL_TRIANGLES, 0, shape.countVertex());
+}
+
+void Draw::draw(Triangle& triangle)
+{
+	glUniformMatrix4fv(baseShader.u_matViewModel, 1, GL_FALSE, triangle.getMatrixFloat());
+
+	/*unsigned int textureId = triangle.textureId();
+	if (currentTexture != textureId)
+	{
+		currentTexture = textureId;
+
+		glUniform1i(baseShader.s_baseMap, 0);
+		glBindTexture(GL_TEXTURE_2D, currentTexture);
+	}*/
+
+	if (!texture) {
+		//texture = std::make_shared<Texture>("Textures/Cell.png", true);
+		texture = std::make_shared<Texture>("Textures/CellNoAlpha.png", true);
+
+
+	}
+
+	if (!triangle.hasVBO()) {
+		if (!triangle.initVBO()) return;
+	}
+
+	if (curentBufer != triangle.bufferVertexes())
+	{
+		curentBufer = triangle.bufferVertexes();
+
+		glUniform1i(baseShader.s_baseMap, 0);
+		glBindTexture(GL_TEXTURE_2D, texture->id());
+
+		glBindBuffer(GL_ARRAY_BUFFER, triangle.bufferVertexes());
+		glEnableVertexAttribArray(baseShader.a_position);
+		glVertexAttribPointer(baseShader.a_position, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
+
+		glBindBuffer(GL_ARRAY_BUFFER, triangle.bufferTexCoords());
+		glEnableVertexAttribArray(baseShader.a_texCoord);
+		glVertexAttribPointer(baseShader.a_texCoord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
+	}
+
+	glDrawArrays(GL_TRIANGLES, 0, triangle.countVertex());
 }

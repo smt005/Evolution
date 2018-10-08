@@ -9,6 +9,7 @@ class Model;
 class Object;
 class Map;
 class ShapeTriangles;
+class Triangle;
 
 class Draw
 {
@@ -27,4 +28,5 @@ public:
 	static void draw(Object& object);
 	static void draw(Map& map);
 	static void draw(ShapeTriangles& shape, const glm::mat4x4& matrix = glm::mat4x4(1.0f));
+	static void draw(Triangle& triangle);
 };

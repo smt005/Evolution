@@ -7,8 +7,8 @@
 #include "glm/mat4x4.hpp"
 #include <glm/gtc/type_ptr.hpp>
 
-class ShapeTriangles;
-typedef std::shared_ptr<ShapeTriangles> ShapeTrianglesPtr;
+class Triangle;
+typedef std::shared_ptr<Triangle> ShapeTrianglesPtr;
 
 class Microbe;
 typedef std::shared_ptr<Microbe> MicrobePtr;
