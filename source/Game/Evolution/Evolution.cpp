@@ -16,13 +16,11 @@
 #include "Draw/Camera.h"
 #include "Draw/Shader.h"
 #include "Object/Mesh.h"
-#include "Object/ShapeTriangles.h"
 #include "Object/Line.h"
 #include "Common/Help.h"
 #include "Callback/Callback.h"
 #include "Object/Object.h"
 #include "Object/Map.h"
-#include "Microbe/Microbe.h"
 
 Evolution::~Evolution()
 {
@@ -51,8 +49,6 @@ void Evolution::init()
 		_mapGame = new Map("Evolution");
 	}
 
-	Microbe::generateMicrobes(100);
-
 	initCallback();
 }
 
@@ -78,11 +74,14 @@ void Evolution::initCallback()
 			}
 
 			if (key == Engine::VirtualKey::Q) {
-				Microbe::generateMicrobes(100);
 			}
 		});
 
 		_callback = new Engine::Callback(Engine::CallbackType::PINCH_KEY, [](const Engine::CallbackEventPtr& callbackEventPtr) {
+			if (Engine::Callback::pressKey(Engine::VirtualKey::CONTROL)) {
+				return;
+			}
+
 			float speedCamera = 10.0f * Engine::Core::deltaTime();
 			if (Engine::Callback::pressKey(Engine::VirtualKey::SHIFT)) {
 				speedCamera = 2.5f * Engine::Core::deltaTime();
@@ -120,8 +119,6 @@ void Evolution::update()
 	if (_mapGame) {
 		_mapGame->action();
 	}
-
-	Microbe::update();
 }
 
 void Evolution::draw()
@@ -135,12 +132,5 @@ void Evolution::draw()
 
 	if (_mapGame) {
 		Draw::draw(*_mapGame);
-	}
-
-	for (auto& microbe : Microbe::microbes()) {
-		if (microbe) {
-			glm::mat4x4 matrix = glm::scale(microbe->getMatrix(), microbe->getScale());
-			Draw::draw(microbe->shape(), matrix);
-		}
 	}
 }

@@ -12,7 +12,6 @@
 #include "Object/Glider.h"
 #include "Object/Triangle.h"
 #include "Object/Map.h"
-#include "Object/ShapeTriangles.h"
 #include "Object/Texture.h"
 
 float _clearColor[4] = { 0.3f, 0.6f , 0.9f , 1.0f };
@@ -91,43 +90,6 @@ void Draw::prepare()
 	currentTexture = 0;
 }
 
-void Draw::drawTriangleExample()
-{
-	GLfloat vVertices[] = {	0.0f, 5.0f, 0.0f,
-							-50.0f, -50.0f, 0.0f,
-							50.0f, -50.0f, 0.0f };
-
-	glViewport(0, 0, Engine::Window::width(), Engine::Window::height());
-
-	if (program == 0) {
-		program = Shader::getProgram("Shaders/TriangleExample.vert", "Shaders/TriangleExample.frag");
-	}
-
-	GLint u_matProjectionView = glGetUniformLocation(program, "u_matProjectionView");
-	GLuint u_matViewModel = glGetUniformLocation(program, "u_matViewModel");
-	GLuint a_position = glGetAttribLocation(program, "a_position");
-	
-	{
-
-		//glm::mat4x4 matrix(1.0f);
-		//glUniformMatrix4fv(u_matProjectionView, 1, GL_FALSE, glm::value_ptr(matrix));
-		glUniformMatrix4fv(u_matProjectionView, 1, GL_FALSE, Camera::current.matPV());
-	}
-
-	{
-		
-		glm::mat4x4 matrix(1.0f);
-		matrix = glm::translate(matrix, glm::vec3(0.5f, 0.5f, 0.0f));
-		glUniformMatrix4fv(u_matViewModel, 1, GL_FALSE, glm::value_ptr(matrix));
-	}
-
-	glUseProgram(program);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vVertices);
-	//glEnableVertexAttribArray(a_position);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-}
-
-
 void Draw::draw(Mesh& mesh)
 {
 	if (!mesh.hasVBO()) {
@@ -191,56 +153,20 @@ void Draw::draw(Map& map)
 	}
 }
 
-void Draw::draw(ShapeTriangles& shape, const glm::mat4x4& matrix)
-{
-	glUniformMatrix4fv(baseShader.u_matViewModel, 1, GL_FALSE, glm::value_ptr(matrix));
-
-	if (!texture) {
-		//texture = std::make_shared<Texture>("Textures/Cell.png", true);
-		texture = std::make_shared<Texture>("Textures/CellNoAlpha.png", true);
-	}
-
-	if (!shape.hasVBO()) {
-		if (!shape.initVBO()) return;
-	}
-
-	if (curentBufer != shape.bufferVertexes())
-	{
-		curentBufer = shape.bufferVertexes();
-
-		glUniform1i(baseShader.s_baseMap, 0);
-		glBindTexture(GL_TEXTURE_2D, texture->id());
-
-		glBindBuffer(GL_ARRAY_BUFFER, shape.bufferVertexes());
-		glEnableVertexAttribArray(baseShader.a_position);
-		glVertexAttribPointer(baseShader.a_position, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
-
-		glBindBuffer(GL_ARRAY_BUFFER, shape.bufferTexCoords());
-		glEnableVertexAttribArray(baseShader.a_texCoord);
-		glVertexAttribPointer(baseShader.a_texCoord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
-	}
-
-	glDrawArrays(GL_TRIANGLES, 0, shape.countVertex());
-}
-
 void Draw::draw(Triangle& triangle)
 {
 	glUniformMatrix4fv(baseShader.u_matViewModel, 1, GL_FALSE, triangle.getMatrixFloat());
 
-	/*unsigned int textureId = triangle.textureId();
+	unsigned int textureId = triangle.textureId();
 	if (currentTexture != textureId)
 	{
 		currentTexture = textureId;
 
 		glUniform1i(baseShader.s_baseMap, 0);
 		glBindTexture(GL_TEXTURE_2D, currentTexture);
-	}*/
 
-	if (!texture) {
-		//texture = std::make_shared<Texture>("Textures/Cell.png", true);
-		texture = std::make_shared<Texture>("Textures/CellNoAlpha.png", true);
-
-
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	}
 
 	if (!triangle.hasVBO()) {
@@ -250,9 +176,6 @@ void Draw::draw(Triangle& triangle)
 	if (curentBufer != triangle.bufferVertexes())
 	{
 		curentBufer = triangle.bufferVertexes();
-
-		glUniform1i(baseShader.s_baseMap, 0);
-		glBindTexture(GL_TEXTURE_2D, texture->id());
 
 		glBindBuffer(GL_ARRAY_BUFFER, triangle.bufferVertexes());
 		glEnableVertexAttribArray(baseShader.a_position);

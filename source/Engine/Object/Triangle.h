@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "Position.h"
 #include "Texture.h"
 
@@ -12,6 +14,12 @@ public:
 			data[0] *= scale;
 			data[1] *= scale;
 			data[2] *= scale;
+			return *this;
+		}
+		Point& operator+=(const glm::vec3& pos) {
+			data[0] += pos.x;
+			data[1] += pos.y;
+			data[2] += pos.z;
 			return *this;
 		}
 	};
@@ -47,6 +55,8 @@ public:
 		return _texture->id();
 	}
 
+	const Triangle& getSelf() const { return *this; }
+
 	inline unsigned short int countVertex() { return _count * 3; }
 	inline const float* const aVertex() { return (float*)_points; }
 	inline const float* const aTexCoord() { return (float*)_texCoord; }
@@ -68,6 +78,51 @@ private:
 	unsigned int _buffer[2];
 
 public:
+	struct Template;
+	typedef std::shared_ptr<Template> TemplatePtr;
+
+	struct Template
+	{
+		glm::vec3 vector;
+		float dist;
+		float scale;
+		std::vector<TemplatePtr> childs;
+
+		Template* parent;
+		glm::vec3 pos;
+		Point points[3];
+		TexCoord texCoord[3];
+
+		Template()
+			: parent(nullptr)
+			, dist(0.0f)
+			, scale(1.0f)
+			, pos(glm::vec3(0.0f))
+		{}
+
+		Template& add(const float distToParent, const float scaleTo, const glm::vec3& vectorToParent) {
+			TemplatePtr tPtr = TemplatePtr(new Template());
+				tPtr->parent = this;
+				tPtr->dist = distToParent;
+				tPtr->scale = scaleTo;
+				tPtr->vector = vectorToParent;
+			childs.push_back(tPtr);
+			return *this;
+		}
+
+		int getCount() {
+			int count = 1;
+			for (const auto& item : childs) {
+				count += item->getCount();
+			}
+			return count;
+		}
+
+		void makeData();
+		void make();
+	};
+
 	static void makeTriangle(Triangle& triangle, const float& scale = 1.0f);
 	static TexturePtr& getTextureStatic();
+	static void make(Triangle& triangle, Template& templateTrianle);
 };

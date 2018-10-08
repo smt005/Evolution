@@ -20,13 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h" />
-    <ClInclude Include="..\..\source\Game\Evolution\Microbe\Microbe.h" />
     <ClInclude Include="..\..\source\Game\Examples\MapExample.h" />
     <ClInclude Include="..\..\source\Game\GamesManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp" />
-    <ClCompile Include="..\..\source\Game\Evolution\Microbe\Microbe.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

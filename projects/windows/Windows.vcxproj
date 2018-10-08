@@ -205,6 +205,8 @@
   <ItemGroup>
     <Image Include="..\..\source\Res\Textures\Ambient.png" />
     <Image Include="..\..\source\Res\Textures\Box.jpg" />
+    <Image Include="..\..\source\Res\Textures\Cell.png" />
+    <Image Include="..\..\source\Res\Textures\CellNoAlpha.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -11,38 +11,48 @@ Triangle::~Triangle()
 	}
 }
 
-// STATIC
+// Template
 
-void Triangle::makeTriangle(Triangle& triangle, const float& scale)
+void Triangle::Template::makeData()
 {
-	static unsigned short int typeStatic = Triangle::TRIANGLES;
-	static unsigned int countStatic = 3;
 	static Point pointsStatic[] = { -0.425f, -0.9f, 0.0f,
 									0.575f, 0.0f, 0.0f,
 									-0.425f, 0.9f, 0.0f };
 
-	static TexCoord _texCoordStatic[] = { 1.715f, 0.0f,
+	static TexCoord texCoordStatic[] = { 1.715f, 0.0f,
 										0.0f, 0.0f,
 										0.0f, 1.715f };
 
-	triangle._type = typeStatic;
-	triangle._count = countStatic;
-	triangle._points = new Point[countStatic];
-
-	for (unsigned int i = 0; i < countStatic; ++i) {
-		triangle._points[i] = pointsStatic[i] * scale;
+	for (unsigned int i = 0; i < 3; ++i) {
+		points[i] = pointsStatic[i] * scale;
 	}
 
-	triangle._texCoord = new TexCoord[countStatic];
-	memcpy(triangle._texCoord, _texCoordStatic, sizeof(TexCoord) * countStatic);
+	if (dist > 0.0f) {
+		glm::vec3 vecNormalize = glm::normalize(vector);
+		glm::vec3 posParent(0.0f);
+
+		if (parent) {
+			posParent = parent->pos;
+		}
+
+		pos = vecNormalize * dist;
+		pos += posParent;
+
+		for (unsigned int i = 0; i < 3; ++i) {
+			points[i] += pos;
+		}
+	}
+
+	memcpy(texCoord, texCoordStatic, sizeof(TexCoord) * 3);
 }
 
-TexturePtr& Triangle::getTextureStatic() {
-	if (!textureStatic) {
-		textureStatic = Texture::getByName("Textures/Box.jpg");
-	}
+void Triangle::Template::make()
+{
+	makeData();
 
-	return textureStatic;
+	for (const auto& item : childs) {
+		item->makeData();
+	}
 }
 
 bool Triangle::initVBO()
@@ -64,4 +74,46 @@ bool Triangle::initVBO()
 
 	_hasVBO = true;
 	return _hasVBO;
+}
+
+// STATIC
+
+void Triangle::makeTriangle(Triangle& triangle, const float& scale)
+{
+	static unsigned short int typeStatic = Triangle::TRIANGLES;
+	static unsigned int countStatic = 3;
+	static Point pointsStatic[] = { -0.425f, -0.9f, 0.0f,
+									0.575f, 0.0f, 0.0f,
+									-0.425f, 0.9f, 0.0f };
+
+	static TexCoord texCoordStatic[] = { 1.715f, 0.0f,
+										0.0f, 0.0f,
+										0.0f, 1.715f };
+
+	triangle._type = typeStatic;
+	triangle._count = countStatic;
+	triangle._points = new Point[countStatic];
+
+	for (unsigned int i = 0; i < countStatic; ++i) {
+		triangle._points[i] = pointsStatic[i] * scale;
+	}
+
+	triangle._texCoord = new TexCoord[countStatic];
+	memcpy(triangle._texCoord, texCoordStatic, sizeof(TexCoord) * countStatic);
+}
+
+TexturePtr& Triangle::getTextureStatic() {
+	if (!textureStatic) {
+		textureStatic = Texture::getByName("Textures/Box.jpg");
+	}
+
+	return textureStatic;
+}
+
+void Triangle::make(Triangle& triangle, Template& templateTrianle)
+{
+	templateTrianle.make();
+	int count = templateTrianle.getCount();
+
+	_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, "LOG: Triangle::make %d\n", count);
 }

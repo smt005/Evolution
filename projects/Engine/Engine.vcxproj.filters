@@ -49,7 +49,6 @@
     <ClCompile Include="..\..\source\Engine\Draw\DrawLine.cpp">
       <Filter>Draw</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Engine\Platform\Win\Core.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Color.cpp">
       <Filter>Object</Filter>
     </ClCompile>
@@ -61,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Engine\Object\Position.cpp">
       <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Engine\Platform\Win\Core.cpp">
+      <Filter>Platform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,7 +126,6 @@
     <ClInclude Include="..\..\source\Engine\Draw\DrawLine.h">
       <Filter>Draw</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Engine\Core.h" />
     <ClInclude Include="..\..\source\Engine\Object\Line.h">
       <Filter>Object</Filter>
     </ClInclude>
@@ -139,6 +140,9 @@
     </ClInclude>
     <ClInclude Include="..\..\source\Engine\Object\Position.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Engine\Core.h">
+      <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

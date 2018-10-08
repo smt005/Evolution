@@ -76,5 +76,11 @@
     <Image Include="..\..\source\Res\Textures\Box.jpg">
       <Filter>Res\Textures</Filter>
     </Image>
+    <Image Include="..\..\source\Res\Textures\Cell.png">
+      <Filter>Res\Textures</Filter>
+    </Image>
+    <Image Include="..\..\source\Res\Textures\CellNoAlpha.png">
+      <Filter>Res\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>
