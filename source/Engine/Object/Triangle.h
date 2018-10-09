@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include "jsoncpp/include/json/json.h"
 
 #include "Position.h"
 #include "Texture.h"

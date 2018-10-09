@@ -11,7 +11,7 @@
 namespace help
 {
 	bool loadJson(const std::string& fileName, Json::Value& value);
-	bool saveJson(const std::string& fileName, const Json::Value& value);
+	bool saveJson(const std::string& fileName, const Json::Value& value, const std::string& indentation = "\t");
 
 	bool intersection(glm::vec3 start1, glm::vec3 end1, glm::vec3 start2, glm::vec3 end2, glm::vec3 *out_intersection);
 

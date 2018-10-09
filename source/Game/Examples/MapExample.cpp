@@ -234,15 +234,15 @@ void makeMicrobeTriangles()
 		Triangle::Template& t1 = t0.add(0.9f, 0.75f, glm::vec3(1.0f, 0.0f, 0.0f));
 		{
 			t1.add(1.3f, 0.5f, glm::vec3(0.7f, 0.0f, 0.0f));
-			t1.add(0.9f, 0.25f, glm::vec3(0.2f, -1.0f, 0.0f));
+			//t1.add(0.9f, 0.25f, glm::vec3(0.2f, -1.0f, 0.0f));
 		}
 	}
 	{
-		Triangle::Template& t1 = t0.add(0.8f, 0.6f, glm::vec3(1.0f, 1.0f, 0.0f));
+		Triangle::Template& t1 = t0.add(1.8f, 0.6f, glm::vec3(1.0f, 1.0f, 0.0f));
 		{
-			t1.add(0.5f, 0.15f, glm::vec3(-0.4f, 0.5f, 0.0f));
-			t1.add(1.25f, 0.5f, glm::vec3(0.5f, -0.7f, 0.0f));
-			t1.add(1.0f, 0.8f, glm::vec3(0.25f, 0.57f, 0.0f));
+			t1.add(0.5f, 1.15f, glm::vec3(0.1f, 0.9f, 0.0f));
+			//t1.add(1.25f, 0.5f, glm::vec3(0.5f, -0.7f, 0.0f));
+			//t1.add(1.0f, 0.8f, glm::vec3(0.25f, 0.57f, 0.0f));
 		}
 	}
 

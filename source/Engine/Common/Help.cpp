@@ -22,10 +22,10 @@ bool help::loadJson(const std::string& fileName, Json::Value& value)
 	return false;
 }
 
-bool help::saveJson(const std::string& fileName, const Json::Value& value)
+bool help::saveJson(const std::string& fileName, const Json::Value& value, const std::string& indentation)
 {
 	Json::StreamWriterBuilder writerBuilder;
-	writerBuilder["indentation"] = "\t"; // If you want whitespace-less output
+	writerBuilder["indentation"] = indentation; // If you want whitespace-less output
 	const std::string valueString = Json::writeString(writerBuilder, value);
 
 	return Engine::FileManager::writeTextFile(fileName, valueString);

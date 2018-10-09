@@ -2,6 +2,9 @@
 #include "glew/include/GL/glew.h"
 #include <functional>
 
+#include "Common/Help.h"
+#include "FileManager.h"
+
 #include "Triangle.h"
 
 TexturePtr textureStatic;
@@ -14,6 +17,8 @@ Triangle::~Triangle()
 }
 
 // Template
+
+Json::Value templateJsonMake;
 
 void Triangle::Template::makeData()
 {
@@ -46,15 +51,25 @@ void Triangle::Template::makeData()
 	}
 
 	memcpy(texCoord, texCoordStatic, sizeof(TexCoord) * 3);
+
+	int intPtr = reinterpret_cast<int>(this);
+	const std::string stringPtr = std::to_string(intPtr);
+
+	for (int i = 0; i < 3; ++i)
+	{
+		templateJsonMake[stringPtr]["points"].append(points[i].data[0]);
+		templateJsonMake[stringPtr]["points"].append(points[i].data[1]);
+		templateJsonMake[stringPtr]["points"].append(points[i].data[2]);
+	}
+
+	for (const auto& item : childs) {
+		item->makeData();
+	}
 }
 
 void Triangle::Template::make()
 {
 	makeData();
-
-	for (const auto& item : childs) {
-		item->makeData();
-	}
 }
 
 bool Triangle::initVBO()
@@ -112,18 +127,37 @@ TexturePtr& Triangle::getTextureStatic() {
 	return textureStatic;
 }
 
-void append(Triangle::Point* points, Triangle::TexCoord* texCoord, int& index, Triangle::Template& triangle)
+Json::Value append(Triangle::Point* points, Triangle::TexCoord* texCoord, int& index, Triangle::Template& triangle)
 {
-	memcpy(points, triangle.points, sizeof(Triangle::Point) * 3);
-	memcpy(texCoord, triangle.texCoord, sizeof(Triangle::TexCoord) * 3);
+	int intPtr = reinterpret_cast<int>(&triangle);
+	const std::string stringPtr = std::to_string(intPtr);
+
+	Json::Value templateJson;
+	templateJson[stringPtr]["vector"].append(triangle.vector.x);
+	templateJson[stringPtr]["vector"].append(triangle.vector.y);
+	templateJson[stringPtr]["vector"].append(triangle.vector.z);
+	templateJson[stringPtr]["scale"] = triangle.scale;
+	templateJson[stringPtr]["dist"] = triangle.dist;
+	templateJson[stringPtr]["index"] = index;
+
+	for (int i = 0; i < 3; ++i)
+	{
+		templateJson[stringPtr]["points"].append(triangle.points[i].data[0]);
+		templateJson[stringPtr]["points"].append(triangle.points[i].data[1]);
+		templateJson[stringPtr]["points"].append(triangle.points[i].data[2]);
+	}
+
+	memcpy(points, &triangle.points, sizeof(Triangle::Point) * 3);
+	memcpy(texCoord, &triangle.texCoord, sizeof(Triangle::TexCoord) * 3);
 	index += 3;
 
-	Triangle::Point* pointPoints = &points[index];
-	Triangle::TexCoord* pointTexCoord = &texCoord[index];
-
 	for (auto& child : triangle.childs) {
-		append(pointPoints, pointTexCoord, index, child->getSelf());
+		Triangle::Point* pointPoints = &points[index];
+		Triangle::TexCoord* pointTexCoord = &texCoord[index];
+		templateJson[stringPtr]["childs"].append(append(pointPoints, pointTexCoord, index, child->getSelf()));
 	}
+
+	return templateJson;
 };
 
 void Triangle::make(Triangle& triangle, Template& templateTrianle)
@@ -132,9 +166,38 @@ void Triangle::make(Triangle& triangle, Template& templateTrianle)
 	int count = templateTrianle.getCount();
 
 	triangle._count = count * 3;
-	triangle._points = new Point[triangle._count];
-	triangle._texCoord = new TexCoord[triangle._count];
+	triangle._points = new Point[triangle._count * 10];
+	triangle._texCoord = new TexCoord[triangle._count * 10];
+
+	Json::Value jsonPoints;
+
+	int iM = 0;
+	for (int i = 0; i < triangle._count; ++i) {
+		triangle._points[i].data[0] = iM;
+		++iM;
+		triangle._points[i].data[1] = iM;
+		++iM;
+		triangle._points[i].data[2] = iM;
+		++iM;
+
+		jsonPoints["empty"].append(triangle._points[i].data[0]);
+		jsonPoints["empty"].append(triangle._points[i].data[1]);
+		jsonPoints["empty"].append(triangle._points[i].data[2]);
+	}
 
 	int index = 0;
-	append(triangle._points, triangle._texCoord, index, templateTrianle);
+	Json::Value templateJson = append(triangle._points, triangle._texCoord, index, templateTrianle);
+
+	help::saveJson("templateJson.json", templateJson, " ");
+
+	for (int i = 0; i < triangle._count; ++i) {
+		jsonPoints["setpo"].append(triangle._points[i].data[0]);
+		jsonPoints["setpo"].append(triangle._points[i].data[1]);
+		jsonPoints["setpo"].append(triangle._points[i].data[2]);
+	}
+
+	help::saveJson("jsonPoints.json", jsonPoints, " ");
+
+	help::saveJson("templateJsonMake.json", templateJsonMake, " ");
+	
 }
