@@ -93,6 +93,8 @@ public:
 		Point points[3];
 		TexCoord texCoord[3];
 
+		Template& getSelf() { return *this; }
+
 		Template()
 			: parent(nullptr)
 			, dist(0.0f)
@@ -101,13 +103,14 @@ public:
 		{}
 
 		Template& add(const float distToParent, const float scaleTo, const glm::vec3& vectorToParent) {
-			TemplatePtr tPtr = TemplatePtr(new Template());
+			Template* t = new Template();
+			TemplatePtr tPtr = TemplatePtr(t);
 				tPtr->parent = this;
 				tPtr->dist = distToParent;
 				tPtr->scale = scaleTo;
 				tPtr->vector = vectorToParent;
 			childs.push_back(tPtr);
-			return *this;
+			return *t;
 		}
 
 		int getCount() {

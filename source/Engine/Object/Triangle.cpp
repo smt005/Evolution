@@ -1,5 +1,7 @@
 
 #include "glew/include/GL/glew.h"
+#include <functional>
+
 #include "Triangle.h"
 
 TexturePtr textureStatic;
@@ -110,10 +112,29 @@ TexturePtr& Triangle::getTextureStatic() {
 	return textureStatic;
 }
 
+void append(Triangle::Point* points, Triangle::TexCoord* texCoord, int& index, Triangle::Template& triangle)
+{
+	memcpy(points, triangle.points, sizeof(Triangle::Point) * 3);
+	memcpy(texCoord, triangle.texCoord, sizeof(Triangle::TexCoord) * 3);
+	index += 3;
+
+	Triangle::Point* pointPoints = &points[index];
+	Triangle::TexCoord* pointTexCoord = &texCoord[index];
+
+	for (auto& child : triangle.childs) {
+		append(pointPoints, pointTexCoord, index, child->getSelf());
+	}
+};
+
 void Triangle::make(Triangle& triangle, Template& templateTrianle)
 {
 	templateTrianle.make();
 	int count = templateTrianle.getCount();
 
-	_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, "LOG: Triangle::make %d\n", count);
+	triangle._count = count * 3;
+	triangle._points = new Point[triangle._count];
+	triangle._texCoord = new TexCoord[triangle._count];
+
+	int index = 0;
+	append(triangle._points, triangle._texCoord, index, templateTrianle);
 }
