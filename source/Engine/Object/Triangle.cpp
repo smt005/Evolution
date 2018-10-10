@@ -19,16 +19,17 @@ Triangle::~Triangle()
 // Template
 
 Json::Value templateJsonMake;
+float height = 0.0001f;
 
 void Triangle::Template::makeData()
 {
-	static Point pointsStatic[] = { -0.425f, -0.9f, 0.0f,
-									0.575f, 0.0f, 0.0f,
-									-0.425f, 0.9f, 0.0f };
+	static const Point pointsStatic[] = {	-0.425f, -0.9f, 0.0f,
+											0.575f, 0.0f, 0.0f,
+											-0.425f, 0.9f, 0.0f };
 
-	static TexCoord texCoordStatic[] = { 1.715f, 0.0f,
-										0.0f, 0.0f,
-										0.0f, 1.715f };
+	static const TexCoord texCoordStatic[] = {	1.715f, 0.0f,
+												0.0f, 0.0f,
+												0.0f, 1.715f };
 
 	for (unsigned int i = 0; i < 3; ++i) {
 		points[i] = pointsStatic[i] * scale;
@@ -44,6 +45,8 @@ void Triangle::Template::makeData()
 
 		pos = vecNormalize * dist;
 		pos += posParent;
+		pos.z += height;
+		height += 0.0001f;
 
 		for (unsigned int i = 0; i < 3; ++i) {
 			points[i] += pos;
@@ -69,6 +72,7 @@ void Triangle::Template::makeData()
 
 void Triangle::Template::make()
 {
+	height = 0.0f;
 	makeData();
 }
 
@@ -147,14 +151,15 @@ Json::Value append(Triangle::Point* points, Triangle::TexCoord* texCoord, int& i
 		templateJson[stringPtr]["points"].append(triangle.points[i].data[2]);
 	}
 
-	memcpy(points, &triangle.points, sizeof(Triangle::Point) * 3);
-	memcpy(texCoord, &triangle.texCoord, sizeof(Triangle::TexCoord) * 3);
+	Triangle::Point* pointPoints = &points[index];
+	Triangle::TexCoord* pointTexCoord = &texCoord[index];
+
+	memcpy(pointPoints, &triangle.points, sizeof(Triangle::Point) * 3);
+	memcpy(pointTexCoord, &triangle.texCoord, sizeof(Triangle::TexCoord) * 3);
 	index += 3;
 
 	for (auto& child : triangle.childs) {
-		Triangle::Point* pointPoints = &points[index];
-		Triangle::TexCoord* pointTexCoord = &texCoord[index];
-		templateJson[stringPtr]["childs"].append(append(pointPoints, pointTexCoord, index, child->getSelf()));
+		templateJson[stringPtr]["childs"].append(append(points, texCoord, index, child->getSelf()));
 	}
 
 	return templateJson;

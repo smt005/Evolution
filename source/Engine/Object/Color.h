@@ -22,6 +22,7 @@ public:
 	Color(const float r, const float g, const float b, const float a);
 	Color(const int templateColor);
 
+	//inline Color& operator=(const int templateColor) { *this = Color(templateColor); }
 	inline Color& operator=(const Color& color)		{ memcpy(_data, color._data, (sizeof(float) * 4));	return *this; }
 	inline Color& operator=(const float* const data){ memcpy(_data, data, (sizeof(float) * 4));			return *this; }
 	inline bool operator==(const Color& color) {
@@ -31,7 +32,8 @@ public:
 
 	inline float& operator[](const size_t index) { return _data[index]; }
 	
-	void set(const float* const data) { memcpy(_data, data, (sizeof(float) * 4)); }
+	inline void setColor(const Color& color)		{ memcpy(_data, color._data, (sizeof(float) * 4)); }
+	inline void set(const float* const data){ memcpy(_data, data, (sizeof(float) * 4)); }
 
 	inline void setRed(float const r)	{ _data[RED] = r;	}
 	inline void setGreen(float const g)	{ _data[GREEN] = g;	}

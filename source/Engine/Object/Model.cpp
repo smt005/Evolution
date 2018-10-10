@@ -6,6 +6,12 @@
 #define FILE_NAME_SHAPE_FILE	"Models/Box1.obj"
 #define FILE_NAME_TEXTURE_FILE	"Textures/BlackWhite.png"
 
+Model::Model()
+	: Color(Color::WHITE)
+{
+
+}
+
 Shape& Model::getShape()
 {
 	if (_shape) return *_shape;

@@ -5,8 +5,9 @@
 
 #include "Position.h"
 #include "Texture.h"
+#include "Color.h"
 
-class Triangle : public Position
+class Triangle : public Position, public Color
 {
 public:
 	struct Point {
@@ -16,6 +17,13 @@ public:
 			data[1] *= scale;
 			data[2] *= scale;
 			return *this;
+		}
+		Point operator*(const float scale) const {
+			Point temp;
+			temp.data[0] = data[0] * scale;
+			temp.data[1] = data[1] * scale;
+			temp.data[2] = data[2] * scale;
+			return temp;
 		}
 		Point& operator+=(const glm::vec3& pos) {
 			data[0] += pos.x;

@@ -4,19 +4,22 @@
 #include "Common/DataClass.h"
 #include "Shape.h"
 #include "Texture.h"
+#include "Color.h"
 
 #include <string>
 
 class Model;
 typedef std::shared_ptr<Model> ModelPtr;
 
-class Model : public DataClass <Model>
+class Model : public DataClass <Model>, public Color
 {
 private:
 	ShapePtr _shape;
 	TexturePtr _texture;
 
 public:
+	Model();
+
 	Shape& getShape();
 	Mesh& getMesh();
 	Texture& texture();

@@ -21,8 +21,9 @@
 #include "Object/Map.h"
 #include "Object/Line.h"
 #include "Object/Triangle.h"
+#include "Object/Color.h"
 
-const std::string saveFileName("Data/MapExampleSave.json");
+const std::string saveFileName("Saves/MapExampleSave.json");
 const std::string mapFileName("Examples/MapExample");
 
 Greed greed(100.0f, 10.0f);
@@ -100,9 +101,9 @@ void MapExample::initCallback()
 				return;
 			}
 
-			float speedCamera = 40.0f * Engine::Core::deltaTime();
+			float speedCamera = 5.0f * Engine::Core::deltaTime();
 			if (Engine::Callback::pressKey(Engine::VirtualKey::SHIFT)) {
-				speedCamera = 10.0f * Engine::Core::deltaTime();
+				speedCamera = 30.0f * Engine::Core::deltaTime();
 			}
 
 			if (Engine::Callback::pressKey(Engine::VirtualKey::S)) {
@@ -144,7 +145,10 @@ bool MapExample::load()
 		Camera::current.setJsonData(cameraData);
 	}
 
-	Engine::Core::log("LOAD");
+#if _DEBUG
+	Engine::Core::log("LOAD: " + saveFileName + "\n" + help::stringFroJson(saveData));
+#endif // _DEBUG
+
 	return true;
 }
 
@@ -160,7 +164,9 @@ void MapExample::save()
 
 	help::saveJson(saveFileName, saveData);
 
-	Engine::Core::log("SAVE");
+#if _DEBUG
+	Engine::Core::log("SAVE: " + saveFileName + "\n" + help::stringFroJson(saveData));
+#endif // _DEBUG
 }
 
 void MapExample::update()
@@ -227,22 +233,23 @@ void MapExample::draw()
 
 void makeMicrobeTriangles()
 {
+	float radius = 0.78f * 0.5f;
 	Triangle::Template t0;
 
 	//	dist, scale vector
 	{
-		Triangle::Template& t1 = t0.add(0.9f, 0.75f, glm::vec3(1.0f, 0.0f, 0.0f));
+		Triangle::Template& t1 = t0.add(radius, 0.5f, glm::vec3(1.0f, 1.0f, 0.0f));
 		{
-			t1.add(1.3f, 0.5f, glm::vec3(0.7f, 0.0f, 0.0f));
-			//t1.add(0.9f, 0.25f, glm::vec3(0.2f, -1.0f, 0.0f));
+			t1.add((radius * 0.5f), 0.25f, glm::vec3(0.999f, 0.0f, 0.0f));
+			//t1.add((radius * 0.5f), 0.25f, glm::vec3(0.2f, -1.0f, 0.0f));
 		}
 	}
 	{
-		Triangle::Template& t1 = t0.add(1.8f, 0.6f, glm::vec3(1.0f, 1.0f, 0.0f));
+		Triangle::Template& t1 = t0.add(radius, 0.5f, glm::vec3(-1.0f, -1.0f, 0.0f));
 		{
-			t1.add(0.5f, 1.15f, glm::vec3(0.1f, 0.9f, 0.0f));
-			//t1.add(1.25f, 0.5f, glm::vec3(0.5f, -0.7f, 0.0f));
-			//t1.add(1.0f, 0.8f, glm::vec3(0.25f, 0.57f, 0.0f));
+			t1.add((radius * 0.5f), 0.25f, glm::vec3(0.999f, 0.0f, 0.0f));
+			//t1.add((radius * 0.5f), 0.25f, glm::vec3(0.5f, -0.7f, 0.0f));
+			//t1.add((radius * 0.5f), 0.25f, glm::vec3(0.25f, 0.57f, 0.0f));
 		}
 	}
 
@@ -250,4 +257,5 @@ void makeMicrobeTriangles()
 
 	microbe.setTexture("Textures/Cell.png");
 	microbe.setPos({ 0.5f, 0.25f, 0.5f });
+	microbe.setColor(Color::GREEN);
 }

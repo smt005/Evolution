@@ -27,6 +27,7 @@ struct {
 	GLuint a_position = 0;
 	GLuint a_texCoord = 0;
 	GLuint s_baseMap = 0;
+	GLuint u_color = 0;
 } baseShader;
 
 void Draw::setClearColor(const float r, const float g, const float b, const float a)
@@ -72,6 +73,7 @@ void Draw::prepare()
 		baseShader.a_texCoord = glGetAttribLocation(baseShader.program, "a_texCoord");
 
 		baseShader.s_baseMap = glGetUniformLocation(baseShader.program, "s_baseMap");
+		baseShader.u_color = glGetUniformLocation(baseShader.program, "u_color");
 	}
 
 	glUseProgram(baseShader.program);
@@ -101,11 +103,9 @@ void Draw::draw(Mesh& mesh)
 		curentBufer = mesh.bufferIndexes();
 
 		glBindBuffer(GL_ARRAY_BUFFER, mesh.bufferVertexes());
-		//glEnableVertexAttribArray(baseShader.a_position);
 		glVertexAttribPointer(baseShader.a_position, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
 
 		glBindBuffer(GL_ARRAY_BUFFER, mesh.bufferTexCoords());
-		//glEnableVertexAttribArray(baseShader.a_texCoord);
 		glVertexAttribPointer(baseShader.a_texCoord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.bufferIndexes());
@@ -124,6 +124,8 @@ void Draw::draw(Model& model)
 		glUniform1i(baseShader.s_baseMap, 0);
 		glBindTexture(GL_TEXTURE_2D, currentTexture);
 	}
+
+	glUniform4fv(baseShader.u_color, 1, model.getDataPtr());
 
 	Mesh& mesh = model.getMesh();
 	draw(mesh);
@@ -172,6 +174,8 @@ void Draw::draw(Triangle& triangle)
 	if (!triangle.hasVBO()) {
 		if (!triangle.initVBO()) return;
 	}
+
+	glUniform4fv(baseShader.u_color, 1, triangle.getDataPtr());
 
 	if (curentBufer != triangle.bufferVertexes())
 	{

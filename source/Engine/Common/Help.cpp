@@ -24,11 +24,15 @@ bool help::loadJson(const std::string& fileName, Json::Value& value)
 
 bool help::saveJson(const std::string& fileName, const Json::Value& value, const std::string& indentation)
 {
+	const std::string valueString = stringFroJson(value, indentation);
+	return Engine::FileManager::writeTextFile(fileName, valueString);
+}
+
+std::string help::stringFroJson(const Json::Value& value, const std::string& indentation)
+{
 	Json::StreamWriterBuilder writerBuilder;
 	writerBuilder["indentation"] = indentation; // If you want whitespace-less output
-	const std::string valueString = Json::writeString(writerBuilder, value);
-
-	return Engine::FileManager::writeTextFile(fileName, valueString);
+	return Json::writeString(writerBuilder, value);
 }
 
 bool help::intersection(vec3 start1, vec3 end1, vec3 start2, vec3 end2, vec3* out_intersection)
