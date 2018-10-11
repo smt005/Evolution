@@ -11,6 +11,9 @@
     <Filter Include="Source\Examples">
       <UniqueIdentifier>{e93b06e1-2ef1-4d5c-92af-2545ecf23dd6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Examples\GenerateShape">
+      <UniqueIdentifier>{5b590695-96f8-4283-ab2c-72c0d31b40b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h">
@@ -22,6 +25,12 @@
     <ClInclude Include="..\..\source\Game\GamesManager.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.h">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\TriangleExample.h">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">
@@ -29,6 +38,12 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp">
       <Filter>Source\Examples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.cpp">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\TriangleExample.cpp">
+      <Filter>Source\Examples\GenerateShape</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

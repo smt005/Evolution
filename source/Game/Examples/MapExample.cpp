@@ -22,6 +22,7 @@
 #include "Object/Line.h"
 #include "Object/Triangle.h"
 #include "Object/Color.h"
+#include "Examples/GenerateShape/TriangleExample.h"
 
 const std::string saveFileName("Saves/MapExampleSave.json");
 const std::string mapFileName("Examples/MapExample");
@@ -234,18 +235,18 @@ void MapExample::draw()
 void makeMicrobeTriangles()
 {
 	float radius = 0.78f * 0.5f;
-	Triangle::Template t0;
+	TriangleExample::Template t0;
 
 	//	dist, scale vector
 	{
-		Triangle::Template& t1 = t0.add(radius, 0.5f, glm::vec3(1.0f, 1.0f, 0.0f));
+		TriangleExample::Template& t1 = t0.add(radius, 0.5f, glm::vec3(1.0f, 1.0f, 0.0f));
 		{
 			t1.add((radius * 0.5f), 0.25f, glm::vec3(0.999f, 0.0f, 0.0f));
 			//t1.add((radius * 0.5f), 0.25f, glm::vec3(0.2f, -1.0f, 0.0f));
 		}
 	}
 	{
-		Triangle::Template& t1 = t0.add(radius, 0.5f, glm::vec3(-1.0f, -1.0f, 0.0f));
+		TriangleExample::Template& t1 = t0.add(radius, 0.5f, glm::vec3(-1.0f, -1.0f, 0.0f));
 		{
 			t1.add((radius * 0.5f), 0.25f, glm::vec3(0.999f, 0.0f, 0.0f));
 			//t1.add((radius * 0.5f), 0.25f, glm::vec3(0.5f, -0.7f, 0.0f));
@@ -253,7 +254,7 @@ void makeMicrobeTriangles()
 		}
 	}
 
-	Triangle::make(microbe, t0);
+	TriangleExample::make(microbe, t0);
 
 	microbe.setTexture("Textures/Cell.png");
 	microbe.setPos({ 0.5f, 0.25f, 0.5f });

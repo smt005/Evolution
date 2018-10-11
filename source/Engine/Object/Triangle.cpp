@@ -7,73 +7,24 @@
 
 #include "Triangle.h"
 
-TexturePtr textureStatic;
+TexturePtr Triangle::textureStatic;
 
-Triangle::~Triangle()
-{
+Triangle::~Triangle() {
 	if (_points) {
 		delete[] _points;
 	}
-}
 
-// Template
-
-Json::Value templateJsonMake;
-float height = 0.0001f;
-
-void Triangle::Template::makeData()
-{
-	static const Point pointsStatic[] = {	-0.425f, -0.9f, 0.0f,
-											0.575f, 0.0f, 0.0f,
-											-0.425f, 0.9f, 0.0f };
-
-	static const TexCoord texCoordStatic[] = {	1.715f, 0.0f,
-												0.0f, 0.0f,
-												0.0f, 1.715f };
-
-	for (unsigned int i = 0; i < 3; ++i) {
-		points[i] = pointsStatic[i] * scale;
-	}
-
-	if (dist > 0.0f) {
-		glm::vec3 vecNormalize = glm::normalize(vector);
-		glm::vec3 posParent(0.0f);
-
-		if (parent) {
-			posParent = parent->pos;
-		}
-
-		pos = vecNormalize * dist;
-		pos += posParent;
-		pos.z += height;
-		height += 0.0001f;
-
-		for (unsigned int i = 0; i < 3; ++i) {
-			points[i] += pos;
-		}
-	}
-
-	memcpy(texCoord, texCoordStatic, sizeof(TexCoord) * 3);
-
-	int intPtr = reinterpret_cast<int>(this);
-	const std::string stringPtr = std::to_string(intPtr);
-
-	for (int i = 0; i < 3; ++i)
-	{
-		templateJsonMake[stringPtr]["points"].append(points[i].data[0]);
-		templateJsonMake[stringPtr]["points"].append(points[i].data[1]);
-		templateJsonMake[stringPtr]["points"].append(points[i].data[2]);
-	}
-
-	for (const auto& item : childs) {
-		item->makeData();
+	if (_texCoord) {
+		delete[] _texCoord;
 	}
 }
 
-void Triangle::Template::make()
+void Triangle::setData(unsigned short int type, unsigned int count, Point* points, TexCoord* texCoord)
 {
-	height = 0.0f;
-	makeData();
+	type = _type;
+	_count = count;
+	_points = points;
+	_texCoord = texCoord;
 }
 
 bool Triangle::initVBO()
@@ -97,31 +48,7 @@ bool Triangle::initVBO()
 	return _hasVBO;
 }
 
-// STATIC
-
-void Triangle::makeTriangle(Triangle& triangle, const float& scale)
-{
-	static unsigned short int typeStatic = Triangle::TRIANGLES;
-	static unsigned int countStatic = 3;
-	static Point pointsStatic[] = { -0.425f, -0.9f, 0.0f,
-									0.575f, 0.0f, 0.0f,
-									-0.425f, 0.9f, 0.0f };
-
-	static TexCoord texCoordStatic[] = { 1.715f, 0.0f,
-										0.0f, 0.0f,
-										0.0f, 1.715f };
-
-	triangle._type = typeStatic;
-	triangle._count = countStatic;
-	triangle._points = new Point[countStatic];
-
-	for (unsigned int i = 0; i < countStatic; ++i) {
-		triangle._points[i] = pointsStatic[i] * scale;
-	}
-
-	triangle._texCoord = new TexCoord[countStatic];
-	memcpy(triangle._texCoord, texCoordStatic, sizeof(TexCoord) * countStatic);
-}
+// static
 
 TexturePtr& Triangle::getTextureStatic() {
 	if (!textureStatic) {
@@ -129,80 +56,4 @@ TexturePtr& Triangle::getTextureStatic() {
 	}
 
 	return textureStatic;
-}
-
-Json::Value append(Triangle::Point* points, Triangle::TexCoord* texCoord, int& index, Triangle::Template& triangle)
-{
-	int intPtr = reinterpret_cast<int>(&triangle);
-	const std::string stringPtr = std::to_string(intPtr);
-
-	Json::Value templateJson;
-	templateJson[stringPtr]["vector"].append(triangle.vector.x);
-	templateJson[stringPtr]["vector"].append(triangle.vector.y);
-	templateJson[stringPtr]["vector"].append(triangle.vector.z);
-	templateJson[stringPtr]["scale"] = triangle.scale;
-	templateJson[stringPtr]["dist"] = triangle.dist;
-	templateJson[stringPtr]["index"] = index;
-
-	for (int i = 0; i < 3; ++i)
-	{
-		templateJson[stringPtr]["points"].append(triangle.points[i].data[0]);
-		templateJson[stringPtr]["points"].append(triangle.points[i].data[1]);
-		templateJson[stringPtr]["points"].append(triangle.points[i].data[2]);
-	}
-
-	Triangle::Point* pointPoints = &points[index];
-	Triangle::TexCoord* pointTexCoord = &texCoord[index];
-
-	memcpy(pointPoints, &triangle.points, sizeof(Triangle::Point) * 3);
-	memcpy(pointTexCoord, &triangle.texCoord, sizeof(Triangle::TexCoord) * 3);
-	index += 3;
-
-	for (auto& child : triangle.childs) {
-		templateJson[stringPtr]["childs"].append(append(points, texCoord, index, child->getSelf()));
-	}
-
-	return templateJson;
-};
-
-void Triangle::make(Triangle& triangle, Template& templateTrianle)
-{
-	templateTrianle.make();
-	int count = templateTrianle.getCount();
-
-	triangle._count = count * 3;
-	triangle._points = new Point[triangle._count * 10];
-	triangle._texCoord = new TexCoord[triangle._count * 10];
-
-	Json::Value jsonPoints;
-
-	int iM = 0;
-	for (int i = 0; i < triangle._count; ++i) {
-		triangle._points[i].data[0] = iM;
-		++iM;
-		triangle._points[i].data[1] = iM;
-		++iM;
-		triangle._points[i].data[2] = iM;
-		++iM;
-
-		jsonPoints["empty"].append(triangle._points[i].data[0]);
-		jsonPoints["empty"].append(triangle._points[i].data[1]);
-		jsonPoints["empty"].append(triangle._points[i].data[2]);
-	}
-
-	int index = 0;
-	Json::Value templateJson = append(triangle._points, triangle._texCoord, index, templateTrianle);
-
-	help::saveJson("templateJson.json", templateJson, " ");
-
-	for (int i = 0; i < triangle._count; ++i) {
-		jsonPoints["setpo"].append(triangle._points[i].data[0]);
-		jsonPoints["setpo"].append(triangle._points[i].data[1]);
-		jsonPoints["setpo"].append(triangle._points[i].data[2]);
-	}
-
-	help::saveJson("jsonPoints.json", jsonPoints, " ");
-
-	help::saveJson("templateJsonMake.json", templateJsonMake, " ");
-	
 }
