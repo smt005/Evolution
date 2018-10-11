@@ -34,6 +34,18 @@
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.h">
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeBrain.h">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeMover.h">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeMouth.h">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeEnergy.h">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">
@@ -49,6 +61,18 @@
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.cpp">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeBrain.cpp">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeMover.cpp">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeMouth.cpp">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeEnergy.cpp">
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClCompile>
   </ItemGroup>

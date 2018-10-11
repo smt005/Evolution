@@ -29,20 +29,24 @@ void Greed::set(const float width, const float step)
 	{
 		generateLines(lineX, width, step, true);
 		lineX.color = Color::GREEN;
+		lineX.color.setAlpha(0.05f);
 
 		float heavyPoints[] = { 0.0f, 0.0f, 0.0f, 10.0f, 0.0f, 0.0f };
 		heavyLineX.set(heavyPoints, 2);
 		heavyLineX.color = Color::GREEN;
+		heavyLineX.color.setAlpha(0.05f);
 		heavyLineX.setLineWidth(5.0f);
 	}
 
 	{
 		generateLines(lineY, width, step, false);
 		lineY.color = Color::BLUE;
+		lineY.color.setAlpha(0.05f);
 
 		float heavyPoints[] = { 0.0f, 0.0f, 0.0f, 0.0f, 10.0f, 0.0f };
 		heavyLineY.set(heavyPoints, 2);
 		heavyLineY.color = Color::BLUE;
+		heavyLineY.color.setAlpha(0.05f);
 		heavyLineY.setLineWidth(5.0f);
 	}
 
@@ -50,10 +54,12 @@ void Greed::set(const float width, const float step)
 		float points[] = { 0.0f, 0.0f, -100.0f, 0.0f, 0.0f, 100.0f };
 		lineZ.set(points, 2);
 		lineZ.color = Color::RED;
+		lineZ.color.setAlpha(0.05f);
 
 		float heavyPoints[] = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 10.0f };
 		heavyLineZ.set(heavyPoints, 2);
 		heavyLineZ.color = Color::RED;
+		heavyLineZ.color.setAlpha(0.05f);
 		heavyLineZ.setLineWidth(5.0f);
 	}
 }

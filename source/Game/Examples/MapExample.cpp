@@ -22,13 +22,15 @@
 #include "Object/Line.h"
 #include "Object/Triangle.h"
 #include "Object/Color.h"
-#include "Examples/GenerateShape/TriangleExample.h"
+#include "Object/Identify.h"
+#include "GenerateShape/TriangleExample.h"
+#include "GenerateShape/Microbe.h"
 
 const std::string saveFileName("Saves/MapExampleSave.json");
 const std::string mapFileName("Examples/MapExample");
 
 Greed greed(100.0f, 10.0f);
-Triangle microbe;
+Triangle microbeExample;
 
 void makeMicrobeTriangles();
 
@@ -64,6 +66,8 @@ void MapExample::init()
 	greed.setPos({0.0f, 0.0f, 0.1f});
 	makeMicrobeTriangles();
 	
+	microbe::Microbe::generateMicrobes();
+
 	initCallback();
 }
 
@@ -172,6 +176,8 @@ void MapExample::save()
 
 void MapExample::update()
 {
+	microbe::Microbe::updateMicrobes();
+
 	if (_mapGame) {
 		_mapGame->action();
 	}
@@ -229,7 +235,7 @@ void MapExample::draw()
 		Draw::draw(*_mapGame);
 	}
 
-	Draw::draw(microbe);
+	Draw::draw(microbeExample);
 }
 
 void makeMicrobeTriangles()
@@ -254,9 +260,9 @@ void makeMicrobeTriangles()
 		}
 	}
 
-	TriangleExample::make(microbe, t0);
+	TriangleExample::make(microbeExample, t0);
 
-	microbe.setTexture("Textures/Cell.png");
-	microbe.setPos({ 0.5f, 0.25f, 0.5f });
-	microbe.setColor(Color::GREEN);
+	microbeExample.setTexture("Textures/Cell.png");
+	microbeExample.setPos({ 0.5f, 0.25f, 0.5f });
+	microbeExample.setColor(Color::GREEN);
 }

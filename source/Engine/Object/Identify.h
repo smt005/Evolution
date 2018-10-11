@@ -15,11 +15,12 @@ public:
 	}
 
 	inline std::string getIdAsString(const unsigned short int lenght = 0) const {
-		return getIdAsString(_id, lenght);
+		return getIdAsStringStatic(_id, lenght);
 	}
 
 public:
-	static std::string getIdAsString(long unsigned int id, const unsigned short int lenght = 0) {
+	template <class ValueT>
+	static std::string getIdAsStringStatic(const ValueT id, const unsigned short int lenght = 0) {
 		std::string idStr = std::to_string(id);
 		size_t lenghtId = idStr.length();
 
@@ -31,9 +32,11 @@ public:
 		std::string prefixStr;
 		prefixStr.reserve(prefixLenght);
 		char* prefixChar = prefixStr.data();
-		for (int i = 0; i < prefixLenght; ++prefixLenght) {
+		size_t i = 0;
+		for (i = 0; i < prefixLenght; ++i) {
 			prefixChar[i] = '0';
 		}
+		prefixChar[i] = '\0';
 
 		return prefixChar + idStr;
 	}
@@ -69,8 +72,8 @@ public:
 	}
 
 	template <class ValueT>
-	inline void setName(const ValueT value) {
-		_nameObject = std::to_string(value);
+	inline void setName(const ValueT value, const unsigned short int lenght = 0) {
+		_nameObject = UniqueId::getIdAsString(value, lenght);
 	}
 
 	inline void setName(const Name& name) {
