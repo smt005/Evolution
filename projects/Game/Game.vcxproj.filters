@@ -25,10 +25,13 @@
     <ClInclude Include="..\..\source\Game\GamesManager.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.h">
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\TriangleExample.h">
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\TriangleExample.h">
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\Microbe.h">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.h">
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClInclude>
   </ItemGroup>
@@ -39,10 +42,13 @@
     <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp">
       <Filter>Source\Examples</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.cpp">
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\TriangleExample.cpp">
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\TriangleExample.cpp">
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\Microbe.cpp">
+      <Filter>Source\Examples\GenerateShape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.cpp">
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClCompile>
   </ItemGroup>
