@@ -19,8 +19,9 @@ public:
 	}
 
 public:
-	template <class ValueT>
-	static std::string getIdAsStringStatic(const ValueT id, const unsigned short int lenght = 0) {
+	//template <class ValueT>
+	//static std::string getIdAsStringStatic(const ValueT id, const unsigned short int lenght = 0) {
+	static std::string getIdAsStringStatic(const unsigned long int id, const unsigned short int lenght = 0) {
 		std::string idStr = std::to_string(id);
 		size_t lenghtId = idStr.length();
 
@@ -71,9 +72,10 @@ public:
 		_nameObject = id.getIdAsString(lenght);
 	}
 
-	template <class ValueT>
-	inline void setName(const ValueT value, const unsigned short int lenght = 0) {
-		_nameObject = UniqueId::getIdAsString(value, lenght);
+	//template <class ValueT>
+	//inline void setName(const ValueT value, const unsigned short int lenght = 0) {
+	inline void setName(const unsigned long int value, const unsigned short int lenght = 0) {
+		_nameObject = UniqueId::getIdAsStringStatic(value, lenght);
 	}
 
 	inline void setName(const Name& name) {

@@ -4,12 +4,25 @@
 #include "MicrobeMouth.h"
 #include "MicrobeMover.h"
 #include "MicrobeEnergy.h"
+#include "DNA.h"
 #include "Core.h"
 
 using namespace microbe;
 
 Microbe::Microbe() {
 	Engine::Core::log("Microbe::Microbe id: " + getIdAsString(3));
+}
+
+Microbe::Microbe(const DnaPtr& DNA) {
+	_DNA = DNA;
+	std::string isStr = _DNA ? _DNA->name() : "EMPTY";
+	Engine::Core::log("Microbe::Microbe id: " + getIdAsString(3) + ' ' + isStr);
+}
+
+Microbe::Microbe(const std::string& idDNA) {
+	_DNA = DNA::getByName(idDNA);
+	std::string isStr = _DNA ? _DNA->name() : "EMPTY";
+	Engine::Core::log("Microbe::Microbe id: " + getIdAsString(3) + ' ' + isStr);
 }
 
 void Microbe::update()
@@ -68,8 +81,10 @@ void Microbe::generateMicrobes()
 
 	for (int i = 0; i < 10; ++i)
 	{
-		Microbe* microbe = new Microbe();
+		Microbe* microbe = new Microbe("376");
 		microbe->generate();
 		_microbes.emplace_back(microbe);
 	}
+
+	Engine::Core::log("log");
 }

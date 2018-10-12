@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h" />
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\DNA.h" />
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\Microbe.h" />
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeBrain.h" />
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeEnergy.h" />
@@ -32,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp" />
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\DNA.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\Microbe.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeBrain.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeEnergy.cpp" />
