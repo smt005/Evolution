@@ -20,10 +20,10 @@ bool DNA::create(const string &name)
 		const Json::Value& valueJson = *it;
 		ValueCell cell;
 
-		cell.type = valueJson["t"].asInt();
-		cell.angle = valueJson["a"].asFloat();
-		cell.dist = valueJson["d"].asFloat();
-		cell.size = valueJson["s"].asFloat();
+		cell.type	= valueJson["t"].asInt();
+		cell.angle	= valueJson["a"].asFloat();
+		cell.dist	= valueJson["d"].asFloat();
+		cell.size	= valueJson["s"].asFloat();
 
 		_cells.push_back(cell);
 	}

@@ -10,6 +10,8 @@ public:
 		_id = _counter;
 	}
 
+	virtual ~UniqueId() {}
+
 	inline long unsigned int getId() const {
 		return _id;
 	}
@@ -62,6 +64,8 @@ public:
 	Name(const Name& name) {
 		setName(name);
 	}
+
+	virtual ~Name() {}
 
 	inline void setNameFromPtr() {
 		long unsigned int intPtr = reinterpret_cast<long unsigned int>(this);

@@ -38,24 +38,38 @@ void Microbe::update()
 
 void Microbe::generate()
 {
-	{
-		Cell* cell = new Brain();
-		_childs.emplace_back(cell);
+	if (!_DNA) {
+		return;
 	}
 
+	for (auto& dnaCell : _DNA->getCells())
 	{
-		Cell* cell = new Mouth();
-		_childs.emplace_back(cell);
-	}
+		switch (dnaCell.type)
+		{
+			case  Cell::BRAIN :
+			{
+				Cell* cell = new Brain();
+				_childs.emplace_back(cell); 
+			} break;
 
-	{
-		Cell* cell = new Mover();
-		_childs.emplace_back(cell);
-	}
+			case  Cell::ENERGY:
+			{
+				Cell* cell = new Energy();
+				_childs.emplace_back(cell);
+			} break;
 
-	{
-		Cell* cell = new Energy();
-		_childs.emplace_back(cell);
+			case  Cell::MOUTH:
+			{
+				Cell* cell = new Mouth();
+				_childs.emplace_back(cell);
+			} break;
+
+			case  Cell::MOVER:
+			{
+				Cell* cell = new Mover();
+				_childs.emplace_back(cell);
+			};
+		}
 	}
 }
 

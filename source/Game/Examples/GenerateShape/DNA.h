@@ -28,6 +28,7 @@ private:
 
 public:
 	bool create(const string &_name) override;
+	const std::vector<ValueCell>& getCells() const { return _cells; }
 
 private:
 	std::vector<ValueCell> _cells;

@@ -12,6 +12,8 @@ public:
 		set(pos);
 	}
 
+	virtual ~Position() {}
+
 	void setPos(const float (&pos)[3]) {
 		_matrix[3][0] = pos[0];
 		_matrix[3][1] = pos[1];

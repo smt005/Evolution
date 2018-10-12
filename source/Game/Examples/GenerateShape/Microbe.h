@@ -12,6 +12,8 @@ namespace microbe
 
 class Microbe;
 
+class 
+
 class Cell
 {
 public:
