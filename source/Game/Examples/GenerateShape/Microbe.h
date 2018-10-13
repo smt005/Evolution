@@ -10,9 +10,14 @@
 namespace microbe
 {
 
+class Cell;
 class Microbe;
+class MicrobeShape;
 
-class 
+typedef std::shared_ptr<Cell> CellPtr;
+typedef std::shared_ptr<Microbe> MicrobePtr;
+typedef std::weak_ptr<Microbe> MicrobeWptr;
+typedef std::shared_ptr<MicrobeShape> MicrobeShapePtr;
 
 class Cell
 {
@@ -29,16 +34,31 @@ public:
 	typedef unsigned short int Type;
 
 public:
+	Cell() {}
+	void init(const MicrobeWptr& core, const DNA::ValueCell& valueCell)
+	{
+		if (core.expired()) {
+			return;
+		}
+
+		_core = core;
+
+		_pos[0] = cosf(valueCell.angle) * valueCell.dist;
+		_pos[1] = sinf(valueCell.angle) * valueCell.dist;
+		_pos[2] = 0.0f;
+
+		_size = valueCell.size;
+
+	}
 	virtual ~Cell() {}
 	virtual unsigned short int type() = 0;
 	virtual void update() {}
 
-private:
-	glm::vec3 pos;
+public:
+	MicrobeWptr _core;
+	float _pos[3];
+	float _size;
 };
-
-typedef std::shared_ptr<Cell> CellPtr;
-typedef std::shared_ptr<Microbe> MicrobePtr;
 
 class Microbe final : public Position, public UniqueId
 {
@@ -47,11 +67,12 @@ public:
 	Microbe(const DnaPtr& DNA);
 	Microbe(const std::string& idDNA);
 	void update();
-	void generate();
+	void generate(const MicrobeWptr& microbeWptr);
 
 private:
 	std::vector<CellPtr> _childs;
-	DnaPtr _DNA;
+	DnaPtr _dnaPtr;
+	MicrobeShapePtr _microbeShapePtr;
 
 public:
 	static void updateMicrobes();

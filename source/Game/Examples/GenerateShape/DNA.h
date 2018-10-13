@@ -17,7 +17,7 @@ typedef std::shared_ptr<DNA> DnaPtr;
 
 class DNA : public DataClass<DNA>
 {
-private:
+public:
 	struct ValueCell
 	{
 		Type type;
