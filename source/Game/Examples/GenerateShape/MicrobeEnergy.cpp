@@ -6,5 +6,5 @@ using namespace microbe;
 
 void Energy::update()
 {
-	Engine::Core::log("\tEnergy::update");
+	//Engine::Core::log("\tEnergy::update");
 }

@@ -3,9 +3,9 @@
 
 Color::Color()
 {
-	_data[RED] = 0.0f;
-	_data[GREEN] = 0.0f;
-	_data[2] = 0.0f;
+	_data[RED] = 1.0f;
+	_data[GREEN] = 1.0f;
+	_data[2] = 1.0f;
 	_data[ALPHA] = 1.0f;
 }
 

@@ -27,10 +27,12 @@ void Triangle::setData(unsigned short int type, unsigned int count, Point* point
 	_texCoord = texCoord;
 }
 
-bool Triangle::initVBO()
+bool Triangle::initVBO() const
 {
-	glDeleteBuffers(2, _buffer);
-	glGenBuffers(2, _buffer);
+	unsigned int* buffer = const_cast<unsigned int*>(_buffer);
+
+	glDeleteBuffers(2, buffer);
+	glGenBuffers(2, buffer);
 
 	if (_count == 0 || !_points) {
 		return false;
@@ -44,7 +46,8 @@ bool Triangle::initVBO()
 		glBufferData(GL_ARRAY_BUFFER, _count * 2 * sizeof(GLfloat), _texCoord, GL_STATIC_DRAW);
 	}
 
-	_hasVBO = true;
+	bool* hasVBO = const_cast<bool*>(&_hasVBO);
+	*hasVBO = true;
 	return _hasVBO;
 }
 

@@ -26,7 +26,6 @@
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeEnergy.h" />
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeMouth.h" />
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeMover.h" />
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.h" />
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\TriangleExample.h" />
     <ClInclude Include="..\..\source\Game\Examples\MapExample.h" />
     <ClInclude Include="..\..\source\Game\GamesManager.h" />
@@ -39,7 +38,6 @@
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeEnergy.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeMouth.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeMover.cpp" />
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\TriangleExample.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp" />
   </ItemGroup>

@@ -14,6 +14,9 @@
     <Filter Include="Source\Examples\GenerateShape">
       <UniqueIdentifier>{5b590695-96f8-4283-ab2c-72c0d31b40b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Examples\GenerateShape\Cells">
+      <UniqueIdentifier>{6b3eec86-685b-4ef8-8336-7cd64b5e423e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h">
@@ -31,23 +34,20 @@
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\Microbe.h">
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.h">
-      <Filter>Source\Examples\GenerateShape</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeBrain.h">
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\DNA.h">
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeMover.h">
-      <Filter>Source\Examples\GenerateShape</Filter>
+      <Filter>Source\Examples\GenerateShape\Cells</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeMouth.h">
-      <Filter>Source\Examples\GenerateShape</Filter>
+      <Filter>Source\Examples\GenerateShape\Cells</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeEnergy.h">
-      <Filter>Source\Examples\GenerateShape</Filter>
+      <Filter>Source\Examples\GenerateShape\Cells</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\DNA.h">
-      <Filter>Source\Examples\GenerateShape</Filter>
+    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeBrain.h">
+      <Filter>Source\Examples\GenerateShape\Cells</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -63,23 +63,20 @@
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\Microbe.cpp">
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeShape.cpp">
-      <Filter>Source\Examples\GenerateShape</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeBrain.cpp">
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\DNA.cpp">
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeMover.cpp">
-      <Filter>Source\Examples\GenerateShape</Filter>
+      <Filter>Source\Examples\GenerateShape\Cells</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeMouth.cpp">
-      <Filter>Source\Examples\GenerateShape</Filter>
+      <Filter>Source\Examples\GenerateShape\Cells</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeEnergy.cpp">
-      <Filter>Source\Examples\GenerateShape</Filter>
+      <Filter>Source\Examples\GenerateShape\Cells</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\DNA.cpp">
-      <Filter>Source\Examples\GenerateShape</Filter>
+    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeBrain.cpp">
+      <Filter>Source\Examples\GenerateShape\Cells</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

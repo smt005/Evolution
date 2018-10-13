@@ -6,5 +6,5 @@ using namespace microbe;
 
 void Mover::update()
 {
-	Engine::Core::log("\tMover::update");
+	//Engine::Core::log("\tMover::update");
 }

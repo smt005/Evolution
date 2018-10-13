@@ -28,7 +28,8 @@ public:
 
 public:
 	Triangle()
-		: _count(0)
+		: _type(TRIANGLES)
+		, _count(0)
 		, _points(nullptr)
 		, _texCoord(nullptr)
 	{}
@@ -40,26 +41,25 @@ public:
 
 	void setData(unsigned short int type, unsigned int count, Point* points, TexCoord* texCoord);
 
-	Texture& texture();
-	unsigned int textureId() {
+	unsigned int textureId() const {
 		if (_texture) return _texture->id();
-		_texture = getTextureStatic();
-		return _texture->id();
+		TexturePtr& texture = getTextureStatic();
+		return texture->id();
 	}
 
 	const Triangle& getSelf() const { return *this; }
 
-	inline unsigned short int countVertex() { return _count * 3; }
-	inline const float* const aVertex() { return (float*)_points; }
-	inline const float* const aTexCoord() { return (float*)_texCoord; }
+	inline unsigned short int countVertex() const { return _count * 3; }
+	inline const float* const aVertex() const { return (float*)_points; }
+	inline const float* const aTexCoord() const { return (float*)_texCoord; }
 
-	inline bool hasVBO() { return _hasVBO; }
-	inline unsigned int bufferVertexes() { return _buffer[0]; }
-	inline unsigned int bufferTexCoords() { return _buffer[1]; }
+	inline bool hasVBO() const { return _hasVBO; }
+	inline unsigned int bufferVertexes() const { return _buffer[0]; }
+	inline unsigned int bufferTexCoords() const { return _buffer[1]; }
 
-	bool initVBO();
+	bool initVBO() const;
 
-private:
+protected:
 	unsigned short int _type;	//	GL_TRIANGLES 0x0004, GL_TRIANGLE_STRIP 0x0005, GL_TRIANGLE_FAN 0x0006
 	unsigned int _count;
 	Point* _points;

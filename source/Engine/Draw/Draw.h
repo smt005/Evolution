@@ -24,5 +24,5 @@ public:
 	static void draw(Model& model);
 	static void draw(Object& object);
 	static void draw(Map& map);
-	static void draw(Triangle& triangle);
+	static void draw(const Triangle& triangle);
 };

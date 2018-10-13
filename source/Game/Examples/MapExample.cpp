@@ -25,12 +25,13 @@
 #include "Object/Identify.h"
 #include "GenerateShape/TriangleExample.h"
 #include "GenerateShape/Microbe.h"
+//#include "GenerateShape/MicrobeShape.h"
 
 const std::string saveFileName("Saves/MapExampleSave.json");
 const std::string mapFileName("Examples/MapExample");
 
 Greed greed(100.0f, 10.0f);
-//Triangle microbeExample;
+Triangle microbeExample;
 
 void makeMicrobeTriangles();
 
@@ -235,12 +236,19 @@ void MapExample::draw()
 		Draw::draw(*_mapGame);
 	}
 
-	//Draw::draw(microbeExample);
+	for (auto& item : microbe::Microbe::getMicrobes()) {
+		if (item) {
+			const Triangle& shape = item->getSelf();
+			Draw::draw(shape);
+		}
+	}
+	
+	Draw::draw(microbeExample);
 }
 
 void makeMicrobeTriangles()
 {
-	/*float radius = 0.78f * 0.5f;
+	float radius = 0.78f * 0.5f;
 	TriangleExample::Template t0;
 
 	//	dist, scale vector
@@ -264,5 +272,5 @@ void makeMicrobeTriangles()
 
 	microbeExample.setTexture("Textures/Cell.png");
 	microbeExample.setPos({ 0.5f, 0.25f, 0.5f });
-	microbeExample.setColor(Color::GREEN);*/
+	microbeExample.setColor(Color::GREEN);
 }

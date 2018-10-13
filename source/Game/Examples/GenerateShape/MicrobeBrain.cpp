@@ -7,5 +7,5 @@ using namespace microbe;
 
 void Brain::update()
 {
-	Engine::Core::log("\tBrain::update");
+	//Engine::Core::log("\tBrain::update");
 }

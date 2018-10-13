@@ -155,9 +155,13 @@ void Draw::draw(Map& map)
 	}
 }
 
-void Draw::draw(Triangle& triangle)
+void Draw::draw(const Triangle& triangle)
 {
-	glUniformMatrix4fv(baseShader.u_matViewModel, 1, GL_FALSE, triangle.getMatrixFloat());
+	//glUniformMatrix4fv(baseShader.u_matViewModel, 1, GL_FALSE, triangle.getMatrixFloat());
+
+	const glm::mat4x4& mat = triangle.getMatrix();
+	const float* matrix = triangle.getMatrixFloat();
+	glUniformMatrix4fv(baseShader.u_matViewModel, 1, GL_FALSE, matrix);
 
 	unsigned int textureId = triangle.textureId();
 	if (currentTexture != textureId)

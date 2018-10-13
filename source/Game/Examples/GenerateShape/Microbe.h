@@ -5,6 +5,7 @@
 #include "glm/vec3.hpp"
 #include "Object/Identify.h"
 #include "Object/Position.h"
+#include "Object/Triangle.h"
 #include "DNA.h"
 
 namespace microbe
@@ -12,12 +13,10 @@ namespace microbe
 
 class Cell;
 class Microbe;
-class MicrobeShape;
 
 typedef std::shared_ptr<Cell> CellPtr;
 typedef std::shared_ptr<Microbe> MicrobePtr;
 typedef std::weak_ptr<Microbe> MicrobeWptr;
-typedef std::shared_ptr<MicrobeShape> MicrobeShapePtr;
 
 class Cell
 {
@@ -34,7 +33,13 @@ public:
 	typedef unsigned short int Type;
 
 public:
-	Cell() {}
+	Cell()
+		: _size(1.0f)
+	{
+		_pos[0] = 0.0f;
+		_pos[1] = 0.0f;
+		_pos[2] = 0.0f;
+	}
 	void init(const MicrobeWptr& core, const DNA::ValueCell& valueCell)
 	{
 		if (core.expired()) {
@@ -51,16 +56,16 @@ public:
 
 	}
 	virtual ~Cell() {}
-	virtual unsigned short int type() = 0;
+	virtual unsigned short int type() { return Cell::NONE; }
 	virtual void update() {}
 
 public:
 	MicrobeWptr _core;
-	float _pos[3];
 	float _size;
+	float _pos[3];
 };
 
-class Microbe final : public Position, public UniqueId
+class Microbe final : public Triangle, public UniqueId
 {
 public:
 	Microbe();
@@ -69,22 +74,23 @@ public:
 	void update();
 	void generate(const MicrobeWptr& microbeWptr);
 
+	void make();
+	void makeData(size_t& index, const Cell& cell);
+
 private:
 	std::vector<CellPtr> _childs;
 	DnaPtr _dnaPtr;
-	MicrobeShapePtr _microbeShapePtr;
 
 public:
+	static const std::vector<MicrobePtr>& getMicrobes() { return _microbes; }
 	static void updateMicrobes();
 	static void clear();
 	static void generateMicrobes();
 	
 private:
 	static std::vector<MicrobePtr> _microbes;
+	static Point pointsStatic[3];
+	static TexCoord texCoordStatic[3];
 };
 
 };	// microbe
-
-//	Brain
-//	Mover
-//	Mouth

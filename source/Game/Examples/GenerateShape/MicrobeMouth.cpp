@@ -6,5 +6,5 @@ using namespace microbe;
 
 void Mouth::update()
 {
-	Engine::Core::log("\tMouth::update");
+	//Engine::Core::log("\tMouth::update");
 }
