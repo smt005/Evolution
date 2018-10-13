@@ -162,6 +162,7 @@
     <ClCompile Include="..\..\Source\Projects\Win\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\source\Res\Data\MicrobesDNA.json" />
     <None Include="..\..\source\Res\Maps\Evolution.json" />
     <None Include="..\..\source\Res\Maps\Examples\MapExample.json" />
     <None Include="..\..\source\Res\Models\Models.json" />

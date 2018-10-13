@@ -20,23 +20,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h" />
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\DNA.h" />
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\Microbe.h" />
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeBrain.h" />
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeEnergy.h" />
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeMouth.h" />
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\MicrobeMover.h" />
+    <ClInclude Include="..\..\source\Game\Evolution\Microbe\DNA.h" />
+    <ClInclude Include="..\..\source\Game\Evolution\Microbe\Microbe.h" />
+    <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeBrain.h" />
+    <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeEnergy.h" />
+    <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeMouth.h" />
+    <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeMover.h" />
     <ClInclude Include="..\..\source\Game\Examples\MapExample.h" />
     <ClInclude Include="..\..\source\Game\GamesManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp" />
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\DNA.cpp" />
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\Microbe.cpp" />
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeBrain.cpp" />
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeEnergy.cpp" />
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeMouth.cpp" />
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\MicrobeMover.cpp" />
+    <ClCompile Include="..\..\source\Game\Evolution\Microbe\DNA.cpp" />
+    <ClCompile Include="..\..\source\Game\Evolution\Microbe\Microbe.cpp" />
+    <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeBrain.cpp" />
+    <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeEnergy.cpp" />
+    <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeMouth.cpp" />
+    <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeMover.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

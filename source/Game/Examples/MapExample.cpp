@@ -23,7 +23,7 @@
 #include "Object/Triangle.h"
 #include "Object/Color.h"
 #include "Object/Identify.h"
-#include "GenerateShape/Microbe.h"
+#include "Evolution/Microbe/Microbe.h"
 
 const std::string saveFileName("Saves/MapExampleSave.json");
 const std::string mapFileName("Examples/MapExample");

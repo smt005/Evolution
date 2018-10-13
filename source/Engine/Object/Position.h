@@ -9,7 +9,7 @@ public:
 	Position() : _matrix(glm::mat4x4(1.0f))	{}
 	Position(const glm::mat4x4& matrix) : _matrix(glm::mat4x4(matrix)) {}
 	Position(const glm::vec3& pos) : _matrix(glm::mat4x4(1.0f)) {
-		set(pos);
+		setPos(pos);
 	}
 
 	virtual ~Position() {}
@@ -22,7 +22,7 @@ public:
 
 	void setMatrix(const float (&matrix)[16]);
 
-	inline void set(const glm::vec3& pos) {
+	inline void setPos(const glm::vec3& pos) {
 		_matrix[3][0] = pos.x;
 		_matrix[3][1] = pos.y;
 		_matrix[3][2] = pos.z;
@@ -36,7 +36,7 @@ public:
 
 	inline Position& operator=(const Position& pos)		  { _matrix = pos._matrix; }
 	inline Position& operator=(const glm::mat4x4& matrix) { _matrix = matrix; }
-	inline Position& operator=(const glm::vec3& pos)	  { set(pos); }
+	inline Position& operator=(const glm::vec3& pos)	  { setPos(pos); }
 
 protected:
 	glm::mat4x4 _matrix;

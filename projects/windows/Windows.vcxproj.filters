@@ -23,6 +23,9 @@
     <Filter Include="Res\Maps\Examples">
       <UniqueIdentifier>{23a91cd0-f1df-4498-baa3-a800ba67d85c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Res\Data">
+      <UniqueIdentifier>{14d21466-dc98-4b56-a2ab-f8589a40145c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Projects\Win\main.cpp">
@@ -50,6 +53,9 @@
     </None>
     <None Include="..\..\source\Res\Shaders\Line.vert">
       <Filter>Res\Shaders</Filter>
+    </None>
+    <None Include="..\..\source\Res\Data\MicrobesDNA.json">
+      <Filter>Res\Data</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
