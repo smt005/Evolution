@@ -28,9 +28,6 @@
     <ClInclude Include="..\..\source\Game\GamesManager.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Game\Examples\GenerateShape\TriangleExample.h">
-      <Filter>Source\Examples\GenerateShape</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\Game\Examples\GenerateShape\Microbe.h">
       <Filter>Source\Examples\GenerateShape</Filter>
     </ClInclude>
@@ -56,9 +53,6 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp">
       <Filter>Source\Examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Examples\GenerateShape\TriangleExample.cpp">
-      <Filter>Source\Examples\GenerateShape</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Examples\GenerateShape\Microbe.cpp">
       <Filter>Source\Examples\GenerateShape</Filter>

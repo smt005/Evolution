@@ -23,17 +23,12 @@
 #include "Object/Triangle.h"
 #include "Object/Color.h"
 #include "Object/Identify.h"
-#include "GenerateShape/TriangleExample.h"
 #include "GenerateShape/Microbe.h"
-//#include "GenerateShape/MicrobeShape.h"
 
 const std::string saveFileName("Saves/MapExampleSave.json");
 const std::string mapFileName("Examples/MapExample");
 
 Greed greed(100.0f, 10.0f);
-Triangle microbeExample;
-
-void makeMicrobeTriangles();
 
 MapExample::~MapExample()
 {
@@ -65,7 +60,6 @@ void MapExample::init()
 	}
 
 	greed.setPos({0.0f, 0.0f, 0.1f});
-	makeMicrobeTriangles();
 	
 	microbe::Microbe::generateMicrobes();
 
@@ -242,35 +236,4 @@ void MapExample::draw()
 			Draw::draw(shape);
 		}
 	}
-	
-	Draw::draw(microbeExample);
-}
-
-void makeMicrobeTriangles()
-{
-	float radius = 0.78f * 0.5f;
-	TriangleExample::Template t0;
-
-	//	dist, scale vector
-	{
-		TriangleExample::Template& t1 = t0.add(radius, 0.5f, glm::vec3(1.0f, 1.0f, 0.0f));
-		{
-			t1.add((radius * 0.5f), 0.25f, glm::vec3(0.999f, 0.0f, 0.0f));
-			t1.add((radius * 0.5f), 0.25f, glm::vec3(0.2f, -1.0f, 0.0f));
-		}
-	}
-	{
-		TriangleExample::Template& t1 = t0.add(radius, 0.5f, glm::vec3(-1.0f, -1.0f, 0.0f));
-		{
-			t1.add((radius * 0.5f), 0.25f, glm::vec3(0.999f, 0.0f, 0.0f));
-			t1.add((radius * 0.5f), 0.25f, glm::vec3(0.5f, -0.7f, 0.0f));
-			t1.add((radius * 0.5f), 0.25f, glm::vec3(0.25f, 0.57f, 0.0f));
-		}
-	}
-
-	TriangleExample::make(microbeExample, t0);
-
-	microbeExample.setTexture("Textures/Cell.png");
-	microbeExample.setPos({ 0.5f, 0.25f, 0.5f });
-	microbeExample.setColor(Color::GREEN);
 }
