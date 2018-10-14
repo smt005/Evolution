@@ -1,11 +1,14 @@
 #include "Microbe.h"
 #include "MicrobeMover.h"
 #include "Core.h"
+#include "Event.h"
 #include "jsoncpp/include/json/json.h"
 
 using namespace microbe;
 
 Mover::Mover(const MicrobeWptr& core, const DNA::ValueCell& valueCell)
+	: _state(false)
+	, _valueWant(0.25f)
 {
 	init(core, valueCell);
 
@@ -24,15 +27,21 @@ Mover::Mover(const MicrobeWptr& core, const DNA::ValueCell& valueCell)
 
 void Mover::update()
 {
-	if (_core.expired()) {
+	if (!_state || _core.expired()) {
 		return;
 	}
 
 	auto core = _core.lock();
 
-	glm::vec3 pos = core->getPos();
+	Event::Callback callback = [this, core](bool state) {
+		if (state) {
+			glm::vec3 pos = core->getPos();
+			pos += _vec;
+			core->setPos(pos);
+		}
+	};
 
-	pos += _vec;
-
-	core->setPos(pos);
+	Event* event = new EventEnergyGet(_valueWant, callback);
+	EventPtr eventPtr = EventPtr(event);
+	core->addEvent(eventPtr);
 }

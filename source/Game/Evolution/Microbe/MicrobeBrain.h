@@ -14,6 +14,10 @@ public:
 	unsigned short int type() override { return Cell::BRAIN; }
 
 	void update() override;
+
+private:
+	int testTact = 0;
+	bool lastState = false;
 };
 
 };	// microbe

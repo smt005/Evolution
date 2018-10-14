@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h" />
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\DNA.h" />
+    <ClInclude Include="..\..\source\Game\Evolution\Microbe\Event.h" />
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\Microbe.h" />
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeBrain.h" />
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeEnergy.h" />
@@ -32,6 +33,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp" />
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\DNA.cpp" />
+    <ClCompile Include="..\..\source\Game\Evolution\Microbe\Event.cpp" />
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\Microbe.cpp" />
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeBrain.cpp" />
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeEnergy.cpp" />

@@ -7,14 +7,23 @@
 #include "Object/Position.h"
 #include "Object/Triangle.h"
 #include "DNA.h"
+#include "Event.h"
 
 namespace microbe
 {
 
 class Cell;
+class Brain;
+class Energy;
+class Mouth;
+class Mover;
 class Microbe;
 
 typedef std::shared_ptr<Cell> CellPtr;
+typedef std::shared_ptr<Brain> BrainPtr;
+typedef std::shared_ptr<Energy> EnergyPtr;
+typedef std::shared_ptr<Mouth> MouthPtr;
+typedef std::shared_ptr<Mover> MoverPtr;
 typedef std::shared_ptr<Microbe> MicrobePtr;
 typedef std::weak_ptr<Microbe> MicrobeWptr;
 
@@ -77,8 +86,18 @@ public:
 	void make();
 	void makeData(size_t& index, const Cell& cell);
 
+	inline void addEvent(EventPtr& ventPtr) {
+		_events.push_back(ventPtr);
+	}
+
 private:
-	std::vector<CellPtr> _childs;
+	std::vector<EventPtr> _events;
+	//std::vector<CellPtr> _childs;
+	std::vector<BrainPtr> _brainChilds;
+	std::vector<EnergyPtr> _energyChilds;
+	std::vector<MouthPtr> _mouthChilds;
+	std::vector<MoverPtr> _moverChilds;
+	
 	DnaPtr _dnaPtr;
 
 public:

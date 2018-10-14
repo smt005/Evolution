@@ -23,8 +23,71 @@ Microbe::Microbe(const std::string& idDNA) {
 	_dnaPtr = DNA::getByName(idDNA);
 }
 
-void Microbe::update() {
-	for (auto& cellPtr : _childs) {
+void Microbe::update()
+{
+	for (auto& event : _events)
+	{
+		switch (event->getType())
+		{
+			case Event::MOVE: {
+				EventMove* eventMove = (EventMove*)event->getPoint();
+				short int moverId = eventMove->getMoverId();
+				bool _state = eventMove->getState();
+				Event::Callback callback = eventMove->getCallback();
+
+				if (moverId >= 0 && moverId < _moverChilds.size()) {
+					auto mouthPtr = _moverChilds[0];
+					if (mouthPtr) {
+						mouthPtr->setState(_state);
+					}
+				}
+			} break;
+
+			case Event::ENERGY_GET: {
+				if (!_energyChilds.size()) {
+					break;
+				}
+
+				EventEnergyGet* eventEnergyGet = (EventEnergyGet*)event->getPoint();
+				float valueWant = eventEnergyGet->getValueWant();
+				Event::Callback callback = eventEnergyGet->getCallback();
+
+				EnergyPtr energy = _energyChilds.front();
+				callback(energy->apply(valueWant));
+			} break;
+
+		default:
+			break;
+		}
+	}
+
+	_events.clear();
+
+	/*for (auto& cellPtr : _childs) {
+		if (cellPtr) {
+			cellPtr->update();
+		}
+	}*/
+
+	for (auto& cellPtr : _brainChilds) {
+		if (cellPtr) {
+			cellPtr->update();
+		}
+	}
+
+	for (auto& cellPtr : _energyChilds) {
+		if (cellPtr) {
+			cellPtr->update();
+		}
+	}
+
+	for (auto& cellPtr : _mouthChilds) {
+		if (cellPtr) {
+			cellPtr->update();
+		}
+	}
+
+	for (auto& cellPtr : _moverChilds) {
 		if (cellPtr) {
 			cellPtr->update();
 		}
@@ -43,26 +106,30 @@ void Microbe::generate(const MicrobeWptr& microbeWptr)
 		{
 			case  Cell::BRAIN :
 			{
-				Cell* cell = new Brain(microbeWptr, dnaCell);
-				_childs.emplace_back(cell); 
+				Brain* cell = new Brain(microbeWptr, dnaCell);
+				//_childs.emplace_back(cell); 
+				_brainChilds.emplace_back(cell);
 			} break;
 
 			case  Cell::ENERGY:
 			{
-				Cell* cell = new Energy(microbeWptr, dnaCell);
-				_childs.emplace_back(cell);
+				Energy* cell = new Energy(microbeWptr, dnaCell);
+				//_childs.emplace_back(cell);
+				_energyChilds.emplace_back(cell);
 			} break;
 
 			case  Cell::MOUTH:
 			{
-				Cell* cell = new Mouth(microbeWptr, dnaCell);
-				_childs.emplace_back(cell);
+				Mouth* cell = new Mouth(microbeWptr, dnaCell);
+				//_childs.emplace_back(cell);
+				_mouthChilds.emplace_back(cell);
 			} break;
 
 			case  Cell::MOVER:
 			{
-				Cell* cell = new Mover(microbeWptr, dnaCell);
-				_childs.emplace_back(cell);
+				Mover* cell = new Mover(microbeWptr, dnaCell);
+				//_childs.emplace_back(cell);
+				_moverChilds.emplace_back(cell);
 			};
 		}
 	}
@@ -73,13 +140,38 @@ void Microbe::generate(const MicrobeWptr& microbeWptr)
 
 void Microbe::make()
 {
-	_count = (_childs.size() + 1) * 3;
+	//_count = (_childs.size() + 1) * 3;
+	_count = (_brainChilds.size() + _energyChilds.size() + _mouthChilds.size() + _moverChilds.size() + 1) * 3;
 	_points = new Point[_count];
 	_texCoord = new TexCoord[_count];
 
 	size_t index = 3;
 
-	for (auto& cell : _childs) {
+	/*for (auto& cell : _childs) {
+		if (cell) {
+			makeData(index, *cell);
+		}
+	}*/
+
+	for (auto& cell : _brainChilds) {
+		if (cell) {
+			makeData(index, *cell);
+		}
+	}
+
+	for (auto& cell : _energyChilds) {
+		if (cell) {
+			makeData(index, *cell);
+		}
+	}
+
+	for (auto& cell : _mouthChilds) {
+		if (cell) {
+			makeData(index, *cell);
+		}
+	}
+
+	for (auto& cell : _moverChilds) {
 		if (cell) {
 			makeData(index, *cell);
 		}
@@ -140,9 +232,12 @@ void Microbe::generateMicrobes()
 {
 	clear();
 
-	for (int i = 0; i < 10; ++i)
+	bool switchVar = false;
+
+	for (int i = 0; i < 50; ++i)
 	{
-		Microbe* microbe = new Microbe("0000");
+		switchVar = !switchVar;
+		Microbe* microbe = new Microbe(switchVar ? "0000" : "0001");
 		MicrobePtr microbePtr = MicrobePtr(microbe);
 		MicrobeWptr microbeWptr = microbePtr;
 		microbe->generate(microbeWptr);

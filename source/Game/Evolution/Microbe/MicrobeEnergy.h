@@ -9,10 +9,22 @@ class Energy final : public Cell
 {
 public:
 	Energy() {}
-	Energy(const MicrobeWptr& core, const DNA::ValueCell& valueCell) { init(core, valueCell); }
+	Energy(const MicrobeWptr& core, const DNA::ValueCell& valueCell);
 	unsigned short int type() override { return Cell::ENERGY; }
 
 	void update() override;
+	inline bool apply(const float valueVant) {
+		if (_value > valueVant) {
+			_value -= valueVant;
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+private:
+	float _value;
+	float _maxValue;
 };
 
 };	// microbe

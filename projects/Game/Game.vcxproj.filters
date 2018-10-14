@@ -49,6 +49,9 @@
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeMover.h">
       <Filter>Source\Evolution\Microbe\Cell</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\Evolution\Microbe\Event.h">
+      <Filter>Source\Evolution\Microbe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">
@@ -74,6 +77,9 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeMover.cpp">
       <Filter>Source\Evolution\Microbe\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Evolution\Microbe\Event.cpp">
+      <Filter>Source\Evolution\Microbe</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
