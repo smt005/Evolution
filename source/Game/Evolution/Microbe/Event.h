@@ -105,8 +105,7 @@ class EventEat final : public Event
 {
 public:
 	EventEat() {}
-	//EventEat(MicrobePtr target, Callback callback) : _target(target), _callback(callback) { }
-	EventEat(MicrobePtr target, Callback callback);
+	EventEat(MicrobePtr target, const float valueDamage, Callback callback);
 	inline const Type getType() const override { return EAT; }
 
 	void apply() {
@@ -115,7 +114,12 @@ public:
 		}
 	}
 
+	inline const float getValueDamage() const { return _valueDamage; }
+	inline MicrobePtr getTarget() const { return _target; }
+	inline const Callback getCallback() const { return _callback; }
+
 private:
+	float _valueDamage;
 	MicrobePtr _target;
 	Callback _callback;
 };

@@ -67,6 +67,8 @@ public:
 	virtual ~Cell() {}
 	virtual unsigned short int type() { return Cell::NONE; }
 	virtual void update() {}
+	
+
 
 public:
 	MicrobeWptr _core;
@@ -87,18 +89,33 @@ public:
 	void makeData(size_t& index, const Cell& cell);
 
 	inline void addEvent(EventPtr& ventPtr) {
-		_events.push_back(ventPtr);
+		if (!_nextEvents) {
+			_nextEvents = new std::vector<EventPtr>();
+		}
+
+		_nextEvents->push_back(ventPtr);
+	}
+
+	void applyDamage(float& valueOut, const float valueWant) {
+		valueOut = valueWant;
+		_health = _health - valueOut;
+		if (_health < 0) {
+			valueOut += _health;
+			_health = 0.0f;
+		}
 	}
 
 private:
-	std::vector<EventPtr> _events;
-	//std::vector<CellPtr> _childs;
+	std::vector<EventPtr>* _currentEvents;
+	std::vector<EventPtr>* _nextEvents;
+
 	std::vector<BrainPtr> _brainChilds;
 	std::vector<EnergyPtr> _energyChilds;
 	std::vector<MouthPtr> _mouthChilds;
 	std::vector<MoverPtr> _moverChilds;
 	
 	DnaPtr _dnaPtr;
+	float _health;
 
 public:
 	static const std::vector<MicrobePtr>& getMicrobes() { return _microbes; }

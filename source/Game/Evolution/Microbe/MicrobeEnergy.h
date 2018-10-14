@@ -22,6 +22,16 @@ public:
 			return false;
 		}
 	}
+
+	inline void load(float& value) {
+		float newValue = _value + value;
+		if (newValue <= _maxValue) {
+			value = 0.0f;
+		}
+		else {
+			value = newValue - _maxValue;
+		}
+	}
 private:
 	float _value;
 	float _maxValue;
