@@ -15,28 +15,28 @@ Model::Model()
 Shape& Model::getShape()
 {
 	if (_shape) return *_shape;
-	_shape = Shape::getByName(_name);
+	_shape = Shape::getByName(getName());
 	return *_shape;
 }
 
 Mesh& Model::getMesh()
 {
 	if (_shape) return *_shape;
-	_shape = Shape::getByName(_name);
+	_shape = Shape::getByName(getName());
 	return *_shape;
 }
 
 Texture& Model::texture()
 {
 	if (_texture) return *_texture;
-	_texture = Texture::getByName(_name);
+	_texture = Texture::getByName(getName());
 	return *_texture;
 }
 
 const unsigned int& Model::textureId()
 {
 	if (_texture) return _texture->id();
-	_texture = Texture::getByName(_name);
+	_texture = Texture::getByName(getName());
 	return _texture->id();
 }
 

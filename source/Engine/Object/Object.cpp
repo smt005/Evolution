@@ -23,8 +23,8 @@ Object::~Object()
 
 void Object::getDataJson(Json::Value& dataJson)
 {
-	dataJson["name"] = name();
-	dataJson["model"] = getModel().name();
+	dataJson["name"] = getName();
+	dataJson["model"] = getModel().getName();
 
 	dataJson["pos"][0] =_matrix[3][0];
 	dataJson["pos"][1] = _matrix[3][1];
@@ -44,7 +44,7 @@ const float& Object::getHeight()
 
 void Object::set(const string &name, const string &modelName, const vec3 &pos, const Json::Value &data)
 {
-	_name = name;
+	setName(name);
 	_model = Model::getByName(modelName);
 
 	if (length(pos) > 0.0f) _matrix = translate(_matrix, pos);
@@ -66,7 +66,6 @@ void Object::action()
 {
 
 }
-
 
 Object* Object::_default = nullptr;
 

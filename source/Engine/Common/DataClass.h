@@ -4,25 +4,21 @@
 #include <map>
 #include <memory>
 
+#include "Object/Identify.h"
+
 using namespace std;
 
 template <class ObjectT>
 #define ObjectPtrT shared_ptr<ObjectT>
 
-class DataClass
+class DataClass : public Name
 {
-protected:
-	string _name;
-
 public:
 	DataClass() {};
 	virtual ~DataClass() {};
 
 	virtual bool create(const string &name);
 	virtual void setDefault(const string &name);
-
-	void setName(const string& name) { _name = name; };
-	const string name() { return _name; };
 
 private:
 	static map<string, ObjectPtrT> _map;
@@ -44,7 +40,7 @@ ObjectT DataClass<ObjectT>::_default;
 
 template <class ObjectT>
 bool DataClass<ObjectT>::create(const string &name) {
-	_name = name;
+	setName(name);
 	return true;
 };
 

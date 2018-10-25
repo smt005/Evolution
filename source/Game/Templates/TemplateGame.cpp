@@ -68,6 +68,7 @@ void TemplateGame::init()
 	}
 
 	_greed = new Greed(100.0f, 10.0f);
+	_greed->setPos({0.0f, 0.0f, 0.1f});
 
 	initCallback();
 }
@@ -190,6 +191,7 @@ void TemplateGame::draw()
 	//	DrawLine
 
 	draw::DrawLine::prepare();
+
 	draw::DrawLine::draw(*_greed);
 
 	// Draw

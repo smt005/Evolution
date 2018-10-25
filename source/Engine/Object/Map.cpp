@@ -70,7 +70,7 @@ bool Map::create(const string &name)
 
 void Map::getDataJson(Json::Value& dataJson)
 {
-	dataJson["name"] = name();
+	dataJson["name"] = getName();
 
 	for (auto object : _objects)
 	{

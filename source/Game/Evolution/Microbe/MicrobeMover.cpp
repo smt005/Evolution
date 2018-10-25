@@ -36,8 +36,9 @@ void Mover::update()
 	Event::Callback callback = [this, core](bool state) {
 		if (state) {
 			glm::vec3 pos = core->getPos();
-			pos += _vec;
-			core->setPos(pos);
+
+			core->_moveVector = _vec * Engine::Core::deltaTime();
+			core->_nextPos = pos + core->_moveVector;
 		}
 	};
 

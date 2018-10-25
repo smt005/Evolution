@@ -6,8 +6,8 @@ using namespace microbe;
 
 bool DNA::create(const string &name)
 {
-	_name = name;
-	const Json::Value& data = getData(_name);
+	setName(name);
+	const Json::Value& data = getData(getName());
 
 	if (data.empty() || !data.isArray()) {
 		return false;

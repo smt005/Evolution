@@ -124,6 +124,12 @@ void Microbe::update()
 	}
 }
 
+void Microbe::updateMove() {
+	if (getPos() != _nextPos) {
+		setPos(_nextPos);
+	}
+}
+
 void Microbe::generate(const MicrobeWptr& microbeWptr)
 {
 	if (!_dnaPtr || microbeWptr.expired()) {
@@ -235,10 +241,38 @@ Triangle::TexCoord Microbe::texCoordStatic[3] = {	1.715f, 0.0f,
 													0.0f, 1.715f };
 std::vector<MicrobePtr> Microbe::_microbes;
 
+void Microbe::distMicrobes(MicrobePtr& micribePtr) {
+	for (auto& micribePairPtr : _microbes) {
+		if (micribePairPtr) {
+			if (micribePtr->getId() == micribePairPtr->getId()) continue;
+
+			glm::vec3 pos = micribePtr->getPos();
+			glm::vec3 posItem = micribePairPtr->getPos();
+			float dist = help::distXY(pos, posItem);
+	
+			if (dist < 1.0f) {
+				micribePtr->_nextPos = pos;
+				return;
+			}
+		}
+	}
+}
+
 void Microbe::updateMicrobes() {
 	for (auto& micribePtr : _microbes) {
 		if (micribePtr) {
+			//---
 			micribePtr->update();
+			
+			//---
+			distMicrobes(micribePtr);
+		}
+	}
+
+	for (auto& micribePtr : _microbes) {
+		if (micribePtr) {
+			//---
+			micribePtr->updateMove();
 		}
 	}
 }
@@ -251,9 +285,9 @@ void Microbe::generateMicrobes()
 {
 	clear();
 
-	bool switchVar = false;
+	bool switchVar = true;
 
-	for (int i = 0; i < 1; ++i)
+	/*for (int i = 0; i < 100; ++i)
 	{
 		switchVar = !switchVar;
 		Microbe* microbe = new Microbe(switchVar ? "0000" : "0001");
@@ -266,5 +300,38 @@ void Microbe::generateMicrobes()
 							1.5f} );
 
 		_microbes.push_back(microbePtr);
+	}*/
+
+	for (float x = -5; x < 5; x += 1)
+	{
+		for (float y = -5; y < 5; y += 1)
+		{
+			Microbe* microbe = new Microbe("0001");
+			MicrobePtr microbePtr = MicrobePtr(microbe);
+			MicrobeWptr microbeWptr = microbePtr;
+			microbe->generate(microbeWptr);
+
+			glm::vec3 pos({ x, y, 1.0f });
+			microbe->setPos(pos);
+			microbe->setNextPos(pos);
+
+			_microbes.push_back(microbePtr);
+
+		}
 	}
+
+	{
+		Microbe* microbe = new Microbe("0000");
+		MicrobePtr microbePtr = MicrobePtr(microbe);
+		MicrobeWptr microbeWptr = microbePtr;
+		microbe->generate(microbeWptr);
+
+		glm::vec3 pos({ 0.5f, -7.0f, 1.1f });
+		microbe->setPos(pos);
+		microbe->setNextPos(pos);
+
+		_microbes.push_back(microbePtr);
+
+	}
+
 }

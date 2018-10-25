@@ -202,8 +202,8 @@ Shape::~Shape()
 
 bool Shape::create(const string &name)
 {
-	_name = name;
-	return load(_name);
+	setName(name);
+	return load(getName());
 }
 
 bool Shape::load(const string& name)

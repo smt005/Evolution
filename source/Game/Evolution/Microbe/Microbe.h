@@ -79,10 +79,13 @@ public:
 class Microbe final : public Triangle, public UniqueId
 {
 public:
+	friend Mover;
+
 	Microbe();
 	Microbe(const DnaPtr& DNA);
 	Microbe(const std::string& idDNA);
 	void update();
+	void updateMove();
 	void generate(const MicrobeWptr& microbeWptr);
 
 	void make();
@@ -105,6 +108,8 @@ public:
 		}
 	}
 
+	inline void setNextPos(const glm::vec3& nextPos) { _nextPos = nextPos; }
+
 private:
 	std::vector<EventPtr>* _currentEvents;
 	std::vector<EventPtr>* _nextEvents;
@@ -116,9 +121,12 @@ private:
 	
 	DnaPtr _dnaPtr;
 	float _health;
+	glm::vec3 _moveVector;
+	glm::vec3 _nextPos;
 
 public:
 	static const std::vector<MicrobePtr>& getMicrobes() { return _microbes; }
+	static void distMicrobes(MicrobePtr& micribePtr);
 	static void updateMicrobes();
 	static void clear();
 	static void generateMicrobes();

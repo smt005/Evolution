@@ -57,8 +57,12 @@ public:
 	Name() {
 	}
 
+	Name(const char* name) {
+		setName(name);
+	}
+
 	Name(const std::string& nameObject) {
-		_nameObject = nameObject;
+		setName(nameObject);
 	}
 
 	Name(const Name& name) {
@@ -76,8 +80,14 @@ public:
 		_nameObject = id.getIdAsString(lenght);
 	}
 
-	//template <class ValueT>
-	//inline void setName(const ValueT value, const unsigned short int lenght = 0) {
+	inline void setName(const char* name) {
+		_nameObject = name;
+	}
+
+	inline void setName(const std::string& name) {
+		_nameObject = name;
+	}
+
 	inline void setName(const unsigned long int value, const unsigned short int lenght = 0) {
 		_nameObject = UniqueId::getIdAsStringStatic(value, lenght);
 	}

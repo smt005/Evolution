@@ -18,6 +18,7 @@ private:
 	bool _state;
 	glm::vec3 _vec;
 	float _valueWant;
+	glm::vec3 _nextPos;
 };
 
 };	// microbe

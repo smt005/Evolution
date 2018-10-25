@@ -16,7 +16,7 @@ public:
 	void update() override;
 
 private:
-	int testTact = 0;
+	int testTact = -10;
 	bool lastState = false;
 };
 

@@ -21,14 +21,15 @@ Texture::Texture(const string &name, bool needLoad)
 const unsigned int& Texture::id()
 {
 	if (_id != 0) return _id;
-	return load();
+	_id = load();
+	return _id;
 }
 
 unsigned int Texture::load()
 {
-	if (name().empty()) return 0;
+	if (getName().empty()) return 0;
 
-	_id = loadTexture(name().c_str());
+	_id = loadTexture(getName().c_str());
 
 	return _id;
 }
