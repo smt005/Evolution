@@ -23,6 +23,8 @@ class KeyCallbackEvent : public CallbackEvent
 {
 public:
 	KeyCallbackEvent(const VirtualKey id) { _id = id; }
+	virtual ~KeyCallbackEvent() {}
+	
 	inline VirtualKey getId() { return _id; }
 
 public:
@@ -33,6 +35,8 @@ class TapCallbackEvent : public CallbackEvent
 {
 public:
 	TapCallbackEvent(const VirtualTap id) { _id = id; }
+	virtual ~TapCallbackEvent() {}
+
 	inline VirtualTap getId() { return _id; }
 
 public:

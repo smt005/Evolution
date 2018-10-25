@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\source\Game\CollisionBall\CollisionBall.h" />
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h" />
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\DNA.h" />
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\Event.h" />
@@ -29,8 +30,10 @@
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeMover.h" />
     <ClInclude Include="..\..\source\Game\Examples\MapExample.h" />
     <ClInclude Include="..\..\source\Game\GamesManager.h" />
+    <ClInclude Include="..\..\source\Game\Templates\TemplateGame.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\source\Game\CollisionBall\CollisionBall.cpp" />
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp" />
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\DNA.cpp" />
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\Event.cpp" />
@@ -40,6 +43,7 @@
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeMouth.cpp" />
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeMover.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp" />
+    <ClCompile Include="..\..\source\Game\Templates\TemplateGame.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

@@ -20,6 +20,12 @@
     <Filter Include="Source\Evolution\Microbe\Cell\Brain">
       <UniqueIdentifier>{0a27bd68-0afc-4239-80ed-42721f5137c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\CollisionBall">
+      <UniqueIdentifier>{dbe763a0-95e2-4e80-8d6c-b83012cfc37d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Template">
+      <UniqueIdentifier>{9c08fd80-84d2-48b0-aa30-2ab078a1a52e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h">
@@ -52,6 +58,12 @@
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\Event.h">
       <Filter>Source\Evolution\Microbe</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\Templates\TemplateGame.h">
+      <Filter>Source\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\CollisionBall\CollisionBall.h">
+      <Filter>Source\CollisionBall</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">
@@ -80,6 +92,12 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\Event.cpp">
       <Filter>Source\Evolution\Microbe</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Templates\TemplateGame.cpp">
+      <Filter>Source\Template</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\CollisionBall\CollisionBall.cpp">
+      <Filter>Source\CollisionBall</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

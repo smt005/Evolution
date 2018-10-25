@@ -2,14 +2,16 @@
 #pragma once
 
 #include "Game.h"
+#include <string>
 
 namespace Engine { class Callback; }
 class Map;
 
-class MapExample : public Engine::Game
+class MapExample final : public Engine::Game
 {
 public:
 	~MapExample();
+	std::string getName() override { return "MapExample"; }
 
 	void init() override;
 	void update() override;
