@@ -6,7 +6,8 @@
 class CollisionBall final : public TemplateGame
 {
 public:
-	CollisionBall();
-	~CollisionBall();
 	std::string getName() override { return "CollisionBall"; }
+
+	void init() override;
+	void update() override;
 };

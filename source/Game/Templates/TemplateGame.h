@@ -25,7 +25,7 @@ protected:
 	virtual bool load();
 	virtual void save();
 
-private:
+protected:
 	Engine::Callback* _callback = nullptr;
 	Map* _mapGame = nullptr;
 	Greed* _greed = nullptr;

@@ -142,13 +142,13 @@ void Draw::draw(Object& object)
 
 void Draw::draw(Map& map)
 {
-	for (auto& object : map._objects) {
+	for (auto& object : map.objects) {
 		if (object->visible()) {
 			draw(*object);
 		}
 	}
 
-	for (auto& glider : map._gliders) {
+	for (auto& glider : map.gliders) {
 		if (glider->visible()) {
 			draw(*glider);
 		}

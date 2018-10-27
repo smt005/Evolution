@@ -20,6 +20,9 @@ protected:
 	bool _visible = true;
 
 public:
+	int tag = 0;
+
+public:
 	Object();
 	Object(const string &name, const string &modelName, const vec3 &pos = vec3(0.0f), const Json::Value& data = Json::Value());
 	virtual ~Object();

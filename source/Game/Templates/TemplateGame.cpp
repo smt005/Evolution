@@ -57,7 +57,7 @@ void TemplateGame::init()
 	if (!load())
 	{
 		Camera::current.setFromEye(true);
-		Camera::current.setPos(glm::vec3(0.0f, 0.0f, 0.0f));
+		Camera::current.setPos(glm::vec3(0.0f, 0.0f, 5.0f));
 		Camera::current.setDist(1.0f);
 	}
 

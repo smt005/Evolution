@@ -13,8 +13,8 @@ Map::Map(const string &name)
 
 Map::~Map()
 {
-	help::clear(_objects);
-	help::clear(_gliders);
+	help::clear(objects);
+	help::clear(gliders);
 }
 
 bool Map::create(const string &name)
@@ -40,7 +40,7 @@ bool Map::create(const string &name)
 			++index;
 		}
 
-		Object& object = help::add(_objects);
+		Object& object = help::add(objects);
 		object.set(name, modelName, pos);
 		object.setVisible(visible);
 	}
@@ -60,7 +60,7 @@ bool Map::create(const string &name)
 			++index;
 		}
 
-		Glider &object = help::add(_gliders);
+		Glider &object = help::add(gliders);
 		object.set(name, modelName, pos);
 		object.setVisible(visible);
 	}
@@ -72,14 +72,14 @@ void Map::getDataJson(Json::Value& dataJson)
 {
 	dataJson["name"] = getName();
 
-	for (auto object : _objects)
+	for (auto object : objects)
 	{
 		Json::Value dataObject;
 		object->getDataJson(dataObject);
 		dataJson["objects"].append(dataObject);
 	}
 
-	for (auto glider : _gliders)
+	for (auto glider : gliders)
 	{
 		Json::Value dataObject;
 		glider->getDataJson(dataObject);
@@ -89,13 +89,13 @@ void Map::getDataJson(Json::Value& dataJson)
 
 void Map::action()
 {
-	for (auto object : _objects) object->action();
-	for (auto glider : _gliders) glider->action();
+	for (auto object : objects) object->action();
+	for (auto glider : gliders) glider->action();
 }
 
 Object& Map::addObjectToPos(const string& nameModel, const glm::vec3& pos)
 {
-	Object &object = help::add(_objects);
+	Object &object = help::add(objects);
 
 	object.set("", nameModel, pos);
 
@@ -104,7 +104,7 @@ Object& Map::addObjectToPos(const string& nameModel, const glm::vec3& pos)
 
 Object& Map::addObject(const string& nameModel, const glm::mat4x4& mat)
 {
-	Object& object = help::add(_objects);
+	Object& object = help::add(objects);
 
 	// TODO: Временно
 	glm::vec3 pos = glm::vec3(mat[3][0], mat[3][1], mat[3][2]);

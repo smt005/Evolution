@@ -16,8 +16,8 @@ typedef std::shared_ptr<Map> MapPtr;
 class Map : public DataClass <Map>
 {
 public:
-	std::vector<Object*> _objects;
-	std::vector<Glider*> _gliders;
+	std::vector<Object*> objects;
+	std::vector<Glider*> gliders;
 
 	Map() {};
 	Map(const string &name);
