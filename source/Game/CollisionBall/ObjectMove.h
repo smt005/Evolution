@@ -6,11 +6,13 @@
 class ObjectMove : public Object
 {
 public:
-	ObjectMove();
-	~ObjectMove();
+	inline float getRadius() { return 1.0f; }
+	inline float getMass() { return 1.0f; }
+
+	bool colliding(ObjectMove& ball);
+	void resolveCollision(ObjectMove& ball);
 
 public:
 	glm::vec3 vectorMove;
-
 };
 
