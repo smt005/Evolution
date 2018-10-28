@@ -29,14 +29,31 @@ void CollisionBall::init()
 				objectMove->tag = 123;	// Для того чтобы отличить от других объектов
 
 				objectMove->vectorMove = glm::vec3(
-					help::random_f(-0.91f, 0.91f),
-					help::random_f(-0.91f, 0.91f),
+					help::random_f(-0.0001f, 0.0001f),
+					help::random_f(-0.0001f, 0.0001f),
 					0.0f );
 
 				_mapGame->addObject(objectMove);
 			}
 		}
-		
+
+		// Callback
+		_callback = new Engine::Callback(Engine::CallbackType::RELEASE_TAP, [this](const Engine::CallbackEventPtr& callbackEventPtr) {
+			Engine::TapCallbackEvent* releaseKeyEvent = (Engine::TapCallbackEvent*)callbackEventPtr->get();
+			Engine::VirtualTap tap = releaseKeyEvent->getId();
+
+			if (tap != Engine::VirtualTap::LEFT) {
+				return;
+			}
+
+			ObjectMove* objectMove = new ObjectMove();
+			objectMove->set("", "Sphere_01", glm::vec3(-40.0f, 0.0f, 1.0f));
+			objectMove->tag = 123;	// Для того чтобы отличить от других объектов
+
+			objectMove->vectorMove = glm::vec3(0.2f, 0.01f, 0.0f);
+
+			_mapGame->addObject(objectMove);
+		});
 	}
 }
 
