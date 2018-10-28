@@ -37,7 +37,7 @@ Evolution::~Evolution()
 
 void Evolution::init()
 {
-	Engine::FileManager::setResourcesDir("..\\Res");
+	Engine::FileManager::setResourcesDir("..\\..\\..\\Res");
 
 	Draw::setClearColor(0.3f, 0.6f, 0.9f, 1.0f);
 

@@ -53,7 +53,7 @@ std::string TemplateGame::getMapFileName() {
 
 void TemplateGame::init()
 {
-	Engine::FileManager::setResourcesDir("..\\Res");
+	Engine::FileManager::setResourcesDir("..\\..\\..\\Res");
 	if (!load())
 	{
 		Camera::current.setFromEye(true);
