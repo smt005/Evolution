@@ -15,12 +15,12 @@ typedef std::shared_ptr<Model> ModelPtr;
 
 class Object : public Position, public Name
 {
+public:
+	int tag = 0;
+
 protected:
 	ModelPtr _model;
 	bool _visible = true;
-
-public:
-	int tag = 0;
 
 public:
 	Object();

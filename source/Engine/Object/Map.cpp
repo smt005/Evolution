@@ -112,3 +112,8 @@ Object& Map::addObject(const string& nameModel, const glm::mat4x4& mat)
 
 	return object;
 }
+
+Object& Map::addObject(Object* object)
+{
+	return help::add(objects, object);
+}

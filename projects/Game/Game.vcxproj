@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Game\CollisionBall\CollisionBall.h" />
+    <ClInclude Include="..\..\source\Game\CollisionBall\ObjectMove.h" />
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h" />
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\DNA.h" />
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\Event.h" />
@@ -34,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Game\CollisionBall\CollisionBall.cpp" />
+    <ClCompile Include="..\..\source\Game\CollisionBall\ObjectMove.cpp" />
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp" />
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\DNA.cpp" />
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\Event.cpp" />

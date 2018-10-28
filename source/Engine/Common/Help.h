@@ -66,6 +66,13 @@ namespace help
 	}
 
 	template <class ObjectT>
+	ObjectT& add(std::vector<ObjectT*>& vector, ObjectT* newItem)
+	{
+		vector.push_back(newItem);
+		return *newItem;
+	}
+
+	template <class ObjectT>
 	void erase(std::vector<ObjectT*>& vector, const ObjectT item)
 	{
 		auto it = find(vector.begin(), vector.end(), item);

@@ -64,6 +64,9 @@
     <ClInclude Include="..\..\source\Game\CollisionBall\CollisionBall.h">
       <Filter>Source\CollisionBall</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\CollisionBall\ObjectMove.h">
+      <Filter>Source\CollisionBall</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">
@@ -97,6 +100,9 @@
       <Filter>Source\Template</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Game\CollisionBall\CollisionBall.cpp">
+      <Filter>Source\CollisionBall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\CollisionBall\ObjectMove.cpp">
       <Filter>Source\CollisionBall</Filter>
     </ClCompile>
   </ItemGroup>
