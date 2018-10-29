@@ -55,16 +55,19 @@ void CollisionBall::init()
 					return;
 				}
 
+				glm::vec3 vec = _vectorShoot->endPos - _vectorShoot->startPos;
+				vec *= 0.01f;
+
 				ObjectMove* objectMove = new ObjectMove();
-				objectMove->set("", "Sphere_01", glm::vec3(-40.0f, 0.0f, 1.0f));
-				objectMove->tag = 123;	// Для того чтобы отличить от других объектов
+
+				_vectorShoot->startPos.z = 0.0f;
+				objectMove->set("", "Sphere_01", _vectorShoot->startPos);
 
 				//objectMove->vectorMove = glm::vec3(	0.2f + help::random_f(-0.05f, 0.05f),
 					//								help::random_f(-0.05f, 0.05f),
 						//							0.0f);
 
-				glm::vec3 vec = _vectorShoot->endPos - _vectorShoot->startPos;
-				vec *= 0.01f;
+
 				objectMove->vectorMove = glm::vec3(vec);
 
 				_mapGame->addObject(objectMove);
