@@ -26,6 +26,9 @@
     <Filter Include="Res\Data">
       <UniqueIdentifier>{14d21466-dc98-4b56-a2ab-f8589a40145c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Res\Textures\Colors">
+      <UniqueIdentifier>{9578ce42-e060-470c-9587-918987632eb6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Projects\Win\main.cpp">
@@ -87,6 +90,9 @@
     </Image>
     <Image Include="..\..\source\Res\Textures\CellNoAlpha.png">
       <Filter>Res\Textures</Filter>
+    </Image>
+    <Image Include="..\..\source\Res\Textures\Colors\red.png">
+      <Filter>Res\Textures\Colors</Filter>
     </Image>
   </ItemGroup>
 </Project>

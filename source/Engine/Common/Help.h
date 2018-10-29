@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <algorithm>
 #include "jsoncpp/include/json/json.h"
 #include "glm/vec2.hpp"
 #include "glm/vec3.hpp"
@@ -91,8 +92,10 @@ namespace help
 			if (!item)
 				return false;
 
-			if (item->name() == name)
+			if (item->getName() == name)
 				return true;
+
+			return false;
 		});
 
 		if (it != vector.end())
@@ -121,8 +124,10 @@ namespace help
 			if (!item)
 				return false;
 
-			if (item->name() == name)
+			if (item->getName() == name)
 				return true;
+
+			return false;
 		});
 
 		if (it != vector.end())

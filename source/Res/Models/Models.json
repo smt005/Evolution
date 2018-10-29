@@ -14,7 +14,7 @@
   "Sphere": {
     "shape": "Models/Sphere_01.obj",
     "texture": "Textures/Ambient.png",
-    "scale": [2, 2, 2]
+    "scale": [ 2, 2, 2 ]
   },
   "SphereBox": {
     "shape": "Models/Sphere_01.obj",
@@ -28,5 +28,10 @@
   "Triangle": {
     "shape": "Models/Triangle.obj",
     "texture": "Textures/Box.jpg"
+  },
+  "Cursor_red": {
+    "shape": "Models/Sphere_01.obj",
+    "texture": "Textures/Colors/red.png",
+    "scale": [ 0.25, 0.25, 0.1 ]
   }
 }

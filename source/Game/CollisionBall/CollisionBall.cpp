@@ -1,11 +1,14 @@
 #include "CollisionBall.h"
 #include "Object/Map.h"
+#include "Object/Line.h"
 #include "ObjectMove.h"
 #include "Common/Help.h"
 #include "Callback/Callback.h"
+#include "Draw/Camera.h"
 #include "Core.h"
+#include "Draw/DrawLine.h"
 
-#include <glm/vec3.hpp>
+#include <glm/mat4x4.hpp>
 #include <vector>
 
 void CollisionBall::init()
@@ -38,24 +41,62 @@ void CollisionBall::init()
 		}
 
 		// Callback
-		_callback = new Engine::Callback(Engine::CallbackType::RELEASE_TAP, [this](const Engine::CallbackEventPtr& callbackEventPtr) {
-			Engine::TapCallbackEvent* releaseKeyEvent = (Engine::TapCallbackEvent*)callbackEventPtr->get();
-			Engine::VirtualTap tap = releaseKeyEvent->getId();
+		if (_callback)
+		{
+			_callback->add(Engine::CallbackType::RELEASE_TAP, [this](const Engine::CallbackEventPtr& callbackEventPtr) {
+				Engine::TapCallbackEvent* releaseKeyEvent = (Engine::TapCallbackEvent*)callbackEventPtr->get();
+				Engine::VirtualTap tap = releaseKeyEvent->getId();
 
-			if (tap != Engine::VirtualTap::LEFT) {
-				return;
-			}
+				if (tap != Engine::VirtualTap::LEFT) {
+					return;
+				}
 
-			ObjectMove* objectMove = new ObjectMove();
-			objectMove->set("", "Sphere_01", glm::vec3(-40.0f, 0.0f, 1.0f));
-			objectMove->tag = 123;	// Для того чтобы отличить от других объектов
+				if (!_vectorShoot) {
+					return;
+				}
 
-			objectMove->vectorMove = glm::vec3(	0.2f + help::random_f(-0.05f, 0.05f),
-												help::random_f(-0.05f, 0.05f),
-												0.0f);
+				ObjectMove* objectMove = new ObjectMove();
+				objectMove->set("", "Sphere_01", glm::vec3(-40.0f, 0.0f, 1.0f));
+				objectMove->tag = 123;	// Для того чтобы отличить от других объектов
 
-			_mapGame->addObject(objectMove);
-		});
+				//objectMove->vectorMove = glm::vec3(	0.2f + help::random_f(-0.05f, 0.05f),
+					//								help::random_f(-0.05f, 0.05f),
+						//							0.0f);
+
+				glm::vec3 vec = _vectorShoot->endPos - _vectorShoot->startPos;
+				vec *= 0.01f;
+				objectMove->vectorMove = glm::vec3(vec);
+
+				_mapGame->addObject(objectMove);
+			});
+
+			_callback->add(Engine::CallbackType::PRESS_TAP, [this](const Engine::CallbackEventPtr& callbackEventPtr) {
+				if (!_vectorShoot) {
+					_vectorShoot = new VectorShoot();
+					_vectorShoot->startPos = Camera::current.corsorCoord();
+					_vectorShoot->endPos = Camera::current.corsorCoord();
+
+					{
+						Object& object = _mapGame->addObjectToPos("Cursor_red", _vectorShoot->startPos);
+						object.setName(_vectorShoot->startNameObject);
+						object.tag = 1;
+					}
+					{
+						Object& object = _mapGame->addObjectToPos("Cursor_red", _vectorShoot->endPos);
+						object.setName(_vectorShoot->endNameObject);
+						object.tag = 1;
+					}
+				}
+			});
+
+			_callback->add(Engine::CallbackType::MOVE, [this](const Engine::CallbackEventPtr& callbackEventPtr) {
+				if (_mapGame && _vectorShoot) {
+					glm::vec3 pos = Camera::current.corsorCoord();
+					Object& object = help::find(_mapGame->objects, _vectorShoot->endNameObject);
+					object.setPos(pos);
+				}
+			});
+		}
 	}
 }
 
@@ -102,4 +143,22 @@ void CollisionBall::update()
 
 		object.setPos(pos);
 	}
+}
+
+void CollisionBall::draw()
+{
+	TemplateGame::draw();
+
+	if (!_vectorShoot) return;
+
+	draw::DrawLine::prepare();
+	
+	float points[6] = { _vectorShoot->startPos.x, _vectorShoot->startPos.y, 1.0f, _vectorShoot->endPos.x, _vectorShoot->endPos.y, 1.0f };
+	
+	Line line(points, 2, Line::LINE);
+	line.setLineWidth(5.0f);
+	line.color = Color::RED;
+	line.color.setAlpha(2.5);
+
+	draw::DrawLine::draw(line);
 }

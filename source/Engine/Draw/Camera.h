@@ -81,6 +81,8 @@ public:
 	void setJsonData(const Json::Value& data);
 	void getJsonData(Json::Value& data);
 	
+	glm::vec3 corsorCoord();
+
 	// STATIC
 	static mat4x4 _matPVM;
 	static Camera current;

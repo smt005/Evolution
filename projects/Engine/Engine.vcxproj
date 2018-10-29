@@ -185,6 +185,7 @@
     <ClInclude Include="..\..\source\Engine\Object\Model.h" />
     <ClInclude Include="..\..\source\Engine\Object\Identify.h" />
     <ClInclude Include="..\..\source\Engine\Object\Object.h" />
+    <ClInclude Include="..\..\source\Engine\Object\PhysicPlane.h" />
     <ClInclude Include="..\..\source\Engine\Object\Point.h" />
     <ClInclude Include="..\..\source\Engine\Object\Position.h" />
     <ClInclude Include="..\..\source\Engine\Object\Shape.h" />
@@ -207,6 +208,7 @@
     <ClCompile Include="..\..\source\Engine\Object\Model.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Identify.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Object.cpp" />
+    <ClCompile Include="..\..\source\Engine\Object\PhysicPlane.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Position.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Shape.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Texture.cpp" />

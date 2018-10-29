@@ -64,6 +64,9 @@
     <ClCompile Include="..\..\source\Engine\Object\Identify.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Object\PhysicPlane.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Engine\Window.h">
@@ -142,6 +145,9 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Engine\Object\Identify.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Object\PhysicPlane.h">
       <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>

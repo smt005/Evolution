@@ -1,6 +1,8 @@
 
 #include "Camera.h"
 #include "Window.h"
+#include "Callback/Callback.h"
+#include "Object/PhysicPlane.h"
 
 #include <corecrt_math_defines.h>
 
@@ -377,6 +379,26 @@ void Camera::getJsonData(Json::Value& data)
 
 	data["speed"] = _speed;
 	data["speedRotate"] = _speedRotate;
+}
+
+glm::vec3 Camera::corsorCoord()
+{
+	glm::vec2 mousePos = Engine::Callback::mousePos();
+	glm::vec3 wincoord = glm::vec3(mousePos.x, (Engine::Window::height() - mousePos.y), 1.0f);
+	glm::vec4 viewport = glm::vec4(0, 0, Engine::Window::width(), Engine::Window::height());
+
+	glm::vec3 coord = glm::unProject(wincoord, _matView, _matProject, viewport);
+
+	glm::vec3 eye = _pos;
+	vec3 vecCursor(eye.x - coord.x, eye.y - coord.y, eye.z - coord.z);
+	vecCursor = normalize(vecCursor);
+
+	PhysicPlane plane;
+	plane.set(vec3(1.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f));
+
+	vec3 objcoord = plane.crossVector(vecCursor, eye);
+
+	return objcoord;
 }
 
 //---------------------------------------------------------------------------------------------
