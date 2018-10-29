@@ -50,7 +50,9 @@ void CollisionBall::init()
 			objectMove->set("", "Sphere_01", glm::vec3(-40.0f, 0.0f, 1.0f));
 			objectMove->tag = 123;	// Для того чтобы отличить от других объектов
 
-			objectMove->vectorMove = glm::vec3(0.2f, 0.01f, 0.0f);
+			objectMove->vectorMove = glm::vec3(	0.2f + help::random_f(-0.05f, 0.05f),
+												help::random_f(-0.05f, 0.05f),
+												0.0f);
 
 			_mapGame->addObject(objectMove);
 		});
