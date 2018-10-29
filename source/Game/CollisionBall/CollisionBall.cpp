@@ -40,6 +40,18 @@ void CollisionBall::init()
 			}
 		}
 
+		{
+
+			Object& object = _mapGame->addObjectToPos("Cursor_red");
+			object.setName("start");
+			object.tag = 1;
+		}
+		{
+			Object& object = _mapGame->addObjectToPos("Cursor_red");
+			object.setName("end");
+			object.tag = 1;
+		}
+
 		// Callback
 		if (_callback)
 		{
@@ -59,8 +71,9 @@ void CollisionBall::init()
 				vec *= 0.01f;
 
 				ObjectMove* objectMove = new ObjectMove();
+				objectMove->tag = 123;	// Для того чтобы отличить от других объектов
 
-				_vectorShoot->startPos.z = 0.0f;
+				_vectorShoot->startPos.z = 1.0f;
 				objectMove->set("", "Sphere_01", _vectorShoot->startPos);
 
 				//objectMove->vectorMove = glm::vec3(	0.2f + help::random_f(-0.05f, 0.05f),
@@ -68,9 +81,13 @@ void CollisionBall::init()
 						//							0.0f);
 
 
+				vec.z = 0.0f;
 				objectMove->vectorMove = glm::vec3(vec);
 
 				_mapGame->addObject(objectMove);
+
+				delete _vectorShoot;
+				_vectorShoot = nullptr;
 			});
 
 			_callback->add(Engine::CallbackType::PRESS_TAP, [this](const Engine::CallbackEventPtr& callbackEventPtr) {
@@ -78,25 +95,14 @@ void CollisionBall::init()
 					_vectorShoot = new VectorShoot();
 					_vectorShoot->startPos = Camera::current.corsorCoord();
 					_vectorShoot->endPos = Camera::current.corsorCoord();
-
-					{
-						Object& object = _mapGame->addObjectToPos("Cursor_red", _vectorShoot->startPos);
-						object.setName(_vectorShoot->startNameObject);
-						object.tag = 1;
-					}
-					{
-						Object& object = _mapGame->addObjectToPos("Cursor_red", _vectorShoot->endPos);
-						object.setName(_vectorShoot->endNameObject);
-						object.tag = 1;
-					}
 				}
 			});
 
 			_callback->add(Engine::CallbackType::MOVE, [this](const Engine::CallbackEventPtr& callbackEventPtr) {
 				if (_mapGame && _vectorShoot) {
-					glm::vec3 pos = Camera::current.corsorCoord();
+					_vectorShoot->endPos = Camera::current.corsorCoord();
 					Object& object = help::find(_mapGame->objects, _vectorShoot->endNameObject);
-					object.setPos(pos);
+					object.setPos(_vectorShoot->endPos);
 				}
 			});
 		}
@@ -156,7 +162,7 @@ void CollisionBall::draw()
 
 	draw::DrawLine::prepare();
 	
-	float points[6] = { _vectorShoot->startPos.x, _vectorShoot->startPos.y, 1.0f, _vectorShoot->endPos.x, _vectorShoot->endPos.y, 1.0f };
+	float points[6] = { _vectorShoot->startPos.x, _vectorShoot->startPos.y, 0.0f, _vectorShoot->endPos.x, _vectorShoot->endPos.y, 0.0f };
 	
 	Line line(points, 2, Line::LINE);
 	line.setLineWidth(5.0f);
