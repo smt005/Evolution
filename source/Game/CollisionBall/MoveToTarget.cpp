@@ -1,7 +1,8 @@
-#include "CollisionBall.h"
+#include "MoveToTarget.h"
 #include "Object/Map.h"
 #include "Object/Line.h"
 #include "ObjectMove.h"
+#include "ObjectMoveWithAI.h"
 #include "Common/Help.h"
 #include "Callback/Callback.h"
 #include "Draw/Camera.h"
@@ -11,7 +12,7 @@
 #include <glm/mat4x4.hpp>
 #include <vector>
 
-void CollisionBall::init()
+void MoveToTarget::init()
 {
 	TemplateGame::init();
 
@@ -20,14 +21,9 @@ void CollisionBall::init()
 	if (_mapGame)
 	{
 		// Добавление объекта на карту
-		for (float x = -15.0f; x < 15.0f; x += 2.5f) {
-			for (float y = -15.0f; y < 15.0f; y += 2.5f) {
-				
-				// Добавление обычного объекта
-				//glm::vec3 pos(x, y, 1.0f);
-				//Object& object = _mapGame->addObjectToPos("Sphere_01", pos); // Название модели и позиция
-
-				ObjectMove* objectMove = new ObjectMove();
+		for (float x = -35.0f; x < 35.0f; x += 5.0f) {
+			for (float y = -35.0f; y < 35.0f; y += 5.0f) {
+				ObjectMoveWithAI* objectMove = new ObjectMoveWithAI();
 				objectMove->set("", "Sphere_01", glm::vec3(x, y, 1.0f));
 				objectMove->tag = 123;	// Для того чтобы отличить от других объектов
 
@@ -104,15 +100,15 @@ void CollisionBall::init()
 					Object& object = help::find(_mapGame->objects, _vectorShoot->endNameObject);
 					object.setPos(_vectorShoot->endPos);
 				}
+
+				ObjectMoveWithAI::targetPos = Camera::current.corsorCoord();
 			});
 		}
 	}
 }
 
-void CollisionBall::update()
+void MoveToTarget::update()
 {
-	TemplateGame::update();
-
 	// Массив объектов карты
 	std::vector<Object*>& balls = _mapGame->objects;
 
@@ -139,7 +135,7 @@ void CollisionBall::update()
 		}
 	};
 
-	for (int i = 0; i < 1000; ++i) {
+	for (int i = 0; i < 100; ++i) {
 		collision();
 	}
 
@@ -158,9 +154,11 @@ void CollisionBall::update()
 
 		object.setPos(pos);
 	}
+
+	TemplateGame::update();
 }
 
-void CollisionBall::draw()
+void MoveToTarget::draw()
 {
 	TemplateGame::draw();
 

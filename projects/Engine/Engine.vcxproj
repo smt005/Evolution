@@ -191,6 +191,7 @@
     <ClInclude Include="..\..\source\Engine\Object\Shape.h" />
     <ClInclude Include="..\..\source\Engine\Object\Texture.h" />
     <ClInclude Include="..\..\source\Engine\Object\Triangle.h" />
+    <ClInclude Include="..\..\source\Engine\Physic\PhysicCircle2D.h" />
     <ClInclude Include="..\..\Source\Engine\Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +214,7 @@
     <ClCompile Include="..\..\source\Engine\Object\Shape.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Texture.cpp" />
     <ClCompile Include="..\..\source\Engine\Object\Triangle.cpp" />
+    <ClCompile Include="..\..\source\Engine\Physic\PhysicCircle2D.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Core.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\FileManager.cpp" />
     <ClCompile Include="..\..\Source\Engine\Platform\Win\Window.cpp" />

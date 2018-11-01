@@ -6,6 +6,8 @@
 class ObjectMove : public Object
 {
 public:
+	virtual ~ObjectMove() {}
+
 	inline float getRadius() { return 1.0f; }
 	inline float getMass() { return 1.0f; }
 

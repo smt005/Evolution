@@ -67,6 +67,9 @@
     <ClCompile Include="..\..\source\Engine\Object\PhysicPlane.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\Engine\Physic\PhysicCircle2D.cpp">
+      <Filter>Physic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Engine\Window.h">
@@ -150,6 +153,9 @@
     <ClInclude Include="..\..\source\Engine\Object\PhysicPlane.h">
       <Filter>Object</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Physic\PhysicCircle2D.h">
+      <Filter>Physic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Platform">
@@ -169,6 +175,9 @@
     </Filter>
     <Filter Include="Callback">
       <UniqueIdentifier>{10bce38e-1c7c-456f-9d53-07f7492ab1b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physic">
+      <UniqueIdentifier>{d1f476d0-cad3-43a5-8e78-80a2f70f9fd3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

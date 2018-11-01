@@ -6,6 +6,8 @@
 #include "Evolution/Evolution.h"
 #include "Examples/MapExample.h"
 #include "CollisionBall/CollisionBall.h"
+#include "CollisionBall/MoveToTarget.h"
+#include "CollisionBall/MoveToTargetClass.h"
 
 namespace game
 {
@@ -21,6 +23,12 @@ Engine::GamePtr getGame(const std::string& name) {
 	}
 	else if (name == "CollisionBall") {
 		game = new CollisionBall();
+	}
+	else if (name == "MoveToTarget") {
+		game = new MoveToTarget();
+	}
+	else if (name == "MoveToTargetClass") {
+		game = new MoveToTargetClass();
 	}
 	else {
 		game = new Engine::DefaultGame();

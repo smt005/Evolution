@@ -67,6 +67,15 @@
     <ClInclude Include="..\..\source\Game\CollisionBall\ObjectMove.h">
       <Filter>Source\CollisionBall</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\CollisionBall\ObjectMoveWithAI.h">
+      <Filter>Source\CollisionBall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\CollisionBall\MoveToTarget.h">
+      <Filter>Source\CollisionBall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\CollisionBall\MoveToTargetClass.h">
+      <Filter>Source\CollisionBall</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">
@@ -103,6 +112,15 @@
       <Filter>Source\CollisionBall</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Game\CollisionBall\ObjectMove.cpp">
+      <Filter>Source\CollisionBall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\CollisionBall\ObjectMoveWithAI.cpp">
+      <Filter>Source\CollisionBall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\CollisionBall\MoveToTarget.cpp">
+      <Filter>Source\CollisionBall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\CollisionBall\MoveToTargetClass.cpp">
       <Filter>Source\CollisionBall</Filter>
     </ClCompile>
   </ItemGroup>

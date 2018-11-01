@@ -21,8 +21,6 @@ public:
 	}
 
 public:
-	//template <class ValueT>
-	//static std::string getIdAsStringStatic(const ValueT id, const unsigned short int lenght = 0) {
 	static std::string getIdAsStringStatic(const unsigned long int id, const unsigned short int lenght = 0) {
 		std::string idStr = std::to_string(id);
 		size_t lenghtId = idStr.length();
