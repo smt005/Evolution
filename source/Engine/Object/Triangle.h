@@ -1,11 +1,15 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 #include "jsoncpp/include/json/json.h"
 
 #include "Position.h"
 #include "Texture.h"
 #include "Color.h"
+
+class Triangle;
+typedef std::shared_ptr<Triangle> TrianglePtr;
 
 class Triangle : public Position, public Color
 {

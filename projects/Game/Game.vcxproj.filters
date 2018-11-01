@@ -26,6 +26,12 @@
     <Filter Include="Source\Template">
       <UniqueIdentifier>{9c08fd80-84d2-48b0-aa30-2ab078a1a52e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Microbe_02">
+      <UniqueIdentifier>{5c6a7def-5d3d-4d2e-b5f3-d7e694e26fc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Microbe_02\Cells">
+      <UniqueIdentifier>{ac3e3247-1694-4d97-b012-4855fe38d67d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h">
@@ -76,6 +82,27 @@
     <ClInclude Include="..\..\source\Game\CollisionBall\MoveToTargetClass.h">
       <Filter>Source\CollisionBall</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\Microbe_02\MicrobeGame_02.h">
+      <Filter>Source\Microbe_02</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Microbe_02\Microbe_02.h">
+      <Filter>Source\Microbe_02</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\Cell.h">
+      <Filter>Source\Microbe_02\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellBrain.h">
+      <Filter>Source\Microbe_02\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellEnergy.h">
+      <Filter>Source\Microbe_02\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellMouth.h">
+      <Filter>Source\Microbe_02\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellMove.h">
+      <Filter>Source\Microbe_02\Cells</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">
@@ -122,6 +149,12 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Game\CollisionBall\MoveToTargetClass.cpp">
       <Filter>Source\CollisionBall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Microbe_02\MicrobeGame_02.cpp">
+      <Filter>Source\Microbe_02</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Microbe_02\Microbe_02.cpp">
+      <Filter>Source\Microbe_02</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -34,6 +34,13 @@
     <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeMover.h" />
     <ClInclude Include="..\..\source\Game\Examples\MapExample.h" />
     <ClInclude Include="..\..\source\Game\GamesManager.h" />
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\Cell.h" />
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellBrain.h" />
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellEnergy.h" />
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellMouth.h" />
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellMove.h" />
+    <ClInclude Include="..\..\source\Game\Microbe_02\MicrobeGame_02.h" />
+    <ClInclude Include="..\..\source\Game\Microbe_02\Microbe_02.h" />
     <ClInclude Include="..\..\source\Game\Templates\TemplateGame.h" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +58,8 @@
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeMouth.cpp" />
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeMover.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp" />
+    <ClCompile Include="..\..\source\Game\Microbe_02\MicrobeGame_02.cpp" />
+    <ClCompile Include="..\..\source\Game\Microbe_02\Microbe_02.cpp" />
     <ClCompile Include="..\..\source\Game\Templates\TemplateGame.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
