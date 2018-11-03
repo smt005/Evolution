@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <vector>
+#include <functional>
 
 template <class ItemT>
 #define ItemTPtrT shared_ptr<ItemT>
@@ -23,7 +24,11 @@ public:
 
 		return itemPtr;
 	}
-	inline static void updateItems() {
+	inline static void updateItems(std::function<void(void)> function) {
+		if (function) {
+			function();
+		}
+
 		for (auto& item : _items) {
 			item->update();
 		}

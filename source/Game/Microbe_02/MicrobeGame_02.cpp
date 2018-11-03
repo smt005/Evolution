@@ -13,13 +13,14 @@ MicrobeGame_02::~MicrobeGame_02()
 void MicrobeGame_02::init()
 {
 	TemplateGame::init();
-	Microbe_02::generate(50);
+	Microbe_02::generate(150);
 
 }
 
 void MicrobeGame_02::update()
 {
-	Microbe_02::updateItems();
+	std::function<void(void)> function = []() { PhysicCircle2D::updatePhysic(); };
+	Microbe_02::updateItems(function);
 	TemplateGame::update();
 }
 

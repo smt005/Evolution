@@ -31,7 +31,7 @@ public:
 
 	template <class ContainerT>
 	static void draw() {
-		for (auto& item : Microbe_02::getItems()) {
+		for (auto& item : ContainerT::getItems()) {
 			if (item) {
 				setMatrixToShader(item->getMatrix());
 				ModelPtr model = item->getModel();

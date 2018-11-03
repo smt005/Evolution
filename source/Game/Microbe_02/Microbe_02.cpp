@@ -57,5 +57,7 @@ void Microbe_02::generate(const unsigned int count)
 		glm::vec3 pos(help::random_f(-25.0f, 25.0f), help::random_f(-25.0f, 25.0f), 1.0f);
 		Microbe_02Ptr microbe = addItem();
 		microbe->init(pos);
+
+		microbe->_physic->setVectorPhysic(glm::vec3(help::random_f(-0.2f, 0.2f), help::random_f(-0.2f, 0.2f), 0.0f));
 	}
 }
