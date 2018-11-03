@@ -45,6 +45,10 @@ const float * const Draw::getClearColor()
 	return _clearColor;
 }
 
+void Draw::setMatrixToShader(const glm::mat4x4 & matrix) {
+	glUniformMatrix4fv(baseShader.u_matViewModel, 1, GL_FALSE, glm::value_ptr(matrix));
+}
+
 void Draw::clearColor()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

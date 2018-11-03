@@ -156,6 +156,9 @@
     <ClInclude Include="..\..\source\Engine\Physic\PhysicCircle2D.h">
       <Filter>Physic</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Engine\Common\ItemsClass.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Platform">

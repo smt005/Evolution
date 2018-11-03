@@ -170,6 +170,7 @@
     <ClInclude Include="..\..\source\Engine\Callback\VirtualKey.h" />
     <ClInclude Include="..\..\source\Engine\Common\DataClass.h" />
     <ClInclude Include="..\..\source\Engine\Common\Help.h" />
+    <ClInclude Include="..\..\source\Engine\Common\ItemsClass.h" />
     <ClInclude Include="..\..\source\Engine\Draw\Camera.h" />
     <ClInclude Include="..\..\source\Engine\Draw\Draw.h" />
     <ClInclude Include="..\..\source\Engine\Draw\DrawLine.h" />
