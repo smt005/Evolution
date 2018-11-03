@@ -59,6 +59,10 @@
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeMouth.cpp" />
     <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeMover.cpp" />
     <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp" />
+    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellBrain.cpp" />
+    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellEnergy.cpp" />
+    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellMouth.cpp" />
+    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellMove.cpp" />
     <ClCompile Include="..\..\source\Game\Microbe_02\MicrobeEvent_02.cpp" />
     <ClCompile Include="..\..\source\Game\Microbe_02\MicrobeGame_02.cpp" />
     <ClCompile Include="..\..\source\Game\Microbe_02\Microbe_02.cpp" />

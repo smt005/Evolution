@@ -16,19 +16,9 @@ public:
 	}
 	~CellMouth() {}
 
-	void init();
-	void action() override;
+	void init() {}
+	void action() override {}
 	
 private:
 
 };
-
-void CellMouth::init()
-{
-
-}
-
-void CellMouth::action()
-{
-
-}

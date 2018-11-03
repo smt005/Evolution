@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MicrobeEvent_02.h"
+#include <glm/vec3.hpp>
 
 class Microbe_02;
 
@@ -12,7 +12,7 @@ public:
 	void setCore(Microbe_02* core) {
 		_core = core;
 	}
-	virtual void action() = 0;
+	virtual void action() {};
 
 protected:
 	Microbe_02* _core;

@@ -162,5 +162,17 @@
     <ClCompile Include="..\..\source\Game\Microbe_02\MicrobeEvent_02.cpp">
       <Filter>Source\Microbe_02</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellBrain.cpp">
+      <Filter>Source\Microbe_02\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellEnergy.cpp">
+      <Filter>Source\Microbe_02\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellMouth.cpp">
+      <Filter>Source\Microbe_02\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellMove.cpp">
+      <Filter>Source\Microbe_02\Cells</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

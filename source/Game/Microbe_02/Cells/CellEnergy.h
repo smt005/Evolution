@@ -16,19 +16,14 @@ public:
 	}
 	~CellEnergy() {}
 
-	void init();
-	void action() override;
+	void init() {
+		_maxCapacity = 100.0f;
+		_occupancy = 100.0f;
+	}
+
+	void action() override {}
 	
 private:
-
+	float _maxCapacity;
+	float _occupancy;
 };
-
-void CellEnergy::init()
-{
-
-}
-
-void CellEnergy::action()
-{
-
-}

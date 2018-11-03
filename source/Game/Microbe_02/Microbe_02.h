@@ -56,6 +56,7 @@ public:
 			if (_data) {
 				return _data->getType();
 			}
+			return NONE;
 		}
 
 		template <class EventDataT>
@@ -88,6 +89,7 @@ public:
 	CellBrainPtr	cellBrain;
 
 private:
+public:
 	PhysicCircle2DPtr	_physic;
 	ModelPtr			_model;
 	std::vector<Event> _events;

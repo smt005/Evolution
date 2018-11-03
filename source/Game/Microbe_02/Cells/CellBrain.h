@@ -20,16 +20,6 @@ public:
 	void init();
 	void action() override;
 
-private:
-
+public:
+	static glm::vec3 targetPos;
 };
-
-void CellBrain::init()
-{
-
-}
-
-void CellBrain::action()
-{
-
-}
