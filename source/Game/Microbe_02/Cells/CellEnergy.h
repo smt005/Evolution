@@ -2,11 +2,19 @@
 
 #include "Cell.h"
 
+class Microbe_02;
+
 class CellEnergy final : public Cell
 {
 public:
-	CellEnergy();
-	~CellEnergy();
+	CellEnergy() {
+		init();
+	}
+	CellEnergy(Microbe_02* core) {
+		_core = core;
+		init();
+	}
+	~CellEnergy() {}
 
 	void init();
 	void action() override;
@@ -14,14 +22,6 @@ public:
 private:
 
 };
-
-CellEnergy::CellEnergy() {
-	init();
-}
-
-CellEnergy::~CellEnergy()
-{
-}
 
 void CellEnergy::init()
 {

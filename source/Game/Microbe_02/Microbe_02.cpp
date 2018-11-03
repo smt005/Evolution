@@ -14,10 +14,10 @@ Microbe_02::~Microbe_02() {
 
 void Microbe_02::init(const glm::vec3 & pos)
 {
-	cellEnergy = CellEnergyPtr(new CellEnergy());
-	cellMove = CellMovePtr(new CellMove());
-	cellMouth = CellMouthPtr(new CellMouth());
-	cellBrain = CellBrainPtr(new CellBrain());
+	cellEnergy = CellEnergyPtr(new CellEnergy(this));
+	cellMove = CellMovePtr(new CellMove(this));
+	cellMouth = CellMouthPtr(new CellMouth(this));
+	cellBrain = CellBrainPtr(new CellBrain(this));
 
 	_physic = PhysicCircle2D::addPhysic();
 	_physic->setPosPhysic(pos);
@@ -26,6 +26,12 @@ void Microbe_02::init(const glm::vec3 & pos)
 }
 
 void Microbe_02::update() {
+	applyEvents();
+
+	cellEnergy->action();
+	cellMove->action();
+	cellMouth->action();
+	cellBrain->action();
 }
 
 glm::mat4x4 Microbe_02::getMatrix()
@@ -58,6 +64,6 @@ void Microbe_02::generate(const unsigned int count)
 		Microbe_02Ptr microbe = addItem();
 		microbe->init(pos);
 
-		microbe->_physic->setVectorPhysic(glm::vec3(help::random_f(-0.2f, 0.2f), help::random_f(-0.2f, 0.2f), 0.0f));
+		//microbe->_physic->setVectorPhysic(glm::vec3(help::random_f(-0.2f, 0.2f), help::random_f(-0.2f, 0.2f), 0.0f));
 	}
 }

@@ -2,11 +2,19 @@
 
 #include "Cell.h"
 
+class Microbe_02;
+
 class CellMouth final : public Cell
 {
 public:
-	CellMouth();
-	~CellMouth();
+	CellMouth() {
+		init();
+	}
+	CellMouth(Microbe_02* core) {
+		_core = core;
+		init();
+	}
+	~CellMouth() {}
 
 	void init();
 	void action() override;
@@ -14,14 +22,6 @@ public:
 private:
 
 };
-
-CellMouth::CellMouth() {
-	init();
-}
-
-CellMouth::~CellMouth()
-{
-}
 
 void CellMouth::init()
 {

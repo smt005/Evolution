@@ -22,12 +22,30 @@ typedef std::shared_ptr<CellBrain> CellBrainPtr;
 class Microbe_02 final : public ItemsClass <Microbe_02>, public UniqueId
 {
 public:
+	enum
+	{
+		NONE,
+		BRAIN,
+		ENERGY,
+		MOUTH,
+		MOVE
+	};
+
 	Microbe_02();
 	~Microbe_02();
 	void init(const glm::vec3& pos);
 	void update();
 	glm::mat4x4 getMatrix() override;
 	ModelPtr getModel() override;
+
+	//---
+	typedef unsigned short int Event;
+	void applyEvents();
+	void addEvent(Event event) {
+		_events.push_back(event);
+	}
+
+	void moveEvent();
 
 public:
 	CellEnergyPtr	cellEnergy;
@@ -38,6 +56,7 @@ public:
 private:
 	PhysicCircle2DPtr	_physic;
 	ModelPtr			_model;
+	std::vector<Event> _events;
 
 public:
 	static void generate(const unsigned int count);

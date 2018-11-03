@@ -156,5 +156,8 @@
     <ClCompile Include="..\..\source\Game\Microbe_02\Microbe_02.cpp">
       <Filter>Source\Microbe_02</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\Game\Microbe_02\MicrobeEvent_02.cpp">
+      <Filter>Source\Microbe_02</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
