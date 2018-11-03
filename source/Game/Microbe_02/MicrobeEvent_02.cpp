@@ -1,13 +1,16 @@
 
 #include "Microbe_02.h"
+#include "MicrobeEvent_02.h"
 
 void Microbe_02::applyEvents()
 {
-	for (auto& event : _events) {
-		switch (event)
+	for (auto& eventItem : _events) {
+		if (!eventItem.getData<Event::Data>()) continue;
+
+		switch (eventItem.getType())
 		{
-		case Microbe_02::MOVE:  {
-			moveEvent();
+		case Microbe_02::Event::MOVE : {
+			moveEvent(*eventItem.getData<DataMoveEvent>());
 		} break;
 		default:
 			break;
@@ -15,7 +18,6 @@ void Microbe_02::applyEvents()
 	}
 }
 
-void Microbe_02::moveEvent() {
-	glm::vec3 vector(0.2f, 0.1f, 0.0f);
-	_physic->setVectorPhysic(vector);
+void Microbe_02::moveEvent(DataMoveEvent& dataMove) {
+	_physic->setVectorPhysic(dataMove.move);
 }

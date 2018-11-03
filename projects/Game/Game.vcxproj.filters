@@ -103,6 +103,9 @@
     <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellMove.h">
       <Filter>Source\Microbe_02\Cells</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\Microbe_02\MicrobeEvent_02.h">
+      <Filter>Source\Microbe_02</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">

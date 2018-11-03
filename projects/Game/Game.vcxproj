@@ -39,6 +39,7 @@
     <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellEnergy.h" />
     <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellMouth.h" />
     <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellMove.h" />
+    <ClInclude Include="..\..\source\Game\Microbe_02\MicrobeEvent_02.h" />
     <ClInclude Include="..\..\source\Game\Microbe_02\MicrobeGame_02.h" />
     <ClInclude Include="..\..\source\Game\Microbe_02\Microbe_02.h" />
     <ClInclude Include="..\..\source\Game\Templates\TemplateGame.h" />

@@ -19,16 +19,50 @@ typedef std::shared_ptr<CellMouth> CellMouthPtr;
 class CellBrain;
 typedef std::shared_ptr<CellBrain> CellBrainPtr;
 
+class DataMoveEvent;
+
 class Microbe_02 final : public ItemsClass <Microbe_02>, public UniqueId
 {
 public:
-	enum
+	class Event final
 	{
-		NONE,
-		BRAIN,
-		ENERGY,
-		MOUTH,
-		MOVE
+	public:
+		enum
+		{
+			NONE,
+			BRAIN,
+			ENERGY,
+			MOUTH,
+			MOVE
+		};
+		typedef unsigned short int Type;
+
+		//	Data
+		class Data
+		{
+		public:
+			virtual Type getType() = 0;
+		};
+
+		typedef std::shared_ptr<Data> DataPtr;
+
+		//	Event
+		Event() : 
+			_data(nullptr) {}
+
+		Event(Data* data) : _data(data) {}
+
+		inline Type getType() {
+			if (_data) {
+				return _data->getType();
+			}
+		}
+
+		template <class EventDataT>
+		inline EventDataT* getData() { return static_cast<EventDataT*>(_data.get()); }
+
+	private:
+		DataPtr _data;
 	};
 
 	Microbe_02();
@@ -39,13 +73,13 @@ public:
 	ModelPtr getModel() override;
 
 	//---
-	typedef unsigned short int Event;
+	
 	void applyEvents();
-	void addEvent(Event event) {
+	void addEvent(Event& event) {
 		_events.push_back(event);
 	}
 
-	void moveEvent();
+	void moveEvent(DataMoveEvent& dataMove);
 
 public:
 	CellEnergyPtr	cellEnergy;

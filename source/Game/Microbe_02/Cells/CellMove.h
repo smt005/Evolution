@@ -34,5 +34,9 @@ void CellMove::action()
 		return;
 	}
 
-	_core->addEvent(Microbe_02::MOVE);
+	DataMoveEvent* data = new DataMoveEvent();
+	data->move = glm::vec3(0.1f, 0.2f, 0.0f);
+	Microbe_02::Event eventMove(data);
+
+	_core->addEvent(eventMove);
 }

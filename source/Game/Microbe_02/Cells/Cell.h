@@ -1,5 +1,6 @@
-
 #pragma once
+
+#include "MicrobeEvent_02.h"
 
 class Microbe_02;
 
