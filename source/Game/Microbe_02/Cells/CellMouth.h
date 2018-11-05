@@ -17,7 +17,7 @@ public:
 	~CellMouth() {}
 
 	void init() {}
-	void action() override {}
+	void action() override;
 	
 private:
 

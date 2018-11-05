@@ -52,4 +52,5 @@ private:
 private:
 	static std::vector<PhysicCircle2DPtr> _physicObjects;
 	static size_t _countPhysicIteration;
+	static float _frictionCoefficient;
 };

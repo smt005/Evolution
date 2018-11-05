@@ -4,6 +4,7 @@
 
 std::vector<PhysicCircle2DPtr> PhysicCircle2D::_physicObjects;
 size_t PhysicCircle2D::_countPhysicIteration = 10;
+float PhysicCircle2D::_frictionCoefficient = 0.9965f;
 
 PhysicCircle2D::PhysicCircle2D()
 	: _posPhysic(glm::vec3(0.0f, 0.0f, 0.0f))
@@ -82,7 +83,7 @@ void PhysicCircle2D::resolveCollision(PhysicCircle2D& ball)
 	if (vn > 0.0f) return;
 
 	// collision impulse
-	float Constants_restitution = 0.0f;
+	float Constants_restitution = 1.0f;
 	float i = (-(1.0f + Constants_restitution) * vn) / (im1 + im2);
 	glm::vec3 impulse = mtd * i;
 
@@ -111,6 +112,7 @@ void PhysicCircle2D::updatePhysic()
 	}
 
 	for (PhysicCircle2DPtr& object : _physicObjects) {
+		object->_vecPhysic *= _frictionCoefficient;
 		object->move();
 	}
 }

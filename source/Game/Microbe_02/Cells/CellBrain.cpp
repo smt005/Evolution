@@ -12,6 +12,10 @@ void CellBrain::init() {
 
 void CellBrain::action()
 {
+	if (!requestEnergy()) {
+		return;
+	}
+
 	if (!_core) {
 		return;
 	}
@@ -20,6 +24,10 @@ void CellBrain::action()
 	glm::vec3 pos(mat[3][0], mat[3][1], 1.0f);
 	glm::vec3 vectorMove = targetPos - pos;
 	vectorMove.z = 0.0f;
+
+	if (glm::length(vectorMove) < 1.0f) {
+		return;
+	}
 
 	DataMoveEvent* data = new DataMoveEvent();
 	data->move = vectorMove;

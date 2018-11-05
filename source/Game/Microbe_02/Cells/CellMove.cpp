@@ -7,13 +7,15 @@
 
 void CellMove::action()
 {
+	if (!requestEnergy()) {
+		return;
+	}
+
 	if (!_core) {
 		return;
 	}
 
-	if (glm::length(vectorMove) == 0.0f) {
-		return;
-	}
+	_stockEnergy -= _consumption;
 
 	glm::vec3 vector = glm::normalize(vectorMove);
 	vector *= 0.1f;

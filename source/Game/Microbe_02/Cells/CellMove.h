@@ -17,7 +17,9 @@ public:
 	}
 	~CellMove() {}
 
-	void init() { }
+	void init() {
+		_stockEnergy = 0.0f;
+	}
 	void action() override;
 	
 public:

@@ -17,13 +17,9 @@ public:
 	~CellEnergy() {}
 
 	void init() {
-		_maxCapacity = 100.0f;
-		_occupancy = 100.0f;
+		_maxStockEnergy = 1000.0f;
+		_stockEnergy = _maxStockEnergy;
 	}
 
-	void action() override {}
-	
-private:
-	float _maxCapacity;
-	float _occupancy;
+	void action() override;
 };

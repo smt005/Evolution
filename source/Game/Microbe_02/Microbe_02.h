@@ -20,6 +20,7 @@ class CellBrain;
 typedef std::shared_ptr<CellBrain> CellBrainPtr;
 
 class DataMoveEvent;
+class DataEnergyEvent;
 
 class Microbe_02 final : public ItemsClass <Microbe_02>, public UniqueId
 {
@@ -72,7 +73,7 @@ public:
 	void update();
 	glm::mat4x4 getMatrix() override;
 	ModelPtr getModel() override;
-
+	void kill();
 	//---
 	
 	void applyEvents();
@@ -80,7 +81,8 @@ public:
 		_events.push_back(event);
 	}
 
-	void moveEvent(DataMoveEvent& dataMove);
+	void applyEvent(DataMoveEvent& data);
+	void applyEvent(DataEnergyEvent& data);
 
 public:
 	CellEnergyPtr	cellEnergy;
@@ -92,6 +94,7 @@ private:
 public:
 	PhysicCircle2DPtr	_physic;
 	ModelPtr			_model;
+	std::shared_ptr<bool> _live;
 	std::vector<Event> _events;
 
 public:

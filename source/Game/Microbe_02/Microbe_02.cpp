@@ -6,7 +6,8 @@
 #include "Cells/CellBrain.h"
 #include "Common/Help.h"
 
-Microbe_02::Microbe_02() {
+Microbe_02::Microbe_02()
+	: _live(std::shared_ptr<bool>(new bool)) {
 }
 
 Microbe_02::~Microbe_02() {
@@ -51,6 +52,10 @@ glm::mat4x4 Microbe_02::getMatrix()
 
 ModelPtr Microbe_02::getModel() {
 	return _model;
+}
+
+void Microbe_02::kill() {
+	_live = nullptr;
 }
 
 // static

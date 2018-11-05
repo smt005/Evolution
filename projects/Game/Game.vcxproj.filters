@@ -174,5 +174,8 @@
     <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellMove.cpp">
       <Filter>Source\Microbe_02\Cells</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\Cell.cpp">
+      <Filter>Source\Microbe_02\Cells</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
