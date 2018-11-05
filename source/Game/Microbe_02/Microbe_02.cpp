@@ -7,7 +7,7 @@
 #include "Common/Help.h"
 
 Microbe_02::Microbe_02()
-	: _live(std::shared_ptr<bool>(new bool)) {
+	: _live(std::shared_ptr<float>(new float(1.0f))) {
 }
 
 Microbe_02::~Microbe_02() {
@@ -29,7 +29,8 @@ void Microbe_02::init(const glm::vec3 & pos)
 	_physic->setMassPhysic(area);
 
 	_triangle = Triangle::generateTriangle(radius);
-	_triangle->setTexture("Textures/Cell.png");
+	_triangle->setTexture("Textures/Cell_light.png");
+	_triangle->setColor( {0.0f, 1.0f, 1.0f, 1.0f} );
 }
 
 void Microbe_02::update() {

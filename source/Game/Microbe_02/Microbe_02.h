@@ -100,7 +100,7 @@ private:
 public:
 	PhysicCircle2DPtr	_physic;
 	TrianglePtr			_triangle;
-	std::shared_ptr<bool> _live;
+	std::shared_ptr<float> _live;
 	std::vector<Event> _events;
 
 public:
