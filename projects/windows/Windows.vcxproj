@@ -209,6 +209,8 @@
     <Image Include="..\..\source\Res\Textures\Cell.png" />
     <Image Include="..\..\source\Res\Textures\CellNoAlpha.png" />
     <Image Include="..\..\source\Res\Textures\Cell_light.png" />
+    <Image Include="..\..\source\Res\Textures\Colors\blue.png" />
+    <Image Include="..\..\source\Res\Textures\Colors\green.png" />
     <Image Include="..\..\source\Res\Textures\Colors\red.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

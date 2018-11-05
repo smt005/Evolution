@@ -97,5 +97,11 @@
     <Image Include="..\..\source\Res\Textures\Cell_light.png">
       <Filter>Res\Textures</Filter>
     </Image>
+    <Image Include="..\..\source\Res\Textures\Colors\blue.png">
+      <Filter>Res\Textures\Colors</Filter>
+    </Image>
+    <Image Include="..\..\source\Res\Textures\Colors\green.png">
+      <Filter>Res\Textures\Colors</Filter>
+    </Image>
   </ItemGroup>
 </Project>

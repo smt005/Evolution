@@ -3,8 +3,6 @@
 #include "Object/Triangle.h"
 #include "Physic/PhysicCircle2D.h"
 #include "Object/Identify.h"
-#include "Object/Model.h"
-#include "Object/Triangle.h"
 #include "Common/ItemsClass.h"
 #include <memory>
 #include <vector>

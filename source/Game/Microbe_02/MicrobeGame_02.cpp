@@ -1,5 +1,6 @@
 #include "MicrobeGame_02.h"
 #include "Microbe_02.h"
+#include "Food_02.h"
 #include "Draw/Draw.h"
 #include "Draw/Camera.h"
 #include "Callback/Callback.h"
@@ -19,7 +20,8 @@ void MicrobeGame_02::init() {
 	});
 
 	Microbe_02::setFunction([]() { PhysicCircle2D::updatePhysic(); });
-	Microbe_02::generate(150);
+	Microbe_02::generate(50);
+	Food_02::generate(150);
 
 }
 
@@ -31,4 +33,5 @@ void MicrobeGame_02::update() {
 void MicrobeGame_02::draw() {
 	TemplateGame::draw();
 	Draw::draw<Microbe_02>();
+	Draw::draw<Food_02>();
 }
