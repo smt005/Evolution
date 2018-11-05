@@ -20,13 +20,23 @@ void MicrobeGame_02::init() {
 	});
 
 	Microbe_02::setFunction([]() { PhysicCircle2D::updatePhysic(); });
-	Microbe_02::generate(50);
-	Food_02::generate(150);
+
+	int countMicrobe = 50;
+	int countFood = 150;
+
+#if _DEBUG
+	countMicrobe = 5;
+	countFood = 15;
+#endif
+
+	Microbe_02::generate(countMicrobe);
+	Food_02::generate(countFood);
 
 }
 
 void MicrobeGame_02::update() {
 	Microbe_02::updateItems();
+	Food_02::updateItems();
 	TemplateGame::update();
 }
 

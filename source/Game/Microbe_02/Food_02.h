@@ -16,7 +16,7 @@ public:
 	~Food_02();
 
 	void init(const glm::vec3& pos);
-
+	void update() override;
 	glm::mat4x4 getMatrix() override;
 	TrianglePtr getModel() {
 		return _triangle;
@@ -28,7 +28,7 @@ public:
 public:
 	static void generate(const unsigned int count);
 
-private:
+public:
 	PhysicCircle2DPtr	_physic;
 	TrianglePtr			_triangle;
 	std::shared_ptr<float> _live;

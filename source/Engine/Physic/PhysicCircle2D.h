@@ -25,9 +25,9 @@ public:
 	inline void setRadiusPhysic(const float radius)		{ _radiusPhysic = radius; }
 
 	inline const glm::vec3& getPosPhysic()		{ return _posPhysic; }
-	inline const glm::vec3& getVectorPhysic()		{ return _vecPhysic; }
-	inline float getMassPhysic(const float mass)		{ return _massPhysic; }
-	inline float getRadiusPhysic(const float radius)	{ return _radiusPhysic; }
+	inline const glm::vec3& getVectorPhysic()	{ return _vecPhysic; }
+	inline float getMassPhysic()				{ return _massPhysic; }
+	inline float getRadiusPhysic()				{ return _radiusPhysic; }
 
 private:
 	bool colliding(PhysicCircle2D& circle);

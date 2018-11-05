@@ -18,6 +18,7 @@ typedef std::shared_ptr<CellMouth> CellMouthPtr;
 class CellBrain;
 typedef std::shared_ptr<CellBrain> CellBrainPtr;
 
+class DataEatEvent;
 class DataMoveEvent;
 class DataEnergyEvent;
 
@@ -32,6 +33,7 @@ public:
 			NONE,
 			BRAIN,
 			ENERGY,
+			EAT,
 			MOUTH,
 			MOVE
 		};
@@ -69,7 +71,7 @@ public:
 	Microbe_02();
 	~Microbe_02();
 	void init(const glm::vec3& pos);
-	void update();
+	void update() override;
 	glm::mat4x4 getMatrix() override;
 	TrianglePtr getModel() {
 		return _triangle;
@@ -87,6 +89,7 @@ public:
 
 	void applyEvent(DataMoveEvent& data);
 	void applyEvent(DataEnergyEvent& data);
+	void applyEvent(DataEatEvent& data);
 
 public:
 	CellEnergyPtr	cellEnergy;

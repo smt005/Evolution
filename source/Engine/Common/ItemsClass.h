@@ -11,6 +11,7 @@ class ItemsClass
 {
 public:
 	virtual glm::mat4x4 getMatrix() = 0;
+	virtual void update() {}
 	//virtual ModelPtr getModel() = 0;
 
 	inline static void clear() {

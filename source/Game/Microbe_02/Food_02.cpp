@@ -2,6 +2,7 @@
 #include "Common/Help.h"
 
 Food_02::Food_02()
+	: _live(std::shared_ptr<float>(new float(1.0f)))
 {
 }
 
@@ -22,6 +23,12 @@ void Food_02::init(const glm::vec3 & pos)
 	_triangle = Triangle::generateTriangle(radius);
 	_triangle->setTexture("Textures/Cell_light.png");
 	_triangle->setColor({ 0.0f, 1.0f, 0.0f, 1.0f });
+}
+
+void Food_02::update() {
+	if (!_live) {
+		_triangle->setColor(Color::BLACK);
+	}
 }
 
 glm::mat4x4 Food_02::getMatrix()

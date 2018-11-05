@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Microbe_02.h"
+#include "Food_02.h"
 #include <functional>
 
 /*
@@ -40,4 +41,15 @@ public:
 public:
 	float needEnergy;
 	std::function<void(float)> function;
+};
+
+// DataEatEvent
+class DataEatEvent : public Microbe_02::Event::Data
+{
+public:
+	Microbe_02::Event::Type getType() override { return Microbe_02::Event::EAT; }
+
+public:
+	Food_02Ptr food;
+	Microbe_02* microbe = nullptr;
 };

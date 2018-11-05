@@ -20,6 +20,9 @@ void Microbe_02::applyEvents()
 		case Microbe_02::Event::ENERGY: {
 			applyEvent(*eventItem.getData<DataEnergyEvent>());
 		} break;
+		case Microbe_02::Event::EAT: {
+			applyEvent(*eventItem.getData<DataEatEvent>());
+		} break;
 		default:
 			break;
 		}
@@ -48,5 +51,16 @@ void Microbe_02::applyEvent(DataEnergyEvent& data) {
 		}
 
 		data.function(canEnergy);
+	}
+}
+
+void Microbe_02::applyEvent(DataEatEvent& data) {
+	if (!data.food || !data.microbe) {
+		return;
+	}
+
+	if (data.food->_live) {
+		data.food->_live = nullptr;
+		data.microbe->cellEnergy->_stockEnergy += 500.0f;
 	}
 }
