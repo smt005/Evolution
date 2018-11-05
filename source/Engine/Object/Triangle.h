@@ -78,4 +78,10 @@ private:
 
 public:
 	static TexturePtr& getTextureStatic();
+	static TrianglePtr generateTriangle(const float radius = 1.0f);
+
+private:
+	static Triangle::Point _pointsStatic[3];
+	static Triangle::TexCoord _texCoordStatic[3];
+	static unsigned int _countPoint;
 };

@@ -34,8 +34,10 @@ public:
 		for (auto& item : ContainerT::getItems()) {
 			if (item) {
 				setMatrixToShader(item->getMatrix());
-				ModelPtr model = item->getModel();
-				draw(*model);
+				auto model = item->getModel();
+				if (model) {
+					draw(*model);
+				}
 			}
 		}
 	}

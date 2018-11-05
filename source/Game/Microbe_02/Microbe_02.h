@@ -4,6 +4,7 @@
 #include "Physic/PhysicCircle2D.h"
 #include "Object/Identify.h"
 #include "Object/Model.h"
+#include "Object/Triangle.h"
 #include "Common/ItemsClass.h"
 #include <memory>
 #include <vector>
@@ -72,8 +73,13 @@ public:
 	void init(const glm::vec3& pos);
 	void update();
 	glm::mat4x4 getMatrix() override;
-	ModelPtr getModel() override;
-	void kill();
+	TrianglePtr getModel() {
+		return _triangle;
+	}
+	void kill() {
+		_live = nullptr;
+	}
+
 	//---
 	
 	void applyEvents();
@@ -93,7 +99,7 @@ public:
 private:
 public:
 	PhysicCircle2DPtr	_physic;
-	ModelPtr			_model;
+	TrianglePtr			_triangle;
 	std::shared_ptr<bool> _live;
 	std::vector<Event> _events;
 

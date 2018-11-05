@@ -52,6 +52,16 @@ bool Triangle::initVBO() const
 }
 
 // static
+//	static
+
+Triangle::Point Triangle::_pointsStatic[3] = { -0.425f, -0.9f, 0.0f,
+												0.575f, 0.0f, 0.0f,
+												-0.425f, 0.9f, 0.0f };
+
+Triangle::TexCoord Triangle::_texCoordStatic[3] = { 1.715f, 0.0f,
+													0.0f, 0.0f,
+													0.0f, 1.715f };
+unsigned int Triangle::_countPoint = 3;
 
 TexturePtr& Triangle::getTextureStatic() {
 	if (!textureStatic) {
@@ -59,4 +69,28 @@ TexturePtr& Triangle::getTextureStatic() {
 	}
 
 	return textureStatic;
+}
+
+TrianglePtr Triangle::generateTriangle(const float radius)
+{
+	
+	Point* points = new Point[3];
+	TexCoord* texCoord = new TexCoord[3];
+
+	float scale = 2.7f * radius;
+
+	for (size_t i = 0; i < _countPoint; ++i) {
+		points[i].data[0] = _pointsStatic[i].data[0] * scale;
+		points[i].data[1] = _pointsStatic[i].data[1] * scale;
+		points[i].data[2] = _pointsStatic[i].data[2] * scale;
+
+		points[i].data[2] += 0.01f;
+	}
+
+	memcpy(texCoord, _texCoordStatic, sizeof(TexCoord) * 3);
+
+	TrianglePtr triangle = TrianglePtr(new Triangle());
+	triangle->setData(TRIANGLES, _countPoint, points, texCoord);
+
+	return triangle;
 }

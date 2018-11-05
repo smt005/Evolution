@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 
 std::vector<PhysicCircle2DPtr> PhysicCircle2D::_physicObjects;
-size_t PhysicCircle2D::_countPhysicIteration = 10;
+size_t PhysicCircle2D::_countPhysicIteration = 100;
 float PhysicCircle2D::_frictionCoefficient = 0.9965f;
 
 PhysicCircle2D::PhysicCircle2D()

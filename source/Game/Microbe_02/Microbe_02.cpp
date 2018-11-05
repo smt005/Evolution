@@ -20,10 +20,16 @@ void Microbe_02::init(const glm::vec3 & pos)
 	cellMouth = CellMouthPtr(new CellMouth(this));
 	cellBrain = CellBrainPtr(new CellBrain(this));
 
+	float radius = help::random_f(0.125f, 1.0f);
 	_physic = PhysicCircle2D::addPhysic();
 	_physic->setPosPhysic(pos);
+	_physic->setRadiusPhysic(radius);
 
-	_model = Model::getByName("Sphere_01");
+	float area = 1.0f;	// help::areaCircle(radius) / M_PI * 0.9f;
+	_physic->setMassPhysic(area);
+
+	_triangle = Triangle::generateTriangle(radius);
+	_triangle->setTexture("Textures/Cell.png");
 }
 
 void Microbe_02::update() {
@@ -48,14 +54,6 @@ glm::mat4x4 Microbe_02::getMatrix()
 	matrix[3][2] = pos.z;
 
 	return matrix;
-}
-
-ModelPtr Microbe_02::getModel() {
-	return _model;
-}
-
-void Microbe_02::kill() {
-	_live = nullptr;
 }
 
 // static
