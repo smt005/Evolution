@@ -12,16 +12,16 @@ class ItemsClass
 public:
 	virtual glm::mat4x4 getMatrix() = 0;
 	virtual void update() {}
-	//virtual ModelPtr getModel() = 0;
 
 	inline static void clear() {
-		_items.clear();
+		delete _items;
+		_items = nullptr;
 	}
 	inline static ItemTPtrT addItem()
 	{
 		ItemT* item = new ItemT();
 		ItemTPtrT itemPtr = ItemTPtrT(item);
-		_items.push_back(itemPtr);
+		getItems().push_back(itemPtr);
 
 		return itemPtr;
 	}
@@ -30,24 +30,40 @@ public:
 			_function();
 		}
 
-		for (auto& item : _items) {
+		for (auto& item : getItems()) {
 			item->update();
 		}
-	}
-	inline static std::vector<ItemTPtrT>& getItems() {
-		return _items;
+
+		remove();
 	}
 	inline static void setFunction(std::function<void(void)> function) {
 		_function = function;
 	}
+	inline static std::vector<ItemTPtrT>& getItems() {
+		if (!_items) {
+			_items = new std::vector<ItemTPtrT>();
+		}
+		return *_items;
+	}
+	// TODO:
+	void static remove() {
+		std::vector<ItemTPtrT>* newItems = new std::vector<ItemTPtrT>();
+		for (auto& item : getItems()) {
+			if (item->_live && *item->_live > 0.0f) {
+				newItems->push_back(item);
+			}
+		}
+		delete _items;
+		_items = newItems;
+	}
 
 private:
-	static std::vector<ItemTPtrT> _items;
+	static std::vector<ItemTPtrT>* _items;
 	static std::function<void(void)> _function;
 };
 
 template <class ItemT>
-std::vector<ItemTPtrT> ItemsClass<ItemT>::_items;
+std::vector<ItemTPtrT>* ItemsClass<ItemT>::_items = nullptr;
 
 template <class ItemT>
 std::function<void(void)> ItemsClass<ItemT>::_function = 0;

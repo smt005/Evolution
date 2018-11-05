@@ -22,11 +22,11 @@ void MicrobeGame_02::init() {
 	Microbe_02::setFunction([]() { PhysicCircle2D::updatePhysic(); });
 
 	int countMicrobe = 50;
-	int countFood = 150;
+	int countFood = 250;
 
 #if _DEBUG
 	countMicrobe = 5;
-	countFood = 15;
+	countFood = 25;
 #endif
 
 	Microbe_02::generate(countMicrobe);

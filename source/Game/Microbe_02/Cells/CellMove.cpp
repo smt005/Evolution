@@ -15,10 +15,23 @@ void CellMove::action()
 		return;
 	}
 
+	if (glm::length(vectorMove) == 0.0f) {
+		return;
+	}
+
 	_stockEnergy -= _consumption;
 
 	glm::vec3 vector = glm::normalize(vectorMove);
-	vector *= 0.1f;
+	vector *= 0.025f;
+
+#if _DEBUG
+	vector *= 2.5f;
+#endif
+
 	vector.z = 0.0f;
 	_core->_physic->setVectorPhysic(vector);
+
+	vectorMove.x = 0.0f;
+	vectorMove.y = 0.0f;
+	vectorMove.z = 0.0f;
 }

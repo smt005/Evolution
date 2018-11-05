@@ -19,6 +19,7 @@ public:
 
 	void init();
 	void action() override;
+	glm::vec3 vectorToFood();
 
 public:
 	static glm::vec3 targetPos;
