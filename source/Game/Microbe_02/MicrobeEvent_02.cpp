@@ -55,12 +55,21 @@ void Microbe_02::applyEvent(DataEnergyEvent& data) {
 }
 
 void Microbe_02::applyEvent(DataEatEvent& data) {
+	if (data.microbe->cellEnergy->_stockEnergy >= data.microbe->cellEnergy->_maxStockEnergy) {
+		return;
+	}
+
 	if (!data.food || !data.microbe) {
 		return;
 	}
 
 	if (data.food->_live) {
-		data.food->_live = nullptr;
-		data.microbe->cellEnergy->_stockEnergy += 500.0f;
+		
+		*data.food->_live -= 0.01f;
+		data.microbe->cellEnergy->_stockEnergy += 10.0f;
+
+		if (*data.food->_live <= 0.0f) {
+			data.food->_live = nullptr;
+		}
 	}
 }

@@ -25,7 +25,7 @@ bool Map::create(const string &name)
 	Json::Value data;
 	help::loadJson(fileName, data);
 
-	for (auto element : data["objects"])
+	for (auto& element : data["objects"])
 	{
 		const string &name = element["name"].asString();
 		const string &modelName = element["model"].empty() ? "default" : element["model"].asString();

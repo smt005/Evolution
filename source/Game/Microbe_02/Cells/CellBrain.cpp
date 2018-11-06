@@ -1,5 +1,6 @@
 
 #include "CellBrain.h"
+#include "CellEnergy.h"
 #include "Microbe_02/Microbe_02.h"
 #include "Microbe_02/MicrobeEvent_02.h"
 #include "Microbe_02/Food_02.h"
@@ -18,6 +19,10 @@ void CellBrain::action()
 	}
 
 	if (!_core) {
+		return;
+	}
+
+	if (_core->cellEnergy->_stockEnergy >= _core->cellEnergy->_maxStockEnergy) {
 		return;
 	}
 
