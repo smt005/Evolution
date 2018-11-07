@@ -9,6 +9,8 @@
 
 class Microbe_02;
 typedef std::shared_ptr<Microbe_02> Microbe_02Ptr;
+class CellTouch;
+typedef std::shared_ptr<CellTouch> CellTouchPtr;
 class CellEnergy;
 typedef std::shared_ptr<CellEnergy> CellEnergyPtr;
 class CellMove;
@@ -92,6 +94,7 @@ public:
 	void applyEvent(DataEatEvent& data);
 
 public:
+	CellTouchPtr	cellTouch;
 	CellEnergyPtr	cellEnergy;
 	CellMovePtr		cellMove;
 	CellMouthPtr	cellMouth;

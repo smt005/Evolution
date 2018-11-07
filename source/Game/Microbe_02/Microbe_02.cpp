@@ -1,5 +1,6 @@
 #include "Microbe_02.h"
 #include "Cells/Cell.h"
+#include "Cells/CellTouch.h"
 #include "Cells/CellEnergy.h"
 #include "Cells/CellMove.h"
 #include "Cells/CellMouth.h"
@@ -15,6 +16,7 @@ Microbe_02::~Microbe_02() {
 
 void Microbe_02::init(const glm::vec3 & pos)
 {
+	cellTouch = CellTouchPtr(new CellTouch(this));
 	cellEnergy = CellEnergyPtr(new CellEnergy(this));
 	cellMove = CellMovePtr(new CellMove(this));
 	cellMouth = CellMouthPtr(new CellMouth(this));
@@ -36,6 +38,7 @@ void Microbe_02::init(const glm::vec3 & pos)
 void Microbe_02::update() {
 	applyEvents();
 
+	cellTouch->action();
 	cellEnergy->action();
 	cellMove->action();
 	cellMouth->action();

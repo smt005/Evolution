@@ -109,6 +109,9 @@
     <ClInclude Include="..\..\source\Game\Microbe_02\Food_02.h">
       <Filter>Source\Microbe_02</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellTouch.h">
+      <Filter>Source\Microbe_02\Cells</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">
@@ -182,6 +185,9 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Microbe_02\Food_02.cpp">
       <Filter>Source\Microbe_02</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellTouch.cpp">
+      <Filter>Source\Microbe_02\Cells</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
