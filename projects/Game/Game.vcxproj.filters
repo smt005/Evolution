@@ -32,6 +32,9 @@
     <Filter Include="Source\Microbe_02\Cells">
       <UniqueIdentifier>{ac3e3247-1694-4d97-b012-4855fe38d67d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Microbe_02\Cells\Neurons">
+      <UniqueIdentifier>{d0640b74-4965-4159-8a3a-d860ab6f1120}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h">
@@ -111,6 +114,9 @@
     </ClInclude>
     <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellTouch.h">
       <Filter>Source\Microbe_02\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\Neurons\Neuron.h">
+      <Filter>Source\Microbe_02\Cells\Neurons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
