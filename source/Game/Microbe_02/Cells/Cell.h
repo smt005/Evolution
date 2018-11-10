@@ -1,10 +1,11 @@
 #pragma once
 
 #include <glm/vec3.hpp>
+#include "Neurons/Neuron.h"
 
 class Microbe_02;
 
-class Cell
+class Cell : public NeuronInterface
 {
 public:
 	Cell()

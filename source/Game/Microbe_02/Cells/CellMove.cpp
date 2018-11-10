@@ -15,6 +15,16 @@ void CellMove::action()
 		return;
 	}
 
+	if (state) {
+		if (!inNeuron) {
+			return;
+		}
+
+		if (!inNeuron->_value) {
+			return;
+		}
+	}
+
 	if (glm::length(vectorMove) == 0.0f) {
 		return;
 	}

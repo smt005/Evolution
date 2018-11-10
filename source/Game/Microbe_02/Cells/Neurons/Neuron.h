@@ -4,60 +4,177 @@
 #include <vector>
 
 class Neuron;
-typedef std::shared_ptr<Neuron> NeuronPtr;
 class Cell;
 typedef std::shared_ptr<Cell> CellPtr;
 
 class Neuron
 {
 public:
+	typedef unsigned int Type;
+	enum {
+		NONE,
+		AND,
+		OR,
+		AND_NO,
+		OR_NO,
+		TEST
+	};
+
+public:
 	Neuron() {}
-	Neuron(const std::vector<NeuronPtr>& inNeurons, const std::vector<NeuronPtr>& outNeurons) {
-		_inNeurons = inNeurons;
-		_outNeurons = outNeurons;
+	void add(const std::vector<Neuron*>& neurons) {
+		_sourceNeurons = neurons;
+	}
+	void add(Neuron* const neuron) {
+		_sourceNeurons.push_back(neuron);
 	}
 	virtual ~Neuron() {}
+	virtual void function() {};
+	virtual Type getType() {
+		return NONE;
+	}
 
-private:
-	std::vector<NeuronPtr> _inNeurons;
-	std::vector<NeuronPtr> _outNeurons;
+public:
+	float _value;
+	std::vector<Neuron*> _sourceNeurons;
 };
 
 //---
 
-class NeuronInterface : public Neuron
+class NeuronAnd final : public Neuron
 {
 public:
-	NeuronInterface() { }
-	NeuronInterface(const std::vector<CellPtr>& cells, const std::vector<NeuronPtr>& neurons) {
+	void function() override {
+		size_t size = _sourceNeurons.size();
 
+		if (size > 1) {
+			_value = _sourceNeurons[0]->_value;
+			for (size_t i = 1; i < size; ++i) {
+				_value *= _sourceNeurons[i]->_value;
+			}	 
+		}
+		else if (size == 1) {
+			_value = _sourceNeurons[0]->_value;
+		}
 	}
+	virtual Type getType() {
+		return AND;
+	}
+};
+
+//---
+
+class NeuronOr final : public Neuron
+{
+public:
+	void function() override {
+		size_t size = _sourceNeurons.size();
+
+		if (size > 1) {
+			_value = _sourceNeurons[0]->_value;
+			for (size_t i = 1; i < size; ++i) {
+				_value += _sourceNeurons[i]->_value;
+			}
+
+			_value /= static_cast<float>(size);
+		}
+		else if (size == 1) {
+			_value = _sourceNeurons[0]->_value;
+		}
+	}
+	virtual Type getType() {
+		return OR;
+	}
+};
+
+//---
+
+class NeuronAndNo final : public Neuron
+{
+public:
+	void function() override {
+		size_t size = _sourceNeurons.size();
+
+		if (size > 1) {
+			_value = _sourceNeurons[0]->_value;
+			for (size_t i = 1; i < size; ++i) {
+				_value *= _sourceNeurons[i]->_value;
+			}
+		}
+		else if (size == 1) {
+			_value = _sourceNeurons[0]->_value;
+		}
+
+		_value = 1.0f - _value;
+	}
+	virtual Type getType() {
+		return AND_NO;
+	}
+};
+
+//---
+
+class NeuronOrNo final : public Neuron
+{
+public:
+	void function() override {
+		size_t size = _sourceNeurons.size();
+
+		if (size > 1) {
+			_value = _sourceNeurons[0]->_value;
+			for (size_t i = 1; i < size; ++i) {
+				_value += _sourceNeurons[i]->_value;
+			}
+
+			_value /= static_cast<float>(size);
+		}
+		else if (size == 1) {
+			_value = _sourceNeurons[0]->_value;
+		}
+
+		_value = 1.0f - _value;
+	}
+	virtual Type getType() {
+		return OR_NO;
+	}
+};
+
+//---
+
+class NeuronInterface
+{
+public:
 	~NeuronInterface() {}
 
-private:
-
+public:
+	Neuron* inNeuron;
+	Neuron outNeuron;
+	bool state = false;
 };
 
 //---
 
-class NeuronIn final : public Neuron
+class Brain
 {
 public:
-	NeuronIn() {}
-	~NeuronIn() {}
+	Brain() {}
+	virtual ~Brain() {
+		for (Neuron* neuron : _neurons) {
+			if (neuron) {
+				delete neuron;
+			}
+		}
+	}
+
+	void add(Neuron* neuron) {
+		_neurons.push_back(neuron);
+	}
+	void update() {
+		for (Neuron* neuron : _neurons) {
+			neuron->function();
+		}
+	}
 
 private:
-
-};
-
-//---
-
-class NeuronOut final : public Neuron
-{
-public:
-	NeuronOut() {}
-	~NeuronOut() {}
-
-private:
-
+	std::vector<Neuron*> _neurons;
 };

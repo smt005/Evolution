@@ -37,6 +37,11 @@ void CellBrain::action()
 	Microbe_02::Event eventMove(data);
 
 	_core->addEvent(eventMove);
+
+	if (brain) {
+		brain->update();
+		//return;
+	}
 }
 glm::vec3 CellBrain::vectorToFood()
 {

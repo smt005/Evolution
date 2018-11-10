@@ -118,6 +118,9 @@
     <ClInclude Include="..\..\source\Game\Microbe_02\Cells\Neurons\Neuron.h">
       <Filter>Source\Microbe_02\Cells\Neurons</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\Neurons\NeuronTest.h">
+      <Filter>Source\Microbe_02\Cells\Neurons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">

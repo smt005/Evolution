@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Cell.h"
+#include "Neurons/NeuronTest.h"
 
 class Microbe_02;
 
@@ -15,7 +16,11 @@ public:
 		init();
 	}
 	
-	~CellBrain() {}
+	~CellBrain() {
+		if (brain) {
+			delete brain;
+		}
+	}
 
 	void init();
 	void action() override;
@@ -23,4 +28,5 @@ public:
 
 public:
 	static glm::vec3 targetPos;
+	Brain* brain = nullptr;
 };

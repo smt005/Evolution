@@ -66,9 +66,20 @@ void Microbe_02::generate(const unsigned int count)
 {
 	clear();
 
+	bool typeBrain = true;
+
 	for (unsigned int i = 0; i < count; ++i) {
 		glm::vec3 pos(help::random_f(-25.0f, 25.0f), help::random_f(-25.0f, 25.0f), 1.0f);
 		Microbe_02Ptr microbe = addItem();
 		microbe->init(pos);
+
+		if (typeBrain) {
+			microbe->cellBrain->brain = new Brain();
+			NeuronTest* neuron = new NeuronTest();
+			microbe->cellBrain->brain->add(neuron);
+
+			microbe->cellMove->inNeuron = neuron;
+			microbe->cellMove->state = true;
+		}
 	}
 }
