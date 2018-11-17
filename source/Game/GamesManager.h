@@ -9,6 +9,7 @@
 #include "CollisionBall/MoveToTarget.h"
 #include "CollisionBall/MoveToTargetClass.h"
 #include "Microbe_02/MicrobeGame_02.h"
+#include "Neurons/NeuronsGame.h"
 
 namespace game
 {
@@ -33,6 +34,9 @@ Engine::GamePtr getGame(const std::string& name) {
 	}
 	else if (name == "MicrobeGame_02") {
 		game = new MicrobeGame_02();
+	}
+	else if (name == "NeuronsGame") {
+		game = new NeuronsGame();
 	}
 	else {
 		game = new Engine::DefaultGame();

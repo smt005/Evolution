@@ -5,7 +5,7 @@
 #include <functional>
 
 template <class ItemT>
-#define ItemTPtrT shared_ptr<ItemT>
+#define ItemTPtrT std::shared_ptr<ItemT>
 
 class ItemsClass
 {

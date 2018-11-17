@@ -305,7 +305,7 @@ void Camera::rotate(const vec2 &angles)
 {
 	vec3 vector = _vector;
 	double angleY = asinf(vector.z);
-	double angleX = acosf(vector.y / cosf(angleY));
+	double angleX = acos(vector.y / cos(angleY));
 
 	if (vector.x < 0.0f)
 	{
@@ -318,9 +318,9 @@ void Camera::rotate(const vec2 &angles)
 	if (angleY >(M_PI / 2.0 - 0.25)) angleY = (M_PI / 2.0 - 0.25);
 	if (angleY < -(M_PI / 2.0 - 0.25)) angleY = -(M_PI / 2.0 - 0.25);
 
-	vector.x = sinf(angleX) * cosf(angleY);
-	vector.y = cosf(angleX) * cosf(angleY);
-	vector.z = sinf(angleY);
+	vector.x = sin(angleX) * cos(angleY);
+	vector.y = cos(angleX) * cos(angleY);
+	vector.z = sin(angleY);
 	normalize(vector);
 
 	setVector(vector);

@@ -62,6 +62,7 @@ void TemplateGame::init()
 	}
 
 	Draw::setClearColor(0.9f, 0.6f, 0.3f, 1.0f);
+	Draw::prepare();
 
 	if (!_mapGame) {
 		_mapGame = new Map(getMapFileName());

@@ -3,7 +3,6 @@
 
 #include <glm/glm.hpp>
 #include <glm/mat4x4.hpp>
-#include "Microbe_02/Microbe_02.h"
 #include "Common/ItemsClass.h"
 
 class Mesh;

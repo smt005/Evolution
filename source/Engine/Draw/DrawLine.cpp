@@ -53,7 +53,7 @@ void DrawLine::draw(const Line& line, const glm::mat4x4& matrix)
 {
 	glUniformMatrix4fv(lineShader.u_matViewModel, 1, GL_FALSE, glm::value_ptr(matrix));
 
-	glUniform4fv(lineShader.u_color, 1, line.color.getDataPtr());
+	glUniform4fv(lineShader.u_color, 1, line.color.getColorPtr());
 	glLineWidth(line.getLineWidth());
 
 	glVertexAttribPointer(lineShader.a_position, 3, GL_FLOAT, GL_FALSE, 0, line.getData());
@@ -62,7 +62,7 @@ void DrawLine::draw(const Line& line, const glm::mat4x4& matrix)
 
 void DrawLine::draw(const Line& line)
 {
-	glUniform4fv(lineShader.u_color, 1, line.color.getDataPtr());
+	glUniform4fv(lineShader.u_color, 1, line.color.getColorPtr());
 	glLineWidth(line.getLineWidth());
 
 	glVertexAttribPointer(lineShader.a_position, 3, GL_FLOAT, GL_FALSE, 0, line.getData());

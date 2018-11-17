@@ -35,6 +35,9 @@
     <Filter Include="Source\Microbe_02\Cells\Neurons">
       <UniqueIdentifier>{d0640b74-4965-4159-8a3a-d860ab6f1120}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Neurons">
+      <UniqueIdentifier>{2362e845-31fa-431d-b9cc-9e636b0ec82e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h">
@@ -121,6 +124,12 @@
     <ClInclude Include="..\..\source\Game\Microbe_02\Cells\Neurons\NeuronTest.h">
       <Filter>Source\Microbe_02\Cells\Neurons</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\Neurons\MicrobeNeurons.h">
+      <Filter>Source\Neurons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Neurons\NeuronsGame.h">
+      <Filter>Source\Neurons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">
@@ -197,6 +206,12 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellTouch.cpp">
       <Filter>Source\Microbe_02\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Neurons\MicrobeNeurons.cpp">
+      <Filter>Source\Neurons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Neurons\NeuronsGame.cpp">
+      <Filter>Source\Neurons</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

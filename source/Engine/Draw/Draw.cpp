@@ -129,7 +129,7 @@ void Draw::draw(Model& model)
 		glBindTexture(GL_TEXTURE_2D, currentTexture);
 	}
 
-	glUniform4fv(baseShader.u_color, 1, model.getDataPtr());
+	glUniform4fv(baseShader.u_color, 1, model.getColorPtr());
 
 	Mesh& mesh = model.getMesh();
 	draw(mesh);
@@ -177,7 +177,7 @@ void Draw::draw(const Triangle& triangle)
 		if (!triangle.initVBO()) return;
 	}
 
-	glUniform4fv(baseShader.u_color, 1, triangle.getDataPtr());
+	glUniform4fv(baseShader.u_color, 1, triangle.getColorPtr());
 
 	if (curentBufer != triangle.bufferVertexes())
 	{

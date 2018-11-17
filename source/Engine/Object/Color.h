@@ -17,39 +17,39 @@ public:
 
 public:
 	Color();
-	Color(const float* const data) { memcpy(_data, data, (sizeof(float) * 4)); }
+	Color(const float* const data) { memcpy(_dataColor, data, (sizeof(float) * 4)); }
 	Color(const float r, const float g, const float b);
 	Color(const float r, const float g, const float b, const float a);
 	Color(const int templateColor);
 
 	//inline Color& operator=(const int templateColor) { *this = Color(templateColor); }
-	inline Color& operator=(const Color& color)		{ memcpy(_data, color._data, (sizeof(float) * 4));	return *this; }
-	inline Color& operator=(const float* const data){ memcpy(_data, data, (sizeof(float) * 4));			return *this; }
+	inline Color& operator=(const Color& color)		{ memcpy(_dataColor, color._dataColor, (sizeof(float) * 4));	return *this; }
+	inline Color& operator=(const float* const data){ memcpy(_dataColor, data, (sizeof(float) * 4));			return *this; }
 	inline bool operator==(const Color& color) {
-		if (_data[RED] == color._data[RED] && _data[GREEN] == color._data[GREEN] && _data[BLUE] == color._data[BLUE] && _data[ALPHA] == color._data[ALPHA])  return true;
+		if (_dataColor[RED] == color._dataColor[RED] && _dataColor[GREEN] == color._dataColor[GREEN] && _dataColor[BLUE] == color._dataColor[BLUE] && _dataColor[ALPHA] == color._dataColor[ALPHA])  return true;
 		return false;
 	}
 
-	inline float& operator[](const size_t index) { return _data[index]; }
+	inline float& operator[](const size_t index) { return _dataColor[index]; }
 	
-	inline void setColor(const Color& color)		{ memcpy(_data, color._data, (sizeof(float) * 4)); }
-	inline void set(const float* const data){ memcpy(_data, data, (sizeof(float) * 4)); }
+	inline void setColor(const Color& color)		{ memcpy(_dataColor, color._dataColor, (sizeof(float) * 4)); }
+	inline void set(const float* const data){ memcpy(_dataColor, data, (sizeof(float) * 4)); }
 
-	inline void setRed(float const r)	{ _data[RED] = r;	}
-	inline void setGreen(float const g)	{ _data[GREEN] = g;	}
-	inline void setBlue(float const b)	{ _data[BLUE] = b;	}
-	inline void setAlpha(float const a) { _data[ALPHA] = a;	}
+	inline void setRed(float const r)	{ _dataColor[RED] = r;	}
+	inline void setGreen(float const g)	{ _dataColor[GREEN] = g;	}
+	inline void setBlue(float const b)	{ _dataColor[BLUE] = b;	}
+	inline void setAlpha(float const a) { _dataColor[ALPHA] = a;	}
 
-	inline float getRed()	const { return _data[RED];	}
-	inline float getGreen()	const { return _data[GREEN];	}
-	inline float getBlue()	const { return _data[BLUE];	}
-	inline float getAlpha()	const { return _data[ALPHA];	}
+	inline float getRed()	const { return _dataColor[RED];	}
+	inline float getGreen()	const { return _dataColor[GREEN];	}
+	inline float getBlue()	const { return _dataColor[BLUE];	}
+	inline float getAlpha()	const { return _dataColor[ALPHA];	}
 
-	inline const float* const getDataPtr() const { return _data; }
-
-private:
-	float _data[4];
+	inline const float* const getColorPtr() const { return _dataColor; }
 
 private:
-	static float _dataStatic[4];
+	float _dataColor[4];
+
+private:
+	static float _dataColorStatic[4];
 };
