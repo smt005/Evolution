@@ -19,6 +19,9 @@
     <Filter Include="Source\Neurons\Cells">
       <UniqueIdentifier>{98145acb-bfde-4fb9-8346-3b951a41dc85}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Neurons\Neurons">
+      <UniqueIdentifier>{3e7a3f89-159b-45cd-863c-c3ad157e8bea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Game\Examples\MapExample.h">
@@ -60,6 +63,12 @@
     <ClInclude Include="..\..\source\Game\Neurons\Microbe.h">
       <Filter>Source\Neurons</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Game\Neurons\Neuron.h">
+      <Filter>Source\Neurons\Neurons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Neurons\NeuronTest.h">
+      <Filter>Source\Neurons\Neurons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp">
@@ -94,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Neurons\Microbe.cpp">
       <Filter>Source\Neurons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Neurons\NeuronTest.cpp">
+      <Filter>Source\Neurons\Neurons</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

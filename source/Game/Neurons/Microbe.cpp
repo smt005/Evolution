@@ -1,5 +1,7 @@
 #include "Microbe.h"
 #include "Common/Help.h"
+#include "CellBrain.h"
+#include "CellMove.h"
 
 Microbe::Microbe()
 	: _live(std::shared_ptr<float>(new float(1.0f))) {
@@ -21,10 +23,30 @@ void Microbe::init(const glm::vec3 & pos)
 	_triangle = Triangle::generateTriangle(radius);
 	_triangle->setTexture("Textures/Cell_light.png");
 	_triangle->setColor( {0.0f, 1.0f, 1.0f, 1.0f} );
+
+	// Cells
+
+	{
+		CellMovePtr cellMove = CellMovePtr(new CellMove);
+		cellMove->init(this);
+		_cellsMove.push_back(cellMove);
+	}
+
+	{
+		CellBrainPtr cellBrain = CellBrainPtr(new CellBrain);
+		cellBrain->init(this);
+		_cellsBrain.push_back(cellBrain);
+	}
 }
 
 void Microbe::update() {
+	for (auto& item : _cellsMove) {
+		item->action();
+	}
 
+	for (auto& item : _cellsBrain) {
+		item->action();
+	}
 }
 
 glm::mat4x4 Microbe::getMatrix()

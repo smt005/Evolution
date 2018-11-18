@@ -30,7 +30,9 @@
     <ClInclude Include="..\..\source\Game\Neurons\CellBrain.h" />
     <ClInclude Include="..\..\source\Game\Neurons\CellMove.h" />
     <ClInclude Include="..\..\source\Game\Neurons\Microbe.h" />
+    <ClInclude Include="..\..\source\Game\Neurons\Neuron.h" />
     <ClInclude Include="..\..\source\Game\Neurons\NeuronsGame.h" />
+    <ClInclude Include="..\..\source\Game\Neurons\NeuronTest.h" />
     <ClInclude Include="..\..\source\Game\Templates\TemplateGame.h" />
   </ItemGroup>
   <ItemGroup>
@@ -44,6 +46,7 @@
     <ClCompile Include="..\..\source\Game\Neurons\CellMove.cpp" />
     <ClCompile Include="..\..\source\Game\Neurons\Microbe.cpp" />
     <ClCompile Include="..\..\source\Game\Neurons\NeuronsGame.cpp" />
+    <ClCompile Include="..\..\source\Game\Neurons\NeuronTest.cpp" />
     <ClCompile Include="..\..\source\Game\Templates\TemplateGame.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

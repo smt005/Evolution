@@ -9,9 +9,14 @@
 
 class Microbe;
 typedef std::shared_ptr<Microbe> MicrobePtr;
+class CellMove;
+typedef std::shared_ptr<CellMove> CellMovePtr;
+class CellBrain;
+typedef std::shared_ptr<CellBrain> CellBrainPtr;
 
 class Microbe final : public ItemsClass<Microbe>, public UniqueId
 {
+	friend CellBrain;
 public:
 	Microbe();
 	~Microbe();
@@ -29,6 +34,9 @@ public:
 	PhysicCircle2DPtr	_physic;
 	TrianglePtr			_triangle;
 	std::shared_ptr<float> _live;
+
+	std::vector<CellMovePtr> _cellsMove;
+	std::vector<CellBrainPtr> _cellsBrain;
 
 public:
 	static void generate(const unsigned int count);
