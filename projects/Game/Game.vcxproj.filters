@@ -4,21 +4,8 @@
     <Filter Include="Source">
       <UniqueIdentifier>{1ccafab3-0e8c-481a-a5ba-15d15d70470f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Evolution">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Source\Examples">
       <UniqueIdentifier>{e93b06e1-2ef1-4d5c-92af-2545ecf23dd6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Evolution\Microbe">
-      <UniqueIdentifier>{4b2222bb-c858-405e-8dd3-c8fc1cdf44c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Evolution\Microbe\Cell">
-      <UniqueIdentifier>{e006efdf-1b9b-4df4-a98f-c15fee18a830}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Evolution\Microbe\Cell\Brain">
-      <UniqueIdentifier>{0a27bd68-0afc-4239-80ed-42721f5137c8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\CollisionBall">
       <UniqueIdentifier>{dbe763a0-95e2-4e80-8d6c-b83012cfc37d}</UniqueIdentifier>
@@ -26,49 +13,19 @@
     <Filter Include="Source\Template">
       <UniqueIdentifier>{9c08fd80-84d2-48b0-aa30-2ab078a1a52e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Microbe_02">
-      <UniqueIdentifier>{5c6a7def-5d3d-4d2e-b5f3-d7e694e26fc1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Microbe_02\Cells">
-      <UniqueIdentifier>{ac3e3247-1694-4d97-b012-4855fe38d67d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Microbe_02\Cells\Neurons">
-      <UniqueIdentifier>{d0640b74-4965-4159-8a3a-d860ab6f1120}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Neurons">
       <UniqueIdentifier>{2362e845-31fa-431d-b9cc-9e636b0ec82e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Neurons\Cells">
+      <UniqueIdentifier>{98145acb-bfde-4fb9-8346-3b951a41dc85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Game\Evolution\Evolution.h">
-      <Filter>Source\Evolution</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\Game\Examples\MapExample.h">
       <Filter>Source\Examples</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Game\GamesManager.h">
       <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Evolution\Microbe\Microbe.h">
-      <Filter>Source\Evolution\Microbe</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Evolution\Microbe\DNA.h">
-      <Filter>Source\Evolution\Microbe</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeBrain.h">
-      <Filter>Source\Evolution\Microbe\Cell</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeEnergy.h">
-      <Filter>Source\Evolution\Microbe\Cell</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeMouth.h">
-      <Filter>Source\Evolution\Microbe\Cell</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Evolution\Microbe\MicrobeMover.h">
-      <Filter>Source\Evolution\Microbe\Cell</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Evolution\Microbe\Event.h">
-      <Filter>Source\Evolution\Microbe</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Game\Templates\TemplateGame.h">
       <Filter>Source\Template</Filter>
@@ -88,76 +45,25 @@
     <ClInclude Include="..\..\source\Game\CollisionBall\MoveToTargetClass.h">
       <Filter>Source\CollisionBall</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\MicrobeGame_02.h">
-      <Filter>Source\Microbe_02</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\Microbe_02.h">
-      <Filter>Source\Microbe_02</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\Cell.h">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellBrain.h">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellEnergy.h">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellMouth.h">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellMove.h">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\MicrobeEvent_02.h">
-      <Filter>Source\Microbe_02</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\Food_02.h">
-      <Filter>Source\Microbe_02</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\CellTouch.h">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\Neurons\Neuron.h">
-      <Filter>Source\Microbe_02\Cells\Neurons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Microbe_02\Cells\Neurons\NeuronTest.h">
-      <Filter>Source\Microbe_02\Cells\Neurons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\Game\Neurons\MicrobeNeurons.h">
+    <ClInclude Include="..\..\source\Game\Neurons\NeuronsGame.h">
       <Filter>Source\Neurons</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Game\Neurons\NeuronsGame.h">
+    <ClInclude Include="..\..\source\Game\Neurons\Cell.h">
+      <Filter>Source\Neurons\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Neurons\CellMove.h">
+      <Filter>Source\Neurons\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Neurons\CellBrain.h">
+      <Filter>Source\Neurons\Cells</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\Game\Neurons\Microbe.h">
       <Filter>Source\Neurons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Game\Evolution\Evolution.cpp">
-      <Filter>Source\Evolution</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\Game\Examples\MapExample.cpp">
       <Filter>Source\Examples</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Evolution\Microbe\Microbe.cpp">
-      <Filter>Source\Evolution\Microbe</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Evolution\Microbe\DNA.cpp">
-      <Filter>Source\Evolution\Microbe</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeBrain.cpp">
-      <Filter>Source\Evolution\Microbe\Cell</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeEnergy.cpp">
-      <Filter>Source\Evolution\Microbe\Cell</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeMouth.cpp">
-      <Filter>Source\Evolution\Microbe\Cell</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Evolution\Microbe\MicrobeMover.cpp">
-      <Filter>Source\Evolution\Microbe\Cell</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Evolution\Microbe\Event.cpp">
-      <Filter>Source\Evolution\Microbe</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Game\Templates\TemplateGame.cpp">
       <Filter>Source\Template</Filter>
@@ -177,40 +83,16 @@
     <ClCompile Include="..\..\source\Game\CollisionBall\MoveToTargetClass.cpp">
       <Filter>Source\CollisionBall</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\Game\Microbe_02\MicrobeGame_02.cpp">
-      <Filter>Source\Microbe_02</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Microbe_02\Microbe_02.cpp">
-      <Filter>Source\Microbe_02</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Microbe_02\MicrobeEvent_02.cpp">
-      <Filter>Source\Microbe_02</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellBrain.cpp">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellEnergy.cpp">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellMouth.cpp">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellMove.cpp">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\Cell.cpp">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Microbe_02\Food_02.cpp">
-      <Filter>Source\Microbe_02</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Microbe_02\Cells\CellTouch.cpp">
-      <Filter>Source\Microbe_02\Cells</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\Game\Neurons\MicrobeNeurons.cpp">
+    <ClCompile Include="..\..\source\Game\Neurons\NeuronsGame.cpp">
       <Filter>Source\Neurons</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\Game\Neurons\NeuronsGame.cpp">
+    <ClCompile Include="..\..\source\Game\Neurons\CellBrain.cpp">
+      <Filter>Source\Neurons\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Neurons\CellMove.cpp">
+      <Filter>Source\Neurons\Cells</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Game\Neurons\Microbe.cpp">
       <Filter>Source\Neurons</Filter>
     </ClCompile>
   </ItemGroup>

@@ -23,7 +23,6 @@
 #include "Object/Triangle.h"
 #include "Object/Color.h"
 #include "Object/Identify.h"
-#include "Evolution/Microbe/Microbe.h"
 
 const std::string saveFileName("Saves/MapExampleSave.json");
 const std::string mapFileName("Examples/MapExample");
@@ -60,8 +59,6 @@ void MapExample::init()
 	}
 
 	greed.setPos({0.0f, 0.0f, 0.1f});
-	
-	microbe::Microbe::generateMicrobes();
 
 	initCallback();
 }
@@ -171,8 +168,6 @@ void MapExample::save()
 
 void MapExample::update()
 {
-	microbe::Microbe::updateMicrobes();
-
 	if (_mapGame) {
 		_mapGame->action();
 	}
@@ -228,12 +223,5 @@ void MapExample::draw()
 
 	if (_mapGame) {
 		Draw::draw(*_mapGame);
-	}
-
-	for (auto& item : microbe::Microbe::getMicrobes()) {
-		if (item) {
-			const Triangle& shape = item->getSelf();
-			Draw::draw(shape);
-		}
 	}
 }

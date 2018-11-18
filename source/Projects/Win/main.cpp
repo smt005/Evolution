@@ -4,6 +4,6 @@
 
 int main(int argc, char **argv) {
 	Engine::GamePtr gamePtr;
-	gamePtr = game::getGame(argc > 1 ? argv[1] : "NeuronsGame");	// MapExample Evolution CollisionBall MoveToTarget MoveToTargetClass MicrobeGame_02 NeuronsGame
+	gamePtr = game::getGame(argc > 1 ? argv[1] : "NeuronsGame");	// MapExample CollisionBall MoveToTarget MoveToTargetClass NeuronsGame
 	return Engine::Core::execution(gamePtr);
 }

@@ -1,14 +1,14 @@
-#include "MicrobeNeurons.h"
+#include "Microbe.h"
 #include "Common/Help.h"
 
-MicrobeNeurons::MicrobeNeurons()
+Microbe::Microbe()
 	: _live(std::shared_ptr<float>(new float(1.0f))) {
 }
 
-MicrobeNeurons::~MicrobeNeurons() {
+Microbe::~Microbe() {
 }
 
-void MicrobeNeurons::init(const glm::vec3 & pos)
+void Microbe::init(const glm::vec3 & pos)
 {
 	float radius = help::random_f(0.125f, 1.0f);
 	_physic = PhysicCircle2D::addPhysic();
@@ -23,11 +23,11 @@ void MicrobeNeurons::init(const glm::vec3 & pos)
 	_triangle->setColor( {0.0f, 1.0f, 1.0f, 1.0f} );
 }
 
-void MicrobeNeurons::update() {
+void Microbe::update() {
 
 }
 
-glm::mat4x4 MicrobeNeurons::getMatrix()
+glm::mat4x4 Microbe::getMatrix()
 {
 	if (!_physic) {
 		return glm::mat4x4();
@@ -44,13 +44,13 @@ glm::mat4x4 MicrobeNeurons::getMatrix()
 
 // static
 
-void MicrobeNeurons::generate(const unsigned int count)
+void Microbe::generate(const unsigned int count)
 {
 	clear();
 
 	for (unsigned int i = 0; i < count; ++i) {
 		glm::vec3 pos(help::random_f(-25.0f, 25.0f), help::random_f(-25.0f, 25.0f), 1.0f);
-		MicrobeNeuronsPtr microbe = addItem();
+		MicrobePtr microbe = addItem();
 		microbe->init(pos);
 	}
 }

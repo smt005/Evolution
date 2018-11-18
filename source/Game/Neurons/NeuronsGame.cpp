@@ -2,7 +2,7 @@
 #include "Draw/Draw.h"
 #include "Draw/Camera.h"
 #include "Callback/Callback.h"
-#include "Neurons/MicrobeNeurons.h"
+#include "Neurons/Microbe.h"
 
 NeuronsGame::NeuronsGame() {
 }
@@ -13,7 +13,7 @@ NeuronsGame::~NeuronsGame() {
 void NeuronsGame::init() {
 	TemplateGame::init();
 
-	MicrobeNeurons::setFunction([]() { PhysicCircle2D::updatePhysic(); });
+	Microbe::setFunction([]() { PhysicCircle2D::updatePhysic(); });
 
 	int countMicrobe = 50;
 	int countFood = 250;
@@ -23,15 +23,15 @@ void NeuronsGame::init() {
 	countFood = 25;
 #endif
 
-	MicrobeNeurons::generate(countMicrobe);
+	Microbe::generate(countMicrobe);
 }
 
 void NeuronsGame::update() {
-	MicrobeNeurons::updateItems();
+	Microbe::updateItems();
 	TemplateGame::update();
 }
 
 void NeuronsGame::draw() {
-	Draw::draw<MicrobeNeurons>();
 	TemplateGame::draw();
+	Draw::draw<Microbe>();
 }
