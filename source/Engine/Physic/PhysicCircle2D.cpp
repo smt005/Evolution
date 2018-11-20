@@ -41,7 +41,6 @@ PhysicCircle2D::PhysicCircle2D(const glm::vec3 & pos)
 PhysicCircle2D::~PhysicCircle2D() {
 }
 
-
 bool PhysicCircle2D::colliding(PhysicCircle2D& ball)
 {
 	float xd = _posPhysic.x - ball._posPhysic.x;

@@ -2,6 +2,7 @@
 
 #include "Cell.h"
 #include "Neuron.h"
+#include <glm/vec3.hpp>
 
 class CellBrain;
 class NeuronMoveIn;
@@ -37,14 +38,26 @@ public:
 
 public:
 	CellMove()
-		: _vector(0.01f)
-		, _angle(0.0f)
-		, _value(0.0f) {}
+		: _value(0.0f)
+		, _vector(0.01f)
+		, _angle(0.001f)
+		, _vectorPhysic(0.0f)
+		, _anglePhysic(0.0f) {}
 	void action() override;
 	void init(Microbe* core) override;
 
 private:
+	void rotateVector(glm::vec3& vector, const float angle);
+
+private:
+	bool _value;
+
 	float _vector;
 	float _angle;
-	bool _value;
+
+	float _vectorPhysic;
+	float _anglePhysic;
+
+private:
+	static glm::vec3 _rotateVector;
 };
