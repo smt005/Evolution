@@ -33,11 +33,18 @@ public:
 		CellMove* _cellMove;
 	};
 	
+	//---
+
 public:
-	CellMove() : _state(false) {}
+	CellMove()
+		: _vector(0.01f)
+		, _angle(0.0f)
+		, _value(0.0f) {}
 	void action() override;
 	void init(Microbe* core) override;
 
 private:
-	bool _state;
+	float _vector;
+	float _angle;
+	bool _value;
 };
