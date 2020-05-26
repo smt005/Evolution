@@ -77,7 +77,7 @@ public:
 		add(type, function, id);
 	}
 
-	~Callback() {
+	virtual ~Callback() {
 		Callback::removeObject(*this);
 	}
 
